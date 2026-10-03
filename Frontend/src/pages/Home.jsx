@@ -379,15 +379,14 @@ const Home = () => {
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <span className="text-2xl font-black text-[#a100ff] -mr-1">&gt;</span>
-                                    <span className="text-xl md:text-2xl font-bold tracking-tight text-[#000000]">accenture <span className="text-[#a100ff] font-black">&gt;</span></span>
+                                    <span className="text-xl md:text-2xl font-bold tracking-tight text-[#000000]">accenture</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-indigo-900" />
                                     <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900">NIT Trichy</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" className="w-8 h-8 object-cover object-left" alt="Wipro" />
-                                    <span className="text-xl md:text-2xl font-black tracking-widest text-[#002f6c]">wipro</span>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" className="h-6 md:h-8 object-contain" alt="Wipro" />
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-teal-800" />
