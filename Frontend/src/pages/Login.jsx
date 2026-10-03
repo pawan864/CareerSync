@@ -231,7 +231,7 @@ const Login = () => {
     return (
         <div className={`fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-gradient-to-r transition-colors duration-700 ${themeStyles[globalTheme].bg}`}>
             {/* Absolute Top-Left Rotating CareerSync Logo */}
-            <div className="absolute top-3 left-6 md:top-5 md:left-8 z-50 flex items-center gap-4">
+            <div className="absolute top-2 left-6 md:top-3 md:left-8 z-50 flex items-center gap-4">
                 <motion.div 
                     animate={{ rotateY: 360 }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -269,7 +269,7 @@ const Login = () => {
             </>
             
             {/* Brand Logo and Tagline */}
-            <div className="text-center z-20 mb-3 drop-shadow-md">
+            <div className="text-center z-20 mb-1 mt-3 drop-shadow-md">
                 <div className={`flex items-center justify-center mb-1.5 ${themeStyles[globalTheme].accentText}`}>
                     <div className={`w-10 h-10 bg-gradient-to-br rounded-lg flex items-center justify-center mr-3 border ${themeStyles[globalTheme].logoBg} ${themeStyles[globalTheme].logoBorder}`}>
                                 <GraduationCap className={`w-6 h-6 ${themeStyles[globalTheme].logoText}`} />
