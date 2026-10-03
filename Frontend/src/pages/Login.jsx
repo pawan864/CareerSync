@@ -268,10 +268,23 @@ const Login = () => {
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
             </>
             
-
+            {/* Brand Logo and Tagline */}
+            <div className="text-center z-20 mb-3 drop-shadow-md">
+                <div className={`flex items-center justify-center mb-1.5 ${themeStyles[globalTheme].accentText}`}>
+                    <div className={`w-10 h-10 bg-gradient-to-br rounded-lg flex items-center justify-center mr-3 border ${themeStyles[globalTheme].logoBg} ${themeStyles[globalTheme].logoBorder}`}>
+                                <GraduationCap className={`w-6 h-6 ${themeStyles[globalTheme].logoText}`} />
+                            </div>
+                    <span className="font-extrabold text-xl tracking-tight">
+                        <span className="text-black">Career</span><span className={themeStyles[globalTheme].accentText}>Sync</span>
+                    </span>
+                </div>
+                <p className="text-black text-sm font-medium tracking-wide">
+                    Bridging the Gap Between Talent and Opportunity
+                </p>
+            </div>
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
-            <div className="w-full max-w-7xl rounded-3xl h-[85vh] min-h-[650px] shadow-2xl relative z-10 perspective-1000 my-auto">
+            <div className="w-full max-w-5xl rounded-3xl min-h-[600px] shadow-2xl relative z-10 perspective-1000">
                 <AnimatePresence>
                     <motion.div
                           key={showSupport ? 'support' : portal}
