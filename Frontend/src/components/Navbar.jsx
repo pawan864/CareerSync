@@ -12,10 +12,6 @@ const Navbar = () => {
     const [navTheme, setNavTheme] = useState('indigo');
 
     useEffect(() => {
-        const handleThemeChange = (e) => {
-            setNavTheme(e.detail.theme || 'indigo');
-        };
-        
         const handleSlideChange = (e) => {
             // Only cycle navbar colors if user is at the top of the page
             if (window.scrollY <= 20) {
@@ -30,11 +26,9 @@ const Navbar = () => {
             setNavTheme(savedTheme);
         }
 
-        window.addEventListener('pageThemeChange', handleThemeChange);
         window.addEventListener('heroSlideChange', handleSlideChange);
         
         return () => {
-            window.removeEventListener('pageThemeChange', handleThemeChange);
             window.removeEventListener('heroSlideChange', handleSlideChange);
         };
     }, []);
