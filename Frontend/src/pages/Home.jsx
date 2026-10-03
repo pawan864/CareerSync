@@ -612,13 +612,13 @@ const Home = () => {
                     <div className="flex items-center gap-3 w-full md:w-auto">
                         <button 
                             onClick={() => handleCookieConsent('essential')}
-                            className="flex-1 md:flex-none px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                            className="flex-1 md:flex-none px-6 py-2.5 bg-white hover:bg-gray-100 hover:text-black hover:border-gray-400 hover:shadow-md text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
                         >
                             Reject all
                         </button>
                         <button 
                             onClick={() => handleCookieConsent('all')}
-                            className="flex-1 md:flex-none px-6 py-2.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                            className="flex-1 md:flex-none px-6 py-2.5 bg-gray-900 hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5 text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
                         >
                             Accept all
                         </button>
@@ -657,6 +657,10 @@ const Home = () => {
                                     <p>We use the information we collect to provide, maintain, and improve our services. We may also use the information to connect students with potential recruiters and academic faculty.</p>
                                     <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">3. Data Security</h4>
                                     <p>We implement appropriate technical and organizational measures to protect the personal data that we collect and process about you. The measures we use are designed to provide a level of security appropriate to the risk of processing your personal information.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">4. Your Data Rights</h4>
+                                    <p>Depending on your location, you may have certain rights regarding your personal information, including the right to access, correct, update, or request deletion of your data. You can manage these preferences directly from your account dashboard.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">5. Third-Party Services</h4>
+                                    <p>We may employ third-party companies and individuals to facilitate our service, provide the service on our behalf, or assist us in analyzing how our service is used. These third parties have access to your personal data only to perform these tasks on our behalf.</p>
                                 </>
                             ) : (
                                 <>
@@ -667,6 +671,10 @@ const Home = () => {
                                     <p>You agree not to engage in any of the following prohibited activities: copying, distributing, or disclosing any part of the service in any medium; using any automated system to access the service; attempting to interfere with the servers running the service.</p>
                                     <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">3. Termination</h4>
                                     <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Service will immediately cease.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">4. Intellectual Property</h4>
+                                    <p>The Service and its original content, features, and functionality are and will remain the exclusive property of CareerSync and its licensors. The Service is protected by copyright, trademark, and other laws.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">5. Limitation of Liability</h4>
+                                    <p>In no event shall CareerSync, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, or other intangible losses, resulting from your access to or use of the Service.</p>
                                 </>
                             )}
                         </div>
