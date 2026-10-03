@@ -361,14 +361,14 @@ const Home = () => {
                     <div className="animate-marquee group-hover:pause flex items-center space-x-16 px-8">
                         {[...Array(2)].map((_, i) => (
                             <React.Fragment key={i}>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-8 object-contain transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100" />
-                                <span className="text-3xl font-bold font-serif text-gray-400 hover:text-red-900 transition-colors duration-300">Stanford</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-8 object-contain transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100" />
-                                <span className="text-3xl font-black tracking-tighter text-gray-400 hover:text-red-700 transition-colors duration-300">MIT</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-8 pt-1 object-contain transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100" />
-                                <span className="text-3xl font-bold font-serif text-gray-400 hover:text-blue-900 transition-colors duration-300">Oxford</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-10 object-contain transition-all duration-300 hover:scale-110 grayscale hover:grayscale-0 opacity-60 hover:opacity-100" />
-                                <span className="text-3xl font-bold font-serif text-gray-400 hover:text-indigo-900 transition-colors duration-300">Harvard</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-8 object-contain transition-transform hover:scale-110" />
+                                <span className="text-3xl font-bold font-serif text-red-900 hover:scale-110 transition-transform">Stanford</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-8 object-contain transition-transform hover:scale-110" />
+                                <span className="text-3xl font-black tracking-tighter text-red-700 hover:scale-110 transition-transform">MIT</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-8 pt-1 object-contain transition-transform hover:scale-110" />
+                                <span className="text-3xl font-bold font-serif text-blue-900 hover:scale-110 transition-transform">Oxford</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-10 object-contain transition-transform hover:scale-110" />
+                                <span className="text-3xl font-bold font-serif text-indigo-900 hover:scale-110 transition-transform">Harvard</span>
                             </React.Fragment>
                         ))}
                     </div>
