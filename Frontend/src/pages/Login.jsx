@@ -253,7 +253,7 @@ const Login = () => {
                         <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-white" />
                     </div>
                 </motion.div>
-                <div className="hidden md:flex flex-col drop-shadow-lg">
+                <div className="hidden md:flex flex-col drop-shadow-lg -mt-3">
                     <span className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-none">
                         Career<span className={themeStyles[globalTheme].accentText}>Sync</span>
                     </span>
