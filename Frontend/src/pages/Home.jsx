@@ -149,7 +149,7 @@ const Home = () => {
                                     <div className={`inline-block px-4 py-1 rounded-full font-semibold text-sm mb-6 border ${heroSlides[currentSlide].taglineBg}`}>
                                         {heroSlides[currentSlide].tagline}
                                     </div>
-                                    <h1 className="text-xl md:text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:text-5xl mb-6">
+                                    <h1 className="text-lg md:text-xl tracking-tight font-extrabold text-gray-900 sm:text-3xl xl:text-4xl mb-6">
                                         <span className="block md:whitespace-nowrap">{heroSlides[currentSlide].title1}</span>
                                         <span className="block text-gray-900 mt-2 md:whitespace-nowrap">{heroSlides[currentSlide].title2}</span>
                                     </h1>
