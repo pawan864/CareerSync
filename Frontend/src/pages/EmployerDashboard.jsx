@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 import api from '../services/api';
 
 const EmployerDashboard = () => {
+    const { logout } = useContext(AuthContext);
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);

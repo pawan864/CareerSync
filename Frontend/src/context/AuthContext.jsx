@@ -28,14 +28,19 @@ export const AuthProvider = ({ children }) => {
         fetchUser();
     }, []);
 
-    const login = async (email, password) => {
-        const res = await api.post('/auth/login', { email, password });
+    const login = async (credentials) => {
+        const res = await api.post('/auth/login', credentials);
         if (res.data.success) {
+            if (res.data.userId) {
+                // Return userId for OTP flow
+                return { success: true, userId: res.data.userId, otp: res.data.otp };
+            }
+            // Fallback if no OTP required
             localStorage.setItem('token', res.data.token);
             setUser(res.data.user);
-            return true;
+            return { success: true };
         }
-        return false;
+        return { success: false };
     };
 
     const register = async (userData) => {

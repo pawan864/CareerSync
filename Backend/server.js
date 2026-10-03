@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const skillRoutes = require('./routes/skillRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 // Load env vars
 dotenv.config();
@@ -31,6 +32,7 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/skills', skillRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/opportunities', require('./routes/opportunityRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
 

@@ -41,3 +41,96 @@
 .group:hover .group-hover\:pause {
   animation-play-state: paused;
 }
+
+/* Custom Slim Scrollbar */
+.slim-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.slim-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.slim-scrollbar::-webkit-scrollbar-thumb {
+  background: #1e40af; 
+  border-radius: 10px;
+}
+.slim-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #1e3a8a;
+}
+
+
+/* Global styles to remove scrollbar visibility and block rubber-band pulling effect */
+html, body {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+  
+  /* Disable bounce/pull-to-refresh effect which reveals background */
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Hide scrollbar universally for all scrollable containers but allow scrolling */
+*, *::before, *::after {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+/* Ultimate Chrome Autofill Fix - No shadows, no background changes */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s !important;
+    -webkit-text-fill-color: inherit !important;
+    background-color: transparent !important;
+}
+
+/* Explicit Light/Dark Autofill Overrides */
+.autofill-light:-webkit-autofill,
+.autofill-light:-webkit-autofill:hover, 
+.autofill-light:-webkit-autofill:focus, 
+.autofill-light:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #111827 !important;
+    caret-color: #111827 !important;
+}
+
+.autofill-dark:-webkit-autofill,
+.autofill-dark:-webkit-autofill:hover, 
+.autofill-dark:-webkit-autofill:focus, 
+.autofill-dark:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
+    -webkit-text-fill-color: #f3f4f6 !important;
+    caret-color: #f3f4f6 !important;
+}
+
+.autofill-admin:-webkit-autofill,
+.autofill-admin:-webkit-autofill:hover, 
+.autofill-admin:-webkit-autofill:focus, 
+.autofill-admin:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0a0a0a inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff !important;
+}

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 import api from '../services/api';
 import { Users, Briefcase, CheckCircle, TrendingUp, BarChart2 } from 'lucide-react';
 
 const InstitutionDashboard = () => {
+    const { logout } = useContext(AuthContext);
     const [analytics, setAnalytics] = useState(null);
     const [loading, setLoading] = useState(true);
 

@@ -22,11 +22,40 @@ const UserSchema = new mongoose.Schema({
         minlength: 6,
         select: false,
     },
+
+    studentId: String,
+    college: String,
+    course: String,
+    branch: String,
+    semester: String,
+    phone: String,
+    facultyId: String,
+    department: String,
+    designation: String,
+    expertise: String,
+    companyName: String,
+    corporateEmail: String,
+    website: String,
+    industryType: String,
+    companySize: String,
+    location: String,
+    registrationInfo: String,
+    tpoId: String,
+    institutionCode: String,
     role: {
         type: String,
-        enum: ['student', 'faculty', 'industry', 'admin', 'tpo'],
+        enum: ['student', 'faculty', 'recruiter', 'admin', 'tpo'],
         default: 'student',
     },
+    verificationStatus: {
+        type: String,
+        enum: ['pending', 'approved', 'rejected'],
+        default: 'pending'
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+    loginOtp: String,
+    loginOtpExpire: Date,
     createdAt: {
         type: Date,
         default: Date.now,
@@ -34,9 +63,9 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Encrypt password using bcrypt
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function () {
     if (!this.isModified('password')) {
-        next();
+        return;
     }
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);

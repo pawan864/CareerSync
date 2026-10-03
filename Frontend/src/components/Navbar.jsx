@@ -1,27 +1,118 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const [scrolled, setScrolled] = useState(false);
+    const [navTheme, setNavTheme] = useState('blue');
+
+    useEffect(() => {
+        const handleSlideChange = (e) => {
+            const themes = ['blue', 'indigo', 'orange'];
+            setNavTheme(themes[e.detail.slide] || 'blue');
+        };
+        window.addEventListener('heroSlideChange', handleSlideChange);
+        
+        // Reset theme if route changes (optional, but good practice)
+        const dynamicStyles = {
+        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
+        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
+        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
+    };
+
+    const themeClasses = {
+        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
+        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
+        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
+    };
+
+    const activeNavClass = scrolled 
+        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
+        : "bg-white shadow-sm border-b border-gray-200";
+
+    return () => window.removeEventListener('heroSlideChange', handleSlideChange);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        const dynamicStyles = {
+        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
+        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
+        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
+    };
+
+    const themeClasses = {
+        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
+        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
+        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
+    };
+
+    const activeNavClass = scrolled 
+        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
+        : "bg-white shadow-sm border-b border-gray-200";
+
+    return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleLogout = async () => {
         await logout();
         navigate('/');
     };
 
+    const dynamicStyles = {
+        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
+        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
+        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
+    };
+
+    const themeClasses = {
+        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
+        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
+        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
+    };
+
+    const activeNavClass = scrolled 
+        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
+        : "bg-white shadow-sm border-b border-gray-200";
+
     return (
-        <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
+        <nav className={`sticky top-0 z-50 transition-colors duration-500 ${activeNavClass}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center text-indigo-600 mr-8">
-                            <GraduationCap className="h-8 w-8 mr-2" />
+                        <Link to="/" className="flex items-center text-teal-600 mr-8">
+                            <motion.div 
+                                animate={{ rotateY: 360 }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                style={{ transformStyle: "preserve-3d" }}
+                                className="w-8 h-8 relative mr-3"
+                            >
+                                {/* Front Face (Original) */}
+                                <div 
+                                    style={{ backfaceVisibility: "hidden" }}
+                                    className={`absolute inset-0 bg-gradient-to-br ${dynamicStyles[navTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[navTheme].logoBorder} transition-colors duration-500`}
+                                >
+                                    <GraduationCap className={`w-5 h-5 ${dynamicStyles[navTheme].logoText} transition-colors duration-500`} />
+                                </div>
+                                {/* Back Face (New Color) */}
+                                <div 
+                                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                                    className="absolute inset-0 bg-gradient-to-br from-gray-800/10 to-black/20 rounded-lg flex items-center justify-center border border-gray-300"
+                                >
+                                    <GraduationCap className="w-5 h-5 text-black" />
+                                </div>
+                            </motion.div>
                             <span className="font-bold text-xl tracking-tight">
-                                <span className="text-gray-900">Career</span>
-                                <span className="text-indigo-600">Sync</span>
+                                <span className="text-slate-800">Career</span>
+                                <span className={`${dynamicStyles[navTheme].syncText} transition-colors duration-500`}>Sync</span>
                             </span>
                         </Link>
                         
@@ -113,19 +204,19 @@ const Navbar = () => {
                                 <div key={item.name} className="group relative">
                                     <Link 
                                         to={item.href} 
-                                        className="text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full"
+                                        className={`text-gray-600 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full`}
                                     >
                                         {item.name}
                                     </Link>
                                     
                                     {/* Floating Dropdown Card */}
                                     <div className="absolute left-0 mt-0 w-64 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:translate-y-1 group-hover:visible transition-all duration-200 z-50">
-                                        <div className="bg-gradient-to-r from-white via-blue-100 to-blue-300 rounded-xl shadow-xl border border-gray-100 p-3 overflow-hidden">
+                                        <div className={`bg-gradient-to-r ${dynamicStyles[navTheme].bg} rounded-xl shadow-xl border border-gray-100 p-3 overflow-hidden transition-colors duration-500`}>
                                             {item.details.map((detail, idx) => (
                                                 <Link 
                                                     key={idx} 
                                                     to={detail.link}
-                                                    className="block p-3 rounded-lg hover:bg-indigo-50 transition-colors"
+                                                    className={`block p-3 rounded-lg hover:bg-white hover:shadow-lg ${dynamicStyles[navTheme].shadow} transition-all duration-300`}
                                                 >
                                                     <div className="font-semibold text-gray-900 text-sm">{detail.title}</div>
                                                     <div className="text-xs text-gray-500 mt-1">{detail.desc}</div>
@@ -142,21 +233,21 @@ const Navbar = () => {
                             <>
                                 {user.role === 'student' && (
                                     <>
-                                        <Link to="/profile" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Profile</Link>
-                                        <Link to="/skill-gap" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Skill Gap</Link>
-                                        <Link to="/jobs" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Opportunities</Link>
+                                        <Link to="/profile" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Profile</Link>
+                                        <Link to="/skill-gap" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Skill Gap</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Opportunities</Link>
                                     </>
                                 )}
                                 {user.role === 'industry' && (
                                     <>
-                                        <Link to="/employer" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Dashboard</Link>
-                                        <Link to="/jobs" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">All Postings</Link>
+                                        <Link to="/employer" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Dashboard</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>All Postings</Link>
                                     </>
                                 )}
                                 {['faculty', 'tpo', 'admin'].includes(user.role) && (
                                     <>
-                                        <Link to="/institution" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Analytics Dashboard</Link>
-                                        <Link to="/jobs" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">View Opportunities</Link>
+                                        <Link to="/institution" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Analytics Dashboard</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>View Opportunities</Link>
                                     </>
                                 )}
                                 <span className="text-gray-500 text-sm hidden md:inline ml-4 border-l pl-4">
@@ -173,14 +264,14 @@ const Navbar = () => {
                             <>
                                 <Link
                                     to="/login"
-                                    className="group relative overflow-hidden px-5 py-2 text-sm font-medium text-blue-600 bg-transparent border border-blue-600 rounded-md transition-colors duration-300 hover:text-white"
+                                    className={`group relative overflow-hidden px-5 py-2 text-sm font-medium bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[navTheme].loginBtn}`}
                                 >
-                                    <span className="absolute inset-0 w-full h-full bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
+                                    <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[navTheme].loginHoverBg}`}></span>
                                     <span className="relative z-10">Log in</span>
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className="ml-3 group relative overflow-hidden px-5 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md transition-colors duration-300 hover:text-blue-600"
+                                    className={`ml-3 group relative overflow-hidden px-5 py-2 text-sm font-medium text-white border rounded-md transition-all duration-500 ${dynamicStyles[navTheme].signupBtn} ${dynamicStyles[navTheme].signupTextHover}`}
                                 >
                                     <span className="absolute inset-0 w-full h-full bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
                                     <span className="relative z-10">Sign up</span>

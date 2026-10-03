@@ -5,14 +5,36 @@ const User = require('../models/User');
 // @access  Public
 exports.register = async (req, res, next) => {
     try {
-        const { name, email, password, role } = req.body;
+        
+        const { 
+            name, email, password, role,
+            studentId, college, course, branch, semester, phone,
+            facultyId, department, designation, expertise,
+            companyName, corporateEmail, website, industryType, companySize, location, registrationInfo,
+            tpoId, institutionCode
+        } = req.body;
+
+
+        // Check for existing email or phone
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return res.status(400).json({ success: false, error: 'Email is already registered' });
+        }
+
+        if (phone && phone.trim() !== '') {
+            const existingPhone = await User.findOne({ phone });
+            if (existingPhone) {
+                return res.status(400).json({ success: false, error: 'Phone number is already registered' });
+            }
+        }
 
         // Create user
         const user = await User.create({
-            name,
-            email,
-            password,
-            role,
+            name, email, password, role,
+            studentId, college, course, branch, semester, phone,
+            facultyId, department, designation, expertise,
+            companyName, corporateEmail, website, industryType, companySize, location, registrationInfo,
+            tpoId, institutionCode
         });
 
         sendTokenResponse(user, 201, res);
@@ -26,7 +48,10 @@ exports.register = async (req, res, next) => {
 // @access  Public
 exports.login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, institutionCode, portal } = req.body;
+
+
+        // ---------------------------------------------------
 
         // Validate email & password
         if (!email || !password) {
@@ -39,6 +64,24 @@ exports.login = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
+        
+        // Validate strict role access per portal
+        const roleMap = {
+            'Student': 'student',
+            'Faculty': 'faculty',
+            'TPO': 'tpo',
+            'Recruiter': 'recruiter',
+            'Admin': 'admin'
+        };
+        
+        if (portal && roleMap[portal]) {
+            if (user.role !== roleMap[portal]) {
+                return res.status(401).json({ success: false, error: `You are registered as a ${user.role}, please use the correct portal to log in.` });
+            }
+        }
+        if (portal === 'TPO' && institutionCode && user.institutionCode !== institutionCode) {
+            return res.status(401).json({ success: false, error: 'Invalid Institution Code' });
+        }
 
         // Check if password matches
         const isMatch = await user.matchPassword(password);
@@ -46,6 +89,65 @@ exports.login = async (req, res, next) => {
         if (!isMatch) {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
+
+        // Generate 6 digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        
+        // Hash it and save to user
+        const crypto = require('crypto');
+        user.loginOtp = crypto.createHash('sha256').update(otp).digest('hex');
+        user.loginOtpExpire = Date.now() + 1 * 60 * 1000; // 1 minute
+        
+        await user.save({ validateBeforeSave: false });
+
+        console.log(`
+
+========================================`);
+        console.log(`🚀 [MOCK EMAIL] OTP for ${user.email} is: ${otp}`);
+        console.log(`========================================
+
+`);
+
+        res.status(200).json({ 
+            success: true, 
+            message: 'Please check your mail. OTP sent.', 
+            userId: user._id,
+            otp: otp // DEV ONLY: send OTP in response for popup
+        });
+    } catch (err) {
+        next(err);
+    }
+};
+
+// @desc    Verify OTP and login
+// @route   POST /api/v1/auth/verify-otp
+// @access  Public
+exports.verifyOtp = async (req, res, next) => {
+    console.log("verifyOtp called with body:", req.body);
+    try {
+        const { userId, otp } = req.body;
+        
+        if (!userId || !otp) {
+            return res.status(400).json({ success: false, error: 'Please provide user ID and OTP' });
+        }
+
+        const crypto = require('crypto');
+        const hashedOtp = crypto.createHash('sha256').update(otp).digest('hex');
+
+        const user = await User.findOne({
+            _id: userId,
+            loginOtp: hashedOtp,
+            loginOtpExpire: { $gt: Date.now() }
+        });
+
+        if (!user) {
+            return res.status(400).json({ success: false, error: 'Invalid or expired OTP' });
+        }
+
+        // Clear OTP
+        user.loginOtp = undefined;
+        user.loginOtpExpire = undefined;
+        await user.save({ validateBeforeSave: false });
 
         sendTokenResponse(user, 200, res);
     } catch (err) {
@@ -113,4 +215,41 @@ const sendTokenResponse = (user, statusCode, res) => {
                 role: user.role
             }
         });
+};
+
+const crypto = require('crypto');
+
+// @desc    Forgot password
+// @route   POST /api/auth/forgot-password
+// @access  Public
+exports.forgotPassword = async (req, res, next) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+            // Send success anyway to prevent email enumeration
+            return res.status(200).json({ success: true, message: 'Password reset link sent to your email.' });
+        }
+
+        // Generate token
+        const resetToken = crypto.randomBytes(20).toString('hex');
+
+        // Hash token and set to resetPasswordToken field
+        user.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+        // Set expire
+        user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+        await user.save();
+
+        // Normally we would send email here using nodemailer
+        // For now, we simulate the email and return success
+        console.log(`Reset token generated for ${user.email}: ${resetToken}`);
+        console.log(`Reset URL: http://localhost:5173/reset-password/${resetToken}`);
+
+        res.status(200).json({ success: true, message: 'Password reset link sent to your email.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Email could not be sent' });
+    }
 };
