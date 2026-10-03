@@ -96,8 +96,8 @@ const Home = () => {
     }, [pageTheme]);
 
     const pageStyles = {
-        blue: { bgDark: "bg-blue-800", cardBg: "bg-blue-50", iconBg: "bg-blue-100", iconText: "text-blue-600", borderHover: "hover:border-blue-200", btnBg: "bg-blue-600 hover:bg-blue-700", ctaGradient: "from-white via-blue-200 to-blue-500", textLight: "text-white" },
-        indigo: { bgDark: "bg-indigo-800", cardBg: "bg-[#f3f0fc]", iconBg: "bg-indigo-100", iconText: "text-indigo-600", borderHover: "hover:border-indigo-100", btnBg: "bg-indigo-600 hover:bg-indigo-700", ctaGradient: "from-white via-indigo-200 to-indigo-500", textLight: "text-white" },
+        blue: { bgDark: "bg-blue-600", cardBg: "bg-blue-50", iconBg: "bg-blue-100", iconText: "text-blue-600", borderHover: "hover:border-blue-200", btnBg: "bg-blue-600 hover:bg-blue-700", ctaGradient: "from-white via-blue-200 to-blue-500", textLight: "text-white" },
+        indigo: { bgDark: "bg-indigo-600", cardBg: "bg-[#f3f0fc]", iconBg: "bg-indigo-100", iconText: "text-indigo-600", borderHover: "hover:border-indigo-100", btnBg: "bg-indigo-600 hover:bg-indigo-700", ctaGradient: "from-white via-indigo-200 to-indigo-500", textLight: "text-white" },
         orange: { bgDark: "bg-orange-200", cardBg: "bg-[#fdfbf5]", iconBg: "bg-orange-100", iconText: "text-orange-600", borderHover: "hover:border-orange-200", btnBg: "bg-amber-800 hover:bg-amber-900", ctaGradient: "from-white via-orange-100 to-orange-200", textLight: "text-orange-900" }
     };
 
