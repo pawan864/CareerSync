@@ -392,12 +392,28 @@ const Home = () => {
                         {/* Testimonial 1 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
                             {/* Default Visible State */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
-                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
-                                    AS
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white overflow-hidden">
+                                {/* Decorative Background Elements */}
+                                <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 translate-x-10 -translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                <div className={`absolute bottom-0 left-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 -translate-x-10 translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                
+                                {/* Avatar with pulsing ring */}
+                                <div className="relative mb-5">
+                                    <div className={`absolute inset-0 rounded-full animate-ping opacity-20 ${pageStyles[pageTheme].bgDark}`}></div>
+                                    <div className={`relative z-10 w-24 h-24 rounded-full flex items-center justify-center text-3xl font-black shadow-md border-4 border-white transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                        AS
+                                    </div>
+                                    <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                                        <CheckCircle className="w-3.5 h-3.5 text-white" />
+                                    </div>
                                 </div>
-                                <h4 className="text-xl font-bold text-gray-900 mb-1">Aryan Sharma</h4>
-                                <p className="text-sm font-medium text-gray-500 text-center">Software Engineer Intern</p>
+                                
+                                <h4 className="text-xl font-extrabold text-gray-900 tracking-tight mb-1 relative z-10">Aryan Sharma</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center relative z-10">Software Engineer Intern</p>
+                                
+                                <div className={`absolute bottom-6 flex items-center text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${pageStyles[pageTheme].iconText} animate-pulse`}>
+                                    Hover to read <ArrowRight className="w-3 h-3 ml-1" />
+                                </div>
                             </div>
 
                             {/* Hover Reveal State (Diagonal Circular Wipe) */}
@@ -424,12 +440,28 @@ const Home = () => {
                         {/* Testimonial 2 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
                             {/* Default Visible State */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
-                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
-                                    PR
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white overflow-hidden">
+                                {/* Decorative Background Elements */}
+                                <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 translate-x-10 -translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                <div className={`absolute bottom-0 left-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 -translate-x-10 translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                
+                                {/* Avatar with pulsing ring */}
+                                <div className="relative mb-5">
+                                    <div className={`absolute inset-0 rounded-full animate-ping opacity-20 delay-100 ${pageStyles[pageTheme].bgDark}`}></div>
+                                    <div className={`relative z-10 w-24 h-24 rounded-full flex items-center justify-center text-3xl font-black shadow-md border-4 border-white transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                        PR
+                                    </div>
+                                    <div className="absolute -bottom-2 -right-2 bg-blue-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                                        <CheckCircle className="w-3.5 h-3.5 text-white" />
+                                    </div>
                                 </div>
-                                <h4 className="text-xl font-bold text-gray-900 mb-1">Priya Reddy</h4>
-                                <p className="text-sm font-medium text-gray-500 text-center">Senior Technical Recruiter</p>
+                                
+                                <h4 className="text-xl font-extrabold text-gray-900 tracking-tight mb-1 relative z-10">Priya Reddy</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center relative z-10">Senior Technical Recruiter</p>
+                                
+                                <div className={`absolute bottom-6 flex items-center text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${pageStyles[pageTheme].iconText} animate-pulse`}>
+                                    Hover to read <ArrowRight className="w-3 h-3 ml-1" />
+                                </div>
                             </div>
 
                             {/* Hover Reveal State (Diagonal Circular Wipe) */}
@@ -456,12 +488,28 @@ const Home = () => {
                         {/* Testimonial 3 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
                             {/* Default Visible State */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
-                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
-                                    MK
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white overflow-hidden">
+                                {/* Decorative Background Elements */}
+                                <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 translate-x-10 -translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                <div className={`absolute bottom-0 left-0 w-32 h-32 rounded-full blur-3xl opacity-20 transition-colors duration-700 -translate-x-10 translate-y-10 ${pageStyles[pageTheme].bgDark}`}></div>
+                                
+                                {/* Avatar with pulsing ring */}
+                                <div className="relative mb-5">
+                                    <div className={`absolute inset-0 rounded-full animate-ping opacity-20 delay-300 ${pageStyles[pageTheme].bgDark}`}></div>
+                                    <div className={`relative z-10 w-24 h-24 rounded-full flex items-center justify-center text-3xl font-black shadow-md border-4 border-white transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                        MK
+                                    </div>
+                                    <div className="absolute -bottom-2 -right-2 bg-purple-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                                        <CheckCircle className="w-3.5 h-3.5 text-white" />
+                                    </div>
                                 </div>
-                                <h4 className="text-xl font-bold text-gray-900 mb-1">Dr. Manish Kumar</h4>
-                                <p className="text-sm font-medium text-gray-500 text-center">Training & Placement Head</p>
+                                
+                                <h4 className="text-xl font-extrabold text-gray-900 tracking-tight mb-1 relative z-10">Dr. Manish Kumar</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center relative z-10">Training & Placement Head</p>
+                                
+                                <div className={`absolute bottom-6 flex items-center text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${pageStyles[pageTheme].iconText} animate-pulse`}>
+                                    Hover to read <ArrowRight className="w-3 h-3 ml-1" />
+                                </div>
                             </div>
 
                             {/* Hover Reveal State (Diagonal Circular Wipe) */}
