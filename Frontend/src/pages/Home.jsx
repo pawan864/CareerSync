@@ -392,7 +392,7 @@ const Home = () => {
                         {/* Testimonial 1 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-200 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State (Minimal & Professional) */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                            <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-16 h-16 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Aryan Sharma" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
@@ -421,7 +421,7 @@ const Home = () => {
                         {/* Testimonial 2 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-200 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                            <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-16 h-16 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Priya Reddy" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
@@ -450,7 +450,7 @@ const Home = () => {
                         {/* Testimonial 3 */}
                         <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-200 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                            <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-16 h-16 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Dr. Manish Kumar" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
