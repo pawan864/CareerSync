@@ -375,7 +375,7 @@ const Home = () => {
                             <React.Fragment key={i}>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" className="w-6 h-6 object-cover object-left" alt="Microsoft" />
-                                    <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#737373]">Microsoft</span>
+                                    <span className="text-lg md:text-xl font-semibold tracking-tight text-[#737373]">Microsoft</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-blue-900" />
