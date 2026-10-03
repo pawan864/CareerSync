@@ -158,11 +158,13 @@ const Home = () => {
                                     </p>
                                     
                                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-                                        <Link to={heroSlides[currentSlide].button1Link} className={`flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-md text-white shadow-lg transition-transform hover:-translate-y-1 ${heroSlides[currentSlide].btn1Color}`}>
-                                            {heroSlides[currentSlide].button1}
+                                        <Link to={heroSlides[currentSlide].button1Link} className={`group relative overflow-hidden flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-md text-white shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${heroSlides[currentSlide].btn1Color}`}>
+                                            <span className="absolute inset-0 w-full h-full bg-black/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"></span>
+                                            <span className="relative z-10">{heroSlides[currentSlide].button1}</span>
                                         </Link>
-                                        <Link to={heroSlides[currentSlide].button2Link} className={`flex items-center justify-center px-6 py-2.5 border-2 text-sm font-bold rounded-md bg-white shadow transition-transform hover:-translate-y-1 ${heroSlides[currentSlide].btn2Color}`}>
-                                            {heroSlides[currentSlide].button2}
+                                        <Link to={heroSlides[currentSlide].button2Link} className={`group relative overflow-hidden flex items-center justify-center px-6 py-2.5 border-2 text-sm font-bold rounded-md bg-white shadow transition-all duration-300 transform hover:-translate-y-1 ${heroSlides[currentSlide].btn2Color}`}>
+                                            <span className="absolute inset-0 w-full h-full bg-gray-100 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"></span>
+                                            <span className="relative z-10">{heroSlides[currentSlide].button2}</span>
                                         </Link>
                                     </div>
                                 </div>
