@@ -378,7 +378,7 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-black tracking-tight text-red-800">BITS Pilani</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <span className="text-2xl font-black text-[#a100ff] -mr-1">&gt;</span>
+                                    <span className="text-2xl font-black text-[#a100ff]">&gt;</span>
                                     <span className="text-xl md:text-2xl font-bold tracking-tight text-[#000000]">accenture</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
