@@ -83,6 +83,7 @@ const Home = () => {
     const [showCookieConsent, setShowCookieConsent] = useState(() => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
     });
+    const [showPolicyModal, setShowPolicyModal] = useState(null);
 
     const handleCookieConsent = (type) => {
         localStorage.setItem('careerSyncCookieConsent', type);
@@ -604,7 +605,7 @@ const Home = () => {
                         <div>
                             <h3 className="text-gray-900 font-bold text-sm tracking-tight m-0">We value your privacy</h3>
                             <p className="text-gray-500 text-xs leading-relaxed m-0 mt-1 max-w-3xl pr-4">
-                                We use cookies and similar technologies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept all", you consent to our use of these technologies. You can learn more about how we protect your data in our <a href="#" className="text-gray-900 underline font-medium hover:text-black">Privacy Policy</a> and <a href="#" className="text-gray-900 underline font-medium hover:text-black">Terms of Service</a>.
+                                We use cookies and similar technologies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept all", you consent to our use of these technologies. You can learn more about how we protect your data in our <a href="#" onClick={(e) => { e.preventDefault(); setShowPolicyModal('privacy'); }} className="text-gray-900 underline font-medium hover:text-black">Privacy Policy</a> and <a href="#" onClick={(e) => { e.preventDefault(); setShowPolicyModal('terms'); }} className="text-gray-900 underline font-medium hover:text-black">Terms of Service</a>.
                             </p>
                         </div>
                     </div>
@@ -628,6 +629,57 @@ const Home = () => {
                 </motion.div>
             )}
         </AnimatePresence>
+
+        {/* Policy Modals */}
+        <AnimatePresence>
+            {showPolicyModal && (
+                <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative w-full max-w-2xl bg-white border border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl p-6 md:p-8 max-h-[80vh] overflow-y-auto"
+                    >
+                        <button onClick={() => setShowPolicyModal(null)} className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 transition-colors bg-gray-50 hover:bg-gray-100 rounded-full p-2">
+                            <X className="w-5 h-5" />
+                        </button>
+                        <h3 className="text-gray-900 font-bold text-xl tracking-tight mb-4">
+                            {showPolicyModal === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
+                        </h3>
+                        <div className="text-gray-500 text-sm leading-relaxed space-y-4">
+                            {showPolicyModal === 'privacy' ? (
+                                <>
+                                    <p>At CareerSync, we take your privacy seriously. This Privacy Policy describes how we collect, use, and protect your personal data when you use our platform.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">1. Information We Collect</h4>
+                                    <p>We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us. This information may include: name, email, phone number, academic records, and resume data.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">2. How We Use Your Data</h4>
+                                    <p>We use the information we collect to provide, maintain, and improve our services. We may also use the information to connect students with potential recruiters and academic faculty.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">3. Data Security</h4>
+                                    <p>We implement appropriate technical and organizational measures to protect the personal data that we collect and process about you. The measures we use are designed to provide a level of security appropriate to the risk of processing your personal information.</p>
+                                </>
+                            ) : (
+                                <>
+                                    <p>Welcome to CareerSync. By accessing or using our platform, you agree to be bound by these Terms of Service and our Privacy Policy.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">1. User Responsibilities</h4>
+                                    <p>You must provide accurate and complete information when creating an account. You are responsible for safeguarding the password that you use to access the service and for any activities or actions under your password.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">2. Acceptable Use</h4>
+                                    <p>You agree not to engage in any of the following prohibited activities: copying, distributing, or disclosing any part of the service in any medium; using any automated system to access the service; attempting to interfere with the servers running the service.</p>
+                                    <h4 className="font-bold text-gray-900 text-sm mt-6 mb-2">3. Termination</h4>
+                                    <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Service will immediately cease.</p>
+                                </>
+                            )}
+                        </div>
+                        <div className="mt-8 pt-5 border-t border-gray-100 flex justify-end">
+                            <button onClick={() => setShowPolicyModal(null)} className="px-6 py-2.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95">
+                                I Understand
+                            </button>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+
         </>
     );
 };
