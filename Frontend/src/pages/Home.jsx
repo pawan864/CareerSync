@@ -153,7 +153,7 @@ const Home = () => {
                                         <span className="block md:whitespace-nowrap">{heroSlides[currentSlide].title1}</span>
                                         <span className="block text-gray-900 mt-2 md:whitespace-nowrap">{heroSlides[currentSlide].title2}</span>
                                     </h1>
-                                    <p className="text-lg text-gray-500 mb-8 max-w-xl leading-relaxed italic">
+                                    <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide mb-8 max-w-xl">
                                         {heroSlides[currentSlide].description}
                                     </p>
                                     
