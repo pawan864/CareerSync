@@ -603,8 +603,8 @@ const Home = () => {
                         </div>
                         <div>
                             <h3 className="text-gray-900 font-bold text-sm tracking-tight m-0">We value your privacy</h3>
-                            <p className="text-gray-500 text-xs leading-snug m-0 mt-0.5">
-                                We use cookies to enhance your browsing experience and analyze site traffic.
+                            <p className="text-gray-500 text-xs leading-relaxed m-0 mt-1 max-w-3xl pr-4">
+                                We use cookies and similar technologies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept all", you consent to our use of these technologies. You can learn more about how we protect your data in our <a href="#" className="text-gray-900 underline font-medium hover:text-black">Privacy Policy</a> and <a href="#" className="text-gray-900 underline font-medium hover:text-black">Terms of Service</a>.
                             </p>
                         </div>
                     </div>
