@@ -547,7 +547,7 @@ const Home = () => {
                         <p className="text-lg text-gray-700 font-medium mb-8">
                             Begin your industry connections
                         </p>
-                        <Link to="/register" className={`group relative overflow-hidden inline-flex items-center text-white font-bold px-6 py-3 text-sm md:text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${pageStyles[pageTheme].btnBg}`}>
+                        <Link to="/register" className={`group relative overflow-hidden inline-flex items-center text-white font-normal px-6 py-3 text-sm md:text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${pageStyles[pageTheme].btnBg}`}>
                             <span className="absolute inset-0 w-full h-full bg-black/30 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"></span>
                             <span className="relative z-10">Get Started Now</span>
                             <ArrowRight className="w-4 h-4 ml-2 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
