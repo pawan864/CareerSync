@@ -261,7 +261,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <FileText className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">AI-Driven Skill Mapping</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">AI-Driven Skill Mapping</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Students can analyze their resumes instantly to identify skill gaps and receive personalized learning paths to become industry-ready.
                             </p>
@@ -272,7 +272,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <CheckCircle className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">TPOal Verification</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">TPOal Verification</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 TPOs can securely verify student profiles and academic records, creating a trusted and highly credible talent pool for recruiters.
                             </p>
@@ -283,7 +283,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <BarChart className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Smart Job Matching</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Smart Job Matching</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Recruiters use our advanced NLP algorithms to automatically match their job requirements with the most qualified campus talent.
                             </p>
@@ -294,7 +294,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <UserPlus className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Placement Analytics</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Placement Analytics</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Comprehensive real-time dashboards allow TPOs to track hiring pipelines, placement rates, and ongoing recruitment drives.
                             </p>
@@ -317,7 +317,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <FileText className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Resume Building</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Resume Building</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Automatically generate ATS-friendly professional resumes based on your verified skills, projects, and academic records.
                             </p>
@@ -328,7 +328,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <Users className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Mock Interviews</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Mock Interviews</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Practice your technical and behavioral skills with our AI interviewer to gain confidence before real industry interviews.
                             </p>
@@ -339,7 +339,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <Briefcase className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">One-Click Apply</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">One-Click Apply</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Apply to top-tier verified internships and full-time positions with a single click, directly from your personalized dashboard.
                             </p>
@@ -350,7 +350,7 @@ const Home = () => {
                             <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
                                 <BookOpen className="h-6 w-6" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Alumni Mentorship</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Alumni Mentorship</h3>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Connect with successfully placed alumni from your TPO for 1-on-1 career guidance and industry referrals.
                             </p>
