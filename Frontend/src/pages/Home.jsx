@@ -203,7 +203,33 @@ const Home = () => {
                 </div>
             </div>
 
+            
+            {/* Global Impact / Statistics Section */}
+            <div className="bg-white py-12 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="px-4">
+                            <h4 className={`text-4xl font-extrabold transition-colors duration-500 mb-2 ${pageStyles[pageTheme].textDark}`}>500+</h4>
+                            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Top Companies</p>
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="px-4">
+                            <h4 className={`text-4xl font-extrabold transition-colors duration-500 mb-2 ${pageStyles[pageTheme].textDark}`}>50+</h4>
+                            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Universities</p>
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="px-4">
+                            <h4 className={`text-4xl font-extrabold transition-colors duration-500 mb-2 ${pageStyles[pageTheme].textDark}`}>25k+</h4>
+                            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Students Placed</p>
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="px-4">
+                            <h4 className={`text-4xl font-extrabold transition-colors duration-500 mb-2 ${pageStyles[pageTheme].textDark}`}>98%</h4>
+                            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Success Rate</p>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+
             {/* Features Workflow Section */}
+
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-gray-50 py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
