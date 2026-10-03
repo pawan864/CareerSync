@@ -407,12 +407,12 @@ const Home = () => {
                                     hover: { clipPath: 'circle(150% at 100% 0%)' }
                                 }}
                                 transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                                className="absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 bg-white shadow-inner"
                             >
-                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
+                                <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "Honestly, the platform made applying for jobs so much less stressful. It instantly flagged missing keywords in my resume before I applied, which ended up getting me my first big internship."
                                 </p>
-                                <div className="text-white/80 font-semibold text-xs uppercase tracking-wider">
+                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Aryan Sharma
                                 </div>
                             </motion.div>
@@ -436,12 +436,12 @@ const Home = () => {
                                     hover: { clipPath: 'circle(150% at 100% 0%)' }
                                 }}
                                 transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                                className="absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 bg-white shadow-inner"
                             >
-                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
+                                <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "We used to spend weeks filtering through unverified campus applications. Now, we just set our requirements and the system hands us a pipeline of vetted students ready for interviews."
                                 </p>
-                                <div className="text-white/80 font-semibold text-xs uppercase tracking-wider">
+                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Priya Reddy
                                 </div>
                             </motion.div>
@@ -465,12 +465,12 @@ const Home = () => {
                                     hover: { clipPath: 'circle(150% at 100% 0%)' }
                                 }}
                                 transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                                className="absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 bg-white shadow-inner"
                             >
-                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
+                                <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "It completely modernized our placement cell. I can see exactly which companies are viewing our students' profiles and generate placement reports for the dean with one click."
                                 </p>
-                                <div className="text-white/80 font-semibold text-xs uppercase tracking-wider">
+                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Dr. Manish Kumar
                                 </div>
                             </motion.div>
