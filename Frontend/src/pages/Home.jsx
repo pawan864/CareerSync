@@ -363,7 +363,7 @@ const Home = () => {
                             <React.Fragment key={i}>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <Briefcase className="w-8 h-8 text-blue-600" />
-                                    <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-600">Microsoft</span>
+                                    <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#737373]">Microsoft</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-blue-900" />
@@ -371,7 +371,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <Briefcase className="w-8 h-8 text-red-500" />
-                                    <span className="text-xl md:text-2xl font-bold text-red-500">Google</span>
+                                    <span className="text-xl md:text-2xl font-medium tracking-tighter"><span className="text-[#4285F4]">G</span><span className="text-[#EA4335]">o</span><span className="text-[#FBBC05]">o</span><span className="text-[#4285F4]">g</span><span className="text-[#34A853]">l</span><span className="text-[#EA4335]">e</span></span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-red-800" />
@@ -379,7 +379,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <Briefcase className="w-8 h-8 text-purple-700" />
-                                    <span className="text-xl md:text-2xl font-black text-purple-700">Accenture</span>
+                                    <span className="text-xl md:text-2xl font-bold tracking-tight text-[#000000]">accenture <span className="text-[#a100ff] font-black">&gt;</span></span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-indigo-900" />
@@ -387,7 +387,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <Briefcase className="w-8 h-8 text-teal-600" />
-                                    <span className="text-xl md:text-2xl font-bold tracking-tighter text-teal-600">Wipro</span>
+                                    <span className="text-xl md:text-2xl font-black tracking-widest text-[#002f6c]">wipro</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-teal-800" />
@@ -395,7 +395,7 @@ const Home = () => {
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <Briefcase className="w-8 h-8 text-blue-800" />
-                                    <span className="text-xl md:text-2xl font-black tracking-wide text-blue-800">Infosys</span>
+                                    <span className="text-xl md:text-2xl font-semibold tracking-wide text-[#007cc3]">Infosys</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-gray-800" />
