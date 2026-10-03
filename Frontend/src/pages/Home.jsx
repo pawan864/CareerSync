@@ -484,11 +484,11 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
-                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-gray-900 tracking-tight">
-                            Ready to Launch<br/>Your Dream Career?
+                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                            Start Connecting<br/>With Industry<br/>Today
                         </h2>
-                        <p className="text-xl text-gray-700 font-medium mb-8 max-w-lg leading-relaxed">
-                            Join thousands of students, top-tier recruiters, and leading universities already using CareerSync to bridge the talent gap.
+                        <p className="text-xl text-gray-700 font-medium mb-8">
+                            Begin your industry connections
                         </p>
                         <Link to="/register" className={`inline-block text-white font-bold px-8 py-4 rounded-md shadow transition-colors duration-500 ${pageStyles[pageTheme].btnBg}`}>
                             Get Started Now
@@ -499,26 +499,28 @@ const Home = () => {
                         <div className="bg-white rounded-lg shadow-2xl p-4 transform md:rotate-[-2deg] transition-transform hover:rotate-0">
                             <div className="flex justify-between items-center border-b pb-4 mb-4">
                                 <div className="flex items-center space-x-2">
-                                    <div className="w-8 h-8 bg-green-500 rounded-md"></div>
-                                    <div className="font-bold text-gray-800">Qollabb</div>
+                                    <div className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>
+                                        <Briefcase className="w-4 h-4 text-white" />
+                                    </div>
+                                    <div className="font-bold text-gray-800">CareerSync Recruiter</div>
                                 </div>
                                 <div className={`text-xs ${pageStyles[pageTheme].textLight} px-3 py-1 rounded transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>+ Post a job</div>
                             </div>
                             <div>
-                                <h3 className="font-bold text-gray-800">Good morning, Maria</h3>
-                                <p className="text-xs text-gray-500 mb-4">Here is your job listings statistic report from July 19 - July 25.</p>
+                                <h3 className="font-bold text-gray-800">Good morning, HR Manager</h3>
+                                <p className="text-xs text-gray-500 mb-4">Here is your AI skill-match applicant report for this week.</p>
                                 <div className="grid grid-cols-3 gap-2">
                                     <div className={`${pageStyles[pageTheme].textLight} p-3 rounded-lg flex flex-col transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>
-                                        <span className="text-2xl font-bold">76</span>
-                                        <span className="text-xs opacity-80">New candidates to review</span>
+                                        <span className="text-2xl font-bold">142</span>
+                                        <span className="text-xs opacity-80">Verified Student Matches</span>
                                     </div>
-                                    <div className="bg-teal-400 ${pageStyles[pageTheme].textLight} p-3 rounded-lg flex flex-col">
-                                        <span className="text-2xl font-bold">3</span>
-                                        <span className="text-xs opacity-80">Schedule for today</span>
+                                    <div className="bg-teal-500 text-white p-3 rounded-lg flex flex-col">
+                                        <span className="text-2xl font-bold">12</span>
+                                        <span className="text-xs opacity-80">Interviews Scheduled</span>
                                     </div>
-                                    <div className="bg-blue-500 ${pageStyles[pageTheme].textLight} p-3 rounded-lg flex flex-col">
-                                        <span className="text-2xl font-bold">24</span>
-                                        <span className="text-xs opacity-80">Messages received</span>
+                                    <div className="bg-blue-600 text-white p-3 rounded-lg flex flex-col">
+                                        <span className="text-2xl font-bold">5</span>
+                                        <span className="text-xs opacity-80">Offers Accepted</span>
                                     </div>
                                 </div>
                             </div>
