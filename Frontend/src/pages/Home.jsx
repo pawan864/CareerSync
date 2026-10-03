@@ -10,7 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight } from 'lucide-react';
+import { BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight } from 'lucide-react';
 
 
 const heroSlides = [
@@ -361,17 +361,48 @@ const Home = () => {
                     <div className="animate-marquee group-hover:pause flex items-center space-x-16 px-8">
                         {[...Array(2)].map((_, i) => (
                             <React.Fragment key={i}>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-6 md:h-7 object-contain transition-transform hover:scale-110" />
-                                <span className="text-xl md:text-2xl font-bold font-serif text-blue-900 hover:scale-110 transition-transform">IIT Bombay</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-7 object-contain transition-transform hover:scale-110" />
-                                <span className="text-xl md:text-2xl font-black tracking-tight text-red-800 hover:scale-110 transition-transform">BITS Pilani</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-6 md:h-7 pt-1 object-contain transition-transform hover:scale-110" />
-                                <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900 hover:scale-110 transition-transform">NIT Trichy</span>
-                                <span className="text-xl md:text-2xl font-bold font-serif text-teal-800 hover:scale-110 transition-transform">VIT Vellore</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-7 md:h-8 object-contain transition-transform hover:scale-110" />
-                                <span className="text-xl md:text-2xl font-bold font-serif text-gray-800 hover:scale-110 transition-transform">IIT Delhi</span>
-                                <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-700 hover:scale-110 transition-transform">SRM University</span>
-                                <span className="text-xl md:text-2xl font-bold font-sans text-orange-900 hover:scale-110 transition-transform">DTU Delhi</span>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-6 md:h-7 object-contain" />
+                                    
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-blue-900" />
+                                    <span className="text-xl md:text-2xl font-bold font-serif text-blue-900">IIT Bombay</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-7 object-contain" />
+                                    
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-red-800" />
+                                    <span className="text-xl md:text-2xl font-black tracking-tight text-red-800">BITS Pilani</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-6 md:h-7 pt-1 object-contain" />
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-indigo-900" />
+                                    <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900">NIT Trichy</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-teal-800" />
+                                    <span className="text-xl md:text-2xl font-bold font-serif text-teal-800">VIT Vellore</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-7 md:h-8 object-contain" />
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-gray-800" />
+                                    <span className="text-xl md:text-2xl font-bold font-serif text-gray-800">IIT Delhi</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-blue-700" />
+                                    <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-700">SRM University</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <GraduationCap className="w-8 h-8 text-orange-900" />
+                                    <span className="text-xl md:text-2xl font-bold font-sans text-orange-900">DTU Delhi</span>
+                                </div>
                             </React.Fragment>
                         ))}
                     </div>
