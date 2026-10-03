@@ -65,8 +65,10 @@ const Navbar = () => {
         orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
     };
 
+    const currentTheme = scrolled ? 'blue' : navTheme;
+
     const activeNavClass = scrolled 
-        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
+        ? `${themeClasses[currentTheme]} backdrop-blur-md shadow-md border-b`
         : "bg-white shadow-sm border-b border-gray-200";
 
     return (
@@ -84,9 +86,9 @@ const Navbar = () => {
                                 {/* Front Face (Original) */}
                                 <div 
                                     style={{ backfaceVisibility: "hidden" }}
-                                    className={`absolute inset-0 bg-gradient-to-br ${dynamicStyles[navTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[navTheme].logoBorder} transition-colors duration-500`}
+                                    className={`absolute inset-0 bg-gradient-to-br ${dynamicStyles[currentTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[currentTheme].logoBorder} transition-colors duration-500`}
                                 >
-                                    <GraduationCap className={`w-5 h-5 ${dynamicStyles[navTheme].logoText} transition-colors duration-500`} />
+                                    <GraduationCap className={`w-5 h-5 ${dynamicStyles[currentTheme].logoText} transition-colors duration-500`} />
                                 </div>
                                 {/* Back Face (New Color) */}
                                 <div 
@@ -98,7 +100,7 @@ const Navbar = () => {
                             </motion.div>
                             <span className="font-bold text-xl tracking-tight">
                                 <span className="text-slate-800">Career</span>
-                                <span className={`${dynamicStyles[navTheme].syncText} transition-colors duration-500`}>Sync</span>
+                                <span className={`${dynamicStyles[currentTheme].syncText} transition-colors duration-500`}>Sync</span>
                             </span>
                         </Link>
                         
@@ -190,19 +192,19 @@ const Navbar = () => {
                                 <div key={item.name} className="group relative">
                                     <Link 
                                         to={item.href} 
-                                        className={`text-gray-600 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full`}
+                                        className={`text-gray-600 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full`}
                                     >
                                         {item.name}
                                     </Link>
                                     
                                     {/* Floating Dropdown Card */}
                                     <div className="absolute left-0 mt-0 w-64 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:translate-y-1 group-hover:visible transition-all duration-200 z-50">
-                                        <div className={`bg-gradient-to-r ${dynamicStyles[navTheme].bg} rounded-xl shadow-xl border border-gray-100 p-3 overflow-hidden transition-colors duration-500`}>
+                                        <div className={`bg-gradient-to-r ${dynamicStyles[currentTheme].bg} rounded-xl shadow-xl border border-gray-100 p-3 overflow-hidden transition-colors duration-500`}>
                                             {item.details.map((detail, idx) => (
                                                 <Link 
                                                     key={idx} 
                                                     to={detail.link}
-                                                    className={`block p-3 rounded-lg hover:bg-white hover:shadow-lg ${dynamicStyles[navTheme].shadow} transition-all duration-300`}
+                                                    className={`block p-3 rounded-lg hover:bg-white hover:shadow-lg ${dynamicStyles[currentTheme].shadow} transition-all duration-300`}
                                                 >
                                                     <div className="font-semibold text-gray-900 text-sm">{detail.title}</div>
                                                     <div className="text-xs text-gray-500 mt-1">{detail.desc}</div>
@@ -219,21 +221,21 @@ const Navbar = () => {
                             <>
                                 {user.role === 'student' && (
                                     <>
-                                        <Link to="/profile" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Profile</Link>
-                                        <Link to="/skill-gap" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Skill Gap</Link>
-                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Opportunities</Link>
+                                        <Link to="/profile" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Profile</Link>
+                                        <Link to="/skill-gap" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Skill Gap</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Opportunities</Link>
                                     </>
                                 )}
                                 {user.role === 'industry' && (
                                     <>
-                                        <Link to="/employer" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Dashboard</Link>
-                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>All Postings</Link>
+                                        <Link to="/employer" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Dashboard</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>All Postings</Link>
                                     </>
                                 )}
                                 {['faculty', 'tpo', 'admin'].includes(user.role) && (
                                     <>
-                                        <Link to="/institution" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Analytics Dashboard</Link>
-                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[navTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>View Opportunities</Link>
+                                        <Link to="/institution" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>Analytics Dashboard</Link>
+                                        <Link to="/jobs" className={`text-gray-700 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium`}>View Opportunities</Link>
                                     </>
                                 )}
                                 <span className="text-gray-500 text-sm hidden md:inline ml-4 border-l pl-4">
@@ -250,14 +252,14 @@ const Navbar = () => {
                             <>
                                 <Link
                                     to="/login"
-                                    className={`group relative overflow-hidden px-5 py-2 text-sm font-medium bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[navTheme].loginBtn}`}
+                                    className={`group relative overflow-hidden px-5 py-2 text-sm font-medium bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
                                 >
-                                    <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[navTheme].loginHoverBg}`}></span>
+                                    <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[currentTheme].loginHoverBg}`}></span>
                                     <span className="relative z-10">Log in</span>
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className={`ml-3 group relative overflow-hidden px-5 py-2 text-sm font-medium text-white border rounded-md transition-all duration-500 ${dynamicStyles[navTheme].signupBtn} ${dynamicStyles[navTheme].signupTextHover}`}
+                                    className={`ml-3 group relative overflow-hidden px-5 py-2 text-sm font-medium text-white border rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
                                 >
                                     <span className="absolute inset-0 w-full h-full bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
                                     <span className="relative z-10">Sign up</span>
