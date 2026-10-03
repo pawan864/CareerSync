@@ -400,8 +400,14 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-bold font-serif text-gray-800">IIT Delhi</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" className="h-6 md:h-7 pt-1 object-contain" alt="Amazon" />
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-blue-700" />
                                     <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-700">SRM University</span>
+                                </div>
+                                <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" className="h-7 md:h-8 object-contain" alt="IBM" />
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-orange-900" />
