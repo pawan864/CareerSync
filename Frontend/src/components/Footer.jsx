@@ -4,10 +4,14 @@ import { GraduationCap } from 'lucide-react';
 
 const Footer = () => {
     const [footerTheme, setFooterTheme] = useState('indigo');
+    const [isSliderPaused, setIsSliderPaused] = useState(false);
 
     useEffect(() => {
         const handleThemeChange = (e) => {
             setFooterTheme(e.detail.theme || 'indigo');
+            if (e.detail.isPaused !== undefined) {
+                setIsSliderPaused(e.detail.isPaused);
+            }
         };
         window.addEventListener('pageThemeChange', handleThemeChange);
         return () => window.removeEventListener('pageThemeChange', handleThemeChange);
@@ -62,13 +66,13 @@ const Footer = () => {
                                 <span className={`${footerStyles[footerTheme].textDark}`}>Sync</span>
                             </span>
                         </div>
-                        <p className="text-sm text-blue-900 font-normal leading-relaxed tracking-wide mb-4">
+                        <p className={`text-sm font-normal leading-relaxed tracking-wide mb-4 transition-colors duration-500 ${isSliderPaused ? footerStyles[footerTheme].textDark : 'text-blue-900'}`}>
                             Bridging the gap between academia and industry. Join thousands of students and top-tier employers building the future of work together.
                         </p>
                         <div className="text-xs text-slate-500 space-y-1 mt-4">
-                            <p><span className="font-semibold text-blue-900">Call:</span> +91 9876543210</p>
-                            <p><span className="font-semibold text-blue-900">Email:</span> hello@careersync.network</p>
-                            <p><span className="font-semibold text-blue-900">Address:</span> 123 Innovation Drive, Tech Hub, IN</p>
+                            <p><span className={`font-semibold transition-colors duration-500 ${isSliderPaused ? footerStyles[footerTheme].textDark : 'text-blue-900'}`}>Call:</span> +91 9876543210</p>
+                            <p><span className={`font-semibold transition-colors duration-500 ${isSliderPaused ? footerStyles[footerTheme].textDark : 'text-blue-900'}`}>Email:</span> hello@careersync.network</p>
+                            <p><span className={`font-semibold transition-colors duration-500 ${isSliderPaused ? footerStyles[footerTheme].textDark : 'text-blue-900'}`}>Address:</span> 123 Innovation Drive, Tech Hub, IN</p>
                         </div>
                         <div className="flex space-x-3 mt-6">
                             <a href="#" aria-label="Facebook" className={`bg-white p-2.5 rounded-lg shadow-sm ${footerStyles[footerTheme].textDark} ${footerStyles[footerTheme].iconHover} hover:text-white transition-all duration-300`}>
