@@ -10,7 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight } from 'lucide-react';
+import { BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X } from 'lucide-react';
 
 
 const heroSlides = [
@@ -80,6 +80,14 @@ const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [pageTheme, setPageTheme] = useState('indigo');
+    const [showCookieConsent, setShowCookieConsent] = useState(() => {
+        return localStorage.getItem('careerSyncCookieConsent') === null;
+    });
+
+    const handleCookieConsent = (type) => {
+        localStorage.setItem('careerSyncCookieConsent', type);
+        setShowCookieConsent(false);
+    };
 
     useEffect(() => {
         if (isPaused) {
@@ -576,6 +584,47 @@ const Home = () => {
                 </div>
             </motion.div>
 
+            {/* Professional Cookie Consent Banner */}
+            <AnimatePresence>
+                {showCookieConsent && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="fixed bottom-6 left-6 z-[100] w-[calc(100%-48px)] max-w-sm bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-2xl p-5"
+                    >
+                        <button onClick={() => setShowCookieConsent(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                            <X className="w-4 h-4" />
+                        </button>
+                        <div className="flex items-start gap-4">
+                            <div className="mt-1 flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                                <Cookie className="w-5 h-5 text-gray-700" />
+                            </div>
+                            <div className="flex-1 pr-4">
+                                <h3 className="text-gray-900 font-bold text-sm tracking-tight mb-1">We value your privacy</h3>
+                                <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                                    We use cookies to enhance your browsing experience and analyze site traffic. By continuing, you consent to our use of cookies.
+                                </p>
+                                <div className="flex items-center gap-2">
+                                    <button 
+                                        onClick={() => handleCookieConsent('all')}
+                                        className="flex-1 bg-gray-900 hover:bg-black text-white text-xs font-semibold py-2.5 rounded-lg transition-all shadow-sm active:scale-95"
+                                    >
+                                        Accept all
+                                    </button>
+                                    <button 
+                                        onClick={() => handleCookieConsent('essential')}
+                                        className="flex-1 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 text-xs font-semibold py-2.5 rounded-lg transition-all shadow-sm active:scale-95"
+                                    >
+                                        Reject all
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.div>
     );
 };
