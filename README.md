@@ -1,77 +1,94 @@
-# CareerSync - Academia-Industry Collaboration Platform
+# CareerSync
 
-CareerSync is a comprehensive platform designed to bridge the gap between academia and industry. It empowers students with AI-driven skill mapping, connects top-tier verified talent with industry leaders, and provides institutions with real-time placement analytics.
+CareerSync is an integrated platform built to streamline the connection between academic institutions, students, and industry recruiters. The system provides distinct, role-based workspaces designed to manage campus placements, facilitate corporate recruitment, and support student career development.
 
-## 🚀 Features
+## Architecture & Technology Stack
 
-### For Students
-- **AI-Driven Skill Mapping:** Analyze resumes instantly to identify skill gaps and receive personalized learning paths.
-- **Resume Building:** Automatically generate ATS-friendly professional resumes based on verified skills and academic records.
-- **Mock Interviews:** Practice technical and behavioral skills with an AI interviewer.
-- **One-Click Apply:** Apply to top-tier verified internships and full-time positions with a single click.
-- **Alumni Mentorship:** Connect with successfully placed alumni for 1-on-1 career guidance.
+The application is built on the MERN stack, focusing on performance, modularity, and a clean user experience.
 
-### For Institutions (TPOs)
-- **Institutional Verification:** Securely verify student profiles and academic records.
-- **Placement Analytics:** Track hiring pipelines, placement rates, and ongoing recruitment drives via real-time dashboards.
+- **Frontend Environment**: React, Vite, Tailwind CSS, Framer Motion
+- **Backend Environment**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose ODM)
+- **State Management & Routing**: React Context API, React Router
+- **Authentication**: JSON Web Tokens (JWT) with multi-level role-based access control (RBAC)
 
-### For Employers
-- **Smart Job Matching:** Advanced NLP algorithms automatically match job requirements with the most qualified campus talent.
-- **Direct Recruitment:** Access a trusted, pre-verified talent pool directly from campuses.
+## Core Modules
 
-## 🛠️ Tech Stack
+### 1. Multi-Role Authentication System
+A centralized authentication gateway that securely routes users to distinct, isolated portals based on their account type:
+- **Student**: Access to career resources and applications.
+- **Faculty**: Academic management and student oversight.
+- **Training and Placement Officer (TPO)**: Institutional placement tracking and administration.
+- **Recruiter**: Candidate sourcing and pipeline management.
+- **Admin**: System-wide configuration and technical support handling.
 
-- **Frontend:** React, Vite, Tailwind CSS, Lucide React (Icons)
-- **Backend:** Node.js, Express.js (REST API architecture)
-- **Database:** MongoDB / Mongoose (or target DB)
-- **Authentication:** Custom JWT / Role-based auth (Student, Employer, Institution)
+### 2. Student Workspace
+- **Opportunity Hub**: A centralized board for discovering and applying to internships and full-time positions.
+- **Profile & Resume Builder**: Tools for maintaining professional profiles and structuring academic records.
+- **Application Tracker**: Real-time status monitoring for active job applications and interview schedules.
+- **Skill Center & Certifications**: Interfaces for skill mapping and maintaining verifiable credentials.
+- **Alumni Network**: Directory for connecting with previously placed graduates and industry mentors.
 
-## 📂 Project Structure
+### 3. Institutional & Employer Workspaces
+- **Recruiter Interface**: Workflows for posting opportunities, reviewing candidate pipelines, and scheduling interviews.
+- **TPO Interface**: Analytics and reporting interfaces for tracking institutional placement metrics and student success rates.
+- **Faculty Interface**: Workflows for verifying student academic records and providing academic endorsements.
 
-```
-CareerSync/
-├── Frontend/           # React + Vite Frontend
-│   ├── public/         # Static assets & images
-│   ├── src/
-│   │   ├── components/ # Reusable UI components (Navbar, Footer, etc.)
-│   │   ├── pages/      # Page components (Home, Login, Register, Dashboards)
-│   │   ├── context/    # React Context (AuthContext)
-│   │   ├── services/   # API calling services
-│   │   └── App.jsx     # Main React App component
-│   └── package.json    # Frontend dependencies
-│
-└── Backend/            # Node.js + Express Backend
-    ├── routes/         # Express API Routes (auth, profile, jobs, etc.)
-    ├── server.js       # Main entry point & Express setup
-    └── package.json    # Backend dependencies
-```
-
-## ⚙️ Getting Started
+## Development Setup
 
 ### Prerequisites
-- Node.js (v16+)
-- npm or yarn
+- Node.js (v16.0 or higher)
+- MongoDB instance (local or Atlas)
 
-### 1. Start the Backend
-Navigate to the backend directory and start the server:
-```bash
-cd Backend
-npm install
-npm run dev
+### Backend Configuration
+1. Navigate to the backend directory:
+   ```bash
+   cd Backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure environment variables (ensure a `.env` file exists containing the required `MONGO_URI` and `JWT_SECRET`).
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   *The backend service runs on port 5000 by default.*
+
+### Frontend Configuration
+1. Navigate to the frontend directory:
+   ```bash
+   cd Frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+   *The frontend client runs on port 5173 by default.*
+
+## Project Structure
+
+```text
+CareerSync/
+├── Frontend/
+│   ├── public/              # Static assets and media
+│   ├── src/
+│   │   ├── components/      # Reusable UI elements (Navbar, Footer, Modals)
+│   │   ├── context/         # AuthContext and state providers
+│   │   ├── pages/           # Route views (Login, Register, Home)
+│   │   │   ├── admin/       # Admin-specific views
+│   │   │   ├── student/     # Student-specific dashboards and tools
+│   │   │   └── ...          
+│   │   └── App.jsx          # Application routing configuration
+│   └── package.json
+└── Backend/
+    ├── routes/              # Express API endpoint definitions
+    ├── models/              # Mongoose database schemas
+    ├── server.js            # Express application entry point
+    └── package.json
 ```
-*(The backend runs on `http://localhost:5000`)*
-
-### 2. Start the Frontend
-Open a new terminal, navigate to the frontend directory, and start the Vite development server:
-```bash
-cd Frontend
-npm install
-npm run dev
-```
-*(The frontend runs on `http://localhost:5173`)*
-
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome!
-
-## 📜 License
-This project is proprietary and built for capstone project purposes. All rights reserved.
