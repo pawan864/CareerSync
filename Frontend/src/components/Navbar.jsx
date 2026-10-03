@@ -59,7 +59,7 @@ const Navbar = () => {
         orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
     };
 
-    const currentTheme = scrolled ? 'blue' : navTheme;
+    const currentTheme = (scrolled && !isSliderPaused) ? 'blue' : navTheme;
 
     const activeNavClass = scrolled 
         ? `${themeClasses[currentTheme]} backdrop-blur-md shadow-md border-b`

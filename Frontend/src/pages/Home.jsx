@@ -101,8 +101,8 @@ const Home = () => {
 
     useEffect(() => {
         localStorage.setItem('globalTheme', pageTheme);
-        window.dispatchEvent(new CustomEvent('pageThemeChange', { detail: { theme: pageTheme } }));
-    }, [pageTheme]);
+        window.dispatchEvent(new CustomEvent('pageThemeChange', { detail: { theme: pageTheme, isPaused } }));
+    }, [pageTheme, isPaused]);
 
     const pageStyles = {
         blue: { bgDark: "bg-blue-500", cardBg: "bg-blue-50", iconBg: "bg-blue-100", iconText: "text-blue-600", borderHover: "hover:border-blue-200", btnBg: "bg-blue-600 hover:bg-blue-700", ctaGradient: "from-white via-blue-200 to-blue-500", textLight: "text-white" },
