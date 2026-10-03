@@ -9,57 +9,31 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const [scrolled, setScrolled] = useState(false);
-    const [navTheme, setNavTheme] = useState('blue');
+    const [navTheme, setNavTheme] = useState('indigo');
 
     useEffect(() => {
-        const handleSlideChange = (e) => {
-            const themes = ['blue', 'indigo', 'orange'];
-            setNavTheme(themes[e.detail.slide] || 'blue');
+        // Sync Navbar with global theme changes
+        const handleThemeChange = (e) => {
+            setNavTheme(e.detail.theme || 'indigo');
         };
-        window.addEventListener('heroSlideChange', handleSlideChange);
         
-        // Reset theme if route changes (optional, but good practice)
-        const dynamicStyles = {
-        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
-        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
-        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
-    };
+        // Initialize from localStorage
+        const savedTheme = localStorage.getItem('globalTheme');
+        if (savedTheme) {
+            setNavTheme(savedTheme);
+        }
 
-    const themeClasses = {
-        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
-        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
-        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
-    };
-
-    const activeNavClass = scrolled 
-        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
-        : "bg-white shadow-sm border-b border-gray-200";
-
-    return () => window.removeEventListener('heroSlideChange', handleSlideChange);
+        window.addEventListener('pageThemeChange', handleThemeChange);
+        return () => window.removeEventListener('pageThemeChange', handleThemeChange);
     }, []);
 
     useEffect(() => {
+        // Handle scrolling state
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
-        const dynamicStyles = {
-        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
-        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
-        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
-    };
-
-    const themeClasses = {
-        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
-        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
-        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
-    };
-
-    const activeNavClass = scrolled 
-        ? `${themeClasses[navTheme]} backdrop-blur-md shadow-md border-b`
-        : "bg-white shadow-sm border-b border-gray-200";
-
-    return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const handleLogout = async () => {
