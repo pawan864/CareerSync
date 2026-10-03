@@ -484,11 +484,11 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
-                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-                            Start Connecting<br/>With Industry<br/>Today
+                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-gray-900 tracking-tight">
+                            Ready to Launch<br/>Your Dream Career?
                         </h2>
-                        <p className="text-xl text-gray-700 font-medium mb-8">
-                            Begin your industry connections
+                        <p className="text-xl text-gray-700 font-medium mb-8 max-w-lg leading-relaxed">
+                            Join thousands of students, top-tier recruiters, and leading universities already using CareerSync to bridge the talent gap.
                         </p>
                         <Link to="/register" className={`inline-block text-white font-bold px-8 py-4 rounded-md shadow transition-colors duration-500 ${pageStyles[pageTheme].btnBg}`}>
                             Get Started Now
