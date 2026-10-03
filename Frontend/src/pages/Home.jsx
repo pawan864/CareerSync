@@ -437,8 +437,8 @@ const Home = () => {
                         <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                             Success Stories
                         </h2>
-                        <p className="mt-4 text-lg text-gray-500">
-                            See how CareerSync is transforming the hiring landscape for students and top-tier recruiters.
+                        <p className="mt-4 text-[17px] text-gray-500 font-medium italic leading-relaxed tracking-wide max-w-2xl mx-auto">
+                            Don't just take our word for it. Discover how we're helping graduates land their dream roles and companies hire their next top performers.
                         </p>
                     </div>
 
