@@ -387,64 +387,105 @@ const Home = () => {
                         </p>
                     </div>
 
+                    
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Testimonial 1 */}
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
-                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
-                                <span className="font-serif text-2xl leading-none">"</span>
-                            </div>
-                            <p className="text-gray-600 italic mb-6 leading-relaxed">
-                                "The AI skill mapping instantly showed me what I was missing. Within two months of using CareerSync's suggested courses, I landed my dream internship at a top tech firm."
-                            </p>
-                            <div className="flex items-center">
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
+                            {/* Default Visible State */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
                                     AS
                                 </div>
-                                <div className="ml-4">
-                                    <h4 className="text-sm font-bold text-gray-900">Aryan Sharma</h4>
-                                    <p className="text-xs text-gray-500">Software Engineer Intern</p>
-                                </div>
+                                <h4 className="text-xl font-bold text-gray-900 mb-1">Aryan Sharma</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center">Software Engineer Intern</p>
                             </div>
-                        </div>
+
+                            {/* Hover Reveal State (Diagonal Circular Wipe) */}
+                            <motion.div 
+                                variants={{
+                                    initial: { clipPath: 'circle(0% at 100% 0%)' },
+                                    hover: { clipPath: 'circle(150% at 100% 0%)' }
+                                }}
+                                transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                            >
+                                <div className="absolute top-4 right-6 text-white/20">
+                                    <span className="font-serif text-6xl leading-none">"</span>
+                                </div>
+                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm">
+                                    "The AI skill mapping instantly showed me what I was missing. Within two months of using CareerSync's suggested courses, I landed my dream internship at a top tech firm."
+                                </p>
+                                <div className="text-white/90 font-bold text-sm">
+                                    - Aryan Sharma
+                                </div>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Testimonial 2 */}
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
-                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
-                                <span className="font-serif text-2xl leading-none">"</span>
-                            </div>
-                            <p className="text-gray-600 italic mb-6 leading-relaxed">
-                                "As a recruiter, finding verified talent from multiple universities used to be a nightmare. CareerSync's direct matching algorithm saves us hundreds of hours per hiring cycle."
-                            </p>
-                            <div className="flex items-center">
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
+                            {/* Default Visible State */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
                                     PR
                                 </div>
-                                <div className="ml-4">
-                                    <h4 className="text-sm font-bold text-gray-900">Priya Reddy</h4>
-                                    <p className="text-xs text-gray-500">Senior Technical Recruiter</p>
-                                </div>
+                                <h4 className="text-xl font-bold text-gray-900 mb-1">Priya Reddy</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center">Senior Technical Recruiter</p>
                             </div>
-                        </div>
+
+                            {/* Hover Reveal State (Diagonal Circular Wipe) */}
+                            <motion.div 
+                                variants={{
+                                    initial: { clipPath: 'circle(0% at 100% 0%)' },
+                                    hover: { clipPath: 'circle(150% at 100% 0%)' }
+                                }}
+                                transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                            >
+                                <div className="absolute top-4 right-6 text-white/20">
+                                    <span className="font-serif text-6xl leading-none">"</span>
+                                </div>
+                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm">
+                                    "As a recruiter, finding verified talent from multiple universities used to be a nightmare. CareerSync's direct matching algorithm saves us hundreds of hours per hiring cycle."
+                                </p>
+                                <div className="text-white/90 font-bold text-sm">
+                                    - Priya Reddy
+                                </div>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Testimonial 3 */}
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
-                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
-                                <span className="font-serif text-2xl leading-none">"</span>
-                            </div>
-                            <p className="text-gray-600 italic mb-6 leading-relaxed">
-                                "The analytics dashboard provided to our institution is phenomenal. We can track exactly where our students are applying and seamlessly verify their records."
-                            </p>
-                            <div className="flex items-center">
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative border border-gray-100 overflow-hidden cursor-pointer group h-72">
+                            {/* Default Visible State */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 bg-white">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold transition-colors duration-500 mb-4 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
                                     MK
                                 </div>
-                                <div className="ml-4">
-                                    <h4 className="text-sm font-bold text-gray-900">Dr. Manish Kumar</h4>
-                                    <p className="text-xs text-gray-500">Training & Placement Head</p>
-                                </div>
+                                <h4 className="text-xl font-bold text-gray-900 mb-1">Dr. Manish Kumar</h4>
+                                <p className="text-sm font-medium text-gray-500 text-center">Training & Placement Head</p>
                             </div>
-                        </div>
+
+                            {/* Hover Reveal State (Diagonal Circular Wipe) */}
+                            <motion.div 
+                                variants={{
+                                    initial: { clipPath: 'circle(0% at 100% 0%)' },
+                                    hover: { clipPath: 'circle(150% at 100% 0%)' }
+                                }}
+                                transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+                                className={`absolute inset-0 z-20 p-8 flex flex-col justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}
+                            >
+                                <div className="absolute top-4 right-6 text-white/20">
+                                    <span className="font-serif text-6xl leading-none">"</span>
+                                </div>
+                                <p className="text-white italic mb-6 leading-relaxed relative z-10 text-sm">
+                                    "The analytics dashboard provided to our institution is phenomenal. We can track exactly where our students are applying and seamlessly verify their records."
+                                </p>
+                                <div className="text-white/90 font-bold text-sm">
+                                    - Dr. Manish Kumar
+                                </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
+
                 </div>
             </motion.div>
 
