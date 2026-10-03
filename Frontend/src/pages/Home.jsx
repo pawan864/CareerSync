@@ -362,35 +362,40 @@ const Home = () => {
                         {[...Array(2)].map((_, i) => (
                             <React.Fragment key={i}>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-6 md:h-7 object-contain" />
+                                    <Briefcase className="w-8 h-8 text-blue-600" />
+                                    <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-600">Microsoft</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-blue-900" />
                                     <span className="text-xl md:text-2xl font-bold font-serif text-blue-900">IIT Bombay</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-7 object-contain" />
+                                    <Briefcase className="w-8 h-8 text-red-500" />
+                                    <span className="text-xl md:text-2xl font-bold text-red-500">Google</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-red-800" />
                                     <span className="text-xl md:text-2xl font-black tracking-tight text-red-800">BITS Pilani</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture" className="h-6 md:h-7 object-contain" />
+                                    <Briefcase className="w-8 h-8 text-purple-700" />
+                                    <span className="text-xl md:text-2xl font-black text-purple-700">Accenture</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-indigo-900" />
                                     <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900">NIT Trichy</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" className="h-8 md:h-10 object-contain" />
+                                    <Briefcase className="w-8 h-8 text-teal-600" />
+                                    <span className="text-xl md:text-2xl font-bold tracking-tighter text-teal-600">Wipro</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-teal-800" />
                                     <span className="text-xl md:text-2xl font-bold font-serif text-teal-800">VIT Vellore</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" className="h-6 md:h-7 pt-1 object-contain" />
+                                    <Briefcase className="w-8 h-8 text-blue-800" />
+                                    <span className="text-xl md:text-2xl font-black tracking-wide text-blue-800">Infosys</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
                                     <GraduationCap className="w-8 h-8 text-gray-800" />
