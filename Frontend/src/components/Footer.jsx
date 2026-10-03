@@ -88,7 +88,7 @@ const Footer = () => {
 
                     {/* Column 2: Solutions */}
                     <div>
-                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-2 underline-offset-8 inline-block`}>Solutions</h4>
+                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-1 underline-offset-8 inline-block`}>Solutions</h4>
                         <ul className="space-y-3 text-sm text-slate-500 font-medium">
                             <li><Link to="/jobs" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Campus Placements</span></Link></li>
                             <li><Link to="/jobs" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Internship Drives</span></Link></li>
@@ -101,7 +101,7 @@ const Footer = () => {
 
                     {/* Column 3: Platform Users */}
                     <div>
-                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-2 underline-offset-8 inline-block`}>Portals</h4>
+                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-1 underline-offset-8 inline-block`}>Portals</h4>
                         <ul className="space-y-3 text-sm text-slate-500 font-medium">
                             <li><Link to="/register" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Student Portal</span></Link></li>
                             <li><Link to="/register" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Employer Portal</span></Link></li>
@@ -113,7 +113,7 @@ const Footer = () => {
 
                     {/* Column 4: Resources */}
                     <div>
-                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-2 underline-offset-8 inline-block`}>Resources</h4>
+                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-1 underline-offset-8 inline-block`}>Resources</h4>
                         <ul className="space-y-3 text-sm text-slate-500 font-medium">
                             <li><Link to="/" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Resume Builder</span></Link></li>
                             <li><Link to="/" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Interview Prep</span></Link></li>
@@ -125,7 +125,7 @@ const Footer = () => {
 
                     {/* Column 5: Legal & Policies */}
                     <div>
-                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-2 underline-offset-8 inline-block`}>Legal</h4>
+                        <h4 className={`${footerStyles[footerTheme].textDark} font-bold mb-4 underline decoration-1 underline-offset-8 inline-block`}>Legal</h4>
                         <ul className="space-y-3 text-sm text-slate-500 font-medium">
                             <li><Link to="/" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Terms & Conditions</span></Link></li>
                             <li><Link to="/" className={`group flex items-center hover:${footerStyles[footerTheme].textDark} transition-all duration-300`}><span className={`inline-block transition-all duration-300 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:mr-1.5 ${footerStyles[footerTheme].textDark}`}>&rarr;</span><span className="transition-all duration-300 group-hover:translate-x-1">Privacy Policy</span></Link></li>
