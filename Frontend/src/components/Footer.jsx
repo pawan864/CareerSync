@@ -62,7 +62,7 @@ const Footer = () => {
                                 <span className={`${footerStyles[footerTheme].textDark}`}>Sync</span>
                             </span>
                         </div>
-                        <p className={`text-sm ${footerStyles[footerTheme].textDark} leading-relaxed font-medium mb-4`}>
+                        <p className="text-sm text-slate-500 font-normal leading-relaxed tracking-wide mb-4">
                             Bridging the gap between academia and industry. Join thousands of students and top-tier employers building the future of work together.
                         </p>
                         <div className={`text-xs ${footerStyles[footerTheme].textLight} space-y-1 mt-4`}>
