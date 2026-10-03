@@ -374,7 +374,82 @@ const Home = () => {
                 </div>
             </motion.div>
 
+            
+            {/* Success Stories / Testimonials */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-gray-50 py-20 border-t border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                            Success Stories
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-500">
+                            See how CareerSync is transforming the hiring landscape for students and top-tier recruiters.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Testimonial 1 */}
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
+                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
+                                <span className="font-serif text-2xl leading-none">"</span>
+                            </div>
+                            <p className="text-gray-600 italic mb-6 leading-relaxed">
+                                "The AI skill mapping instantly showed me what I was missing. Within two months of using CareerSync's suggested courses, I landed my dream internship at a top tech firm."
+                            </p>
+                            <div className="flex items-center">
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                    AS
+                                </div>
+                                <div className="ml-4">
+                                    <h4 className="text-sm font-bold text-gray-900">Aryan Sharma</h4>
+                                    <p className="text-xs text-gray-500">Software Engineer Intern</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Testimonial 2 */}
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
+                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
+                                <span className="font-serif text-2xl leading-none">"</span>
+                            </div>
+                            <p className="text-gray-600 italic mb-6 leading-relaxed">
+                                "As a recruiter, finding verified talent from multiple universities used to be a nightmare. CareerSync's direct matching algorithm saves us hundreds of hours per hiring cycle."
+                            </p>
+                            <div className="flex items-center">
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                    PR
+                                </div>
+                                <div className="ml-4">
+                                    <h4 className="text-sm font-bold text-gray-900">Priya Reddy</h4>
+                                    <p className="text-xs text-gray-500">Senior Technical Recruiter</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Testimonial 3 */}
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative border border-gray-100">
+                            <div className={`absolute top-0 right-0 -mt-4 mr-8 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight}`}>
+                                <span className="font-serif text-2xl leading-none">"</span>
+                            </div>
+                            <p className="text-gray-600 italic mb-6 leading-relaxed">
+                                "The analytics dashboard provided to our institution is phenomenal. We can track exactly where our students are applying and seamlessly verify their records."
+                            </p>
+                            <div className="flex items-center">
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText}`}>
+                                    MK
+                                </div>
+                                <div className="ml-4">
+                                    <h4 className="text-sm font-bold text-gray-900">Dr. Manish Kumar</h4>
+                                    <p className="text-xs text-gray-500">Training & Placement Head</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
             {/* CTA Banner */}
+
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
