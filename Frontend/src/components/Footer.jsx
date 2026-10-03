@@ -65,7 +65,7 @@ const Footer = () => {
                         <p className="text-sm text-blue-900 font-normal leading-relaxed tracking-wide mb-4">
                             Bridging the gap between academia and industry. Join thousands of students and top-tier employers building the future of work together.
                         </p>
-                        <div className="text-xs text-blue-900 space-y-1 mt-4">
+                        <div className="text-xs text-slate-500 space-y-1 mt-4">
                             <p><span className="font-semibold text-blue-900">Call:</span> +91 9876543210</p>
                             <p><span className="font-semibold text-blue-900">Email:</span> hello@careersync.network</p>
                             <p><span className="font-semibold text-blue-900">Address:</span> 123 Innovation Drive, Tech Hub, IN</p>
