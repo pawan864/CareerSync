@@ -1484,21 +1484,21 @@ const Login = () => {
             {!showSupport && portal !== 'Admin' && (
                 <div className="mt-3 text-center z-20">
                 <p className="text-xs font-medium text-gray-800 drop-shadow-sm">
-                    Need assistance? <button onClick={() => setShowSupport(true)} className={`group relative font-bold hover:text-opacity-80 transition-colors cursor-pointer ${themeStyles[globalTheme].accentText} pb-1`}>
-                        <span className="relative z-10">Contact Technical Support</span>
-                        {/* Full Width Thin Shining Line Below Text */}
-                        <div className="absolute bottom-0 left-0 w-full h-[1.5px] overflow-hidden rounded-full bg-gray-400/30">
-                            <motion.div 
-                                className="absolute top-0 h-full w-[40%] bg-gradient-to-r from-transparent via-current to-transparent opacity-80"
-                                animate={{ left: ['-100%', '200%'] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
-                            />
-                        </div>
-                    </button>
+                    Need assistance? <button onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].accentText}`}>Contact Technical Support</button>
                 </p>
                 </div>
             )}
 
+            
+            {/* Full-Page Bottom Shining Line */}
+            <div className="fixed bottom-0 left-0 w-full h-[2px] z-50 overflow-hidden bg-gray-300/20">
+                <motion.div 
+                    className="absolute top-0 h-full w-[20%] bg-gradient-to-r from-transparent via-white to-transparent opacity-100 shadow-[0_0_8px_white]"
+                    animate={{ left: ['-100%', '200%'] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                />
+            </div>
+            
             {/* Custom Interactive Dev OTP Toast */}
             <AnimatePresence>
                 {devOtp && (
