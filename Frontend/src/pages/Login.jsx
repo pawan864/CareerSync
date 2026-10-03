@@ -231,7 +231,7 @@ const Login = () => {
     return (
         <div className={`fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-gradient-to-r transition-colors duration-700 ${themeStyles[globalTheme].bg}`}>
             {/* Absolute Top-Left Rotating CareerSync Logo */}
-            <div className="absolute top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-4">
+            <div className="absolute top-3 left-6 md:top-5 md:left-8 z-50 flex items-center gap-4">
                 <motion.div 
                     animate={{ rotateY: 360 }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
