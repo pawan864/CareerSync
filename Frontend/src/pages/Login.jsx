@@ -284,7 +284,7 @@ const Login = () => {
             </div>
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
-            <div className="w-full max-w-5xl rounded-3xl min-h-[600px] shadow-2xl relative z-10 perspective-1000">
+            <div className="w-full max-w-6xl rounded-3xl min-h-[650px] shadow-2xl relative z-10 perspective-1000">
                 <AnimatePresence>
                     <motion.div
                           key={showSupport ? 'support' : portal}
