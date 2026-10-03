@@ -10,6 +10,7 @@ const Navbar = () => {
 
     const [scrolled, setScrolled] = useState(false);
     const [navTheme, setNavTheme] = useState('indigo');
+    const [isSliderPaused, setIsSliderPaused] = useState(false);
 
     useEffect(() => {
         const handleSlideChange = (e) => {
@@ -26,10 +27,18 @@ const Navbar = () => {
             setNavTheme(savedTheme);
         }
 
+        const handlePauseState = (e) => {
+            if (e.detail && e.detail.isPaused !== undefined) {
+                setIsSliderPaused(e.detail.isPaused);
+            }
+        };
+
         window.addEventListener('heroSlideChange', handleSlideChange);
+        window.addEventListener('pageThemeChange', handlePauseState);
         
         return () => {
             window.removeEventListener('heroSlideChange', handleSlideChange);
+            window.removeEventListener('pageThemeChange', handlePauseState);
         };
     }, []);
 
