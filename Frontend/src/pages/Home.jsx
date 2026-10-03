@@ -122,6 +122,7 @@ const Home = () => {
         return () => clearInterval(timer);
     }, [isPaused]);
     return (
+        <>
         <motion.div 
             initial={{ opacity: 0, y: -20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -584,48 +585,50 @@ const Home = () => {
                 </div>
             </motion.div>
 
-            {/* Professional Cookie Consent Banner (Horizontal) */}
-            <AnimatePresence>
-                {showCookieConsent && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-6"
-                    >
-                        <div className="flex items-center gap-4 flex-1">
-                            <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                                <Cookie className="w-5 h-5 text-gray-700" />
-                            </div>
-                            <div>
-                                <h3 className="text-gray-900 font-bold text-sm tracking-tight m-0">We value your privacy</h3>
-                                <p className="text-gray-500 text-xs leading-snug m-0 mt-0.5">
-                                    We use cookies to enhance your browsing experience and analyze site traffic.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3 w-full md:w-auto">
-                            <button 
-                                onClick={() => handleCookieConsent('essential')}
-                                className="flex-1 md:flex-none px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
-                            >
-                                Reject all
-                            </button>
-                            <button 
-                                onClick={() => handleCookieConsent('all')}
-                                className="flex-1 md:flex-none px-6 py-2.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
-                            >
-                                Accept all
-                            </button>
-                            <button onClick={() => setShowCookieConsent(false)} className="hidden md:flex text-gray-400 hover:text-gray-600 transition-colors p-1 ml-2">
-                                <X className="w-4 h-4" />
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </motion.div>
+
+        {/* Professional Cookie Consent Banner (Horizontal) */}
+        <AnimatePresence>
+            {showCookieConsent && (
+                <motion.div
+                    initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-6"
+                >
+                    <div className="flex items-center gap-4 flex-1">
+                        <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                            <Cookie className="w-5 h-5 text-gray-700" />
+                        </div>
+                        <div>
+                            <h3 className="text-gray-900 font-bold text-sm tracking-tight m-0">We value your privacy</h3>
+                            <p className="text-gray-500 text-xs leading-snug m-0 mt-0.5">
+                                We use cookies to enhance your browsing experience and analyze site traffic.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3 w-full md:w-auto">
+                        <button 
+                            onClick={() => handleCookieConsent('essential')}
+                            className="flex-1 md:flex-none px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                        >
+                            Reject all
+                        </button>
+                        <button 
+                            onClick={() => handleCookieConsent('all')}
+                            className="flex-1 md:flex-none px-6 py-2.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                        >
+                            Accept all
+                        </button>
+                        <button onClick={() => setShowCookieConsent(false)} className="hidden md:flex text-gray-400 hover:text-gray-600 transition-colors p-1 ml-2">
+                            <X className="w-4 h-4" />
+                        </button>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+        </>
     );
 };
 
