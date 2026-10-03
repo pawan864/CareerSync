@@ -362,7 +362,7 @@ const Home = () => {
                         {[...Array(2)].map((_, i) => (
                             <React.Fragment key={i}>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <Briefcase className="w-8 h-8 text-blue-600" />
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" className="w-6 h-6 object-cover object-left" alt="Microsoft" />
                                     <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#737373]">Microsoft</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
@@ -370,7 +370,7 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-bold font-serif text-blue-900">IIT Bombay</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <Briefcase className="w-8 h-8 text-red-500" />
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" className="w-6 h-6 object-contain" alt="Google" />
                                     <span className="text-xl md:text-2xl font-medium tracking-tighter"><span className="text-[#4285F4]">G</span><span className="text-[#EA4335]">o</span><span className="text-[#FBBC05]">o</span><span className="text-[#4285F4]">g</span><span className="text-[#34A853]">l</span><span className="text-[#EA4335]">e</span></span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
@@ -378,7 +378,7 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-black tracking-tight text-red-800">BITS Pilani</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <Briefcase className="w-8 h-8 text-purple-700" />
+                                    <span className="text-2xl font-black text-[#a100ff] -mr-1">&gt;</span>
                                     <span className="text-xl md:text-2xl font-bold tracking-tight text-[#000000]">accenture <span className="text-[#a100ff] font-black">&gt;</span></span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
@@ -386,7 +386,7 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900">NIT Trichy</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <Briefcase className="w-8 h-8 text-teal-600" />
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" className="w-8 h-8 object-cover object-left" alt="Wipro" />
                                     <span className="text-xl md:text-2xl font-black tracking-widest text-[#002f6c]">wipro</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
@@ -394,7 +394,6 @@ const Home = () => {
                                     <span className="text-xl md:text-2xl font-bold font-serif text-teal-800">VIT Vellore</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
-                                    <Briefcase className="w-8 h-8 text-blue-800" />
                                     <span className="text-xl md:text-2xl font-semibold tracking-wide text-[#007cc3]">Infosys</span>
                                 </div>
                                 <div className="flex items-center space-x-3 transition-transform hover:scale-110 cursor-pointer">
