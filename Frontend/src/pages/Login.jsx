@@ -1484,22 +1484,14 @@ const Login = () => {
             {!showSupport && portal !== 'Admin' && (
                 <div className="mt-3 text-center z-20">
                 <p className="text-xs font-medium text-gray-800 drop-shadow-sm">
-                    Need assistance? <button onClick={() => setShowSupport(true)} className={`group relative font-bold cursor-pointer ${themeStyles[globalTheme].accentText}`}>
-                        <span className="relative inline-block overflow-hidden px-1 pb-0.5">
-                            <span className="relative z-10">Contact Technical Support</span>
-                            {/* Inline Shine on Text */}
-                            <motion.span 
-                                className="absolute inset-0 z-20 w-[40%] bg-gradient-to-r from-transparent via-white/90 to-transparent -skew-x-12"
-                                animate={{ x: ['-300%', '300%'] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 1 }}
-                            />
-                        </span>
-                        {/* Thin Shining Line Below */}
-                        <div className="absolute bottom-0 left-0 w-full h-[1.5px] overflow-hidden rounded-full bg-gray-400/20">
+                    Need assistance? <button onClick={() => setShowSupport(true)} className={`group relative font-bold hover:text-opacity-80 transition-colors cursor-pointer ${themeStyles[globalTheme].accentText} pb-1`}>
+                        <span className="relative z-10">Contact Technical Support</span>
+                        {/* Full Width Thin Shining Line Below Text */}
+                        <div className="absolute bottom-0 left-0 w-full h-[1.5px] overflow-hidden rounded-full bg-gray-400/30">
                             <motion.div 
-                                className="absolute top-0 h-full w-[50%] bg-gradient-to-r from-transparent via-current to-transparent opacity-80"
-                                animate={{ x: ['-200%', '300%'] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 1 }}
+                                className="absolute top-0 h-full w-[40%] bg-gradient-to-r from-transparent via-current to-transparent opacity-80"
+                                animate={{ left: ['-100%', '200%'] }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
                             />
                         </div>
                     </button>
