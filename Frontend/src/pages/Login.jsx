@@ -1490,14 +1490,7 @@ const Login = () => {
             )}
 
             
-            {/* Full-Page Bottom Shining Line */}
-            <div className="fixed bottom-0 left-0 w-full h-[2px] z-50 overflow-hidden bg-gray-300/20">
-                <motion.div 
-                    className="absolute top-0 h-full w-[20%] bg-gradient-to-r from-transparent via-white to-transparent opacity-100 shadow-[0_0_8px_white]"
-                    animate={{ left: ['-100%', '200%'] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-                />
-            </div>
+
             
             {/* Custom Interactive Dev OTP Toast */}
             <AnimatePresence>
