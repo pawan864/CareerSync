@@ -262,7 +262,7 @@ const Home = () => {
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">AI-Driven Skill Mapping</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Students can analyze their resumes instantly to identify skill gaps and receive personalized learning paths to become industry-ready.
                             </p>
                         </div>
@@ -273,7 +273,7 @@ const Home = () => {
                                 <CheckCircle className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">TPOal Verification</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 TPOs can securely verify student profiles and academic records, creating a trusted and highly credible talent pool for recruiters.
                             </p>
                         </div>
@@ -284,7 +284,7 @@ const Home = () => {
                                 <BarChart className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Smart Job Matching</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Recruiters use our advanced NLP algorithms to automatically match their job requirements with the most qualified campus talent.
                             </p>
                         </div>
@@ -295,7 +295,7 @@ const Home = () => {
                                 <UserPlus className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Placement Analytics</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Comprehensive real-time dashboards allow TPOs to track hiring pipelines, placement rates, and ongoing recruitment drives.
                             </p>
                         </div>
@@ -318,7 +318,7 @@ const Home = () => {
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Resume Building</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Automatically generate ATS-friendly professional resumes based on your verified skills, projects, and academic records.
                             </p>
                         </div>
@@ -329,7 +329,7 @@ const Home = () => {
                                 <Users className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Mock Interviews</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Practice your technical and behavioral skills with our AI interviewer to gain confidence before real industry interviews.
                             </p>
                         </div>
@@ -340,7 +340,7 @@ const Home = () => {
                                 <Briefcase className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">One-Click Apply</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Apply to top-tier verified internships and full-time positions with a single click, directly from your personalized dashboard.
                             </p>
                         </div>
@@ -351,7 +351,7 @@ const Home = () => {
                                 <BookOpen className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Alumni Mentorship</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
+                            <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Connect with successfully placed alumni from your TPO for 1-on-1 career guidance and industry referrals.
                             </p>
                         </div>
