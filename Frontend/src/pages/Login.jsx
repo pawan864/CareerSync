@@ -232,9 +232,27 @@ const Login = () => {
         <div className={`fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-gradient-to-r transition-colors duration-700 ${themeStyles[globalTheme].bg}`}>
             {/* Absolute Top-Left Rotating CareerSync Logo */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-4">
-                <div className={`relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl border ${themeStyles[globalTheme].logoBorder} animate-[spin_8s_linear_infinite]`}>
-                    <GraduationCap className={`w-10 h-10 md:w-12 md:h-12 ${themeStyles[globalTheme].iconColor}`} />
-                </div>
+                <motion.div 
+                    animate={{ rotateY: 360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                    style={{ transformStyle: "preserve-3d" }}
+                    className="relative w-16 h-16 md:w-20 md:h-20 shadow-2xl rounded-2xl"
+                >
+                    {/* Front Face */}
+                    <div 
+                        style={{ backfaceVisibility: "hidden" }}
+                        className={`absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center rounded-2xl border ${themeStyles[globalTheme].logoBorder}`}
+                    >
+                        <GraduationCap className={`w-10 h-10 md:w-12 md:h-12 ${themeStyles[globalTheme].iconColor}`} />
+                    </div>
+                    {/* Back Face */}
+                    <div 
+                        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                        className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black rounded-2xl flex items-center justify-center border border-gray-700"
+                    >
+                        <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                    </div>
+                </motion.div>
                 <div className="hidden md:flex flex-col drop-shadow-lg">
                     <span className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-none">
                         Career<span className={themeStyles[globalTheme].accentText}>Sync</span>
