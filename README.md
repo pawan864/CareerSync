@@ -12,27 +12,37 @@ The application is built on the MERN stack, focusing on performance, modularity,
 - **State Management & Routing**: React Context API, React Router
 - **Authentication**: JSON Web Tokens (JWT) with multi-level role-based access control (RBAC)
 
-## Core Modules
+## User Roles & Workspaces
 
-### 1. Multi-Role Authentication System
-A centralized authentication gateway that securely routes users to distinct, isolated portals based on their account type:
-- **Student**: Access to career resources and applications.
-- **Faculty**: Academic management and student oversight.
-- **Training and Placement Officer (TPO)**: Institutional placement tracking and administration.
-- **Recruiter**: Candidate sourcing and pipeline management.
-- **Admin**: System-wide configuration and technical support handling.
+The platform features a centralized authentication gateway that securely routes users to one of five distinct, isolated portals based on their account type:
 
-### 2. Student Workspace
+### 1. Student Portal
+A comprehensive career development and job application environment.
 - **Opportunity Hub**: A centralized board for discovering and applying to internships and full-time positions.
-- **Profile & Resume Builder**: Tools for maintaining professional profiles and structuring academic records.
+- **Profile & Resume Builder**: Tools for maintaining professional profiles and structuring academic records into ATS-friendly resumes.
 - **Application Tracker**: Real-time status monitoring for active job applications and interview schedules.
-- **Skill Center & Certifications**: Interfaces for skill mapping and maintaining verifiable credentials.
+- **Skill Center & Certifications**: Interfaces for skill mapping, assessments, and maintaining verifiable credentials.
 - **Alumni Network**: Directory for connecting with previously placed graduates and industry mentors.
 
-### 3. Institutional & Employer Workspaces
-- **Recruiter Interface**: Workflows for posting opportunities, reviewing candidate pipelines, and scheduling interviews.
-- **TPO Interface**: Analytics and reporting interfaces for tracking institutional placement metrics and student success rates.
-- **Faculty Interface**: Workflows for verifying student academic records and providing academic endorsements.
+### 2. Faculty Portal
+An academic oversight environment designed for professors and department heads.
+- **Academic Verification**: Workflows for verifying student academic records and providing academic endorsements.
+- **Student Mentorship**: Tracking and guiding student career trajectories.
+
+### 3. Training and Placement Officer (TPO) Portal
+An institutional management interface for overseeing campus recruitment drives.
+- **Placement Analytics**: Real-time reporting interfaces for tracking institutional placement metrics and student success rates.
+- **Recruiter Relations**: Managing corporate partnerships and coordinating campus recruitment events.
+
+### 4. Recruiter Portal
+A corporate hiring interface for sourcing talent directly from academic institutions.
+- **Job Management**: Workflows for posting opportunities and setting applicant requirements.
+- **Pipeline Review**: Tools for reviewing candidate pipelines, filtering verified profiles, and scheduling interviews.
+
+### 5. Admin Portal
+A top-level system administration and support environment.
+- **System Configuration**: Global platform settings and user management.
+- **Technical Support Handling**: Interface for resolving user support tickets and maintaining platform integrity.
 
 ## Development Setup
 
