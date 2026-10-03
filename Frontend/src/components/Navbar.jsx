@@ -12,11 +12,18 @@ const Navbar = () => {
     const [navTheme, setNavTheme] = useState('indigo');
 
     useEffect(() => {
-        // Sync Navbar with global theme changes
         const handleThemeChange = (e) => {
             setNavTheme(e.detail.theme || 'indigo');
         };
         
+        const handleSlideChange = (e) => {
+            // Only cycle navbar colors if user is at the top of the page
+            if (window.scrollY <= 20) {
+                const themes = ['blue', 'indigo', 'orange'];
+                setNavTheme(themes[e.detail.slide] || 'blue');
+            }
+        };
+
         // Initialize from localStorage
         const savedTheme = localStorage.getItem('globalTheme');
         if (savedTheme) {
@@ -24,7 +31,12 @@ const Navbar = () => {
         }
 
         window.addEventListener('pageThemeChange', handleThemeChange);
-        return () => window.removeEventListener('pageThemeChange', handleThemeChange);
+        window.addEventListener('heroSlideChange', handleSlideChange);
+        
+        return () => {
+            window.removeEventListener('pageThemeChange', handleThemeChange);
+            window.removeEventListener('heroSlideChange', handleSlideChange);
+        };
     }, []);
 
     useEffect(() => {
