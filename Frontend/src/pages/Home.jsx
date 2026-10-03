@@ -367,8 +367,11 @@ const Home = () => {
                                 <span className="text-3xl font-black tracking-tight text-red-800 hover:scale-110 transition-transform">BITS Pilani</span>
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-8 pt-1 object-contain transition-transform hover:scale-110" />
                                 <span className="text-3xl font-bold font-sans text-indigo-900 hover:scale-110 transition-transform">NIT Trichy</span>
+                                <span className="text-3xl font-bold font-serif text-teal-800 hover:scale-110 transition-transform">VIT Vellore</span>
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-10 object-contain transition-transform hover:scale-110" />
                                 <span className="text-3xl font-bold font-serif text-gray-800 hover:scale-110 transition-transform">IIT Delhi</span>
+                                <span className="text-3xl font-black tracking-tighter text-blue-700 hover:scale-110 transition-transform">SRM University</span>
+                                <span className="text-3xl font-bold font-sans text-orange-900 hover:scale-110 transition-transform">DTU Delhi</span>
                             </React.Fragment>
                         ))}
                     </div>
