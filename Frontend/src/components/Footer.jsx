@@ -17,12 +17,12 @@ const Footer = () => {
         blue: {
             bg: "bg-[#f0f4f8]",
             logoBg: "from-green-500/20 to-blue-600/20",
-            logoBorder: "${footerStyles[footerTheme].borderAccent}",
-            textDark: "${footerStyles[footerTheme].textDark}",
-            textLight: "${footerStyles[footerTheme].textLight}",
-            textAccent: "${footerStyles[footerTheme].textAccent}",
-            iconHover: "${footerStyles[footerTheme].iconHover}",
-            borderAccent: "${footerStyles[footerTheme].borderAccent}"
+            logoBorder: "border-blue-200",
+            textDark: "text-blue-900",
+            textLight: "text-blue-900/80",
+            textAccent: "text-blue-500",
+            iconHover: "hover:bg-blue-600",
+            borderAccent: "border-blue-200"
         },
         indigo: {
             bg: "bg-[#f3f0fc]",
@@ -136,7 +136,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className={`mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-xs ${footerStyles[footerTheme].textLight}`}>
+                <div className={`mt-12 pt-8 border-t ${footerStyles[footerTheme].borderAccent} flex flex-col md:flex-row transition-colors duration-500 justify-between items-center text-xs ${footerStyles[footerTheme].textLight}`}>
                     <p>&copy; {new Date().getFullYear()} CareerSync Network. All rights reserved.</p>
                     <p className="mt-2 md:mt-0 font-medium">Bridging Academia and Industry.</p>
                 </div>
