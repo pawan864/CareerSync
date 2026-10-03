@@ -245,12 +245,12 @@ const Home = () => {
                     
                     {/* Timeline Line */}
                     <div className="hidden md:flex justify-between items-center relative mb-12 px-10">
-                        <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} top-1/2 transform -translate-y-1/2 z-0`}></div>
+                        <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 bg-blue-900 top-1/2 transform -translate-y-1/2 z-0`}></div>
                         
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>01</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>02</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>03</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>04</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>01</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>02</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>03</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>04</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -301,12 +301,12 @@ const Home = () => {
 
                     {/* Second Timeline Line */}
                     <div className="hidden md:flex justify-between items-center relative mb-12 mt-16 px-10">
-                        <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} top-1/2 transform -translate-y-1/2 z-0`}></div>
+                        <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 bg-blue-900 top-1/2 transform -translate-y-1/2 z-0`}></div>
                         
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>05</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>06</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>07</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${pageStyles[pageTheme].bgDark} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>08</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>05</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>06</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>07</div>
+                        <div className={`relative z-10 transition-colors duration-500 bg-blue-900 ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>08</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
