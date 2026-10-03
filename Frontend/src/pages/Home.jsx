@@ -157,7 +157,7 @@ const Home = () => {
                                         {heroSlides[currentSlide].description}
                                     </p>
                                     
-                                    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
+                                    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
                                         <Link to={heroSlides[currentSlide].button1Link} className={`flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-md text-white shadow-lg transition-transform hover:-translate-y-1 ${heroSlides[currentSlide].btn1Color}`}>
                                             {heroSlides[currentSlide].button1}
                                         </Link>
