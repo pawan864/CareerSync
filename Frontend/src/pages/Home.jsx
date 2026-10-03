@@ -541,7 +541,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
-                        <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
                             Start Connecting<br/>With Industry<br/>Today
                         </h2>
                         <p className="text-lg text-gray-700 font-medium mb-8">
