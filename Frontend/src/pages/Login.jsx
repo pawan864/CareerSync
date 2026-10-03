@@ -1505,6 +1505,9 @@ const Login = () => {
                 </AnimatePresence>
             </div>
             
+            {/* Invisible spacer to perfectly preserve the original vertical alignment of the card */}
+            <div className="mt-3 text-center z-20 h-[18px]"></div>
+            
 
 
             
