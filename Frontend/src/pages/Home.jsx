@@ -139,7 +139,7 @@ const Home = () => {
                                     <div className={`inline-block px-4 py-1 rounded-full font-semibold text-sm mb-6 border ${heroSlides[currentSlide].taglineBg}`}>
                                         {heroSlides[currentSlide].tagline}
                                     </div>
-                                    <h1 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:text-5xl mb-6">
+                                    <h1 className="text-xl md:text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:text-5xl mb-6">
                                         <span className="block md:whitespace-nowrap">{heroSlides[currentSlide].title1}</span>
                                         <span className="block text-gray-900 mt-2 md:whitespace-nowrap">{heroSlides[currentSlide].title2}</span>
                                     </h1>
@@ -361,17 +361,17 @@ const Home = () => {
                     <div className="animate-marquee group-hover:pause flex items-center space-x-16 px-8">
                         {[...Array(2)].map((_, i) => (
                             <React.Fragment key={i}>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-8 object-contain transition-transform hover:scale-110" />
-                                <span className="text-3xl font-bold font-serif text-blue-900 hover:scale-110 transition-transform">IIT Bombay</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-8 object-contain transition-transform hover:scale-110" />
-                                <span className="text-3xl font-black tracking-tight text-red-800 hover:scale-110 transition-transform">BITS Pilani</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-8 pt-1 object-contain transition-transform hover:scale-110" />
-                                <span className="text-3xl font-bold font-sans text-indigo-900 hover:scale-110 transition-transform">NIT Trichy</span>
-                                <span className="text-3xl font-bold font-serif text-teal-800 hover:scale-110 transition-transform">VIT Vellore</span>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-10 object-contain transition-transform hover:scale-110" />
-                                <span className="text-3xl font-bold font-serif text-gray-800 hover:scale-110 transition-transform">IIT Delhi</span>
-                                <span className="text-3xl font-black tracking-tighter text-blue-700 hover:scale-110 transition-transform">SRM University</span>
-                                <span className="text-3xl font-bold font-sans text-orange-900 hover:scale-110 transition-transform">DTU Delhi</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-6 md:h-7 object-contain transition-transform hover:scale-110" />
+                                <span className="text-xl md:text-2xl font-bold font-serif text-blue-900 hover:scale-110 transition-transform">IIT Bombay</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 md:h-7 object-contain transition-transform hover:scale-110" />
+                                <span className="text-xl md:text-2xl font-black tracking-tight text-red-800 hover:scale-110 transition-transform">BITS Pilani</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-6 md:h-7 pt-1 object-contain transition-transform hover:scale-110" />
+                                <span className="text-xl md:text-2xl font-bold font-sans text-indigo-900 hover:scale-110 transition-transform">NIT Trichy</span>
+                                <span className="text-xl md:text-2xl font-bold font-serif text-teal-800 hover:scale-110 transition-transform">VIT Vellore</span>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="h-7 md:h-8 object-contain transition-transform hover:scale-110" />
+                                <span className="text-xl md:text-2xl font-bold font-serif text-gray-800 hover:scale-110 transition-transform">IIT Delhi</span>
+                                <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-700 hover:scale-110 transition-transform">SRM University</span>
+                                <span className="text-xl md:text-2xl font-bold font-sans text-orange-900 hover:scale-110 transition-transform">DTU Delhi</span>
                             </React.Fragment>
                         ))}
                     </div>
@@ -383,7 +383,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-gray-50 py-20 border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                             Success Stories
                         </h2>
                         <p className="mt-4 text-lg text-gray-500">
