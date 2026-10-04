@@ -502,8 +502,8 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">AI-Driven Skill Mapping</h3>
@@ -513,8 +513,8 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <CheckCircle className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">TPOal Verification</h3>
@@ -524,8 +524,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 3 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <BarChart className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Smart Job Matching</h3>
@@ -535,8 +535,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <UserPlus className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Placement Analytics</h3>
@@ -558,8 +558,8 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Resume Building</h3>
@@ -569,8 +569,8 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <Users className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Mock Interviews</h3>
@@ -580,8 +580,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <Briefcase className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">One-Click Apply</h3>
@@ -591,8 +591,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} ${pageStyles[pageTheme].iconText} rounded-lg flex items-center justify-center mb-6`}>
+                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
                                 <BookOpen className="h-6 w-6" />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4">Alumni Mentorship</h3>
