@@ -76,7 +76,7 @@ const heroSlides = [
     }
 ];
 
-const quickQueries = ["Jobs", "Placements", "Registration", "Login", "Support", "Resume/CV"];
+const quickQueries = ["Placements", "Registration", "Login", "Jobs", "Resume/CV", "Other Queries"];
 
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -121,7 +121,9 @@ const Home = () => {
                     botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/>👉 <a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
                 } else if (input.includes("login") || input.includes("log in") || input.includes("logged in")) {
                     botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/>👉 <a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
-                } else if (input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details") || input.includes("support") || input.includes("technical")) {
+                } else if (input.includes("resume") || input.includes("cv")) {
+                    botResponse = "Your Resume/CV is your first impression! CareerSync uses AI to parse your resume, analyze your skills, and automatically match you with companies looking for your specific tech stack.";
+                } else if (input.includes("other queries") || input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details") || input.includes("support") || input.includes("technical")) {
                     botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/>👉 <a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Technical Support Page</a>";
                 } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
                     botResponse = "Hello! 👋 I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• 💼 Jobs & Placements<br/>• 📝 Registration & Log In<br/>• 📞 Helpline & Support<br/><br/>How can I help you navigate the portal today?";
