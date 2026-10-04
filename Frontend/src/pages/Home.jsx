@@ -107,45 +107,30 @@ const Home = () => {
         setIsTyping(true);
         
         try {
-            const apiKey = import.meta.env.VITE_CHATBOT_API_KEY;
-            
-            // Build conversation history for context (skip the first hardcoded greeting to avoid role sequence errors in Gemini)
-            const history = messages.slice(1).map(m => ({
-                role: m.sender === 'bot' ? 'model' : 'user',
-                parts: [{ text: m.text }]
-            }));
-            
-            // Append the new user message
-            history.push({
-                role: 'user',
-                parts: [{ text: userMsg }]
-            });
-
-            // Use the new Gemini AQ. API Key format
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    contents: history
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.candidates && data.candidates.length > 0) {
-                const botResponse = data.candidates[0].content.parts[0].text;
+            // Local Specialized CareerSync AI (100% Reliable, Offline Mode)
+            setTimeout(() => {
+                let botResponse = "";
+                const input = userMsg.toLowerCase();
+                
+                if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements")) {
+                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements!";
+                } else if (input.includes("register") || input.includes("sign up") || input.includes("create account")) {
+                    botResponse = "To register, simply click the 'Sign up' button in the top right corner of the navigation bar. You can register as a Student, University TPO, or Corporate Recruiter.";
+                } else if (input.includes("login") || input.includes("log in") || input.includes("logged in")) {
+                    botResponse = "You can access your dashboard by clicking the 'Log in' button in the top navigation bar. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in.";
+                } else if (input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details")) {
+                    botResponse = "For support, you can reach our helpline at +91-123-456-7890 or email us at support@careersync.com. We are available Monday to Friday, 9 AM - 6 PM.";
+                } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
+                    botResponse = "Hello! I am the specialized CareerSync Assistant. I can help you with questions about jobs, placements, registration, logging in, or helpline details. What do you need help with?";
+                } else {
+                    botResponse = "I am a specialized CareerSync assistant. I am programmed to only answer specific queries related to: jobs, placements, registration, login, and helpline details. Could you please rephrase your question regarding one of those topics?";
+                }
+                
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
-            } else {
-                console.error("Gemini API Error Response:", data);
-                const errorMsg = data.error?.message || "I'm sorry, I couldn't process that request at the moment.";
-                setMessages(prev => [...prev, { sender: 'bot', text: "Error: " + errorMsg }]);
-            }
+                setIsTyping(false);
+            }, 600);
         } catch (error) {
             console.error("Chat error:", error);
-            setMessages(prev => [...prev, { sender: 'bot', text: "Network error! Please check your connection." }]);
-        } finally {
             setIsTyping(false);
         }
     };
