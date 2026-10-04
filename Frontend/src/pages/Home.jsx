@@ -138,27 +138,21 @@ const Home = () => {
                 const botResponse = data.candidates[0].content.parts[0].text;
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
             } else {
-                console.warn("Gemini API Error (High Demand/Rate Limit). Falling back to Local AI...", data);
-                
-                // Fallback Local AI Responder (Failsafe for presentations)
-                let fallbackMsg = "I'm currently experiencing extremely high server demand! However, I can still assist you. Please try asking me again in a moment, or let me know if you need help navigating the career portal.";
-                
-                const lowerInput = userMsg.toLowerCase();
-                if (lowerInput.includes("hello") || lowerInput.includes("hi")) {
-                    fallbackMsg = "Hello! I am operating in offline mode right now due to server demand, but I'm still here to help! Are you looking for student placements or recruiter access?";
-                } else if (lowerInput.includes("placement") || lowerInput.includes("job")) {
-                    fallbackMsg = "CareerSync connects top talent with elite companies. You can build your profile, take our AI skill assessments, and match directly with employers looking for your specific tech stack!";
-                } else if (lowerInput.includes("university") || lowerInput.includes("college")) {
-                    fallbackMsg = "We partner with over 50+ top universities to streamline their campus placement drives, providing real-time analytics to Training & Placement Officers.";
-                } else if (lowerInput.includes("how are you")) {
-                    fallbackMsg = "I'm doing well, thank you! Operating locally while Google's servers cool down. How can I assist with your career goals today?";
-                }
-                
+                console.warn("Gemini API Error. Falling back to open Pollinations AI...", data);
+                // Failsafe: Use free keyless open AI endpoint if Gemini is rate limited
+                const fallbackRes = await fetch(`https://text.pollinations.ai/${encodeURIComponent(userMsg + " (Answer as a helpful CareerSync AI Assistant)")}`);
+                const fallbackMsg = await fallbackRes.text();
                 setMessages(prev => [...prev, { sender: 'bot', text: fallbackMsg }]);
             }
         } catch (error) {
-            console.error("Chat error:", error);
-            setMessages(prev => [...prev, { sender: 'bot', text: "Network error! Please check the console." }]);
+            console.error("Chat error. Triggering fallback...", error);
+            try {
+                const fallbackRes = await fetch(`https://text.pollinations.ai/${encodeURIComponent(userMsg + " (Answer as a helpful CareerSync AI Assistant)")}`);
+                const fallbackMsg = await fallbackRes.text();
+                setMessages(prev => [...prev, { sender: 'bot', text: fallbackMsg }]);
+            } catch (fallbackError) {
+                setMessages(prev => [...prev, { sender: 'bot', text: "Network error! Please check your connection." }]);
+            }
         } finally {
             setIsTyping(false);
         }
