@@ -10,7 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X } from 'lucide-react';
+import { Bot, BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X, ChevronDown, ChevronUp } from 'lucide-react';
 
 
 const heroSlides = [
@@ -78,8 +78,33 @@ const heroSlides = [
 
 const quickQueries = ["Jobs", "Placements", "Internships", "Registration", "Login", "Dashboard", "Resume/CV", "Skill Match", "Interviews", "Helpline", "Corporate", "Other Queries"];
 
+
+const faqs = [
+    {
+        question: "Is CareerSync free for students?",
+        answer: "Yes! CareerSync is completely free for all students. You can create a profile, parse your resume using our AI tools, and apply to unlimited jobs without any hidden charges."
+    },
+    {
+        question: "How does the AI Skill Matching work?",
+        answer: "Our intelligent matching engine analyzes your uploaded Resume/CV against live job descriptions. It scores your technical stack and instantly recommends the roles you are most qualified for."
+    },
+    {
+        question: "Can recruiters conduct interviews on the platform?",
+        answer: "Absolutely. Corporate Recruiters and HRs can schedule, manage, and execute video interviews directly through the CareerSync dashboard, streamlining the entire hiring pipeline."
+    },
+    {
+        question: "How do universities track student placements?",
+        answer: "Training and Placement Officers (TPOs) get a dedicated analytics dashboard to monitor student registrations, application statuses, and successful placement rates in real-time."
+    },
+    {
+        question: "Who can I contact for technical support?",
+        answer: "If you encounter any issues, you can click the 'Visit Support Page' link in the AI Assistant chatbot, or navigate to our Contact Us page. Our support team is available Monday to Friday."
+    }
+];
+
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [openFaq, setOpenFaq] = useState(null);
     const [isPaused, setIsPaused] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [chatInput, setChatInput] = useState('');
@@ -755,6 +780,53 @@ const Home = () => {
                     </div>
                 </div>
             </motion.div>
+
+            {/* FAQ Section */}
+            <section className="py-24 bg-white relative overflow-hidden">
+                <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+                            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Questions</span>
+                        </h2>
+                        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                            Everything you need to know about CareerSync and how it can accelerate your placement journey.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div 
+                                key={index} 
+                                className={`border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-blue-50/50 shadow-md border-blue-100' : 'bg-white hover:border-gray-200 hover:shadow-sm'}`}
+                            >
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                                >
+                                    <span className="font-bold text-gray-900 text-lg tracking-tight pr-4">{faq.question}</span>
+                                    <div className={`p-2 rounded-full transition-colors ${openFaq === index ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        {openFaq === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                                    </div>
+                                </button>
+                                <AnimatePresence>
+                                    {openFaq === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        >
+                                            <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100/50 pt-4">
+                                                {faq.answer}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* CTA Banner */}
 
