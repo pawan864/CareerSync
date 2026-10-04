@@ -223,7 +223,7 @@ const Home = () => {
                     className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center`}
                     onClick={() => alert("Chat window will open here once the API is provided!")}
                 >
-                    <Bot className={`w-7 h-7 transition-colors duration-500 ${pageStyles[pageTheme].iconText}`} />
+                    <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
                 </motion.button>
             </div>
 
