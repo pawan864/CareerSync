@@ -88,11 +88,11 @@ const Home = () => {
     const [runTour, setRunTour] = useState(false);
 
     const tourSteps = [
-        { target: '#tour-hero', content: 'Welcome to CareerSync! This hero section highlights our mission to connect talent with opportunity.', disableBeacon: true },
-        { target: '#tour-features', content: 'Explore our AI-driven features like automated resume scanning and gap analysis.', disableBeacon: true },
-        { target: '#tour-marquee', content: 'We partner with top-tier universities and global industry leaders.', disableBeacon: true },
-        { target: '#tour-testimonials', content: 'Hear real success stories from students, recruiters, and TPOs.', disableBeacon: true },
-        { target: '#tour-cta', content: 'Ready to bridge the gap? Create your free account today!', disableBeacon: true }
+        { target: '#tour-hero-heading', content: 'Welcome to CareerSync! We intelligently bridge the gap between academia and industry.', disableBeacon: true, placement: 'bottom' },
+        { target: '#tour-features-heading', content: 'Our AI-driven platform offers automated resume scanning, gap analysis, and more.', disableBeacon: true, placement: 'bottom' },
+        { target: '#tour-marquee-container', content: 'We partner with top-tier universities and global tech giants to provide elite opportunities.', disableBeacon: true, placement: 'top' },
+        { target: '#tour-testimonials-heading', content: 'Discover real success stories from students and recruiters who transformed their hiring process.', disableBeacon: true, placement: 'bottom' },
+        { target: '#tour-cta-heading', content: 'Ready to take the next step? Create your free account today and start connecting!', disableBeacon: true, placement: 'top' }
     ];
 
     useEffect(() => {
@@ -155,11 +155,44 @@ const Home = () => {
             continuous={true}
             showSkipButton={true}
             showProgress={true}
+            disableOverlayClose={true}
+            hideCloseButton={true}
             callback={handleTourCallback}
+            floaterProps={{ disableAnimation: true }}
             styles={{
                 options: {
                     primaryColor: '#1e3a8a',
-                    zIndex: 10000,
+                    textColor: '#334155',
+                    backgroundColor: '#ffffff',
+                    arrowColor: '#ffffff',
+                    overlayColor: 'rgba(15, 23, 42, 0.6)',
+                    zIndex: 100000,
+                },
+                tooltip: {
+                    borderRadius: '12px',
+                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    padding: '24px',
+                },
+                tooltipContainer: {
+                    textAlign: 'left',
+                    fontSize: '15px',
+                    lineHeight: '1.6',
+                },
+                buttonNext: {
+                    backgroundColor: '#1e3a8a',
+                    borderRadius: '6px',
+                    padding: '8px 16px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                },
+                buttonBack: {
+                    color: '#64748b',
+                    marginRight: '10px',
+                    fontSize: '14px',
+                },
+                buttonSkip: {
+                    color: '#94a3b8',
+                    fontSize: '14px',
                 }
             }}
         />
@@ -188,7 +221,7 @@ const Home = () => {
                                     <div className={`inline-block px-4 py-1 rounded-full font-semibold text-sm mb-6 border ${heroSlides[currentSlide].taglineBg}`}>
                                         {heroSlides[currentSlide].tagline}
                                     </div>
-                                    <h1 className="text-xl md:text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:text-[44px] mb-6">
+                                    <h1 id="tour-hero-heading" className="text-xl md:text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl xl:text-[44px] mb-6">
                                         <span className="block md:whitespace-nowrap">{heroSlides[currentSlide].title1}</span>
                                         <span className="block text-gray-900 mt-2 md:whitespace-nowrap">{heroSlides[currentSlide].title2}</span>
                                     </h1>
@@ -401,7 +434,7 @@ const Home = () => {
             {/* Our Partners Section (Infinite Marquee) */}
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-white py-12 border-b border-gray-100 overflow-hidden relative flex flex-col items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center z-10">
-                    <p className="text-sm font-bold tracking-widest text-gray-400 uppercase">Trusted by industry leaders & top universities</p>
+                    <p id="tour-marquee-container" className="text-sm font-bold tracking-widest text-gray-400 uppercase">Trusted by industry leaders & top universities</p>
                 </div>
                 
                 {/* Gradient Masks for smooth fade on edges */}
@@ -475,7 +508,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-testimonials" className="bg-gray-50 py-20 border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        <h2 id="tour-testimonials-heading" className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                             Success Stories
                         </h2>
                         <p className={`mt-4 text-sm font-normal italic leading-relaxed tracking-wide max-w-2xl mx-auto transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].syncText : 'text-blue-900'}`}>
@@ -580,7 +613,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
-                        <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
+                        <h2 id="tour-cta-heading" className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
                             Start Connecting<br/>With Industry<br/>Today
                         </h2>
                         <p className="text-lg text-gray-700 font-medium mb-8">
