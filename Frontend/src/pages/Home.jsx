@@ -818,7 +818,7 @@ const Home = () => {
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
                                         >
-                                            <div className="px-6 pb-6 text-slate-600 leading-relaxed text-sm md:text-base border-t border-blue-100/50 pt-4 font-normal">
+                                            <div className={`px-6 pb-6 border-t border-blue-100/50 pt-4 text-sm font-normal italic leading-relaxed tracking-wide transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].syncText : 'text-blue-900'}`}>
                                                 {faq.answer}
                                             </div>
                                         </motion.div>
