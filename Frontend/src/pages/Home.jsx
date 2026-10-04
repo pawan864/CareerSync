@@ -85,7 +85,7 @@ const Home = () => {
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: 'bot', text: "I am CareerSync AI Assistant, I am here to help!" }
+        { sender: 'bot', text: "Hello! 👋 I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• 💼 Jobs & Placements<br/>• 📝 Registration & Log In<br/>• 📞 Helpline & Support<br/><br/>How can I help you navigate the portal today?" }
     ]);
     const chatEndRef = React.useRef(null);
     
