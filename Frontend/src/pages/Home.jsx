@@ -861,10 +861,10 @@ const Home = () => {
                 <img 
                     src="/dark-student.jpg" 
                     alt="Professional College Student" 
-                    className="hidden md:block absolute bottom-0 right-0 lg:right-4 w-auto h-[120%] max-h-[500px] object-contain object-bottom mix-blend-multiply pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105"
+                    className="hidden md:block absolute bottom-0 right-0 lg:right-8 w-auto h-[95%] max-h-[400px] object-contain object-bottom mix-blend-multiply pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105"
                     style={{
-                        maskImage: 'linear-gradient(to right, transparent 0%, black 20%)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%)'
+                        maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
                     }}
                 />
             </motion.div>
