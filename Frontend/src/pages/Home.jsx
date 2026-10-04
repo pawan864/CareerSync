@@ -863,10 +863,8 @@ const Home = () => {
                     alt="Professional College Student" 
                     className="hidden md:block absolute bottom-0 right-0 lg:right-8 w-auto h-[95%] max-h-[400px] object-contain object-bottom mix-blend-multiply brightness-[1.05] contrast-[1.10] pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105"
                     style={{
-                        maskImage: 'linear-gradient(to right, transparent 0%, black 15%), linear-gradient(to bottom, transparent 0%, black 5%), linear-gradient(to left, transparent 0%, black 10%), linear-gradient(to top, transparent 0%, black 5%)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%), linear-gradient(to bottom, transparent 0%, black 5%), linear-gradient(to left, transparent 0%, black 10%), linear-gradient(to top, transparent 0%, black 5%)',
-                        WebkitMaskComposite: 'source-in, source-in, source-in',
-                        maskComposite: 'intersect'
+                        maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
                     }}
                 />
             </motion.div>
