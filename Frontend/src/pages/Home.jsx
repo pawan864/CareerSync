@@ -832,7 +832,7 @@ const Home = () => {
 
             {/* CTA Banner */}
 
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`group/cta bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
                         <h2 id="tour-cta-heading" className="text-2xl md:text-3xl tracking-tight font-extrabold text-gray-900 mb-6 leading-tight">
@@ -848,32 +848,28 @@ const Home = () => {
                         </Link>
                     </div>
                     <div className="md:w-1/2 mt-12 md:mt-0 relative">
-                        {/* Mockup Dashboard Image - Using standard HTML element styling to emulate the screenshot */}
-                        <div className="bg-white rounded-lg shadow-2xl p-4 transform md:rotate-[-2deg] transition-transform hover:rotate-0">
-                            <div className="flex justify-between items-center border-b pb-4 mb-4">
-                                <div className="flex items-center space-x-2">
-                                    <div className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>
-                                        <Briefcase className="w-4 h-4 text-white" />
+                        {/* Unique Professional Cards for TPO & Recruiters */}
+                        <div className="flex flex-col space-y-6 relative mt-12 md:mt-0 w-full max-w-sm mx-auto md:ml-auto">
+                            <div className="bg-white/90 backdrop-blur-sm border border-gray-100 p-6 rounded-2xl shadow-xl transform md:translate-x-4 hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 group">
+                                <div className="flex items-center space-x-5">
+                                    <div className={`p-4 rounded-xl transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black`}>
+                                        <GraduationCap className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
                                     </div>
-                                    <div className="font-bold text-gray-800">CareerSync Recruiter</div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 tracking-widest text-sm uppercase mb-1">For TPOs & Faculty</h4>
+                                        <p className="text-sm text-gray-500 font-medium">Automate placements & track success metrics.</p>
+                                    </div>
                                 </div>
-                                <div className={`text-xs ${pageStyles[pageTheme].textLight} px-3 py-1 rounded transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>+ Post a job</div>
                             </div>
-                            <div>
-                                <h3 className="font-bold text-gray-800">Good morning, HR Manager</h3>
-                                <p className="text-xs text-gray-500 mb-4">Here is your AI skill-match applicant report for this week.</p>
-                                <div className="grid grid-cols-3 gap-2">
-                                    <div className={`${pageStyles[pageTheme].textLight} p-3 rounded-lg flex flex-col transition-colors duration-500 ${pageStyles[pageTheme].bgDark}`}>
-                                        <span className="text-2xl font-bold">142</span>
-                                        <span className="text-xs opacity-80">Verified Student Matches</span>
+                            
+                            <div className="bg-white/90 backdrop-blur-sm border border-gray-100 p-6 rounded-2xl shadow-xl transform md:-translate-x-4 hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 group">
+                                <div className="flex items-center space-x-5">
+                                    <div className={`p-4 rounded-xl transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black`}>
+                                        <Briefcase className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
                                     </div>
-                                    <div className="bg-teal-500 text-white p-3 rounded-lg flex flex-col">
-                                        <span className="text-2xl font-bold">12</span>
-                                        <span className="text-xs opacity-80">Interviews Scheduled</span>
-                                    </div>
-                                    <div className="bg-blue-600 text-white p-3 rounded-lg flex flex-col">
-                                        <span className="text-2xl font-bold">5</span>
-                                        <span className="text-xs opacity-80">Offers Accepted</span>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 tracking-widest text-sm uppercase mb-1">For Recruiters</h4>
+                                        <p className="text-sm text-gray-500 font-medium">Hire verified top campus talent instantly.</p>
                                     </div>
                                 </div>
                             </div>
