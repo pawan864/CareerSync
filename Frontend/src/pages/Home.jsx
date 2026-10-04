@@ -310,7 +310,24 @@ const Home = () => {
                                                 </React.Fragment>
                                             ))
                                         ) : (
-                                            <div dangerouslySetInnerHTML={{ __html: msg.text }} />
+                                            <>
+                                                <div dangerouslySetInnerHTML={{ __html: msg.text }} />
+                                                {msg.text.includes("I am a specialized CareerSync assistant") && (
+                                                    <div className="grid grid-cols-3 gap-2 mt-4">
+                                                        {quickQueries.map((query, i) => (
+                                                            <button 
+                                                                key={i}
+                                                                type="button"
+                                                                disabled={isTyping}
+                                                                onClick={() => handleSendMessage(null, query)}
+                                                                className="text-[10px] px-1 py-1.5 bg-white border border-blue-500 text-blue-600 font-semibold rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition-colors disabled:opacity-50 flex items-center justify-center text-center leading-tight whitespace-normal"
+                                                            >
+                                                                {query}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </>
                                         )}
                                     </div>
                                 ))}
@@ -324,20 +341,7 @@ const Home = () => {
                                 <div ref={chatEndRef} />
                             </div>
                             
-                            {/* Quick Suggestion Chips */}
-                            <div className="px-3 pb-2 pt-2 border-t border-gray-100 bg-gray-50 grid grid-cols-3 gap-2">
-                                {quickQueries.map((query, i) => (
-                                    <button 
-                                        key={i}
-                                        type="button"
-                                        disabled={isTyping}
-                                        onClick={() => handleSendMessage(null, query)}
-                                        className="text-[11px] px-1 py-2 bg-white border border-blue-500 text-blue-600 font-semibold rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition-colors disabled:opacity-50 flex items-center justify-center text-center leading-tight whitespace-normal h-10"
-                                    >
-                                        {query}
-                                    </button>
-                                ))}
-                            </div>
+                            
                             {/* Chat Input */}
                             <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
                                 <input 
