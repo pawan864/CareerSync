@@ -857,15 +857,11 @@ const Home = () => {
                                 </p>
                             </div>
                             
-                            {/* Professional Image (Hero Style) bleeding to the edges */}
+                            {/* Professional Image (True Transparent) bleeding to the edges */}
                             <img 
-                                src="/hero-student-transparent.jpg?v=13" 
+                                src="/transparent-student.png" 
                                 alt="Professional College Student" 
-                                className="hidden md:block absolute -bottom-16 -right-16 w-auto h-[140%] max-h-[350px] object-contain object-bottom mix-blend-multiply pointer-events-none transition-transform duration-700 group-hover/cta:scale-105"
-                                style={{
-                                    maskImage: 'linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 100%)',
-                                    WebkitMaskImage: 'linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 100%)'
-                                }}
+                                className="hidden md:block absolute -bottom-0 -right-4 w-auto h-[130%] max-h-[320px] object-contain object-bottom pointer-events-none transition-transform duration-700 group-hover/cta:scale-105 drop-shadow-2xl"
                             />
                         </div>
                     </div>
