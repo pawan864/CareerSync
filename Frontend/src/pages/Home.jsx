@@ -314,8 +314,8 @@ const Home = () => {
                                                 <div dangerouslySetInnerHTML={{ __html: msg.text }} />
                                             )}
                                         </div>
-                                        {msg.sender === 'bot' && msg.text.includes("I am a specialized CareerSync assistant") && (
-                                            <div className="grid grid-cols-3 gap-2 w-full max-w-[95%] self-start -mt-2">
+                                        {msg.sender === 'bot' && idx === 0 && (
+                                            <div className="grid grid-cols-3 gap-2 w-full max-w-[95%] self-start mt-2">
                                                 {quickQueries.map((query, i) => (
                                                     <button 
                                                         key={i}
