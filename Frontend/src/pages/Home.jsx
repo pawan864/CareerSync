@@ -113,17 +113,17 @@ const Home = () => {
                 const input = userMsg.toLowerCase();
                 
                 if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements")) {
-                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements!";
+                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/>👉 <a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
                 } else if (input.includes("register") || input.includes("sign up") || input.includes("create account")) {
-                    botResponse = "To register, simply click the 'Sign up' button in the top right corner of the navigation bar. You can register as a Student, University TPO, or Corporate Recruiter.";
+                    botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/>👉 <a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
                 } else if (input.includes("login") || input.includes("log in") || input.includes("logged in")) {
-                    botResponse = "You can access your dashboard by clicking the 'Log in' button in the top navigation bar. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in.";
+                    botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/>👉 <a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
                 } else if (input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details")) {
-                    botResponse = "For support, you can reach our helpline at +91-123-456-7890 or email us at support@careersync.com. We are available Monday to Friday, 9 AM - 6 PM.";
+                    botResponse = "For support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.";
                 } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
-                    botResponse = "Hello! I am the specialized CareerSync Assistant. I can help you with questions about jobs, placements, registration, logging in, or helpline details. What do you need help with?";
+                    botResponse = "Hello! 👋 I am the specialized CareerSync Assistant. I can help you with questions about jobs, placements, registration, logging in, or helpline details. What do you need help with?";
                 } else {
-                    botResponse = "I am a specialized CareerSync assistant. I am programmed to only answer specific queries related to: jobs, placements, registration, login, and helpline details. Could you please rephrase your question regarding one of those topics?";
+                    botResponse = "I am a specialized CareerSync assistant. I am programmed to only answer specific queries related to: <b>jobs, placements, registration, login, and helpline details</b>. Could you please rephrase your question regarding one of those topics?";
                 }
                 
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
@@ -297,12 +297,16 @@ const Home = () => {
                                 <div className="text-xs text-center text-gray-400 font-medium my-1">Today</div>
                                 {messages.map((msg, idx) => (
                                     <div key={idx} className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[85%] ${msg.sender === 'user' ? 'bg-gray-800 text-white self-end rounded-tr-sm' : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'}`}>
-                                        {msg.text.split('\n').map((line, i) => (
-                                            <React.Fragment key={i}>
-                                                {line}
-                                                {i !== msg.text.split('\n').length - 1 && <br />}
-                                            </React.Fragment>
-                                        ))}
+                                        {msg.sender === 'user' ? (
+                                            msg.text.split('\n').map((line, i) => (
+                                                <React.Fragment key={i}>
+                                                    {line}
+                                                    {i !== msg.text.split('\n').length - 1 && <br />}
+                                                </React.Fragment>
+                                            ))
+                                        ) : (
+                                            <div dangerouslySetInnerHTML={{ __html: msg.text }} />
+                                        )}
                                     </div>
                                 ))}
                                 {isTyping && (
