@@ -138,34 +138,18 @@ const Home = () => {
                 const botResponse = data.candidates[0].content.parts[0].text;
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
             } else {
-                console.warn("Gemini API Error. Activating local NLP engine...");
-                
-                // Advanced Local NLP Engine (Failsafe for when API is rate limited)
-                let fallbackMsg = "";
-                const input = userMsg.toLowerCase();
-                
-                if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
-                    fallbackMsg = "Hello there! My cloud brain is currently cooling down due to high traffic, but I'm operating locally! How can I help you navigate CareerSync today?";
-                } else if (input.match(/\b(job|jobs|placement|placements|career|hiring)\b/)) {
-                    fallbackMsg = "CareerSync is designed to bridge the gap between students and top-tier companies. You can explore our AI resume scanner or check out the latest hiring drives!";
-                } else if (input.match(/\b(university|college|tpo|admin)\b/)) {
-                    fallbackMsg = "We provide powerful analytics dashboards for Universities and TPOs to track student performance and manage placement drives efficiently.";
-                } else if (input.match(/\b(resume|cv|skills|portfolio)\b/)) {
-                    fallbackMsg = "Your resume is your first impression! Our platform uses AI to analyze your skills against industry standards and suggests areas for improvement.";
-                } else if (input.match(/\b(who are you|what are you|your name)\b/)) {
-                    fallbackMsg = "I am the CareerSync AI Assistant! Usually I'm powered by Google Gemini, but right now I'm running on a specialized local offline engine to ensure I can always chat with you.";
-                } else if (input.match(/\b(thank you|thanks)\b/)) {
-                    fallbackMsg = "You're very welcome! Let me know if you need anything else.";
-                } else if (input.match(/\b(how are you)\b/)) {
-                    fallbackMsg = "I'm functioning perfectly in offline mode, thank you for asking! What career goals can we tackle today?";
+                console.warn("Gemini API Error. Bypassing through Backend Proxy to Open AI...");
+                const proxyRes = await fetch("http://localhost:5000/api/chat", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMsg })
+                });
+                const proxyData = await proxyRes.json();
+                if (proxyData.reply) {
+                    setMessages(prev => [...prev, { sender: 'bot', text: proxyData.reply }]);
                 } else {
-                    // Dynamic response generation for unknown queries
-                    const words = input.split(' ').filter(w => w.length > 4);
-                    const keyword = words.length > 0 ? words[Math.floor(Math.random() * words.length)] : "that";
-                    fallbackMsg = `That's an interesting point about "${keyword}". Since my primary Google AI servers are currently rate-limited (experiencing high demand), I'm running locally and might not have the full answer. Could you ask me something specific about CareerSync's features, placements, or resumes?`;
+                    setMessages(prev => [...prev, { sender: 'bot', text: "All AI servers are currently unresponsive. Please try again later." }]);
                 }
-                
-                setMessages(prev => [...prev, { sender: 'bot', text: fallbackMsg }]);
             }
         } catch (error) {
             console.error("Chat error. Triggering local NLP fallback...", error);
