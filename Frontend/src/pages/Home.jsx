@@ -315,7 +315,7 @@ const Home = () => {
                                     <div className="bg-white p-1.5 rounded-full shadow-sm">
                                         <Bot className={`w-4 h-4 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
                                     </div>
-                                    <span className="font-bold text-gray-900 tracking-tight">CareerSync AI</span>
+                                    <span className="font-bold text-gray-900 tracking-tight">CareerSync Assistant</span>
                                 </div>
                                 <button onClick={() => { 
                                     // If chat was ended, wipe history so it starts fresh next time
@@ -428,8 +428,8 @@ const Home = () => {
                             setIsPaused(true);
                         }}
                     >
-                        <span className="absolute right-full mr-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
-                            CareerSync AI Assistant
+                        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
+                            AI Assistant
                         </span>
                         <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
                     </motion.button>
