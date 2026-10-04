@@ -797,16 +797,16 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border border-slate-200/60 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-blue-50 shadow-md border-blue-200' : 'bg-white hover:bg-blue-50 hover:border-blue-100 hover:shadow-sm'}`}
+                                className={`border rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-200' : 'bg-blue-50 border-blue-100/50 hover:bg-white hover:shadow-md hover:border-blue-200'}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                                     className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
                                 >
-                                    <span className={`font-semibold text-base md:text-lg tracking-tight pr-4 transition-colors ${openFaq === index ? 'text-blue-700' : 'text-slate-800 group-hover:text-blue-600'}`}>
+                                    <span className="font-semibold text-base md:text-lg tracking-tight pr-4 transition-colors text-blue-900 group-hover:text-blue-900">
                                         {faq.question}
                                     </span>
-                                    <div className={`transition-transform duration-300 ${openFaq === index ? 'text-blue-600 rotate-180' : 'text-slate-400 group-hover:text-blue-500'}`}>
+                                    <div className={`transition-transform duration-300 text-blue-900 ${openFaq === index ? 'rotate-180' : ''}`}>
                                         <ChevronDown className="w-5 h-5 stroke-[2.5]" />
                                     </div>
                                 </button>
