@@ -333,16 +333,6 @@ const Home = () => {
                                             <button 
                                                 onClick={() => {
                                                     setMessages(prev => [...prev, { sender: 'bot', text: "Thank you for connecting with CareerSync! Have a great day. 👋" }]);
-                                                    setTimeout(() => {
-                                                        setIsChatOpen(false);
-                                                        setIsPaused(false);
-                                                        setTimeout(() => {
-                                                            setMessages([
-                                                                { sender: 'bot', text: "Hi there! 👋 I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
-                                                            ]);
-                                                            setChatInput("");
-                                                        }, 500);
-                                                    }, 1500);
                                                 }}
                                                 className="flex items-center space-x-1 text-[10px] text-red-500 hover:text-white hover:bg-red-500 transition-all duration-200 mt-2 mb-2 self-start bg-white border border-red-500 rounded-full px-3 py-1.5 outline-none shadow-sm"
                                             >
@@ -363,26 +353,29 @@ const Home = () => {
                             </div>
                             
                             
-                            {/* Chat Input */}
-                            {messages.length > 0 && messages[messages.length - 1].text.includes("Thank you for connecting") ? null : messages.length === 1 && (
-                                <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
-                                    <p className="text-[10px] text-gray-400 font-light tracking-wider">No conversation. Click on an icon above to proceed to chat.</p>
-                                </div>
-                            )}
-                            {messages.length > 1 && !messages[messages.length - 1].text.includes("Thank you for connecting") && (
-                            <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
-                                <input 
-                                    type="text" 
-                                    value={chatInput}
-                                    onChange={(e) => setChatInput(e.target.value)}
-                                    placeholder="Ask me anything..." 
-                                    className="flex-1 bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:ring-0 rounded-full px-4 py-2 text-sm transition outline-none" 
-                                />
-                                <button type="submit" disabled={!chatInput.trim() || isTyping} className={`p-2 rounded-full text-white shadow-md hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed ${['bg-blue-600 hover:bg-blue-700', 'bg-indigo-600 hover:bg-indigo-700', 'bg-amber-800 hover:bg-amber-900'][currentSlide]}`}>
-                                    <ArrowRight className="w-4 h-4" />
-                                </button>
-                            </form>
-                            )}
+                            {/* Chat Input or Placeholder Banners */}
+                              {messages.length > 0 && messages[messages.length - 1].text.includes("Thank you for connecting") ? (
+                                  <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
+                                      <p className="text-[10px] text-gray-400 font-light tracking-wider">Chat closed. I hope your queries were resolved.</p>
+                                  </div>
+                              ) : messages.length === 1 ? (
+                                  <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
+                                      <p className="text-[10px] text-gray-400 font-light tracking-wider">No conversation. Click on an icon above to proceed to chat.</p>
+                                  </div>
+                              ) : (
+                                  <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
+                                      <input 
+                                          type="text" 
+                                          value={chatInput}
+                                          onChange={(e) => setChatInput(e.target.value)}
+                                          placeholder="Ask me anything..." 
+                                          className="flex-1 bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:ring-0 rounded-full px-4 py-2 text-sm transition outline-none" 
+                                      />
+                                      <button type="submit" disabled={!chatInput.trim() || isTyping} className={`p-2 rounded-full text-white shadow-md hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed ${['bg-blue-600 hover:bg-blue-700', 'bg-indigo-600 hover:bg-indigo-700', 'bg-amber-800 hover:bg-amber-900'][currentSlide]}`}>
+                                          <ArrowRight className="w-4 h-4" />
+                                      </button>
+                                  </form>
+                              )}
                         </motion.div>
                     )}
                 </AnimatePresence>
