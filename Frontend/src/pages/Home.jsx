@@ -797,7 +797,7 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-200' : 'bg-blue-50 border-blue-100/50 hover:bg-white hover:shadow-md hover:border-blue-200'}`}
+                                className={`border rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-gray-200' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} border-transparent hover:bg-white hover:shadow-md hover:border-gray-200`}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
