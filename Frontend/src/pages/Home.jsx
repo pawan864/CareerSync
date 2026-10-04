@@ -681,7 +681,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-testimonials" className="bg-gray-50 py-20 border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 id="tour-testimonials-heading" className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        <h2 id="tour-testimonials-heading" className="text-sm font-bold tracking-widest text-black uppercase">
                             Success Stories
                         </h2>
                         <p className={`mt-4 text-sm font-normal italic leading-relaxed tracking-wide max-w-2xl mx-auto transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].syncText : 'text-blue-900'}`}>
@@ -785,7 +785,7 @@ const Home = () => {
             <section className="py-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        <h2 className="text-sm font-bold tracking-widest text-black uppercase">
                             Frequently Asked Questions
                         </h2>
                         <p className={`mt-4 text-sm font-normal italic leading-relaxed tracking-wide max-w-2xl mx-auto transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].syncText : 'text-blue-900'}`}>
