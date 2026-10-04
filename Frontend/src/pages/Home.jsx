@@ -138,22 +138,13 @@ const Home = () => {
                 const botResponse = data.candidates[0].content.parts[0].text;
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
             } else {
-                console.warn("Gemini API Error. Bypassing through Backend Proxy to Open AI...");
-                const proxyRes = await fetch("http://localhost:5000/api/chat", {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: userMsg })
-                });
-                const proxyData = await proxyRes.json();
-                if (proxyData.reply) {
-                    setMessages(prev => [...prev, { sender: 'bot', text: proxyData.reply }]);
-                } else {
-                    setMessages(prev => [...prev, { sender: 'bot', text: "All AI servers are currently unresponsive. Please try again later." }]);
-                }
+                console.error("Gemini API Error Response:", data);
+                const errorMsg = data.error?.message || "I'm sorry, I couldn't process that request at the moment.";
+                setMessages(prev => [...prev, { sender: 'bot', text: "Error: " + errorMsg }]);
             }
         } catch (error) {
-            console.error("Chat error. Triggering local NLP fallback...", error);
-            setMessages(prev => [...prev, { sender: 'bot', text: "Network error reaching Google API! Please check your connection or wait for the quota to reset." }]);
+            console.error("Chat error:", error);
+            setMessages(prev => [...prev, { sender: 'bot', text: "Network error! Please check your connection." }]);
         } finally {
             setIsTyping(false);
         }
