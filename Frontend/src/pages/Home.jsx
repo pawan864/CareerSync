@@ -87,9 +87,13 @@ const Home = () => {
     ]);
     const chatEndRef = React.useRef(null);
     
+    const chatBodyRef = React.useRef(null);
     useEffect(() => {
-        if (chatEndRef.current) {
-            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        if (chatBodyRef.current) {
+            chatBodyRef.current.scrollTo({
+                top: chatBodyRef.current.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     }, [messages, isTyping]);
     
@@ -304,7 +308,7 @@ const Home = () => {
                             </div>
                             
                             {/* Chat Body */}
-                            <div className="h-72 p-4 bg-gray-50 overflow-y-auto flex flex-col space-y-4">
+                            <div ref={chatBodyRef} className="h-72 p-4 bg-gray-50 overflow-y-auto flex flex-col space-y-4">
                                 <div className="text-xs text-center text-gray-400 font-medium my-1">Today</div>
                                 {messages.map((msg, idx) => (
                                     <div key={idx} className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[85%] ${msg.sender === 'user' ? 'bg-gray-800 text-white self-end rounded-tr-sm' : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'}`}>
