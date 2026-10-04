@@ -329,11 +329,14 @@ const Home = () => {
                                                 ))}
                                             </div>
                                         )}
-                                        {msg.sender === 'bot' && idx > 0 && idx === messages.length - 1 && !isTyping && (
+                                        {msg.sender === 'bot' && idx > 0 && idx === messages.length - 1 && !isTyping && !msg.text.includes("Thank you for connecting") && (
                                             <button 
                                                 onClick={() => {
-                                                    setIsChatOpen(false);
-                                                    setIsPaused(false);
+                                                    setMessages(prev => [...prev, { sender: 'bot', text: "Thank you for connecting with CareerSync! Have a great day. 👋" }]);
+                                                    setTimeout(() => {
+                                                        setIsChatOpen(false);
+                                                        setIsPaused(false);
+                                                    }, 1500);
                                                 }}
                                                 className="flex items-center space-x-1 text-[10px] text-red-500 hover:text-white hover:bg-red-500 transition-all duration-200 mt-2 mb-2 self-start bg-white border border-red-500 rounded-full px-3 py-1.5 outline-none shadow-sm"
                                             >
