@@ -85,7 +85,7 @@ const Home = () => {
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: 'bot', text: "Hi there! 👋 I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
+        { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
     ]);
     const chatEndRef = React.useRef(null);
     
@@ -116,17 +116,17 @@ const Home = () => {
                 const input = userMsg.toLowerCase();
                 
                 if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements")) {
-                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/>👉 <a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
+                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/><a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
                 } else if (input.includes("register") || input.includes("sign up") || input.includes("create account")) {
-                    botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/>👉 <a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
+                    botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/><a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
                 } else if (input.includes("login") || input.includes("log in") || input.includes("logged in")) {
-                    botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/>👉 <a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
+                    botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/><a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
                 } else if (input.includes("resume") || input.includes("cv")) {
                     botResponse = "Your Resume/CV is your first impression! CareerSync uses AI to parse your resume, analyze your skills, and automatically match you with companies looking for your specific tech stack.";
                 } else if (input.includes("other queries") || input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details") || input.includes("support") || input.includes("technical")) {
-                    botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/>👉 <a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Technical Support Page</a>";
+                    botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/><a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Technical Support Page</a>";
                 } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
-                    botResponse = "Hello! 👋 I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• 💼 Jobs & Placements<br/>• 📝 Registration & Log In<br/>• 📞 Helpline & Support<br/><br/>How can I help you navigate the portal today?";
+                    botResponse = "Hello. I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• Jobs & Placements<br/>• Registration & Log In<br/>• Helpline & Support<br/><br/>How can I help you navigate the portal today?";
                 } else {
                     botResponse = "I am a specialized CareerSync assistant. I am here to help you with <b>jobs, placements, registration, login, helpline details, or any other issue related to the portal</b>. Could you please rephrase your question regarding one of those topics?";
                 }
@@ -332,7 +332,7 @@ const Home = () => {
                                         {msg.sender === 'bot' && idx > 0 && idx === messages.length - 1 && !isTyping && !msg.text.includes("Thank you for connecting") && (
                                             <button 
                                                 onClick={() => {
-                                                    setMessages(prev => [...prev, { sender: 'bot', text: "Thank you for connecting with CareerSync! Have a great day. 👋" }]);
+                                                    setMessages(prev => [...prev, { sender: 'bot', text: "Thank you for connecting with CareerSync! Have a great day." }]);
                                                 }}
                                                 className="flex items-center space-x-1 text-[10px] text-red-500 hover:text-white hover:bg-red-500 transition-all duration-200 mt-2 mb-2 self-start bg-white border border-red-500 rounded-full px-3 py-1.5 outline-none shadow-sm"
                                             >
