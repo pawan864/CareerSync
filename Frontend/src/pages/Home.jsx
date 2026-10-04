@@ -301,35 +301,35 @@ const Home = () => {
                             <div ref={chatBodyRef} className="h-72 p-4 bg-gray-50 overflow-y-auto flex flex-col space-y-4">
                                 <div className="text-xs text-center text-gray-400 font-medium my-1">Today</div>
                                 {messages.map((msg, idx) => (
-                                    <div key={idx} className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[85%] ${msg.sender === 'user' ? 'bg-gray-800 text-white self-end rounded-tr-sm' : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'}`}>
-                                        {msg.sender === 'user' ? (
-                                            msg.text.split('\n').map((line, i) => (
-                                                <React.Fragment key={i}>
-                                                    {line}
-                                                    {i !== msg.text.split('\n').length - 1 && <br />}
-                                                </React.Fragment>
-                                            ))
-                                        ) : (
-                                            <>
+                                    <React.Fragment key={idx}>
+                                        <div className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[85%] ${msg.sender === 'user' ? 'bg-gray-800 text-white self-end rounded-tr-sm' : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'}`}>
+                                            {msg.sender === 'user' ? (
+                                                msg.text.split('\n').map((line, i) => (
+                                                    <React.Fragment key={i}>
+                                                        {line}
+                                                        {i !== msg.text.split('\n').length - 1 && <br />}
+                                                    </React.Fragment>
+                                                ))
+                                            ) : (
                                                 <div dangerouslySetInnerHTML={{ __html: msg.text }} />
-                                                {msg.text.includes("I am a specialized CareerSync assistant") && (
-                                                    <div className="grid grid-cols-3 gap-2 mt-4">
-                                                        {quickQueries.map((query, i) => (
-                                                            <button 
-                                                                key={i}
-                                                                type="button"
-                                                                disabled={isTyping}
-                                                                onClick={() => handleSendMessage(null, query)}
-                                                                className="text-[10px] px-1 py-1.5 bg-white border border-blue-500 text-blue-600 font-semibold rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition-colors disabled:opacity-50 flex items-center justify-center text-center leading-tight whitespace-normal"
-                                                            >
-                                                                {query}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                )}
-                                            </>
+                                            )}
+                                        </div>
+                                        {msg.sender === 'bot' && msg.text.includes("I am a specialized CareerSync assistant") && (
+                                            <div className="grid grid-cols-3 gap-2 w-full max-w-[95%] self-start -mt-2">
+                                                {quickQueries.map((query, i) => (
+                                                    <button 
+                                                        key={i}
+                                                        type="button"
+                                                        disabled={isTyping}
+                                                        onClick={() => handleSendMessage(null, query)}
+                                                        className="text-[10px] px-1 py-1.5 bg-white border border-blue-500 text-blue-600 font-semibold rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition-colors disabled:opacity-50 flex items-center justify-center text-center leading-tight whitespace-normal"
+                                                    >
+                                                        {query}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         )}
-                                    </div>
+                                    </React.Fragment>
                                 ))}
                                 {isTyping && (
                                     <div className="bg-white p-4 rounded-2xl rounded-tl-sm border border-gray-100 shadow-sm self-start flex items-center space-x-1">
