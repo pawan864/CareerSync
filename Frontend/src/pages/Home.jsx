@@ -848,21 +848,25 @@ const Home = () => {
                         </Link>
                     </div>
                     <div className="md:w-1/2 mt-12 md:mt-0 relative">
-                        {/* Paragraph & Image */}
-                        <div className="flex flex-col-reverse md:flex-row items-center justify-between md:items-start space-y-8 space-y-reverse md:space-y-0 md:space-x-8 relative mt-12 md:mt-0 w-full md:max-w-2xl mx-auto md:ml-auto">
+                        {/* Paragraph & Hero-Style Image */}
+                        <div className="flex flex-col h-full relative mt-12 md:mt-0 w-full min-h-[200px]">
                             {/* 4 Line Italic Paragraph */}
-                            <div className="flex-1 flex items-center h-full pt-2 md:pt-4 text-center md:text-left">
-                                <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900">
+                            <div className="md:w-2/3 flex items-center h-full z-20 relative text-center md:text-left md:pr-4">
+                                <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900 bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl shadow-sm md:shadow-none">
                                     CareerSync bridges the gap between ambition and opportunity. We empower students with AI-driven insights, equip universities with powerful placement analytics, and provide corporate recruiters with instant access to a verified, highly-skilled talent pool ready to shape the future of the industry.
                                 </p>
                             </div>
                             
-                            {/* Professional Image */}
-                            <div className="flex-shrink-0 mb-6 md:mb-0">
-                                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-2xl border-4 border-white/60 bg-white/20 transition-transform duration-500 hover:scale-110">
-                                    <img src="/hero-student-transparent.jpg?v=13" alt="Professional College Student" className="w-full h-full object-cover object-top" />
-                                </div>
-                            </div>
+                            {/* Professional Image (Hero Style) bleeding to the edges */}
+                            <img 
+                                src="/hero-student-transparent.jpg?v=13" 
+                                alt="Professional College Student" 
+                                className="hidden md:block absolute -bottom-16 -right-16 w-auto h-[140%] max-h-[350px] object-contain object-bottom mix-blend-multiply pointer-events-none transition-transform duration-700 group-hover/cta:scale-105"
+                                style={{
+                                    maskImage: 'linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 100%)',
+                                    WebkitMaskImage: 'linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 100%)'
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
