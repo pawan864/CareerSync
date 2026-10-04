@@ -79,6 +79,7 @@ const heroSlides = [
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [isChatOpen, setIsChatOpen] = useState(false);
     const [pageTheme, setPageTheme] = useState('indigo');
     const [showCookieConsent, setShowCookieConsent] = useState(() => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
@@ -215,14 +216,62 @@ const Home = () => {
                     </div>
                 </div>
                 
+                {/* AI Chatbot Window */}
+                <AnimatePresence>
+                    {isChatOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="absolute bottom-24 right-6 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-50 flex flex-col"
+                        >
+                            {/* Chat Header */}
+                            <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
+                                <div className="flex items-center space-x-2">
+                                    <div className="bg-white p-1.5 rounded-full shadow-sm">
+                                        <Bot className={`w-4 h-4 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
+                                    </div>
+                                    <span className="font-bold text-gray-900 tracking-tight">CareerSync AI</span>
+                                </div>
+                                <button onClick={() => setIsChatOpen(false)} className="text-gray-800 hover:bg-black/10 p-1 rounded-full transition">
+                                    <X className="w-4 h-4" />
+                                </button>
+                            </div>
+                            
+                            {/* Chat Body */}
+                            <div className="h-72 p-4 bg-gray-50 overflow-y-auto flex flex-col space-y-4">
+                                <div className="text-xs text-center text-gray-400 font-medium my-1">Today</div>
+                                <div className="bg-white p-3 rounded-2xl rounded-tl-sm border border-gray-100 shadow-sm self-start max-w-[85%] text-sm text-gray-700 leading-relaxed">
+                                    Hi there! 👋 I'm your CareerSync AI Assistant. <br/><br/>
+                                    How can I help you accelerate your career today? I can answer questions about placements, skill mapping, or employer connections.
+                                </div>
+                            </div>
+                            
+                            {/* Chat Input */}
+                            <div className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
+                                <input type="text" placeholder="Ask me anything..." className="flex-1 bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:ring-0 rounded-full px-4 py-2 text-sm transition outline-none" />
+                                <button className={`p-2 rounded-full text-white shadow-md hover:shadow-lg transition ${['bg-blue-600 hover:bg-blue-700', 'bg-indigo-600 hover:bg-indigo-700', 'bg-amber-800 hover:bg-amber-900'][currentSlide]}`}>
+                                    <ArrowRight className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
                 {/* Hero Chatbot Icon (Bottom Right) */}
                 <motion.button 
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 1, type: "spring", stiffness: 200 }}
-                    className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center`}
-                    onClick={() => alert("Chat window will open here once the API is provided!")}
+                    className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                    onClick={() => {
+                        setIsChatOpen(!isChatOpen);
+                        if (!isChatOpen) setIsPaused(true);
+                    }}
                 >
+                    <span className="absolute right-full mr-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
+                        CareerSync AI Assistant
+                    </span>
                     <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
                 </motion.button>
             </div>
