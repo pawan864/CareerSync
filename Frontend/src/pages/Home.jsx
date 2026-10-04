@@ -115,23 +115,33 @@ const Home = () => {
                 let botResponse = "";
                 const input = userMsg.toLowerCase();
                 
-                if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements") || input.includes("internship")) {
-                    botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/><a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
-                } else if (input.includes("register") || input.includes("sign up") || input.includes("create account")) {
-                    botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/><a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
-                } else if (input.includes("login") || input.includes("log in") || input.includes("logged in") || input.includes("dashboard")) {
-                    botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/><a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
-                } else if (input.includes("resume") || input.includes("cv") || input.includes("skill match")) {
-                    botResponse = "Your Resume/CV is your first impression! CareerSync uses AI to parse your resume, analyze your skills, and automatically match you with companies looking for your specific tech stack.";
-                } else if (input.includes("interview") || input.includes("corporate")) {
-                    botResponse = "CareerSync provides integrated tools for Corporate Recruiters to easily schedule interviews, track applicants, and manage the entire hiring pipeline directly from their dashboard.";
-                } else if (input.includes("other queries") || input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details") || input.includes("support") || input.includes("technical")) {
-                    botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/><a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Technical Support Page</a>";
-                } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
-                    botResponse = "Hello. I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• Jobs & Placements<br/>• Registration & Log In<br/>• Helpline & Support<br/><br/>How can I help you navigate the portal today?";
-                } else {
-                    botResponse = "I am a specialized CareerSync assistant. I am here to help you with <b>jobs, placements, registration, login, helpline details, or any other issue related to the portal</b>. Could you please rephrase your question regarding one of those topics?";
-                }
+                if (input === "jobs" || input === "placements" || input.includes("job") || input.includes("placement")) {
+                      botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/><a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
+                  } else if (input === "internships" || input.includes("internship")) {
+                      botResponse = "We are currently expanding our platform to include a dedicated <b>Internships</b> portal! Soon, students will be able to browse and apply for exclusive summer and winter internship programs.";
+                  } else if (input === "registration" || input.includes("register") || input.includes("sign up")) {
+                      botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/><a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
+                  } else if (input === "login" || input.includes("log in") || input.includes("logged in")) {
+                      botResponse = "You can access your account by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/><a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In</a>";
+                  } else if (input === "dashboard") {
+                      botResponse = "Your personalized <b>Dashboard</b> will give you a complete overview of your applications, upcoming interviews, and skill-match scores. Please log in to access your dashboard.";
+                  } else if (input === "resume/cv" || input.includes("resume") || input.includes("cv")) {
+                      botResponse = "Your Resume/CV is your first impression! CareerSync allows you to build a professional profile that highlights your education, projects, and technical skills to top recruiters.";
+                  } else if (input === "skill match" || input.includes("skill")) {
+                      botResponse = "Our advanced <b>AI Skill Matching</b> engine is currently in development. Once launched, it will automatically analyze your resume and recommend the exact jobs you are highly qualified for!";
+                  } else if (input === "interviews" || input.includes("interview")) {
+                      botResponse = "The <b>Interview Scheduling</b> module is currently under construction. Soon, corporate recruiters will be able to schedule, manage, and conduct interviews directly through the platform.";
+                  } else if (input === "helpline" || input.includes("help") || input.includes("support")) {
+                      botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/><a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Support Page</a>";
+                  } else if (input === "corporate") {
+                      botResponse = "The <b>Corporate Portal</b> is being designed specifically for HRs and Recruiters to seamlessly manage hiring pipelines, track applicants, and roll out offers efficiently.";
+                  } else if (input === "other queries" || input.includes("other")) {
+                      botResponse = "I am a specialized CareerSync assistant. I can help you with questions regarding jobs, placements, registrations, or platform features. How can I assist you today?";
+                  } else if (input.match(/(hi|hello|hey|greetings)/)) {
+                      botResponse = "Hello. I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• Jobs & Placements<br/>• Registration & Log In<br/>• Helpline & Support<br/><br/>How can I help you navigate the portal today?";
+                  } else {
+                      botResponse = "I am a specialized CareerSync assistant. I am here to help you with jobs, placements, registration, login, helpline details, or any other issue related to the portal. Could you please rephrase your question regarding one of those topics?";
+                  }
                 
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
                 setIsTyping(false);
