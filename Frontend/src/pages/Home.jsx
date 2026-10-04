@@ -336,6 +336,12 @@ const Home = () => {
                                                     setTimeout(() => {
                                                         setIsChatOpen(false);
                                                         setIsPaused(false);
+                                                        setTimeout(() => {
+                                                            setMessages([
+                                                                { sender: 'bot', text: "Hi there! 👋 I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
+                                                            ]);
+                                                            setChatInput("");
+                                                        }, 500);
                                                     }, 1500);
                                                 }}
                                                 className="flex items-center space-x-1 text-[10px] text-red-500 hover:text-white hover:bg-red-500 transition-all duration-200 mt-2 mb-2 self-start bg-white border border-red-500 rounded-full px-3 py-1.5 outline-none shadow-sm"
@@ -358,12 +364,12 @@ const Home = () => {
                             
                             
                             {/* Chat Input */}
-                            {messages.length === 1 && (
+                            {messages.length > 0 && messages[messages.length - 1].text.includes("Thank you for connecting") ? null : messages.length === 1 && (
                                 <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
                                     <p className="text-[10px] text-gray-400 font-light tracking-wider">No conversation. Click on an icon above to proceed to chat.</p>
                                 </div>
                             )}
-                            {messages.length > 1 && (
+                            {messages.length > 1 && !messages[messages.length - 1].text.includes("Thank you for connecting") && (
                             <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
                                 <input 
                                     type="text" 
