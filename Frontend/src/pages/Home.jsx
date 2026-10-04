@@ -85,7 +85,7 @@ const Home = () => {
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: 'bot', text: "Hi there! 👋 I'm your CareerSync AI Assistant. \n\nHow can I help you accelerate your career today? I can answer questions about placements, skill mapping, or employer connections." }
+        { sender: 'bot', text: "I am CareerSync AI Assistant, I am here to help!" }
     ]);
     const chatEndRef = React.useRef(null);
     
@@ -100,7 +100,7 @@ const Home = () => {
     }, [messages, isTyping]);
     
     const handleSendMessage = async (e, quickQuery = null) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         
         
         const userMsg = quickQuery || chatInput.trim();
@@ -345,7 +345,7 @@ const Home = () => {
                             {/* Chat Input */}
                             {messages.length === 1 && (
                                 <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
-                                    <p className="text-xs text-gray-400 font-medium tracking-wide">No conversation. Click on an icon above to proceed to chat.</p>
+                                    <p className="text-[10px] text-gray-400 font-light tracking-wider">No conversation. Click on an icon above to proceed to chat.</p>
                                 </div>
                             )}
                             {messages.length > 1 && (
