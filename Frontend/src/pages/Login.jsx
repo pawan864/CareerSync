@@ -284,8 +284,13 @@ const Login = () => {
             </div>
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
-            <div className="w-full max-w-6xl rounded-3xl min-h-[650px] shadow-2xl relative z-10 perspective-1000">
-                <AnimatePresence>
+            <motion.div 
+                className="w-full max-w-6xl rounded-3xl min-h-[650px] shadow-2xl relative z-10 perspective-1000"
+                initial={{ opacity: 0, scale: 0.96, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+                <AnimatePresence initial={false}>
                     <motion.div
                           key={showSupport ? 'support' : portal}
                           initial="initial"
@@ -1503,7 +1508,7 @@ const Login = () => {
                         )}
                     </motion.div>
                 </AnimatePresence>
-            </div>
+            </motion.div>
             
             {/* Invisible spacer to perfectly preserve the original vertical alignment of the card */}
             <div className="mt-3 text-center z-20 h-[18px]"></div>
