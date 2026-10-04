@@ -80,6 +80,40 @@ const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [chatInput, setChatInput] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+    const [messages, setMessages] = useState([
+        { sender: 'bot', text: "Hi there! 👋 I'm your CareerSync AI Assistant. \n\nHow can I help you accelerate your career today? I can answer questions about placements, skill mapping, or employer connections." }
+    ]);
+    const chatEndRef = React.useRef(null);
+    
+    useEffect(() => {
+        if (chatEndRef.current) {
+            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages, isTyping]);
+    
+    const handleSendMessage = async (e) => {
+        e.preventDefault();
+        if (!chatInput.trim()) return;
+        
+        const userMsg = chatInput.trim();
+        setMessages(prev => [...prev, { sender: 'user', text: userMsg }]);
+        setChatInput('');
+        setIsTyping(true);
+        
+        // TODO: Replace this timeout with the actual API call using import.meta.env.VITE_CHATBOT_API_KEY
+        try {
+            // Simulated API delay
+            setTimeout(() => {
+                setMessages(prev => [...prev, { sender: 'bot', text: "I have received your API key! However, I still need the specific API endpoint URL to send your messages to. Please provide the URL to the developer!" }]);
+                setIsTyping(false);
+            }, 1500);
+        } catch (error) {
+            console.error("Chat error:", error);
+            setIsTyping(false);
+        }
+    };
     const [pageTheme, setPageTheme] = useState('indigo');
     const [showCookieConsent, setShowCookieConsent] = useState(() => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
@@ -241,19 +275,39 @@ const Home = () => {
                             {/* Chat Body */}
                             <div className="h-72 p-4 bg-gray-50 overflow-y-auto flex flex-col space-y-4">
                                 <div className="text-xs text-center text-gray-400 font-medium my-1">Today</div>
-                                <div className="bg-white p-3 rounded-2xl rounded-tl-sm border border-gray-100 shadow-sm self-start max-w-[85%] text-sm text-gray-700 leading-relaxed">
-                                    Hi there! 👋 I'm your CareerSync AI Assistant. <br/><br/>
-                                    How can I help you accelerate your career today? I can answer questions about placements, skill mapping, or employer connections.
-                                </div>
+                                {messages.map((msg, idx) => (
+                                    <div key={idx} className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[85%] ${msg.sender === 'user' ? 'bg-gray-800 text-white self-end rounded-tr-sm' : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'}`}>
+                                        {msg.text.split('\n').map((line, i) => (
+                                            <React.Fragment key={i}>
+                                                {line}
+                                                {i !== msg.text.split('\n').length - 1 && <br />}
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                                ))}
+                                {isTyping && (
+                                    <div className="bg-white p-4 rounded-2xl rounded-tl-sm border border-gray-100 shadow-sm self-start flex items-center space-x-1">
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                    </div>
+                                )}
+                                <div ref={chatEndRef} />
                             </div>
                             
                             {/* Chat Input */}
-                            <div className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
-                                <input type="text" placeholder="Ask me anything..." className="flex-1 bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:ring-0 rounded-full px-4 py-2 text-sm transition outline-none" />
-                                <button className={`p-2 rounded-full text-white shadow-md hover:shadow-lg transition ${['bg-blue-600 hover:bg-blue-700', 'bg-indigo-600 hover:bg-indigo-700', 'bg-amber-800 hover:bg-amber-900'][currentSlide]}`}>
+                            <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
+                                <input 
+                                    type="text" 
+                                    value={chatInput}
+                                    onChange={(e) => setChatInput(e.target.value)}
+                                    placeholder="Ask me anything..." 
+                                    className="flex-1 bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:ring-0 rounded-full px-4 py-2 text-sm transition outline-none" 
+                                />
+                                <button type="submit" disabled={!chatInput.trim() || isTyping} className={`p-2 rounded-full text-white shadow-md hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed ${['bg-blue-600 hover:bg-blue-700', 'bg-indigo-600 hover:bg-indigo-700', 'bg-amber-800 hover:bg-amber-900'][currentSlide]}`}>
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
-                            </div>
+                            </form>
                         </motion.div>
                     )}
                 </AnimatePresence>
