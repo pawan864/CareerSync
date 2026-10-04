@@ -847,9 +847,9 @@ const Home = () => {
                             <ArrowRight className="w-4 h-4 ml-2 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                         </Link>
                     </div>
-                    <div className="md:w-1/2 mt-12 md:mt-0 relative flex justify-end items-center h-full min-h-[200px]">
+                    <div className="md:w-1/2 mt-12 md:mt-0 relative flex justify-start items-center h-full min-h-[200px]">
                         {/* 4 Line Italic Paragraph */}
-                        <div className="w-full md:w-3/5 flex items-center h-full z-20 relative text-center md:text-left pr-0 md:pr-16 md:-translate-x-4">
+                        <div className="w-full md:w-5/6 lg:w-3/4 flex items-center h-full z-20 relative text-center md:text-left md:-translate-x-8 lg:-translate-x-12">
                             <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900 bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl shadow-sm md:shadow-none">
                                 CareerSync bridges the gap between ambition and opportunity. We empower students with AI-driven insights, equip universities with powerful placement analytics, and provide corporate recruiters with instant access to a verified, highly-skilled talent pool ready to shape the future of the industry.
                             </p>
@@ -857,11 +857,15 @@ const Home = () => {
                     </div>
                 </div>
                 
-                {/* Professional Image (True Transparent PNG) */}
+                {/* Professional Image with Dark Shirt for perfect blend */}
                 <img 
-                    src="/hero-student-cutout.png" 
+                    src="/dark-student.jpg" 
                     alt="Professional College Student" 
-                    className="hidden md:block absolute bottom-0 right-0 lg:-right-8 w-auto h-[95%] max-h-[420px] object-contain object-bottom pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]"
+                    className="hidden md:block absolute bottom-0 right-0 lg:right-4 w-auto h-[120%] max-h-[500px] object-contain object-bottom mix-blend-multiply pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105"
+                    style={{
+                        maskImage: 'linear-gradient(to right, transparent 0%, black 20%)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%)'
+                    }}
                 />
             </motion.div>
 
