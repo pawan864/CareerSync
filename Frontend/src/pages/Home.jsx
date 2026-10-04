@@ -428,7 +428,7 @@ const Home = () => {
                             setIsPaused(true);
                         }}
                     >
-                        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-2 text-black text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">CareerSync Assistant</span>
+                        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-4 bg-gray-800 text-white text-[10px] font-semibold px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">CareerSync Assistant</span>
                         <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
                     </motion.button>
                 )}
