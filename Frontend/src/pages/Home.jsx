@@ -692,7 +692,7 @@ const Home = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Testimonial 1 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-gray-300 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State (Minimal & Professional) */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
@@ -721,7 +721,7 @@ const Home = () => {
                         </motion.div>
 
                         {/* Testimonial 2 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-gray-300 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
@@ -750,7 +750,7 @@ const Home = () => {
                         </motion.div>
 
                         {/* Testimonial 3 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-gray-300 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
@@ -797,7 +797,7 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border border-gray-200/70 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} hover:bg-white hover:shadow-md hover:border-gray-300`}`}
+                                className={`border border-gray-300 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-400' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} hover:bg-white hover:shadow-md hover:border-blue-400`}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
