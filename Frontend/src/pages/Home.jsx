@@ -494,10 +494,10 @@ const Home = () => {
                     <div className="hidden md:flex justify-between items-center relative mb-12 px-10">
                         <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} top-1/2 transform -translate-y-1/2 z-0`}></div>
                         
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>01</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>02</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>03</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>04</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">01</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">02</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">03</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">04</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -550,10 +550,10 @@ const Home = () => {
                     <div className="hidden md:flex justify-between items-center relative mb-12 mt-16 px-10">
                         <div className={`absolute left-0 right-0 h-1 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} top-1/2 transform -translate-y-1/2 z-0`}></div>
                         
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>05</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>06</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>07</div>
-                        <div className={`relative z-10 transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].bgDark : 'bg-blue-900'} ${pageStyles[pageTheme].textLight} rounded-full h-10 w-10 flex items-center justify-center font-bold`}>08</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">05</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">06</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">07</div>
+                        <div className="relative z-10 bg-gray-50 text-black rounded-full h-10 w-10 flex items-center justify-center font-extrabold text-lg">08</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -797,7 +797,7 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-gray-200' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} border-transparent hover:bg-white hover:shadow-md hover:border-gray-200`}`}
+                                className={`border border-gray-200/70 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} hover:bg-white hover:shadow-md hover:border-gray-300`}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
