@@ -325,14 +325,14 @@ const Home = () => {
                             </div>
                             
                             {/* Quick Suggestion Chips */}
-                            <div className="px-3 pb-2 pt-2 border-t border-gray-100 bg-gray-50 flex items-center space-x-2 overflow-x-auto whitespace-nowrap scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div className="px-3 pb-2 pt-2 border-t border-gray-100 bg-gray-50 grid grid-cols-3 gap-2">
                                 {quickQueries.map((query, i) => (
                                     <button 
                                         key={i}
                                         type="button"
                                         disabled={isTyping}
                                         onClick={() => handleSendMessage(null, query)}
-                                        className="text-xs px-3 py-1.5 bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors flex-shrink-0 disabled:opacity-50"
+                                        className="text-[11px] px-1 py-2 bg-white border border-blue-500 text-blue-600 font-semibold rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition-colors disabled:opacity-50 flex items-center justify-center text-center leading-tight whitespace-normal h-10"
                                     >
                                         {query}
                                     </button>
