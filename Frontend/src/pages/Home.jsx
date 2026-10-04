@@ -105,8 +105,8 @@ const Home = () => {
         try {
             const apiKey = import.meta.env.VITE_CHATBOT_API_KEY;
             
-            // Build conversation history for context
-            const history = messages.map(m => ({
+            // Build conversation history for context (skip the first hardcoded greeting to avoid role sequence errors in Gemini)
+            const history = messages.slice(1).map(m => ({
                 role: m.sender === 'bot' ? 'model' : 'user',
                 parts: [{ text: m.text }]
             }));
@@ -134,7 +134,9 @@ const Home = () => {
                 const botResponse = data.candidates[0].content.parts[0].text;
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
             } else {
-                setMessages(prev => [...prev, { sender: 'bot', text: "I'm sorry, I couldn't process that request at the moment." }]);
+                console.error("Gemini API Error Response:", data);
+                const errorMsg = data.error?.message || "I'm sorry, I couldn't process that request at the moment.";
+                setMessages(prev => [...prev, { sender: 'bot', text: "Error: " + errorMsg }]);
             }
         } catch (error) {
             console.error("Chat error:", error);
