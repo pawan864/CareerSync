@@ -32,9 +32,9 @@ const Support = () => {
         <div className="min-h-screen flex flex-col items-center justify-center py-2 px-4 relative overflow-hidden bg-gradient-to-r from-white via-blue-50 to-blue-100">
             {/* Back to Chatbot Button */}
             <Link 
-                to="/?chat=open" 
+                to="/" 
                 className="absolute top-6 right-6 z-50 flex items-center justify-center p-3 bg-white/80 backdrop-blur hover:bg-blue-600 text-blue-600 hover:text-white rounded-full shadow-md transition-all duration-300 group"
-                title="Back to Chatbot"
+                title="Back to Homepage"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             </Link>
