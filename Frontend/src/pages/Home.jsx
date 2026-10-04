@@ -605,14 +605,14 @@ const Home = () => {
             </motion.div>
 
             {/* Our Partners Section (Infinite Marquee) */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-white py-12 border-b border-gray-100 overflow-hidden relative flex flex-col items-center">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-gray-100 py-12 border-b border-gray-200 overflow-hidden relative flex flex-col items-center shadow-inner">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center z-10">
-                    <p id="tour-marquee-container" className="text-sm font-bold tracking-widest text-gray-400 uppercase">Trusted by industry leaders & top universities</p>
+                    <p id="tour-marquee-container" className="text-sm font-bold tracking-widest text-black uppercase">Trusted by industry leaders & top universities</p>
                 </div>
                 
                 {/* Gradient Masks for smooth fade on edges */}
-                <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-                <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-100 to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-100 to-transparent z-10 pointer-events-none"></div>
 
                 <div className="flex overflow-hidden group w-full">
                     <div className="animate-marquee group-hover:pause flex items-center space-x-16 px-8">
@@ -698,7 +698,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Aryan Sharma" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-1">Aryan Sharma</h4>
+                                <h4 className="text-lg font-medium text-gray-900 mb-1">Aryan Sharma</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Placed at TechCorp</p>
                             </div>
 
@@ -714,7 +714,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "Honestly, the platform made applying for jobs so much less stressful. It instantly flagged missing keywords in my resume before I applied, which ended up getting me my first big internship."
                                 </p>
-                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Aryan Sharma
                                 </div>
                             </motion.div>
@@ -727,7 +727,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2.2&w=150&h=150&q=80" alt="Priya Reddy" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-1">Priya Reddy</h4>
+                                <h4 className="text-lg font-medium text-gray-900 mb-1">Priya Reddy</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Talent Acquisition, InnovateInc</p>
                             </div>
 
@@ -743,7 +743,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "We used to spend weeks filtering through unverified campus applications. Now, we just set our requirements and the system hands us a pipeline of vetted students ready for interviews."
                                 </p>
-                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Priya Reddy
                                 </div>
                             </motion.div>
@@ -756,7 +756,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Dr. Manish Kumar" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-1">Dr. Manish Kumar</h4>
+                                <h4 className="text-lg font-medium text-gray-900 mb-1">Dr. Manish Kumar</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">TPO Head, Global Institute</p>
                             </div>
 
@@ -772,7 +772,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "It completely modernized our placement cell. I can see exactly which companies are viewing our students' profiles and generate placement reports for the dean with one click."
                                 </p>
-                                <div className={`font-bold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
                                     Dr. Manish Kumar
                                 </div>
                             </motion.div>
