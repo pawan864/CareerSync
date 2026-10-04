@@ -10,6 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Joyride } from 'react-joyride';
 import { BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X } from 'lucide-react';
 
 
@@ -84,6 +85,30 @@ const Home = () => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
     });
     const [showPolicyModal, setShowPolicyModal] = useState(null);
+    const [runTour, setRunTour] = useState(false);
+
+    const tourSteps = [
+        { target: '#tour-hero', content: 'Welcome to CareerSync! This hero section highlights our mission to connect talent with opportunity.', disableBeacon: true },
+        { target: '#tour-features', content: 'Explore our AI-driven features like automated resume scanning and gap analysis.', disableBeacon: true },
+        { target: '#tour-marquee', content: 'We partner with top-tier universities and global industry leaders.', disableBeacon: true },
+        { target: '#tour-testimonials', content: 'Hear real success stories from students, recruiters, and TPOs.', disableBeacon: true },
+        { target: '#tour-cta', content: 'Ready to bridge the gap? Create your free account today!', disableBeacon: true }
+    ];
+
+    useEffect(() => {
+        const hasSeenTour = localStorage.getItem('careerSyncTourSeen');
+        if (!hasSeenTour) {
+            setTimeout(() => setRunTour(true), 1000);
+        }
+    }, []);
+
+    const handleTourCallback = (data) => {
+        const { status } = data;
+        if (status === 'finished' || status === 'skipped') {
+            setRunTour(false);
+            localStorage.setItem('careerSyncTourSeen', 'true');
+        }
+    };
 
     const handleCookieConsent = (type) => {
         localStorage.setItem('careerSyncCookieConsent', type);
@@ -124,6 +149,20 @@ const Home = () => {
     }, [isPaused]);
     return (
         <>
+        <Joyride 
+            steps={tourSteps}
+            run={runTour}
+            continuous={true}
+            showSkipButton={true}
+            showProgress={true}
+            callback={handleTourCallback}
+            styles={{
+                options: {
+                    primaryColor: '#1e3a8a',
+                    zIndex: 10000,
+                }
+            }}
+        />
         <motion.div 
             initial={{ opacity: 0, y: -20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -132,7 +171,7 @@ const Home = () => {
         >
             {/* Hero Section */}
                         {/* Hero Section Slideshow */}
-            <div className="relative w-full min-h-[calc(100vh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
+            <div id="tour-hero" className="relative w-full min-h-[calc(100vh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
                 <AnimatePresence initial={false}>
                     <motion.div
                         key={currentSlide}
@@ -242,7 +281,7 @@ const Home = () => {
 
             {/* Features Workflow Section */}
 
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-gray-50 py-16">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-features" className="bg-gray-50 py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     {/* Timeline Line */}
@@ -360,7 +399,7 @@ const Home = () => {
             </motion.div>
 
             {/* Our Partners Section (Infinite Marquee) */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-white py-12 border-b border-gray-100 overflow-hidden relative flex flex-col items-center">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-white py-12 border-b border-gray-100 overflow-hidden relative flex flex-col items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center z-10">
                     <p className="text-sm font-bold tracking-widest text-gray-400 uppercase">Trusted by industry leaders & top universities</p>
                 </div>
@@ -433,7 +472,7 @@ const Home = () => {
 
             
             {/* Success Stories / Testimonials */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="bg-gray-50 py-20 border-t border-gray-100">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-testimonials" className="bg-gray-50 py-20 border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
