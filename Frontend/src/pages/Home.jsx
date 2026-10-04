@@ -76,6 +76,8 @@ const heroSlides = [
     }
 ];
 
+const quickQueries = ["Jobs", "Placements", "Registration", "Login", "Support", "Resume/CV"];
+
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -97,13 +99,14 @@ const Home = () => {
         }
     }, [messages, isTyping]);
     
-    const handleSendMessage = async (e) => {
+    const handleSendMessage = async (e, quickQuery = null) => {
         e.preventDefault();
-        if (!chatInput.trim()) return;
         
-        const userMsg = chatInput.trim();
+        
+        const userMsg = quickQuery || chatInput.trim();
+        if (!userMsg) return;
         setMessages(prev => [...prev, { sender: 'user', text: userMsg }]);
-        setChatInput('');
+        if (!quickQuery) setChatInput('');
         setIsTyping(true);
         
         try {
@@ -319,8 +322,22 @@ const Home = () => {
                                 <div ref={chatEndRef} />
                             </div>
                             
+                            {/* Quick Suggestion Chips */}
+                            <div className="px-3 pb-2 pt-2 border-t border-gray-100 bg-gray-50 flex items-center space-x-2 overflow-x-auto whitespace-nowrap scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                {quickQueries.map((query, i) => (
+                                    <button 
+                                        key={i}
+                                        type="button"
+                                        disabled={isTyping}
+                                        onClick={() => handleSendMessage(null, query)}
+                                        className="text-xs px-3 py-1.5 bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors flex-shrink-0 disabled:opacity-50"
+                                    >
+                                        {query}
+                                    </button>
+                                ))}
+                            </div>
                             {/* Chat Input */}
-                            <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
+                            <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
                                 <input 
                                     type="text" 
                                     value={chatInput}
