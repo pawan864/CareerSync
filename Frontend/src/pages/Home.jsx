@@ -189,7 +189,7 @@ const Home = () => {
             setIsTyping(false);
         }
     };
-    const [pageTheme, setPageTheme] = useState('indigo');
+    const [pageTheme, setPageTheme] = useState('blue');
     const [showCookieConsent, setShowCookieConsent] = useState(() => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
     });
@@ -206,7 +206,7 @@ const Home = () => {
             const themes = ['blue', 'indigo', 'orange'];
             setPageTheme(themes[currentSlide]);
         } else {
-            setPageTheme('indigo'); // Default back to indigo when playing
+            setPageTheme('blue'); // Default back to blue when playing
         }
     }, [isPaused, currentSlide]);
 
@@ -797,7 +797,7 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border border-gray-300 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-400' : `${isPaused ? pageStyles[pageTheme].cardBg : 'bg-blue-50'} hover:bg-white hover:shadow-md hover:border-blue-400`}`}
+                                className={`border border-gray-300 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-400' : `${pageStyles[pageTheme].cardBg} hover:bg-white hover:shadow-md hover:border-blue-400`}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
