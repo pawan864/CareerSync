@@ -307,7 +307,7 @@ const Home = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="absolute bottom-6 right-6 md:bottom-10 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-50 flex flex-col"
+                            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
                         >
                             {/* Chat Header */}
                             <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
@@ -422,7 +422,7 @@ const Home = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                        className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
                         onClick={() => {
                             setIsChatOpen(true);
                             setIsPaused(true);
