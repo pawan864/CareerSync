@@ -102,15 +102,44 @@ const Home = () => {
         setChatInput('');
         setIsTyping(true);
         
-        // TODO: Replace this timeout with the actual API call using import.meta.env.VITE_CHATBOT_API_KEY
         try {
-            // Simulated API delay
-            setTimeout(() => {
-                setMessages(prev => [...prev, { sender: 'bot', text: "I have received your API key! However, I still need the specific API endpoint URL to send your messages to. Please provide the URL to the developer!" }]);
-                setIsTyping(false);
-            }, 1500);
+            const apiKey = import.meta.env.VITE_CHATBOT_API_KEY;
+            
+            // Build conversation history for context
+            const history = messages.map(m => ({
+                role: m.sender === 'bot' ? 'model' : 'user',
+                parts: [{ text: m.text }]
+            }));
+            
+            // Append the new user message
+            history.push({
+                role: 'user',
+                parts: [{ text: userMsg }]
+            });
+
+            // Use the new Gemini AQ. API Key format
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: history
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.candidates && data.candidates.length > 0) {
+                const botResponse = data.candidates[0].content.parts[0].text;
+                setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
+            } else {
+                setMessages(prev => [...prev, { sender: 'bot', text: "I'm sorry, I couldn't process that request at the moment." }]);
+            }
         } catch (error) {
             console.error("Chat error:", error);
+            setMessages(prev => [...prev, { sender: 'bot', text: "Network error! Please check the console." }]);
+        } finally {
             setIsTyping(false);
         }
     };
