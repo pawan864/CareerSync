@@ -848,30 +848,20 @@ const Home = () => {
                         </Link>
                     </div>
                     <div className="md:w-1/2 mt-12 md:mt-0 relative">
-                        {/* Unique Professional Cards for TPO & Recruiters */}
-                        <div className="flex flex-col space-y-6 relative mt-12 md:mt-0 w-full max-w-sm mx-auto md:ml-auto">
-                            <div className="bg-white/90 backdrop-blur-sm border border-gray-100 p-6 rounded-2xl shadow-xl transform md:translate-x-4 hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 group">
-                                <div className="flex items-center space-x-5">
-                                    <div className={`p-4 rounded-xl transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black`}>
-                                        <GraduationCap className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold text-gray-900 tracking-widest text-sm uppercase mb-1">For TPOs & Faculty</h4>
-                                        <p className="text-sm text-gray-500 font-medium">Automate placements & track success metrics.</p>
-                                    </div>
+                        {/* Rotating Logo & Paragraph */}
+                        <div className="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8 relative mt-12 md:mt-0 w-full md:max-w-xl mx-auto md:ml-auto">
+                            {/* Big Rotating Logo */}
+                            <div className="flex-shrink-0 animate-[spin_12s_linear_infinite] mt-4 md:mt-0">
+                                <div className={`w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center bg-white/40 backdrop-blur-md shadow-2xl border-4 border-white/60 transition-colors duration-500`}>
+                                    <GraduationCap className={`w-16 h-16 md:w-20 md:h-20 text-gray-900 transition-colors duration-500`} />
                                 </div>
                             </div>
                             
-                            <div className="bg-white/90 backdrop-blur-sm border border-gray-100 p-6 rounded-2xl shadow-xl transform md:-translate-x-4 hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 group">
-                                <div className="flex items-center space-x-5">
-                                    <div className={`p-4 rounded-xl transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black`}>
-                                        <Briefcase className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold text-gray-900 tracking-widest text-sm uppercase mb-1">For Recruiters</h4>
-                                        <p className="text-sm text-gray-500 font-medium">Hire verified top campus talent instantly.</p>
-                                    </div>
-                                </div>
+                            {/* 4 Line Italic Paragraph */}
+                            <div className="flex-1 flex items-center h-full pt-2 md:pt-4">
+                                <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900">
+                                    CareerSync bridges the gap between ambition and opportunity. We empower students with AI-driven insights, equip universities with powerful placement analytics, and provide corporate recruiters with instant access to a verified, highly-skilled talent pool ready to shape the future of the industry.
+                                </p>
                             </div>
                         </div>
                     </div>
