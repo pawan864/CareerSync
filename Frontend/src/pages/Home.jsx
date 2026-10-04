@@ -329,7 +329,7 @@ const Home = () => {
                                                 ))}
                                             </div>
                                         )}
-                                        {msg.sender === 'bot' && (
+                                        {msg.sender === 'bot' && idx > 0 && (
                                             <button 
                                                 onClick={() => {
                                                     setIsChatOpen(false);
