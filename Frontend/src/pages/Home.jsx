@@ -343,6 +343,7 @@ const Home = () => {
                             
                             
                             {/* Chat Input */}
+                            {messages.length > 1 && (
                             <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
                                 <input 
                                     type="text" 
@@ -355,6 +356,7 @@ const Home = () => {
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                             </form>
+                            )}
                         </motion.div>
                     )}
                 </AnimatePresence>
