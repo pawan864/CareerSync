@@ -8,7 +8,7 @@
  * - Unified typography and interactive states
  */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X } from 'lucide-react';
 
@@ -84,6 +84,14 @@ const Home = () => {
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state?.openChat) {
+            setIsChatOpen(true);
+            setIsPaused(true); // Pause the slider if chat opens
+        }
+    }, [location]);
     const [messages, setMessages] = useState([
         { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
     ]);

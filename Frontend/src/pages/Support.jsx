@@ -30,6 +30,15 @@ const Support = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center py-2 px-4 relative overflow-hidden bg-gradient-to-r from-white via-blue-50 to-blue-100">
+            {/* Back to Chatbot Button */}
+            <Link 
+                to="/" 
+                state={{ openChat: true }}
+                className="absolute top-6 right-6 z-50 flex items-center justify-center p-3 bg-white/80 backdrop-blur hover:bg-blue-600 text-blue-600 hover:text-white rounded-full shadow-md transition-all duration-300 group"
+                title="Back to Chatbot"
+            >
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            </Link>
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
