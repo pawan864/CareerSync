@@ -698,7 +698,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Aryan Sharma" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-medium text-gray-900 mb-1">Aryan Sharma</h4>
+                                <h4 className="text-sm font-bold tracking-widest text-black mb-1">Aryan Sharma</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Placed at TechCorp</p>
                             </div>
 
@@ -714,7 +714,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "Honestly, the platform made applying for jobs so much less stressful. It instantly flagged missing keywords in my resume before I applied, which ended up getting me my first big internship."
                                 </p>
-                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className="text-sm font-bold tracking-widest text-black">
                                     Aryan Sharma
                                 </div>
                             </motion.div>
@@ -727,7 +727,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2.2&w=150&h=150&q=80" alt="Priya Reddy" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-medium text-gray-900 mb-1">Priya Reddy</h4>
+                                <h4 className="text-sm font-bold tracking-widest text-black mb-1">Priya Reddy</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Talent Acquisition, InnovateInc</p>
                             </div>
 
@@ -743,7 +743,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "We used to spend weeks filtering through unverified campus applications. Now, we just set our requirements and the system hands us a pipeline of vetted students ready for interviews."
                                 </p>
-                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className="text-sm font-bold tracking-widest text-black">
                                     Priya Reddy
                                 </div>
                             </motion.div>
@@ -756,7 +756,7 @@ const Home = () => {
                                 <div className="w-24 h-24 rounded-full mb-4">
                                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Dr. Manish Kumar" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
-                                <h4 className="text-lg font-medium text-gray-900 mb-1">Dr. Manish Kumar</h4>
+                                <h4 className="text-sm font-bold tracking-widest text-black mb-1">Dr. Manish Kumar</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">TPO Head, Global Institute</p>
                             </div>
 
@@ -772,7 +772,7 @@ const Home = () => {
                                 <p className="text-gray-700 italic mb-6 leading-relaxed relative z-10 text-sm font-medium">
                                     "It completely modernized our placement cell. I can see exactly which companies are viewing our students' profiles and generate placement reports for the dean with one click."
                                 </p>
-                                <div className={`font-semibold text-xs uppercase tracking-wider ${pageStyles[pageTheme].iconText}`}>
+                                <div className="text-sm font-bold tracking-widest text-black">
                                     Dr. Manish Kumar
                                 </div>
                             </motion.div>
@@ -835,7 +835,7 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-colors duration-700 ${pageStyles[pageTheme].ctaGradient}`}>
                 <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
                     <div className="md:w-1/2 text-gray-900">
-                        <h2 id="tour-cta-heading" className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
+                        <h2 id="tour-cta-heading" className="text-sm font-bold tracking-widest text-black mb-6 uppercase">
                             Start Connecting<br/>With Industry<br/>Today
                         </h2>
                         <p className="text-lg text-gray-700 font-medium mb-8">
