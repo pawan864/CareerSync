@@ -803,7 +803,7 @@ const Home = () => {
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                                     className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
                                 >
-                                    <span className="font-semibold text-base md:text-lg tracking-tight pr-4 transition-colors text-blue-900 group-hover:text-blue-900">
+                                    <span className="font-semibold text-sm md:text-base tracking-tight pr-4 transition-colors text-black">
                                         {faq.question}
                                     </span>
                                     <div className={`transition-transform duration-300 text-blue-900 ${openFaq === index ? 'rotate-180' : ''}`}>
