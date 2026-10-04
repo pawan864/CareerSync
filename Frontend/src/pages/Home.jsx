@@ -123,7 +123,7 @@ const Home = () => {
                 } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
                     botResponse = "Hello! 👋 I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• 💼 Jobs & Placements<br/>• 📝 Registration & Log In<br/>• 📞 Helpline & Support<br/><br/>How can I help you navigate the portal today?";
                 } else {
-                    botResponse = "I am a specialized CareerSync assistant. I am programmed to only answer specific queries related to: <b>jobs, placements, registration, login, and helpline details</b>. Could you please rephrase your question regarding one of those topics?";
+                    botResponse = "I am a specialized CareerSync assistant. I am programmed to only answer specific queries related to: <b>jobs, placements, registration, login, helpline details, or any other issue related to the portal</b>. Could you please rephrase your question regarding one of those topics?";
                 }
                 
                 setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
