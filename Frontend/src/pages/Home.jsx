@@ -692,7 +692,7 @@ const Home = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Testimonial 1 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-300 hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State (Minimal & Professional) */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
@@ -721,7 +721,7 @@ const Home = () => {
                         </motion.div>
 
                         {/* Testimonial 2 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-300 hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
@@ -750,7 +750,7 @@ const Home = () => {
                         </motion.div>
 
                         {/* Testimonial 3 */}
-                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-transparent hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
+                        <motion.div initial="initial" whileHover="hover" className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-300 hover:border-blue-400 overflow-hidden cursor-pointer group h-64 flex flex-col justify-end">
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
