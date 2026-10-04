@@ -37,9 +37,9 @@ const heroSlides = [
     {
         id: 2,
         tagline: "Empowering Your Career Journey",
-        title1: "Discover Your True Potential",
-        title2: "With AI-Powered Insights",
-        description: "Build a dynamic profile, instantly match with top employers, and jumpstart your career through CareerSync's intelligent placement engine.",
+        title1: "Empower Your Institution",
+        title2: "With Smart Analytics",
+        description: "Seamlessly manage campus placements, track student progress, and connect your faculty with top recruiters through our dedicated TPO portal.",
         button1: "Get Started Now",
         button1Link: "/register",
         button2: "Learn More",
@@ -57,9 +57,9 @@ const heroSlides = [
     {
         id: 3,
         tagline: "Celebrate Your Achievements",
-        title1: "Step Into The Professional World",
-        title2: "With Total Confidence",
-        description: "From campus convocation to corporate success. CareerSync transforms your academic milestones into real-world career opportunities seamlessly.",
+        title1: "Hire Top Campus Talent",
+        title2: "Verified & Ready",
+        description: "Access a curated pool of verified students, conduct seamless mock interviews, and streamline your entire campus hiring process.",
         button1: "Start Your Journey",
         button1Link: "/register",
         button2: "View Placements",
@@ -502,10 +502,8 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <FileText className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <FileText className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">AI-Driven Skill Mapping</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Students can analyze their resumes instantly to identify skill gaps and receive personalized learning paths to become industry-ready.
@@ -513,21 +511,17 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <CheckCircle className="h-6 w-6" />
-                            </div>
-                            <h3 className="text-sm font-bold tracking-widest text-black mb-4">TPOal Verification</h3>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <CheckCircle className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
+                            <h3 className="text-sm font-bold tracking-widest text-black mb-4">TPO & Faculty Dashboard</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 TPOs can securely verify student profiles and academic records, creating a trusted and highly credible talent pool for recruiters.
                             </p>
                         </div>
 
                         {/* Card 3 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <BarChart className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <BarChart className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Smart Job Matching</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Recruiters use our advanced NLP algorithms to automatically match their job requirements with the most qualified campus talent.
@@ -535,11 +529,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <UserPlus className="h-6 w-6" />
-                            </div>
-                            <h3 className="text-sm font-bold tracking-widest text-black mb-4">Placement Analytics</h3>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <UserPlus className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
+                            <h3 className="text-sm font-bold tracking-widest text-black mb-4">Recruiter Pipeline</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Comprehensive real-time dashboards allow TPOs to track hiring pipelines, placement rates, and ongoing recruitment drives.
                             </p>
@@ -558,10 +550,8 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <FileText className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <FileText className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Resume Building</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Automatically generate ATS-friendly professional resumes based on your verified skills, projects, and academic records.
@@ -569,10 +559,8 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <Users className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <Users className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Mock Interviews</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Practice your technical and behavioral skills with our AI interviewer to gain confidence before real industry interviews.
@@ -580,10 +568,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <Briefcase className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <Briefcase className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">One-Click Apply</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Apply to top-tier verified internships and full-time positions with a single click, directly from your personalized dashboard.
@@ -591,10 +577,8 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
-                                <BookOpen className="h-6 w-6" />
-                            </div>
+                        <div className={`p-8 rounded-xl shadow-sm hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
+                            <BookOpen className="h-10 w-10 text-black mb-6 transition-transform duration-300 hover:scale-125" />
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Alumni Mentorship</h3>
                             <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide">
                                 Connect with successfully placed alumni from your TPO for 1-on-1 career guidance and industry referrals.
