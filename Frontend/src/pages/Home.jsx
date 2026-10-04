@@ -782,13 +782,14 @@ const Home = () => {
             </motion.div>
 
             {/* FAQ Section */}
-            <section className="py-24 bg-white relative overflow-hidden">
+            <section className="py-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Questions</span>
+                        <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3 block">Got Questions?</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                            We've got answers
                         </h2>
-                        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                        <p className="text-slate-500 text-lg max-w-2xl mx-auto font-light">
                             Everything you need to know about CareerSync and how it can accelerate your placement journey.
                         </p>
                     </div>
@@ -797,15 +798,17 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-blue-50/50 shadow-md border-blue-100' : 'bg-white hover:border-gray-200 hover:shadow-sm'}`}
+                                className={`border border-slate-200/60 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-blue-50 shadow-md border-blue-200' : 'bg-white hover:bg-blue-50 hover:border-blue-100 hover:shadow-sm'}`}
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
                                 >
-                                    <span className="font-bold text-gray-900 text-lg tracking-tight pr-4">{faq.question}</span>
-                                    <div className={`p-2 rounded-full transition-colors ${openFaq === index ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500'}`}>
-                                        {openFaq === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                                    <span className={`font-semibold text-base md:text-lg tracking-tight pr-4 transition-colors ${openFaq === index ? 'text-blue-700' : 'text-slate-800 group-hover:text-blue-600'}`}>
+                                        {faq.question}
+                                    </span>
+                                    <div className={`transition-transform duration-300 ${openFaq === index ? 'text-blue-600 rotate-180' : 'text-slate-400 group-hover:text-blue-500'}`}>
+                                        <ChevronDown className="w-5 h-5 stroke-[2.5]" />
                                     </div>
                                 </button>
                                 <AnimatePresence>
@@ -816,7 +819,7 @@ const Home = () => {
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
                                         >
-                                            <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100/50 pt-4">
+                                            <div className="px-6 pb-6 text-slate-600 leading-relaxed text-sm md:text-base border-t border-blue-100/50 pt-4 font-normal">
                                                 {faq.answer}
                                             </div>
                                         </motion.div>
