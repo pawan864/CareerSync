@@ -76,7 +76,7 @@ const heroSlides = [
     }
 ];
 
-const quickQueries = ["Placements", "Registration", "Login", "Jobs", "Resume/CV", "Other Queries"];
+const quickQueries = ["Jobs", "Placements", "Internships", "Registration", "Login", "Dashboard", "Resume/CV", "Skill Match", "Interviews", "Helpline", "Corporate", "Other Queries"];
 
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -115,14 +115,16 @@ const Home = () => {
                 let botResponse = "";
                 const input = userMsg.toLowerCase();
                 
-                if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements")) {
+                if (input.includes("job") || input.includes("jobs") || input.includes("placement") || input.includes("placements") || input.includes("internship")) {
                     botResponse = "CareerSync connects students directly with top-tier companies. You can explore active hiring drives, apply for jobs, and use our AI to match your skills with specific placements! <br/><br/><a href='/jobs' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Browse Jobs & Placements</a>";
                 } else if (input.includes("register") || input.includes("sign up") || input.includes("create account")) {
                     botResponse = "To register, simply click the link below to head to our registration page. You can register as a Student, University TPO, or Corporate Recruiter. <br/><br/><a href='/register' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Create an Account</a>";
-                } else if (input.includes("login") || input.includes("log in") || input.includes("logged in")) {
+                } else if (input.includes("login") || input.includes("log in") || input.includes("logged in") || input.includes("dashboard")) {
                     botResponse = "You can access your dashboard by clicking the link below. Make sure to select your correct role (Student, Admin, or Recruiter) when logging in. <br/><br/><a href='/login' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Log In to Dashboard</a>";
-                } else if (input.includes("resume") || input.includes("cv")) {
+                } else if (input.includes("resume") || input.includes("cv") || input.includes("skill match")) {
                     botResponse = "Your Resume/CV is your first impression! CareerSync uses AI to parse your resume, analyze your skills, and automatically match you with companies looking for your specific tech stack.";
+                } else if (input.includes("interview") || input.includes("corporate")) {
+                    botResponse = "CareerSync provides integrated tools for Corporate Recruiters to easily schedule interviews, track applicants, and manage the entire hiring pipeline directly from their dashboard.";
                 } else if (input.includes("other queries") || input.includes("help") || input.includes("helpline") || input.includes("contact") || input.includes("details") || input.includes("support") || input.includes("technical")) {
                     botResponse = "For technical support, you can reach our helpline at <b>+91-123-456-7890</b> or email us at <b>support@careersync.com</b>. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/><a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Technical Support Page</a>";
                 } else if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
