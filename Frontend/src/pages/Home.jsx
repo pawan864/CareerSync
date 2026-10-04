@@ -849,7 +849,7 @@ const Home = () => {
                     </div>
                     <div className="md:w-1/2 mt-12 md:mt-0 relative flex justify-end items-center h-full min-h-[200px]">
                         {/* 4 Line Italic Paragraph */}
-                        <div className="w-full md:w-3/4 flex items-center h-full z-20 relative text-center md:text-left pr-0 md:pr-8">
+                        <div className="w-full md:w-3/5 flex items-center h-full z-20 relative text-center md:text-left pr-0 md:pr-16 md:-translate-x-4">
                             <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900 bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl shadow-sm md:shadow-none">
                                 CareerSync bridges the gap between ambition and opportunity. We empower students with AI-driven insights, equip universities with powerful placement analytics, and provide corporate recruiters with instant access to a verified, highly-skilled talent pool ready to shape the future of the industry.
                             </p>
