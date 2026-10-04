@@ -10,7 +10,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Joyride } from 'react-joyride';
 import { BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X } from 'lucide-react';
 
 
@@ -85,30 +84,7 @@ const Home = () => {
         return localStorage.getItem('careerSyncCookieConsent') === null;
     });
     const [showPolicyModal, setShowPolicyModal] = useState(null);
-    const [runTour, setRunTour] = useState(false);
 
-    const tourSteps = [
-        { target: '#tour-hero-heading', content: 'Welcome to CareerSync! We intelligently bridge the gap between academia and industry.', disableBeacon: true, placement: 'bottom' },
-        { target: '#tour-features-heading', content: 'Our AI-driven platform offers automated resume scanning, gap analysis, and more.', disableBeacon: true, placement: 'bottom' },
-        { target: '#tour-marquee-container', content: 'We partner with top-tier universities and global tech giants to provide elite opportunities.', disableBeacon: true, placement: 'top' },
-        { target: '#tour-testimonials-heading', content: 'Discover real success stories from students and recruiters who transformed their hiring process.', disableBeacon: true, placement: 'bottom' },
-        { target: '#tour-cta-heading', content: 'Ready to take the next step? Create your free account today and start connecting!', disableBeacon: true, placement: 'top' }
-    ];
-
-    useEffect(() => {
-        const hasSeenTour = localStorage.getItem('careerSyncTourSeen');
-        if (!hasSeenTour) {
-            setTimeout(() => setRunTour(true), 1000);
-        }
-    }, []);
-
-    const handleTourCallback = (data) => {
-        const { status } = data;
-        if (status === 'finished' || status === 'skipped') {
-            setRunTour(false);
-            localStorage.setItem('careerSyncTourSeen', 'true');
-        }
-    };
 
     const handleCookieConsent = (type) => {
         localStorage.setItem('careerSyncCookieConsent', type);
@@ -149,53 +125,6 @@ const Home = () => {
     }, [isPaused]);
     return (
         <>
-        <Joyride 
-            steps={tourSteps}
-            run={runTour}
-            continuous={true}
-            showSkipButton={true}
-            showProgress={true}
-            disableOverlayClose={true}
-            hideCloseButton={true}
-            callback={handleTourCallback}
-            floaterProps={{ disableAnimation: true }}
-            styles={{
-                options: {
-                    primaryColor: '#1e3a8a',
-                    textColor: '#334155',
-                    backgroundColor: '#ffffff',
-                    arrowColor: '#ffffff',
-                    overlayColor: 'rgba(15, 23, 42, 0.6)',
-                    zIndex: 100000,
-                },
-                tooltip: {
-                    borderRadius: '12px',
-                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                    padding: '24px',
-                },
-                tooltipContainer: {
-                    textAlign: 'left',
-                    fontSize: '15px',
-                    lineHeight: '1.6',
-                },
-                buttonNext: {
-                    backgroundColor: '#1e3a8a',
-                    borderRadius: '6px',
-                    padding: '8px 16px',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                },
-                buttonBack: {
-                    color: '#64748b',
-                    marginRight: '10px',
-                    fontSize: '14px',
-                },
-                buttonSkip: {
-                    color: '#94a3b8',
-                    fontSize: '14px',
-                }
-            }}
-        />
         <motion.div 
             initial={{ opacity: 0, y: -20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
