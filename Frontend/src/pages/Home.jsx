@@ -223,7 +223,7 @@ const Home = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="absolute bottom-24 right-6 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-50 flex flex-col"
+                            className="absolute bottom-6 right-6 md:bottom-10 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-50 flex flex-col"
                         >
                             {/* Chat Header */}
                             <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
@@ -233,7 +233,7 @@ const Home = () => {
                                     </div>
                                     <span className="font-bold text-gray-900 tracking-tight">CareerSync AI</span>
                                 </div>
-                                <button onClick={() => setIsChatOpen(false)} className="text-gray-800 hover:bg-black/10 p-1 rounded-full transition">
+                                <button onClick={() => { setIsChatOpen(false); setIsPaused(false); }} className="text-gray-800 hover:bg-black/10 p-1 rounded-full transition">
                                     <X className="w-4 h-4" />
                                 </button>
                             </div>
@@ -259,21 +259,26 @@ const Home = () => {
                 </AnimatePresence>
 
                 {/* Hero Chatbot Icon (Bottom Right) */}
-                <motion.button 
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1, type: "spring", stiffness: 200 }}
-                    className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
-                    onClick={() => {
-                        setIsChatOpen(!isChatOpen);
-                        if (!isChatOpen) setIsPaused(true);
-                    }}
-                >
-                    <span className="absolute right-full mr-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
-                        CareerSync AI Assistant
-                    </span>
-                    <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
-                </motion.button>
+                <AnimatePresence>
+                {!isChatOpen && (
+                    <motion.button 
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
+                        className={`absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50 p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        onClick={() => {
+                            setIsChatOpen(true);
+                            setIsPaused(true);
+                        }}
+                    >
+                        <span className="absolute right-full mr-4 bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
+                            CareerSync AI Assistant
+                        </span>
+                        <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
+                    </motion.button>
+                )}
+                </AnimatePresence>
             </div>
 
             
