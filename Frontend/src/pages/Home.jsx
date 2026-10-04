@@ -343,6 +343,11 @@ const Home = () => {
                             
                             
                             {/* Chat Input */}
+                            {messages.length === 1 && (
+                                <div className="p-4 border-t border-gray-100 bg-gray-50 flex items-center justify-center text-center">
+                                    <p className="text-xs text-gray-400 font-medium tracking-wide">No conversation. Click on an icon above to proceed to chat.</p>
+                                </div>
+                            )}
                             {messages.length > 1 && (
                             <form onSubmit={(e) => handleSendMessage(e)} className="p-3 border-t border-gray-100 bg-white flex items-center space-x-2">
                                 <input 
