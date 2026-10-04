@@ -81,13 +81,7 @@ const quickQueries = ["Jobs", "Placements", "Internships", "Registration", "Logi
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [isChatOpen, setIsChatOpen] = useState(() => {
-        return localStorage.getItem('isChatOpen') === 'true';
-    });
-
-    useEffect(() => {
-        localStorage.setItem('isChatOpen', isChatOpen);
-    }, [isChatOpen]);
+    const [isChatOpen, setIsChatOpen] = useState(false);
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
 
