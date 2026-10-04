@@ -85,7 +85,7 @@ const Home = () => {
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: 'bot', text: "Hi there! 👋 I am your <b>CareerSync Assistant</b>. How can I help you today?" }
+        { sender: 'bot', text: "Hi there! 👋 I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
     ]);
     const chatEndRef = React.useRef(null);
     
