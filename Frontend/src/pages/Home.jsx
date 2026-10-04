@@ -136,7 +136,7 @@ const Home = () => {
                   } else if (input === "corporate") {
                       botResponse = "CareerSync is the ultimate Corporate Hiring Portal. We empower HR teams and Recruiters to seamlessly manage talent pipelines, track applicant metrics, and roll out offers with unprecedented efficiency.";
                   } else if (input === "other queries" || input.includes("other")) {
-                      botResponse = "I am a specialized CareerSync assistant. I can help you with questions regarding jobs, placements, registrations, or platform features. How can I assist you today?";
+                      botResponse = "For any other queries or technical assistance, please visit our dedicated support center. We are available Monday to Friday, 9 AM - 6 PM.<br/><br/><a href='/support' class='text-blue-600 underline font-semibold hover:text-blue-800 transition-colors'>Visit Support Page</a>";
                   } else if (input.match(/(hi|hello|hey|greetings)/)) {
                       botResponse = "Hello. I am your specialized CareerSync Assistant. <br/><br/><b>CareerSync</b> is an advanced platform designed to bridge the gap between academia and industry. We provide a seamless ecosystem for <b>Students</b> to discover opportunities, <b>Universities</b> to manage placement drives, and <b>Recruiters</b> to hire top talent.<br/><br/>I can quickly assist you with questions regarding:<br/>• Jobs & Placements<br/>• Registration & Log In<br/>• Helpline & Support<br/><br/>How can I help you navigate the portal today?";
                   } else {
