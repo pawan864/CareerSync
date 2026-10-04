@@ -84,14 +84,14 @@ const Home = () => {
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
-    const location = useLocation();
-
     useEffect(() => {
-        if (location.state?.openChat) {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('chat') === 'open') {
             setIsChatOpen(true);
-            setIsPaused(true); // Pause the slider if chat opens
+            setIsPaused(true);
+            window.history.replaceState({}, '', '/');
         }
-    }, [location]);
+    }, []);
     const [messages, setMessages] = useState([
         { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
     ]);
