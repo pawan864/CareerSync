@@ -784,12 +784,11 @@ const Home = () => {
             {/* FAQ Section */}
             <section className="py-24 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
-                    <div className="text-center mb-16">
-                        <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3 block">Got Questions?</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-                            We've got answers
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                            Frequently Asked Questions
                         </h2>
-                        <p className="text-slate-500 text-lg max-w-2xl mx-auto font-light">
+                        <p className={`mt-4 text-sm font-normal italic leading-relaxed tracking-wide max-w-2xl mx-auto transition-colors duration-500 ${isPaused ? pageStyles[pageTheme].syncText : 'text-blue-900'}`}>
                             Everything you need to know about CareerSync and how it can accelerate your placement journey.
                         </p>
                     </div>
