@@ -329,6 +329,18 @@ const Home = () => {
                                                 ))}
                                             </div>
                                         )}
+                                        {msg.sender === 'bot' && (
+                                            <button 
+                                                onClick={() => {
+                                                    setIsChatOpen(false);
+                                                    setIsPaused(false);
+                                                }}
+                                                className="flex items-center space-x-1 text-[10px] text-gray-400 hover:text-red-500 transition-colors mt-1 mb-2 self-start bg-transparent border-none outline-none"
+                                            >
+                                                <X className="w-3 h-3" />
+                                                <span>Close Chat</span>
+                                            </button>
+                                        )}
                                     </React.Fragment>
                                 ))}
                                 {isTyping && (
