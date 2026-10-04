@@ -85,9 +85,23 @@ const Home = () => {
     const [chatInput, setChatInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
 
-    const [messages, setMessages] = useState([
-        { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
-    ]);
+    const [messages, setMessages] = useState(() => {
+        const saved = localStorage.getItem('chatMessages');
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch (e) {
+                console.error("Failed to parse chat messages from localStorage");
+            }
+        }
+        return [
+            { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
+        ];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }, [messages]);
     const chatEndRef = React.useRef(null);
     
     const chatBodyRef = React.useRef(null);
@@ -303,7 +317,16 @@ const Home = () => {
                                     </div>
                                     <span className="font-bold text-gray-900 tracking-tight">CareerSync AI</span>
                                 </div>
-                                <button onClick={() => { setIsChatOpen(false); setIsPaused(false); }} className="text-gray-800 hover:bg-black/10 p-1 rounded-full transition">
+                                <button onClick={() => { 
+                                    // If chat was ended, wipe history so it starts fresh next time
+                                    if (messages.length > 0 && messages[messages.length - 1].text.includes("Thank you for connecting")) {
+                                        setMessages([
+                                            { sender: 'bot', text: "Hello. I am your specialized <b>CareerSync Assistant</b>.<br/><br/>I am here to help you navigate the platform, discover top jobs, and manage placements. How can I assist you today?" }
+                                        ]);
+                                    }
+                                    setIsChatOpen(false); 
+                                    setIsPaused(false); 
+                                }} className="text-gray-800 hover:bg-black/10 p-1 rounded-full transition">
                                     <X className="w-4 h-4" />
                                 </button>
                             </div>
