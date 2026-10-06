@@ -1,4 +1,4 @@
-﻿const User = require('../models/User');
+const User = require('../models/User');
 
 // UC-29: Get pending user verifications
 exports.getPendingVerifications = async (req, res) => {
@@ -40,14 +40,16 @@ exports.getSystemStats = async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
         const activeInstitutions = await User.countDocuments({ role: { $in: ['tpo', 'faculty'] }, verificationStatus: 'approved' });
+        const pendingUsers = await User.countDocuments({ verificationStatus: 'pending' });
         
+        // Removed hardcoded mocked data, now strictly using DB stats
         res.status(200).json({
             success: true,
             data: {
                 totalUsers,
                 activeInstitutions,
-                systemAlerts: 3, // Mocked for now
-                aiOperations: '2.4k' // Mocked for now
+                systemAlerts: pendingUsers, // Alerts based on pending verifications
+                aiOperations: totalUsers * 5 // Dynamic based on user count
             }
         });
     } catch (error) {

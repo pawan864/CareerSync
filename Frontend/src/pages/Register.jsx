@@ -77,7 +77,11 @@ const Register = () => {
         try {
             const success = await register(formData);
             if (success) {
-                navigate('/');
+                if (formData.role === 'student') navigate('/student-dashboard');
+                else if (formData.role === 'faculty') navigate('/faculty-dashboard');
+                else if (formData.role === 'tpo') navigate('/institution');
+                else if (formData.role === 'recruiter') navigate('/employer');
+                else navigate('/');
             } else {
                 setError('Registration failed. Please check your details.');
             }

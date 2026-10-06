@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import NotificationTicker from './components/NotificationTicker';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import AdminLogin from './pages/AdminLogin';
@@ -26,6 +27,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {!isAuthPage && <Navbar />}
+      {!isAuthPage && <NotificationTicker />}
       <main className="flex-grow flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const AuditLog = require('../models/AuditLog');
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -144,10 +145,20 @@ exports.verifyOtp = async (req, res, next) => {
             return res.status(400).json({ success: false, error: 'Invalid or expired OTP' });
         }
 
-        // Clear OTP
+        // Clear OTP and record login
         user.loginOtp = undefined;
         user.loginOtpExpire = undefined;
+        user.lastLogin = Date.now();
         await user.save({ validateBeforeSave: false });
+
+        // Record Audit Log
+        await AuditLog.create({
+            user: user._id,
+            email: user.email,
+            role: user.role,
+            action: 'LOGIN',
+            localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        });
 
         sendTokenResponse(user, 200, res);
     } catch (err) {
@@ -175,6 +186,16 @@ exports.getMe = async (req, res, next) => {
 // @access  Private
 exports.logout = async (req, res, next) => {
     try {
+        if (req.user) {
+            await AuditLog.create({
+                user: req.user.id,
+                email: req.user.email,
+                role: req.user.role,
+                action: 'LOGOUT',
+                localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+            });
+        }
+
         res.cookie('token', 'none', {
             expires: new Date(Date.now() + 10 * 1000),
             httpOnly: true,

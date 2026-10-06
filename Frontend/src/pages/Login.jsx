@@ -202,7 +202,11 @@ const Login = () => {
         } catch (err) {
             setIsVerifying(false);
             console.error("API Error:", err);
-              setError(err.response?.data?.error || 'Invalid OTP or Login failed');
+            if (!err.response) {
+                setError('Network error: Unable to connect to server. Is the backend running?');
+            } else {
+                setError(err.response?.data?.error || (!otpSent ? 'Login failed' : 'Invalid OTP'));
+            }
         }
     };
 
