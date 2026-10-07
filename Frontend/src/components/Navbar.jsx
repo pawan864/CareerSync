@@ -9,6 +9,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [navTheme, setNavTheme] = useState('indigo');
     const [isSliderPaused, setIsSliderPaused] = useState(false);
 
