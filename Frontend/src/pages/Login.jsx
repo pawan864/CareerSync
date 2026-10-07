@@ -296,7 +296,7 @@ const Login = () => {
                         <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-white" />
                     </div>
                 </motion.div>
-                <div className="hidden md:flex flex-col drop-shadow-lg -mt-3">
+                <div className="hidden md:flex flex-col drop-shadow-lg -mt-6">
                     <span className="text-3xl lg:text-4xl font-black text-black tracking-tight leading-none drop-shadow-md">
                         Career<span className="text-blue-800">Sync</span>
                     </span>
