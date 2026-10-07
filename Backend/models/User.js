@@ -1,3 +1,12 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/User
+ * @description Mongoose schema for the core User model in the MERN stack architecture.
+ * This model handles foundational authentication data (email, password, role) 
+ * for Students, TPOs, Faculty, and Employers. Includes pre-save hooks for bcrypt 
+ * password hashing and methods for JWT generation.
+ */
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -87,3 +96,4 @@ UserSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 module.exports = mongoose.model('User', UserSchema);
+

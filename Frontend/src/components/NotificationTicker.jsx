@@ -35,9 +35,9 @@ const NotificationTicker = () => {
   }, []);
 
   const themeStyles = {
-    blue: { bg: '#f0f8ff', border: '#1e3a8a', btn: '#ffb300' },
-    indigo: { bg: '#f9f0ff', border: '#7b1fa2', btn: '#ffb300' },
-    orange: { bg: '#fffaf0', border: '#c2410c', btn: '#047857' }
+    blue: { bg: '#e0f2fe', border: '#1e3a8a', btn: '#ffb300' },
+    indigo: { bg: '#e0f2fe', border: '#7b1fa2', btn: '#ffb300' },
+    orange: { bg: '#e0f2fe', border: '#c2410c', btn: '#047857' }
   };
 
   const currentTheme = themeStyles[tickerTheme] || themeStyles.indigo;
@@ -58,7 +58,7 @@ const NotificationTicker = () => {
 
   return (
     <>
-      <div className="flex items-center overflow-hidden h-10 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500" style={{ backgroundColor: scrolled ? '#ffffff' : currentTheme.bg, borderColor: currentTheme.border }}>
+      <div className="flex items-center overflow-hidden h-10 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500" style={{ backgroundColor: currentTheme.bg, borderColor: currentTheme.border }}>
         
         {/* NOTIFICATIONS Badge */}
         <div className="z-20 h-full flex items-center justify-center pl-2 pr-4 bg-transparent shadow-[2px_0_5px_rgba(0,0,0,0.05)]">
@@ -116,3 +116,5 @@ const NotificationTicker = () => {
 };
 
 export default NotificationTicker;
+
+

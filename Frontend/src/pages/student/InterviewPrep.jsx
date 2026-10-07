@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Video, FileQuestion, Star, PlayCircle, Clock } from 'lucide-react';
+import { MessageSquare, Video, FileQuestion } from 'lucide-react';
 
 const InterviewPrep = () => {
     const modules = [
@@ -45,3 +45,4 @@ const InterviewPrep = () => {
 };
 
 export default InterviewPrep;
+

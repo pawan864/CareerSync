@@ -1,4 +1,10 @@
 /**
+ * CareerSync Capstone Project
+ * 
+ * @module Frontend/Home
+ * @description Landing page showcasing the platform's value proposition for students, institutions, and employers.
+ */
+/**
  * Landing Page Component (Home.jsx)
  * 
  * Features:
@@ -24,15 +30,21 @@ const heroSlides = [
         button1Link: "/register",
         button2: "Explore Opportunities",
         button2Link: "/jobs",
+        gradient: "from-white via-white/80 to-transparent",
+        taglineBg: "bg-slate-200 text-[#020817] border-slate-300",
+          btn1Color: "bg-[#020817] hover:bg-black",
+          btn2Color: "border-[#020817] text-[#020817] hover:bg-slate-100",
+        pillGlow: "hover:border-[#020817] border border-transparent hover:shadow-[0_0_12px_rgba(2,8,23,0.3)]",
+        activeDot: "bg-[#020817] w-5",
+        iconHover: "hover:text-blue-600",
+        watermarkQuote: "Innovating the future of campus hiring.",
+        middleQuote: "CareerSync: Bridging the gap between raw potential and industry demands.",
+        bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop",
         imageSrc: "/hero-student-transparent.jpg?v=13",
         imageAlt: "Isolated Indian college student boy",
-        gradient: "from-white via-blue-200 to-blue-500",
-        taglineBg: "bg-blue-100 text-blue-900 border-blue-200",
-        btn1Color: "bg-blue-900 hover:bg-blue-800",
-        btn2Color: "border-blue-900 text-blue-900 hover:bg-blue-50",
-        pillGlow: "hover:border-blue-400 hover:shadow-[0_0_12px_rgba(59,130,246,0.7)]",
-        activeDot: "bg-blue-800 w-5",
-        iconHover: "hover:text-blue-600"
+        rightPolygonColor: "bg-[#020817]",
+        rightQuote: "Celebrating success, enabling futures.",
+        rightBullets: ["Verified Student Profiles", "AI Skill Matching", "Seamless Recruitment", "Direct Industry Access"]
     },
     {
         id: 2,
@@ -44,35 +56,47 @@ const heroSlides = [
         button1Link: "/register",
         button2: "Learn More",
         button2Link: "/about",
+        gradient: "from-white via-white/80 to-transparent",
+        taglineBg: "bg-amber-100 text-[#431407] border-amber-200",
+        btn1Color: "bg-[#431407] hover:bg-[#2a0c04]",
+        btn2Color: "border-[#431407] text-[#431407] hover:bg-amber-50",
+        pillGlow: "hover:border-[#431407] border border-transparent hover:shadow-[0_0_12px_rgba(67,20,7,0.3)]",
+        activeDot: "bg-[#431407] w-5",
+        iconHover: "hover:text-indigo-600",
+        watermarkQuote: "Discover opportunities tailored for you.",
+        middleQuote: "Your dream career is just one intelligent match away with CareerSync.",
+        bgImage: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop",
         imageSrc: "/hero-girl-transparent.jpg",
         imageAlt: "Isolated female student",
-        gradient: "from-white via-indigo-200 to-indigo-500",
-        taglineBg: "bg-indigo-100 text-indigo-900 border-indigo-200",
-        btn1Color: "bg-indigo-900 hover:bg-indigo-800",
-        btn2Color: "border-indigo-900 text-indigo-900 hover:bg-indigo-50",
-        pillGlow: "hover:border-indigo-400 hover:shadow-[0_0_12px_rgba(99,102,241,0.7)]",
-        activeDot: "bg-indigo-800 w-5",
-        iconHover: "hover:text-indigo-600"
+        rightPolygonColor: "bg-[#431407]",
+        rightQuote: "Empowering over 10,000+ graduates seamlessly.",
+        rightBullets: ["Dynamic AI Resume", "One-Click Apply", "Skill Analytics", "Direct Interview Invites"]
     },
     {
         id: 3,
         tagline: "Celebrate Your Achievements",
-        title1: "Step Into The Professional World",
+        title1: "Launch Your Career",
         title2: "With Total Confidence",
         description: "From campus convocation to corporate success. CareerSync transforms your academic milestones into real-world career opportunities seamlessly.",
         button1: "Start Your Journey",
         button1Link: "/register",
         button2: "View Placements",
         button2Link: "/about",
+        gradient: "from-white via-white/80 to-transparent",
+        taglineBg: "bg-blue-100 text-blue-900 border-blue-200",
+        btn1Color: "bg-blue-800 hover:bg-blue-900",
+          btn2Color: "border-blue-800 text-blue-800 hover:bg-blue-50",
+        pillGlow: "hover:border-blue-800 border border-transparent hover:shadow-[0_0_12px_rgba(30,64,175,0.3)]",
+        activeDot: "bg-blue-800 w-5",
+        iconHover: "hover:text-orange-600",
+        watermarkQuote: "Where ambition meets opportunity.",
+        middleQuote: "Your bridge from campus to corporate success.",
+        bgImage: "/campus-girl.jpg",
         imageSrc: "/hero-convocation-student.jpg",
         imageAlt: "Graduation caps thrown in the air during convocation",
-        gradient: "from-white via-orange-100 to-orange-200",
-        taglineBg: "bg-orange-100 text-orange-900 border-orange-200",
-        btn1Color: "bg-orange-800 hover:bg-orange-700",
-        btn2Color: "border-orange-800 text-orange-900 hover:bg-orange-50",
-        pillGlow: "hover:border-orange-400 hover:shadow-[0_0_12px_rgba(249,115,22,0.7)]",
-        activeDot: "bg-orange-800 w-5",
-        iconHover: "hover:text-orange-600"
+        rightPolygonColor: "bg-[#0B1B33]",
+        rightQuote: "Building the next generation of tech leaders.",
+        rightBullets: ["High Placement Rates", "Top-Tier University Partners", "Global Corporate Tie-ups", "Lifelong Alumni Network"]
     }
 ];
 
@@ -251,8 +275,12 @@ const Home = () => {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: '-100%', opacity: 0 }}
                         transition={{ duration: 0.7, ease: "easeInOut" }}
-                        className={`absolute inset-0 bg-gradient-to-r ${heroSlides[currentSlide].gradient} flex items-center`}
+                        className={`absolute inset-0 flex items-center`}
                     >
+                        {/* Full screen background image */}
+                        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" style={{ backgroundImage: `url(${heroSlides[currentSlide].bgImage})` }}></div>
+                        {/* Left white gradient overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-r ${heroSlides[currentSlide].gradient} z-[1] w-full md:w-3/4 lg:w-[50%]`}></div>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full relative z-10 h-full flex items-center">
                             <div className="flex flex-col md:flex-row items-center justify-between w-full">
                                 {/* Left Content */}
@@ -264,8 +292,11 @@ const Home = () => {
                                         <span className="block md:whitespace-nowrap">{heroSlides[currentSlide].title1}</span>
                                         <span className="block text-gray-900 mt-2 md:whitespace-nowrap">{heroSlides[currentSlide].title2}</span>
                                     </h1>
-                                    <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide mb-8 max-w-xl">
+                                    <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide mb-3 max-w-xl">
                                         {heroSlides[currentSlide].description}
+                                    </p>
+                                    <p className={`border-l-[3px] pl-4 text-[14px] font-bold italic leading-relaxed tracking-wide mb-8 max-w-xl drop-shadow-sm ${currentSlide === 0 ? 'text-[#020817] border-[#020817]' : currentSlide === 1 ? 'text-[#431407] border-[#431407]' : 'text-blue-800 border-blue-800'}`}>
+                                        "{heroSlides[currentSlide].middleQuote}"
                                     </p>
                                     
                                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
@@ -285,29 +316,49 @@ const Home = () => {
                             </div>
                         </div>
 
-                        {/* Absolute Bottom-Anchored Image */}
-                        <img 
-                            src={heroSlides[currentSlide].imageSrc} 
-                            alt={heroSlides[currentSlide].imageAlt} 
-                            className="hidden md:block absolute bottom-0 right-0 lg:right-[5%] xl:right-[10%] w-auto h-[90%] max-h-[850px] object-contain object-bottom mix-blend-multiply pointer-events-none"
-                            style={{
-                                maskImage: 'linear-gradient(to top, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
-                                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)'
-                            }}
-                        />
+                        
+
+                        
+
+                        {/* Right dark diagonal polygon */}
+                        <div className={`hidden md:block absolute top-0 right-0 h-full w-[38%] ${heroSlides[currentSlide].rightPolygonColor} z-[10] transition-colors duration-700`} style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)' }}>
+                            {/* Top Right Little Quote */}
+                            <div className="absolute top-24 right-16 lg:right-20 z-20 opacity-70 text-right pointer-events-none">
+                                <p className={`text-lg md:text-xl font-bold leading-relaxed tracking-wide drop-shadow-md ${currentSlide === 0 ? 'text-blue-400' : currentSlide === 1 ? 'text-indigo-300' : 'text-orange-400'}`}>
+                                    {currentSlide === 0 ? '"Your professional journey begins here."' : currentSlide === 1 ? '"Accelerate your career growth today."' : '"Unlock your true professional potential."'}
+                                </p>
+                            </div>
+                            {/* Background Watermark Icon */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden z-0 pl-16">
+                                <GraduationCap className="w-96 h-96 text-white transform rotate-12 scale-150" strokeWidth={0.8} />
+                            </div>
+                            <div className="absolute inset-0 flex flex-col justify-center items-start pl-12 lg:pl-16 pr-6 text-white z-10">
+                                <ul className="space-y-5 mb-10">
+                                    {heroSlides[currentSlide].rightBullets?.map((bullet, idx) => (
+                                        <li key={idx} className="flex items-center space-x-4">
+                                            <span className="bg-white/10 text-white/90 p-2 rounded-full"><CheckCircle className="w-5 h-5" /></span>
+                                            <span className="text-gray-100 font-medium tracking-wide text-sm lg:text-base">{bullet}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="border-t border-white/40 pt-6 mt-2">
+                                    <p className="text-white/70 italic text-sm font-medium tracking-wide">
+                                        "{heroSlides[currentSlide].rightQuote}"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Interactive Watermark in bottom right */}
+                        <div className="hidden md:flex absolute bottom-8 right-12 flex-col items-end select-none cursor-default group transition-all duration-500 hover:-translate-y-1 hover:scale-105 z-20">
+                            <div className="text-4xl font-serif text-white/90 mb-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">CareerSync</div>
+                            <div className="text-[13px] font-medium italic text-white/70 tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">{heroSlides[currentSlide].watermarkQuote}</div>
+                        </div>
                     </motion.div>
                 </AnimatePresence>
 
                 {/* Slideshow Indicators */}
                 <div className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-500 cursor-pointer group ${heroSlides[currentSlide].pillGlow}`}>
-                    {/* Play/Pause Toggle */}
-                    <button 
-                        onClick={() => setIsPaused(!isPaused)}
-                        className={`text-gray-700 hover:scale-110 active:scale-95 transition-all ${heroSlides[currentSlide].iconHover}`}
-                        aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
-                    >
-                        {isPaused ? <Play className="w-3 h-3 fill-current" /> : <Pause className="w-3 h-3 fill-current" />}
-                    </button>
                     
                     {/* Dots */}
                     <div className="flex space-x-1.5 border-l border-gray-400/30 pl-2">
@@ -332,13 +383,13 @@ const Home = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
+                            className="fixed bottom-24 right-6 md:bottom-32 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
                         >
                             {/* Chat Header */}
                             <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
                                 <div className="flex items-center space-x-2">
                                     <div className="bg-white p-1.5 rounded-full shadow-sm">
-                                        <Bot className={`w-4 h-4 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
+                                        <Bot className={`w-4 h-4 ${['text-[#020817]', 'text-[#431407]', 'text-blue-800'][currentSlide]}`} />
                                     </div>
                                     <span className="font-bold text-gray-900 tracking-tight">CareerSync Assistant</span>
                                 </div>
@@ -447,14 +498,14 @@ const Home = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                        className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] p-4 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        className={`fixed bottom-24 right-6 md:bottom-32 md:right-10 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
                         onClick={() => {
                             setIsChatOpen(true);
                             setIsPaused(true);
                         }}
                     >
                         <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-4 bg-gray-800 text-white text-[10px] font-semibold px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">CareerSync Assistant</span>
-                        <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-blue-600', 'text-indigo-600', 'text-orange-600'][currentSlide]}`} />
+                        <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-[#020817]', 'text-[#431407]', 'text-blue-800'][currentSlide]}`} />
                     </motion.button>
                 )}
                 </AnimatePresence>
@@ -502,8 +553,9 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">AI-Driven Skill Mapping</h3>
@@ -513,8 +565,9 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <CheckCircle className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">TPOal Verification</h3>
@@ -524,8 +577,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 3 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <BarChart className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Smart Job Matching</h3>
@@ -535,8 +589,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <UserPlus className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Placement Analytics</h3>
@@ -558,8 +613,9 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Resume Building</h3>
@@ -569,8 +625,9 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <Users className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Mock Interviews</h3>
@@ -580,8 +637,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <Briefcase className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">One-Click Apply</h3>
@@ -591,8 +649,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div className={`p-8 rounded-xl shadow-sm hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-gray-300 transition-all duration-300 ${pageStyles[pageTheme].cardBg} ${pageStyles[pageTheme].borderHover}`}>
-                            <div className={`h-12 w-12 transition-colors duration-500 ${pageStyles[pageTheme].iconBg} text-black rounded-lg flex items-center justify-center mb-6`}>
+                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <BookOpen className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Alumni Mentorship</h3>
@@ -797,17 +856,18 @@ const Home = () => {
                         {faqs.map((faq, index) => (
                             <div 
                                 key={index} 
-                                className={`border border-gray-300 rounded-xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-md border-blue-400' : `${pageStyles[pageTheme].cardBg} hover:bg-white hover:shadow-md hover:border-blue-400`}`}
+                                className={`group relative border rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer ${openFaq === index ? 'bg-white border-blue-900/20 shadow-[0_8px_30px_-10px_rgba(30,58,138,0.25)] scale-[1.01]' : 'bg-white/80 border-gray-100 shadow-sm hover:shadow-md hover:border-blue-900/30 hover:-translate-y-1'}`}
                             >
+                                <div className={`absolute top-0 left-0 h-full w-1.5 bg-gradient-to-b from-blue-800 to-blue-950 transition-all duration-500 ${openFaq === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'}`}></div>
                                 <button
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
+                                    className="w-full px-7 py-6 flex items-center justify-between text-left focus:outline-none"
                                 >
-                                    <span className="font-semibold text-sm md:text-base tracking-tight pr-4 transition-colors text-black">
+                                    <span className={`font-bold text-sm md:text-base tracking-tight pr-4 transition-colors duration-300 ${openFaq === index ? 'text-blue-900' : 'text-gray-900 group-hover:text-blue-900'}`}>
                                         {faq.question}
                                     </span>
-                                    <div className={`transition-transform duration-300 text-blue-900 ${openFaq === index ? 'rotate-180' : ''}`}>
-                                        <ChevronDown className="w-5 h-5 stroke-[2.5]" />
+                                    <div className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-500 flex-shrink-0 ${openFaq === index ? 'bg-blue-900 text-white rotate-180 shadow-md shadow-blue-900/30' : 'bg-gray-50 text-gray-400 group-hover:bg-blue-900/10 group-hover:text-blue-900'}`}>
+                                        <ChevronDown className="w-4 h-4 stroke-[3]" />
                                     </div>
                                 </button>
                                 <AnimatePresence>
@@ -830,43 +890,64 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* CTA Banner */}
+            {/* CTA Banner Styled like Hero */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`group/cta mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl h-[450px]`}>
+                
+                {/* 1. Full screen background image */}
+                <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-transform duration-1000 group-hover/cta:scale-110"
+                    style={{ backgroundImage: `url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop)` }}
+                ></div>
 
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`group/cta bg-gradient-to-r mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${pageStyles[pageTheme].ctaGradient}`}>
-                <div className="px-8 py-16 md:p-16 flex flex-col md:flex-row items-center justify-between relative z-10">
-                    <div className="md:w-1/2 text-gray-900">
-                        <h2 id="tour-cta-heading" className="text-2xl md:text-3xl tracking-tight font-extrabold text-gray-900 mb-6 leading-tight">
-                            Start Connecting<br/>With Industry<br/>Today
-                        </h2>
-                        <p className="text-lg text-gray-700 font-medium mb-8">
-                            Begin your industry connections
-                        </p>
-                        <Link to="/register" className={`group relative overflow-hidden inline-flex items-center text-white font-normal px-6 py-3 text-sm md:text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${pageStyles[pageTheme].btnBg}`}>
-                            <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"></span>
-                            <span className="relative z-10">Get Started Now</span>
-                            <ArrowRight className="w-4 h-4 ml-2 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                        </Link>
-                    </div>
-                    <div className="md:w-1/2 mt-12 md:mt-0 relative flex justify-start items-center h-full min-h-[200px]">
-                        {/* 4 Line Italic Paragraph */}
-                        <div className="w-full md:w-5/6 lg:w-3/4 flex items-center h-full z-20 relative text-center md:text-left md:-translate-x-8 lg:-translate-x-12">
-                            <p className="text-sm font-normal italic leading-relaxed tracking-wide text-gray-900 bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl shadow-sm md:shadow-none">
-                                CareerSync bridges the gap between ambition and opportunity. We empower students with AI-driven insights, equip universities with powerful placement analytics, and provide corporate recruiters with instant access to a verified, highly-skilled talent pool ready to shape the future of the industry.
-                            </p>
-                        </div>
+                {/* 2. Left white gradient overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent z-10 w-2/3 md:w-1/2"></div>
+
+                {/* 3. Right dark diagonal polygon (matching Hero slide 1 style) */}
+                <div className="hidden md:block absolute top-0 right-0 h-full w-1/2 bg-[#020817] z-10" style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)' }}>
+                    {/* Top Right Little Quote */}
+                            <div className="absolute top-24 right-16 lg:right-20 z-20 opacity-70 text-right pointer-events-none">
+                                <p className={`text-lg md:text-xl font-bold leading-relaxed tracking-wide drop-shadow-md ${currentSlide === 0 ? 'text-blue-400' : currentSlide === 1 ? 'text-indigo-300' : 'text-orange-400'}`}>
+                                    {currentSlide === 0 ? '"Your professional journey begins here."' : currentSlide === 1 ? '"Accelerate your career growth today."' : '"Unlock your true professional potential."'}
+                                </p>
+                            </div>
+                            {/* Background Watermark Icon */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden z-0 pl-16">
+                                <GraduationCap className="w-96 h-96 text-white transform rotate-12 scale-150" strokeWidth={0.8} />
+                            </div>
+                            <div className="absolute inset-0 flex flex-col justify-center items-start pl-12 lg:pl-16 pr-6 text-white z-10">
+                        <ul className="space-y-5">
+                            <li className="flex items-center space-x-4">
+                                <span className="bg-blue-600/20 text-blue-400 p-2 rounded-full"><CheckCircle className="w-5 h-5" /></span>
+                                <span className="text-gray-100 font-medium tracking-wide">AI-Driven Profile Matching</span>
+                            </li>
+                            <li className="flex items-center space-x-4">
+                                <span className="bg-blue-600/20 text-blue-400 p-2 rounded-full"><CheckCircle className="w-5 h-5" /></span>
+                                <span className="text-gray-100 font-medium tracking-wide">Verified Academic Records</span>
+                            </li>
+                            <li className="flex items-center space-x-4">
+                                <span className="bg-blue-600/20 text-blue-400 p-2 rounded-full"><CheckCircle className="w-5 h-5" /></span>
+                                <span className="text-gray-100 font-medium tracking-wide">Instant Corporate Connect</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                {/* Professional Image with Dark Shirt for perfect blend */}
-                <img 
-                    src="/dark-student.jpg" 
-                    alt="Professional College Student" 
-                    className="hidden md:block absolute bottom-0 right-0 lg:right-8 w-auto h-[95%] max-h-[400px] object-contain object-bottom mix-blend-multiply brightness-[1.05] contrast-[1.10] pointer-events-none z-0 transition-transform duration-700 group-hover/cta:scale-105"
-                    style={{
-                        maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)'
-                    }}
-                />
+
+                <div className="absolute inset-0 px-8 md:px-12 lg:px-20 py-16 flex flex-col justify-center z-20">
+                    <div className="w-full md:w-1/2 lg:w-[38%] max-w-lg">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
+                            Start Connecting<br/>With Industry<br/>Today
+                        </h2>
+                        
+                        <p className="text-base text-gray-600 font-medium leading-relaxed tracking-wide mb-8">
+                            CareerSync bridges the gap between ambition and opportunity. Empower your future with AI-driven insights and instant access to a verified talent pool.
+                        </p>
+                        
+                        <Link to="/register" className={`inline-flex items-center text-white font-semibold px-8 py-4 text-sm md:text-base rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-blue-900 hover:bg-blue-800 hover:shadow-2xl`}>
+                            <span>Get Started Now</span>
+                            <ArrowRight className="w-5 h-5 ml-2" />
+                        </Link>
+                    </div>
+                </div>
             </motion.div>
 
         </motion.div>
@@ -976,3 +1057,90 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

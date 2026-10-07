@@ -14,7 +14,7 @@ import api from '../services/api';
 import { 
     ArrowLeft, Loader2, Home, MessageSquare, Send, CheckCircle2, ArrowRight, Mail, Eye, EyeOff, X, 
     Users, Search, BarChart2, Handshake, 
-    Building, Lock, ShieldCheck, UserPlus, GraduationCap
+    Building, Lock, ShieldCheck, UserPlus, GraduationCap, Moon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -233,7 +233,25 @@ const Login = () => {
     };
 
     return (
-        <div className={`fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-gradient-to-r transition-colors duration-700 ${themeStyles[globalTheme].bg}`}>
+        <div 
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")' }}
+    >
+
+        {/* Interactive Dark Overlay */}
+        <div className="absolute inset-0 bg-[#0B1B33]/50 backdrop-blur-sm z-0"></div>
+        
+        {/* Return to Home Button */}
+        <Link 
+            to="/" 
+            className="absolute top-4 right-6 md:top-6 md:right-8 z-50 p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] group flex items-center justify-center"
+            title="Return to Homepage"
+        >
+            <Home className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
+            <span className="absolute top-full right-1/2 translate-x-1/2 mt-2 bg-gray-900/90 text-white text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Home</span>
+        </Link>
+
+            
             {/* Absolute Top-Left Rotating CareerSync Logo */}
             <div className="absolute top-2 left-6 md:top-3 md:left-8 z-50 flex items-center gap-4">
                 <motion.div 
@@ -258,10 +276,10 @@ const Login = () => {
                     </div>
                 </motion.div>
                 <div className="hidden md:flex flex-col drop-shadow-lg -mt-3">
-                    <span className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-none">
-                        Career<span className={themeStyles[globalTheme].accentText}>Sync</span>
+                    <span className="text-3xl lg:text-4xl font-black text-black tracking-tight leading-none drop-shadow-md">
+                        Career<span className="text-blue-800">Sync</span>
                     </span>
-                    <span className="text-sm font-bold text-gray-800 tracking-widest uppercase mt-1">
+                    <span className="text-sm font-bold text-white/90 tracking-widest uppercase mt-1 drop-shadow-sm">
                         Portal
                     </span>
                 </div>
@@ -1553,3 +1571,17 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

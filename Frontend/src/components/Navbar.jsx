@@ -57,22 +57,22 @@ const Navbar = () => {
     };
 
     const dynamicStyles = {
-        blue: { bg: "from-white via-blue-100 to-blue-300", shadow: "hover:shadow-blue-200", syncText: "text-blue-900", loginBtn: "text-blue-900 border-blue-900", loginHoverBg: "bg-blue-900", signupBtn: "bg-blue-900 border-blue-900", signupTextHover: "hover:text-blue-900", linkHover: "hover:text-blue-900", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800" },
-        indigo: { bg: "from-white via-indigo-100 to-indigo-300", shadow: "hover:shadow-indigo-200", syncText: "text-indigo-900", loginBtn: "text-indigo-900 border-indigo-900", loginHoverBg: "bg-indigo-900", signupBtn: "bg-indigo-900 border-indigo-900", signupTextHover: "hover:text-indigo-900", linkHover: "hover:text-indigo-900", logoBg: "from-purple-500/20 to-indigo-600/20", logoBorder: "border-indigo-200", logoText: "text-indigo-800" },
-        orange: { bg: "from-white via-orange-100 to-orange-300", shadow: "hover:shadow-orange-200", syncText: "text-orange-900", loginBtn: "text-orange-900 border-orange-900", loginHoverBg: "bg-orange-900", signupBtn: "bg-orange-900 border-orange-900", signupTextHover: "hover:text-orange-900", linkHover: "hover:text-orange-900", logoBg: "from-amber-500/20 to-orange-600/20", logoBorder: "border-orange-200", logoText: "text-orange-800" }
+        blue: { bg: "from-white via-[#e6e9f0] to-[#d0d6e3]", shadow: "hover:shadow-slate-200", syncText: "text-[#020817]", loginBtn: "text-[#020817] border-[#020817]", loginHoverBg: "bg-[#020817]", signupBtn: "bg-[#020817] border-[#020817]", signupTextHover: "hover:text-[#020817]", linkHover: "hover:text-[#020817]", logoBg: "bg-[#020817]", logoBorder: "border-[#020817]", logoText: "text-white" },
+        indigo: { bg: "from-white via-[#f5e6e1] to-[#e8d5ce]", shadow: "hover:shadow-amber-200", syncText: "text-[#431407]", loginBtn: "text-[#431407] border-[#431407]", loginHoverBg: "bg-[#431407]", signupBtn: "bg-[#431407] border-[#431407]", signupTextHover: "hover:text-[#431407]", linkHover: "hover:text-[#431407]", logoBg: "bg-[#431407]", logoBorder: "border-[#431407]", logoText: "text-white" },
+        orange: { bg: "from-white via-[#e3ebf7] to-[#c6d7f0]", shadow: "hover:shadow-blue-200", syncText: "text-blue-800", loginBtn: "text-blue-800 border-blue-800", loginHoverBg: "bg-blue-800", signupBtn: "bg-blue-800 border-blue-800", signupTextHover: "hover:text-blue-800", linkHover: "hover:text-blue-800", logoBg: "bg-blue-800", logoBorder: "border-blue-800", logoText: "text-white" }
     };
 
     const themeClasses = {
-        blue: "bg-blue-50/95 border-blue-200 shadow-blue-900/5",
-        indigo: "bg-indigo-50/95 border-indigo-200 shadow-indigo-900/5",
-        orange: "bg-orange-50/95 border-orange-200 shadow-orange-900/5"
+        blue: "bg-gray-100/95 border-gray-200 shadow-gray-900/5",
+        indigo: "bg-gray-100/95 border-gray-200 shadow-gray-900/5",
+        orange: "bg-gray-100/95 border-gray-200 shadow-gray-900/5"
     };
 
     const currentTheme = (scrolled && !isSliderPaused) ? 'blue' : navTheme;
 
     const activeNavClass = scrolled 
         ? `${themeClasses[currentTheme]} backdrop-blur-md shadow-md border-b`
-        : "bg-white shadow-sm border-b border-gray-200";
+        : "bg-gray-100 shadow-sm border-b border-gray-200";
 
     return (
         <nav className={`sticky top-0 z-50 transition-colors duration-500 ${activeNavClass}`}>
@@ -89,16 +89,16 @@ const Navbar = () => {
                                 {/* Front Face (Original) */}
                                 <div 
                                     style={{ backfaceVisibility: "hidden" }}
-                                    className={`absolute inset-0 bg-gradient-to-br ${dynamicStyles[currentTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[currentTheme].logoBorder} transition-colors duration-500`}
+                                    className={`absolute inset-0 ${dynamicStyles[currentTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[currentTheme].logoBorder} transition-colors duration-500`}
                                 >
                                     <GraduationCap className={`w-5 h-5 ${dynamicStyles[currentTheme].logoText} transition-colors duration-500`} />
                                 </div>
                                 {/* Back Face (New Color) */}
                                 <div 
                                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                                    className="absolute inset-0 bg-gradient-to-br from-gray-800/10 to-black/20 rounded-lg flex items-center justify-center border border-gray-300"
+                                    className={`absolute inset-0 ${dynamicStyles[currentTheme].logoBg} rounded-lg flex items-center justify-center border ${dynamicStyles[currentTheme].logoBorder} transition-colors duration-500`}
                                 >
-                                    <GraduationCap className="w-5 h-5 text-black" />
+                                    <GraduationCap className={`w-5 h-5 ${dynamicStyles[currentTheme].logoText} transition-colors duration-500`} />
                                 </div>
                             </motion.div>
                             <span className="font-bold text-xl tracking-tight">
@@ -277,3 +277,12 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+

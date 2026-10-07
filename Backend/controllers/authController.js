@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/AuthController
+ * @description Handles user authentication, registration, login, and password management.
+ */
 const User = require('../models/User');
 const AuditLog = require('../models/AuditLog');
 
@@ -274,3 +280,4 @@ exports.forgotPassword = async (req, res, next) => {
         res.status(500).json({ success: false, message: 'Email could not be sent' });
     }
 };
+
