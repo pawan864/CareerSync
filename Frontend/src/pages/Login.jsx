@@ -314,9 +314,7 @@ const Login = () => {
             {/* Brand Logo and Tagline */}
             <div className="text-center z-20 mb-1 mt-3 drop-shadow-md">
                 <div className={`flex items-center justify-center mb-1.5 ${themeStyles[globalTheme].accentText}`}>
-                    <div className={`w-10 h-10 bg-gradient-to-br rounded-lg flex items-center justify-center mr-3 border ${themeStyles[globalTheme].logoBg} ${themeStyles[globalTheme].logoBorder}`}>
-                                <GraduationCap className={`w-6 h-6 ${themeStyles[globalTheme].logoText}`} />
-                            </div>
+                    
                     <span className="font-extrabold text-xl tracking-tight">
                         <span className="text-black">Career</span><span className={themeStyles[globalTheme].accentText}>Sync</span>
                     </span>
