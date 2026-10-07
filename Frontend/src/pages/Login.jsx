@@ -255,7 +255,7 @@ const Login = () => {
 
     return (
         <div 
-        className="fixed inset-0 w-full h-full flex flex-col items-center justify-start md:justify-center py-16 md:py-2 px-4 overflow-y-auto overflow-x-hidden md:overflow-hidden bg-white md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-start md:justify-center py-16 md:py-2 px-6 sm:px-12 md:px-4 overflow-y-auto overflow-x-hidden md:overflow-hidden bg-gray-50 md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
         
     >
 
@@ -341,7 +341,7 @@ const Login = () => {
                           exit="out"
                           variants={pageVariants}
                           transition={pageTransition}
-                          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white shadow-2xl'}`}
+                          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white shadow-2xl border border-gray-100 md:border-none'}`}
                       >
                         {showSupport ? (
                             <div className="w-full p-8 flex flex-col justify-center h-full relative">
