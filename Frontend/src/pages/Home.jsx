@@ -39,7 +39,7 @@ const heroSlides = [
         iconHover: "hover:text-blue-600",
         watermarkQuote: "Innovating the future of campus hiring.",
         middleQuote: "CareerSync: Bridging the gap between raw potential and industry demands.",
-        bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop",
+        bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?q=60&w=1280&auto=format&fit=crop",
         imageSrc: "/hero-student-transparent.jpg?v=13",
         imageAlt: "Isolated Indian college student boy",
         rightPolygonColor: "bg-[#020817]",
@@ -65,7 +65,7 @@ const heroSlides = [
         iconHover: "hover:text-indigo-600",
         watermarkQuote: "Discover opportunities tailored for you.",
         middleQuote: "Your dream career is just one intelligent match away with CareerSync.",
-        bgImage: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop",
+        bgImage: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=60&w=1280&auto=format&fit=crop",
         imageSrc: "/hero-girl-transparent.jpg",
         imageAlt: "Isolated female student",
         rightPolygonColor: "bg-[#431407]",
@@ -266,11 +266,7 @@ const Home = () => {
     }, [isPaused]);
     return (
         <>
-        <motion.div 
-            initial={{ opacity: 0, y: -20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="bg-white"
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }} className="bg-white"
         >
             {/* Hero Section */}
                         {/* Hero Section Slideshow */}
@@ -280,7 +276,7 @@ const Home = () => {
                         key={currentSlide}
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: '-100%', opacity: 0 }}
+                        exit={{ x: 0, opacity: 0 }}
                         transition={{ duration: 0.7, ease: "easeInOut" }}
                         className={`absolute inset-0 flex items-center`}
                     >
@@ -357,32 +353,13 @@ const Home = () => {
                         </div>
 
                         {/* Interactive Watermark in bottom right */}
-                        <div className="hidden md:flex absolute bottom-8 right-12 flex-col items-end select-none cursor-default group transition-all duration-500 hover:-translate-y-1 hover:scale-105 z-20">
+                        <div className="hidden md:flex absolute bottom-12 right-12 flex-col items-end select-none cursor-default group transition-all duration-500 hover:-translate-y-1 hover:scale-105 z-20">
                             <div className="text-4xl font-serif text-white/90 mb-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">CareerSync</div>
                             <div className="text-[13px] font-medium italic text-white/70 tracking-wide drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">{heroSlides[currentSlide].watermarkQuote}</div>
                         </div>
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Slideshow Indicators */}
-                <div className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-500 cursor-pointer group ${heroSlides[currentSlide].pillGlow}`}>
-                    
-                    {/* Dots */}
-                    <div className="flex space-x-1.5 border-l border-gray-400/30 pl-2">
-                        {heroSlides.map((_, idx) => (
-                            <button
-                                key={idx}
-                                onClick={() => {
-                                    setCurrentSlide(idx);
-                                    setIsPaused(true);
-                                }}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === idx ? heroSlides[currentSlide].activeDot : 'bg-gray-500/80 hover:bg-gray-700 w-1.5'}`}
-                                aria-label={`Go to slide ${idx + 1}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-                
                 {/* AI Chatbot Window */}
                 <AnimatePresence>
                     {isChatOpen && (
@@ -390,7 +367,7 @@ const Home = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="fixed bottom-24 right-6 md:bottom-32 md:right-10 w-80 md:w-96 bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
+                            className="absolute bottom-28 right-4 sm:right-8 md:right-12 w-[calc(100vw-2rem)] sm:w-80 md:w-96 bg-white z-[100] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
                         >
                             {/* Chat Header */}
                             <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
@@ -505,7 +482,7 @@ const Home = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                        className={`fixed bottom-24 right-6 md:bottom-32 md:right-10 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        className={`absolute bottom-28 right-4 sm:right-8 md:right-12 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
                         onClick={() => {
                             setIsChatOpen(true);
                             setIsPaused(true);
@@ -516,6 +493,29 @@ const Home = () => {
                     </motion.button>
                 )}
                 </AnimatePresence>
+
+                {/* Slideshow Indicators */}
+                <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-500 cursor-pointer group ${heroSlides[currentSlide].pillGlow}`}>
+                    
+                    {/* Dots */}
+                    <div className="flex space-x-1.5 border-l border-gray-400/30 pl-2">
+                        {heroSlides.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => {
+                                    setCurrentSlide(idx);
+                                    setIsPaused(true);
+                                }}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === idx ? heroSlides[currentSlide].activeDot : 'bg-gray-500/80 hover:bg-gray-700 w-1.5'}`}
+                                aria-label={`Go to slide ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+                
+                
+
+                
             </div>
 
             
@@ -545,7 +545,7 @@ const Home = () => {
 
             {/* Features Workflow Section */}
 
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-features" className="bg-gray-50 py-16">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} id="tour-features" className="bg-gray-50 py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     {/* Timeline Line */}
@@ -671,7 +671,7 @@ const Home = () => {
             </motion.div>
 
             {/* Our Partners Section (Infinite Marquee) */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-gray-100 py-12 border-b border-gray-200 overflow-hidden relative flex flex-col items-center shadow-inner">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} id="tour-marquee" className="bg-gray-100 py-12 border-b border-gray-200 overflow-hidden relative flex flex-col items-center shadow-inner">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center z-10">
                     <p id="tour-marquee-container" className="text-sm font-bold tracking-widest text-black uppercase">Trusted by industry leaders & top universities</p>
                 </div>
@@ -744,7 +744,7 @@ const Home = () => {
 
             
             {/* Success Stories / Testimonials */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} id="tour-testimonials" className="bg-gray-50 py-20 border-t border-gray-100">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} id="tour-testimonials" className="bg-gray-50 py-20 border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <h2 id="tour-testimonials-heading" className="text-sm font-bold tracking-widest text-black uppercase">
@@ -762,7 +762,7 @@ const Home = () => {
                             {/* Default Visible State (Minimal & Professional) */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
-                                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Aryan Sharma" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
+                                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=150&h=150&q=60" alt="Aryan Sharma" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
                                 <h4 className="text-sm font-bold tracking-widest text-black mb-1">Aryan Sharma</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Placed at TechCorp</p>
@@ -791,7 +791,7 @@ const Home = () => {
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
-                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2.2&w=150&h=150&q=80" alt="Priya Reddy" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2.2&w=150&h=150&q=60" alt="Priya Reddy" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
                                 <h4 className="text-sm font-bold tracking-widest text-black mb-1">Priya Reddy</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">Talent Acquisition, InnovateInc</p>
@@ -820,7 +820,7 @@ const Home = () => {
                             {/* Default Visible State */}
                             <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 group-hover:opacity-0 z-10 transition-colors duration-500 ${pageStyles[pageTheme].cardBg}`}>
                                 <div className="w-24 h-24 rounded-full mb-4">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80" alt="Dr. Manish Kumar" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2&w=150&h=150&q=60" alt="Dr. Manish Kumar" className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm" />
                                 </div>
                                 <h4 className="text-sm font-bold tracking-widest text-black mb-1">Dr. Manish Kumar</h4>
                                 <p className="text-sm text-gray-500 font-normal italic leading-relaxed tracking-wide text-center">TPO Head, Global Institute</p>
@@ -898,12 +898,12 @@ const Home = () => {
             </section>
 
             {/* CTA Banner Styled like Hero */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className={`group/cta mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl h-[450px]`}>
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} className={`group/cta mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl h-[450px]`}>
                 
                 {/* 1. Full screen background image */}
                 <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-transform duration-1000 group-hover/cta:scale-110"
-                    style={{ backgroundImage: `url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop)` }}
+                    style={{ backgroundImage: `url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=1280&auto=format&fit=crop)` }}
                 ></div>
 
                 {/* 2. Left white gradient overlay for readability */}
@@ -1055,6 +1055,12 @@ const Home = () => {
                             </button>
                         </div>
                     </motion.div>
+
+
+
+
+
+
                 </div>
             )}
         </AnimatePresence>

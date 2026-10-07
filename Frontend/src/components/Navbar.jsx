@@ -63,19 +63,24 @@ const Navbar = () => {
     };
 
     const themeClasses = {
-        blue: "bg-gray-100/95 border-gray-200 shadow-gray-900/5",
-        indigo: "bg-gray-100/95 border-gray-200 shadow-gray-900/5",
-        orange: "bg-gray-100/95 border-gray-200 shadow-gray-900/5"
+        blue: "bg-slate-200/95 border-slate-300 shadow-sm",
+        indigo: "bg-slate-200/95 border-slate-300 shadow-sm",
+        orange: "bg-slate-200/95 border-slate-300 shadow-sm"
     };
 
     const currentTheme = (scrolled && !isSliderPaused) ? 'blue' : navTheme;
 
     const activeNavClass = scrolled 
         ? `${themeClasses[currentTheme]} backdrop-blur-md shadow-md border-b`
-        : "bg-gray-100 shadow-sm border-b border-gray-200";
+        : "bg-slate-200 shadow-sm border-b border-gray-200";
 
     return (
-        <nav className={`sticky top-0 z-50 transition-colors duration-500 ${activeNavClass}`}>
+        <motion.nav 
+            initial={{ x: '-100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className={`sticky top-0 z-50 transition-colors duration-500 ${activeNavClass}`}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
@@ -272,11 +277,16 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </nav>
+        </motion.nav>
     );
 };
 
 export default Navbar;
+
+
+
+
+
 
 
 
