@@ -255,7 +255,7 @@ const Login = () => {
 
     return (
         <div 
-        className="fixed inset-0 w-full h-full flex flex-col items-center justify-start md:justify-center py-16 md:py-2 px-2 sm:px-12 md:px-4 overflow-y-auto overflow-x-hidden md:overflow-hidden bg-white md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center md:py-2 md:px-4 overflow-hidden bg-white md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
         
     >
 
@@ -328,7 +328,7 @@ const Login = () => {
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
             <motion.div 
-                className="w-[98%] md:w-full max-w-6xl rounded-2xl md:rounded-3xl min-h-[650px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] md:shadow-2xl relative z-10 perspective-1000 border border-gray-200 md:border-none mx-auto"
+                className="w-full h-full md:max-w-6xl md:rounded-3xl md:min-h-[650px] md:h-auto md:shadow-2xl relative z-10 perspective-1000 mx-auto"
                 initial={{ opacity: 0, scale: 0.96, y: 30 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -341,7 +341,7 @@ const Login = () => {
                           exit="out"
                           variants={pageVariants}
                           transition={pageTransition}
-                          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white shadow-2xl border border-gray-100 md:border-none'}`}
+                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white md:shadow-2xl'}`}
                       >
                         {showSupport ? (
                             <div className="w-full p-8 flex flex-col justify-center h-full relative">
