@@ -264,20 +264,20 @@ const Navbar = () => {
                                     className={`group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal bg-transparent border rounded-none md:rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
                                 >
                                     <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[currentTheme].loginHoverBg}`}></span>
-                                    <span className="relative z-10">Log in</span>
+                                    <span className="relative z-10 whitespace-nowrap">Log in</span>
                                 </Link>
                                 <Link
                                     to="/register"
                                     className={`ml-2 md:ml-3 group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal text-white border rounded-none md:rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
                                 >
                                     <span className="absolute inset-0 w-full h-full bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
-                                    <span className="relative z-10">Sign up</span>
+                                    <span className="relative z-10 whitespace-nowrap">Sign up</span>
                                 </Link>
                             </>
                         )}
                         {/* Mobile Hamburger Icon */}
                         <button 
-                            className="lg:hidden ml-2 md:ml-4 p-1 md:p-1.5 text-gray-700 hover:text-black rounded-md hover:bg-black/5 transition"
+                            className="lg:hidden ml-2 md:ml-4 w-8 h-8 flex items-center justify-center text-gray-700 hover:text-black rounded-none md:rounded-md border border-gray-300 md:border-none md:w-auto md:h-auto hover:bg-black/5 transition"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             {isMobileMenuOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Menu className="w-5 h-5 md:w-6 md:h-6" />}
