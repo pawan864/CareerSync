@@ -11,6 +11,15 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
+
+// Preload slider images for instant rendering
+const preloadUrls = [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=600&h=800&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=60&w=600&h=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=60&w=600&h=800&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=60&w=600&h=800&auto=format&fit=crop"
+];
+preloadUrls.forEach(url => { const img = new Image(); img.src = url; });
 import { GraduationCap, ArrowLeft, User, Building, Briefcase, BookOpen, Sun, Moon, X } from 'lucide-react';
 
 const Register = () => {
@@ -41,10 +50,10 @@ const Register = () => {
 
 
     const slides = [
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&h=800&auto=format&fit=crop", // Diverse students collaborating
-        "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1200&h=800&auto=format&fit=crop", // Professional Meeting / Placement
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&h=800&auto=format&fit=crop", // Industry Workspace
-        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&h=800&auto=format&fit=crop"  // University Campus
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=600&h=800&auto=format&fit=crop", // Diverse students collaborating
+        "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=60&w=600&h=800&auto=format&fit=crop", // Professional Meeting / Placement
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=60&w=600&h=800&auto=format&fit=crop", // Industry Workspace
+        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=60&w=600&h=800&auto=format&fit=crop"  // University Campus
     ];
 
     useEffect(() => {

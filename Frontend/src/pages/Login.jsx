@@ -11,9 +11,26 @@ import React, { useState, useContext, useEffect } from 'react';
 
 // Preload the heavy background image so it doesn't flash on initial render
 const preloadImage = new Image();
-preloadImage.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
+preloadImage.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+
+// Preload slider images for instant rendering
+const preloadUrls = [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=600&h=800&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=60&w=600&h=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=60&w=600&h=800&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=60&w=600&h=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=60&w=400&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1544717305-2782549b5136?q=60&w=400&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?q=60&w=400&auto=format&fit=crop"
+];
+preloadUrls.forEach(url => { const img = new Image(); img.src = url; });
 import api from '../services/api';
 import { 
     ArrowLeft, Loader2, Home, MessageSquare, Send, CheckCircle2, ArrowRight, Mail, Eye, EyeOff, X, 
@@ -113,24 +130,24 @@ const Login = () => {
     }, [otpSent, timeLeft]);
 
     const slides = [
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&h=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1200&h=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&h=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&h=800&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=600&h=800&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=60&w=600&h=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=60&w=600&h=800&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=60&w=600&h=800&auto=format&fit=crop"
     ];
 
     const studentSlides = [
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=60&w=400&auto=format&fit=crop"
     ];
 
     const facultySlides = [
-        "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1544717305-2782549b5136?q=60&w=400&auto=format&fit=crop", 
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=60&w=400&auto=format&fit=crop"
     ];
 
     useEffect(() => {
@@ -239,7 +256,7 @@ const Login = () => {
     return (
         <div 
         className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-[#0B1B33] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")' }}
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop")' }}
     >
 
         {/* Interactive Dark Overlay */}
@@ -842,7 +859,7 @@ const Login = () => {
                                 {/* Recruiter Layout */}
                                 <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-[#1e40af] overflow-hidden">
                                     <div className="absolute inset-0 bg-gradient-to-r from-[#1e40af] via-[#1e40af]/80 to-[#1e40af]/30 z-10"></div>
-                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-90" />
+                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=60&w=400&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-90" />
                                     
                                     {/* CAREERSYNC BRAND TAG */}
                                     <div className="absolute top-8 left-8 z-50 flex items-center">
@@ -1371,7 +1388,7 @@ const Login = () => {
                                 {/* ADMIN Layout */}
                                 <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-[#050505] overflow-hidden items-center justify-center p-14">
                                     <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-black/80 to-[#050505] z-10"></div>
-                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
+                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
                                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-red-600/20 rounded-full blur-[100px] pointer-events-none z-10" />
                                     {/* CAREERSYNC BRAND TAG */}
                                     <div className="absolute top-8 left-8 z-50 flex items-center">
