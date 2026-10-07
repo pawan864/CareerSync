@@ -85,7 +85,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center text-teal-600 mr-8">
+                        <Link to="/" className="flex items-center text-teal-600 mr-2 md:mr-8">
                             <motion.div 
                                 animate={{ rotateY: 360 }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -261,14 +261,14 @@ const Navbar = () => {
                             <>
                                 <Link
                                     to="/login"
-                                    className={`group relative overflow-hidden px-4 py-1.5 text-sm font-normal bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
+                                    className={`group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
                                 >
                                     <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[currentTheme].loginHoverBg}`}></span>
                                     <span className="relative z-10">Log in</span>
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className={`ml-3 group relative overflow-hidden px-4 py-1.5 text-sm font-normal text-white border rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
+                                    className={`ml-2 md:ml-3 group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal text-white border rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
                                 >
                                     <span className="absolute inset-0 w-full h-full bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
                                     <span className="relative z-10">Sign up</span>
@@ -277,10 +277,10 @@ const Navbar = () => {
                         )}
                         {/* Mobile Hamburger Icon */}
                         <button 
-                            className="lg:hidden ml-4 p-1.5 text-gray-700 hover:text-black rounded-md hover:bg-black/5 transition"
+                            className="lg:hidden ml-2 md:ml-4 p-1 md:p-1.5 text-gray-700 hover:text-black rounded-md hover:bg-black/5 transition"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
-                            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            {isMobileMenuOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Menu className="w-5 h-5 md:w-6 md:h-6" />}
                         </button>
                     </div>
                 </div>
