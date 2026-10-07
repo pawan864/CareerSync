@@ -1,3 +1,11 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Routes/Auth
+ * @description API route definitions for authentication and authorization.
+ * Handles user registration, login, JWT token verification, and password recovery.
+ * Protected routes utilize the authMiddleware.
+ */
 const express = require('express');
 const { register, login, verifyOtp, getMe, logout, forgotPassword } = require('../controllers/authController');
 
@@ -13,3 +21,4 @@ router.get('/me', protect, getMe);
 router.post('/forgot-password', forgotPassword);
 
 module.exports = router;
+

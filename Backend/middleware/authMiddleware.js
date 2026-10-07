@@ -1,3 +1,11 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Middleware/Auth
+ * @description Authentication middleware for securing API endpoints.
+ * Validates JSON Web Tokens (JWT) from Authorization headers or cookies,
+ * and attaches the authenticated user object to the request.
+ */
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -43,3 +51,4 @@ exports.authorize = (...roles) => {
         next();
     };
 };
+
