@@ -8,6 +8,10 @@
  * - Unified typography and interactive states
  */
 import React, { useState, useContext, useEffect } from 'react';
+
+// Preload the heavy background image so it doesn't flash on initial render
+const preloadImage = new Image();
+preloadImage.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import api from '../services/api';
@@ -234,7 +238,7 @@ const Login = () => {
 
     return (
         <div 
-        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-[#0B1B33] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")' }}
     >
 
@@ -1571,6 +1575,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 

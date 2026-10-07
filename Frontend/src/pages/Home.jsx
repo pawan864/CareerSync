@@ -251,6 +251,13 @@ const Home = () => {
     }, [currentSlide]);
 
     useEffect(() => {
+        heroSlides.forEach(slide => {
+            const img = new Image();
+            img.src = slide.bgImage;
+        });
+    }, []);
+
+    useEffect(() => {
         if (isPaused) return;
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
@@ -1057,6 +1064,10 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
 
 
 
