@@ -4,6 +4,6 @@
   "installCommand": "echo 'skipping root install'",
   "framework": "vite",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
