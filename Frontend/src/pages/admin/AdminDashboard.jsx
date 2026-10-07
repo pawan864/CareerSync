@@ -48,7 +48,7 @@ const VerificationModule = () => {
 
     React.useEffect(() => {
         // Fetch from real backend
-        fetch('http://localhost:5000/api/admin/verifications/pending')
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/admin/verifications/pending`)
             .then(res => res.json())
             .then(data => {
                 if(data.success) setUsers(data.data);
@@ -59,7 +59,7 @@ const VerificationModule = () => {
 
     const handleVerify = async (id, status) => {
         try {
-            await fetch(`http://localhost:5000/api/admin/verifications/${id}`, {
+            await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/admin/verifications/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status })
