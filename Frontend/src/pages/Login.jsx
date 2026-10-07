@@ -341,7 +341,7 @@ const Login = () => {
                           exit="out"
                           variants={pageVariants}
                           transition={pageTransition}
-                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white md:shadow-2xl'}`}
+                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white md:shadow-2xl'}`}
                       >
                         {showSupport ? (
                             <div className="w-full p-8 flex flex-col justify-center h-full relative">
@@ -403,7 +403,7 @@ const Login = () => {
                                                 <label className="block text-gray-700 text-xs font-medium mb-1">Describe the Issue</label>
                                                 <textarea name="description" required rows="3" className={`w-full px-3 py-2 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm resize-none`} value={supportData.description} onChange={handleSupportChange} placeholder="Please provide specific details..."></textarea>
                                             </div>
-                                            <button type="submit" disabled={supportStatus === 'submitting'} className={`w-full flex items-center justify-center py-2.5 rounded-lg text-white font-medium transition-colors text-sm ${themeStyles[globalTheme].primaryBtn} ${supportStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                            <button type="submit" disabled={supportStatus === 'submitting'} className={`w-full flex items-center justify-center py-2.5 rounded-lg text-gray-900 md:text-white font-medium transition-colors text-sm ${themeStyles[globalTheme].primaryBtn} ${supportStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}>
                                                 {supportStatus === 'submitting' ? 'Submitting...' : <>Submit Ticket <Send className="w-4 h-4 ml-2" /></>}
                                             </button>
                                         </form>
@@ -453,9 +453,9 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full lg:w-[45%] p-8 lg:p-12 bg-[#1e1e24] flex flex-col relative overflow-y-auto slim-scrollbar">
+                                <div className="w-full lg:w-[45%] p-8 lg:p-12 bg-white md:bg-[#1e1e24] flex flex-col relative overflow-y-auto slim-scrollbar">
                                     <div className="flex justify-between items-center mb-10 mt-4 lg:mt-0">
-                                        <div className="flex p-1 bg-[#2a2a32] rounded-lg w-fit">
+                                        <div className="flex p-1 bg-gray-100 md:bg-[#2a2a32] rounded-lg w-fit">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -482,8 +482,8 @@ const Login = () => {
                                             <div className={`w-12 h-12 ${themeStyles[globalTheme].iconBg} rounded-full flex items-center justify-center mb-3 ${themeStyles[globalTheme].iconColor}`}>
                                                 <GraduationCap className="w-6 h-6" />
                                             </div>
-                                            <h2 className="text-white text-xl font-bold mb-1">Student Login</h2>
-                                            <p className="text-gray-400 text-xs">Enter your account details</p>
+                                            <h2 className="text-gray-900 md:text-gray-900 md:text-white text-xl font-bold mb-1">Student Login</h2>
+                                            <p className="text-gray-500 md:text-gray-400 text-xs">Enter your account details</p>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-6">
@@ -498,26 +498,26 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <div className="relative border-b border-gray-600 focus-within:border-[#2563eb] transition-colors pb-1">
+                                            <div className="relative border-b border-gray-300 md:border-gray-600 focus-within:border-[#2563eb] transition-colors pb-1">
                                                 <input
                                                     type="text"
                                                     required
                                                     placeholder="Username or Email"
-                                                    className="w-full bg-transparent text-gray-200 focus:outline-none text-sm placeholder-gray-500"
-                                                    style={{ WebkitBoxShadow: '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: '#e5e7eb' }}
+                                                    className="w-full bg-transparent text-gray-800 md:text-gray-200 focus:outline-none text-sm placeholder-gray-400 md:placeholder-gray-500"
+                                                    style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth < 768) ? '0 0 0px 1000px #ffffff inset' : '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: (typeof window !== 'undefined' && window.innerWidth < 768) ? '#1f2937' : '#e5e7eb' }}
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
                                                 />
                                             </div>
 
                                             <div>
-                                                <div className="relative border-b border-gray-600 focus-within:border-[#2563eb] transition-colors pb-1 flex items-center justify-between">
+                                                <div className="relative border-b border-gray-300 md:border-gray-600 focus-within:border-[#2563eb] transition-colors pb-1 flex items-center justify-between">
                                                     <input
                                                         type={showPassword ? "text" : "password"}
                                                         required
                                                         placeholder="Password"
                                                         className="w-full bg-transparent text-gray-200 focus:outline-none text-sm pr-10 placeholder-gray-500"
-                                                        style={{ WebkitBoxShadow: '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: '#e5e7eb' }}
+                                                        style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth < 768) ? '0 0 0px 1000px #ffffff inset' : '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: (typeof window !== 'undefined' && window.innerWidth < 768) ? '#1f2937' : '#e5e7eb' }}
                                                         value={password}
                                                         onChange={(e) => setPassword(e.target.value)}
                                                     />
@@ -600,7 +600,7 @@ const Login = () => {
                                             </div>
 
                                             <div className="flex space-x-3 mb-8">
-                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
+                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
                                                     <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <defs>
                                                             <linearGradient id="mailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -613,7 +613,7 @@ const Login = () => {
                                                     </svg>
                                                     <span className="text-xs font-semibold">EMAIL</span>
                                                 </button>
-                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
+                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
                                                     <svg className="w-3.5 h-3.5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                                                     <span className="text-xs font-medium">GOOGLE</span>
                                                 </button>
@@ -1386,7 +1386,7 @@ const Login = () => {
                         ) : (
                             <>
                                 {/* ADMIN Layout */}
-                                <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-[#050505] overflow-hidden items-center justify-center p-14">
+                                <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-white md:bg-[#050505] overflow-hidden items-center justify-center p-14">
                                     <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-black/80 to-[#050505] z-10"></div>
                                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
                                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-red-600/20 rounded-full blur-[100px] pointer-events-none z-10" />
@@ -1413,14 +1413,14 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full lg:w-1/2 p-8 lg:p-12 bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
+                                <div className="w-full lg:w-1/2 p-8 lg:p-12 bg-white md:bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
                                     <Link to="/" className="absolute top-4 right-6 text-gray-400 hover:text-white flex items-center text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors z-50">
                                         <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
                                     </Link>
                                     <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-red-700/10 rounded-full blur-[120px] pointer-events-none" />
                                     
                                     <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0 relative z-20">
-                                        <div className="flex flex-wrap justify-center p-1 bg-[#121212] rounded-lg w-fit border border-gray-800 mx-auto lg:mx-0">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 md:bg-[#121212] rounded-lg w-fit border border-gray-200 md:border-gray-800 mx-auto lg:mx-0">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -1443,7 +1443,7 @@ const Login = () => {
                                             <div className="w-12 h-12 bg-red-950/50 rounded-full flex items-center justify-center mb-3 text-red-500 border border-red-900/50">
                                                 <ShieldCheck className="w-6 h-6" />
                                             </div>
-                                            <h2 className="text-white text-2xl font-bold mb-1 tracking-tight">Admin Login</h2>
+                                            <h2 className="text-gray-900 md:text-white text-2xl font-bold mb-1 tracking-tight">Admin Login</h2>
                                             <p className="text-gray-500 text-xs">Enter your master credentials</p>
                                         </div>
 
@@ -1460,9 +1460,9 @@ const Login = () => {
                                             )}
 
                                             <div>
-                                                <label className="block text-gray-400 text-xs font-semibold mb-1.5">Master Email</label>
-                                                <div className="relative flex items-center w-full px-3 py-2 bg-[#0a0a0a] border border-gray-800 rounded-lg focus-within:ring-1 focus-within:ring-red-500/70 focus-within:border-red-500/70 transition-all">
-                                                    <Mail className="w-4 h-4 text-gray-600 mr-2 flex-shrink-0" />
+                                                <label className="block text-gray-500 md:text-gray-400 text-xs font-semibold mb-1.5">Master Email</label>
+                                                <div className="relative flex items-center w-full px-3 py-2 bg-white md:bg-[#0a0a0a] border border-gray-300 md:border-gray-800 rounded-lg focus-within:ring-1 focus-within:ring-red-500/70 focus-within:border-red-500/70 transition-all">
+                                                    <Mail className="w-4 h-4 text-gray-400 md:text-gray-600 mr-2 flex-shrink-0" />
                                                     <input
                                                         type="email"
                                                         required
@@ -1476,12 +1476,12 @@ const Login = () => {
 
                                             <div>
                                                 <div className="flex justify-between items-center mb-1.5">
-                                                    <label className="block text-gray-400 text-xs font-semibold">Master Password</label>
+                                                    <label className="block text-gray-500 md:text-gray-400 text-xs font-semibold">Master Password</label>
                                                     <Link to="/forgot-password" className="text-xs font-semibold text-red-500 hover:text-red-400 transition-colors">Forgot Password?</Link>
                                                 </div>
-                                                <div className="relative flex items-center justify-between w-full px-3 py-2 bg-[#0a0a0a] border border-gray-800 rounded-lg focus-within:ring-1 focus-within:ring-red-500/70 focus-within:border-red-500/70 transition-all">
+                                                <div className="relative flex items-center justify-between w-full px-3 py-2 bg-white md:bg-[#0a0a0a] border border-gray-300 md:border-gray-800 rounded-lg focus-within:ring-1 focus-within:ring-red-500/70 focus-within:border-red-500/70 transition-all">
                                                     <div className="flex items-center flex-1">
-                                                        <Lock className="w-4 h-4 text-gray-600 mr-2 flex-shrink-0" />
+                                                        <Lock className="w-4 h-4 text-gray-400 md:text-gray-600 mr-2 flex-shrink-0" />
                                                         <input
                                                             type={showPassword ? "text" : "password"}
                                                             required
