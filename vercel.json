@@ -3,7 +3,8 @@
   "outputDirectory": "Frontend/dist",
   "installCommand": "echo 'skipping root install'",
   "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
