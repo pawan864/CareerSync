@@ -240,9 +240,9 @@ const Home = () => {
     }, [pageTheme, isPaused]);
 
     const pageStyles = {
-        blue: { bgDark: "bg-blue-500", cardBg: "bg-blue-50", iconBg: "bg-blue-100", iconText: "text-blue-600", borderHover: "hover:border-blue-200", btnBg: "bg-blue-900 hover:bg-blue-600", ctaGradient: "from-white via-blue-100 to-blue-300", textLight: "text-white", syncText: "text-blue-900" },
-        indigo: { bgDark: "bg-indigo-500", cardBg: "bg-[#f3f0fc]", iconBg: "bg-indigo-100", iconText: "text-indigo-600", borderHover: "hover:border-indigo-100", btnBg: "bg-indigo-900 hover:bg-indigo-600", ctaGradient: "from-white via-indigo-100 to-indigo-300", textLight: "text-white", syncText: "text-indigo-900" },
-        orange: { bgDark: "bg-orange-200", cardBg: "bg-[#fdfbf5]", iconBg: "bg-orange-100", iconText: "text-orange-600", borderHover: "hover:border-orange-200", btnBg: "bg-orange-900 hover:bg-orange-600", ctaGradient: "from-white via-orange-50 to-orange-100", textLight: "text-orange-900", syncText: "text-orange-900" }
+        blue: { bgDark: "bg-blue-500", cardBg: "bg-blue-50", iconBg: "bg-blue-100", iconText: "text-blue-600", borderHover: "hover:border-blue-200", btnBg: "bg-blue-900 hover:bg-blue-600", ctaGradient: "from-white via-blue-100 to-blue-300", textLight: "text-white", syncText: "text-blue-900", glowBorder: "hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]" },
+        indigo: { bgDark: "bg-indigo-500", cardBg: "bg-[#f3f0fc]", iconBg: "bg-indigo-100", iconText: "text-indigo-600", borderHover: "hover:border-indigo-100", btnBg: "bg-indigo-900 hover:bg-indigo-600", ctaGradient: "from-white via-indigo-100 to-indigo-300", textLight: "text-white", syncText: "text-indigo-900", glowBorder: "hover:border-indigo-500 hover:shadow-[0_0_25px_rgba(99,102,241,0.5)]" },
+        orange: { bgDark: "bg-orange-200", cardBg: "bg-[#fdfbf5]", iconBg: "bg-orange-100", iconText: "text-orange-600", borderHover: "hover:border-orange-200", btnBg: "bg-orange-900 hover:bg-orange-600", ctaGradient: "from-white via-orange-50 to-orange-100", textLight: "text-orange-900", syncText: "text-orange-900", glowBorder: "hover:border-orange-500 hover:shadow-[0_0_25px_rgba(249,115,22,0.5)]" }
     };
 
 
@@ -391,7 +391,7 @@ const Home = () => {
                                     <div className="bg-white p-1.5 rounded-full shadow-sm">
                                         <Bot className={`w-4 h-4 ${['text-[#020817]', 'text-[#431407]', 'text-blue-800'][currentSlide]}`} />
                                     </div>
-                                    <span className="font-bold text-gray-900 tracking-tight">CareerSync Assistant</span>
+                                    <span className={`font-bold text-white tracking-tight px-3 py-1 rounded-md text-sm shadow-sm transition-colors duration-500 ${currentSlide === 0 ? 'bg-[#020817]' : currentSlide === 1 ? 'bg-[#431407]' : 'bg-blue-800'}`}>CareerSync Assistant</span>
                                 </div>
                                 <button onClick={() => { 
                                     // If chat was ended, wipe history so it starts fresh next time
@@ -553,7 +553,7 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <FileText className="h-6 w-6" />
@@ -565,7 +565,7 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <CheckCircle className="h-6 w-6" />
@@ -577,7 +577,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 3 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <BarChart className="h-6 w-6" />
@@ -589,7 +589,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <UserPlus className="h-6 w-6" />
@@ -613,7 +613,7 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <FileText className="h-6 w-6" />
@@ -625,7 +625,7 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <Users className="h-6 w-6" />
@@ -637,7 +637,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <Briefcase className="h-6 w-6" />
@@ -649,7 +649,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div className="group relative p-8 rounded-[2rem] bg-white border border-gray-100/80 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-10px_rgba(59,130,246,0.15)] hover:-translate-y-1.5 hover:border-blue-100 transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div className="group relative p-8 rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
                                 <BookOpen className="h-6 w-6" />
@@ -1057,6 +1057,12 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
 
 
 
