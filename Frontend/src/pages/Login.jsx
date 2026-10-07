@@ -265,7 +265,7 @@ const Login = () => {
         {/* Return to Home Button */}
         <Link 
             to="/" 
-            className="absolute top-4 right-6 md:top-6 md:right-8 z-50 p-2.5 rounded-full bg-slate-100 md:bg-white/10 backdrop-blur-md border border-slate-200 md:border-white/20 text-slate-800 md:text-white hover:bg-slate-200 md:hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] group flex items-center justify-center"
+            className="absolute top-4 right-6 md:top-6 md:right-8 z-50 p-2.5 rounded-full bg-slate-100 md:bg-white/10 backdrop-blur-md border border-slate-200 md:border-white/20 text-slate-800 md:text-white hover:bg-slate-200 md:hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] hidden md:flex items-center justify-center group"
             title="Return to Homepage"
         >
             <Home className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />

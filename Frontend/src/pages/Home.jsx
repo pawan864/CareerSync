@@ -134,6 +134,22 @@ const Home = () => {
     const [isChatOpen, setIsChatOpen] = useState(false);
 
     useEffect(() => {
+        if (window.innerWidth >= 768) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.focus({ preventScroll: true });
+                }
+            });
+        }, { threshold: 0.7 });
+        
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach(card => observer.observe(card));
+        
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -567,7 +583,7 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <FileText className="h-6 w-6" />
@@ -579,7 +595,7 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <CheckCircle className="h-6 w-6" />
@@ -591,7 +607,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 3 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <BarChart className="h-6 w-6" />
@@ -603,7 +619,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <UserPlus className="h-6 w-6" />
@@ -627,7 +643,7 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <FileText className="h-6 w-6" />
@@ -639,7 +655,7 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <Users className="h-6 w-6" />
@@ -651,7 +667,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <Briefcase className="h-6 w-6" />
@@ -663,7 +679,7 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                        <div tabIndex="0" className="feature-card group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <BookOpen className="h-6 w-6" />
