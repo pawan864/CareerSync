@@ -67,7 +67,6 @@ html, body {
   scrollbar-width: none;  
   
   /* Disable bounce/pull-to-refresh effect which reveals background */
-  /* overscroll-behavior-y: none; (Removed to allow pull-to-refresh on Android) */
   overscroll-behavior-x: none;
 }
 
@@ -134,3 +133,5 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #ffffff !important;
     caret-color: #ffffff !important;
 }
+
+@media (min-width: 768px) { html, body { overscroll-behavior-y: none; } }
