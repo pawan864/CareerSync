@@ -67,7 +67,7 @@ html, body {
   scrollbar-width: none;  
   
   /* Disable bounce/pull-to-refresh effect which reveals background */
-  overscroll-behavior-y: none;
+  /* overscroll-behavior-y: none; (Removed to allow pull-to-refresh on Android) */
   overscroll-behavior-x: none;
 }
 
