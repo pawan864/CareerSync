@@ -374,7 +374,7 @@ const Home = () => {
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="absolute bottom-28 right-4 sm:right-8 md:right-12 w-[calc(100vw-2rem)] sm:w-80 md:w-96 bg-white z-[100] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
+                            className="fixed bottom-24 right-4 sm:right-8 md:right-12 w-[calc(100vw-2rem)] sm:w-80 md:w-96 bg-white z-[100] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 overflow-hidden z-[100] flex flex-col"
                         >
                             {/* Chat Header */}
                             <div className={`p-4 flex justify-between items-center bg-gradient-to-r ${heroSlides[currentSlide].gradient}`}>
@@ -489,7 +489,7 @@ const Home = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                        className={`absolute bottom-28 right-4 sm:right-8 md:right-12 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        className={`fixed bottom-8 right-4 sm:right-8 md:right-12 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
                         onClick={() => {
                             setIsChatOpen(true);
                             setIsPaused(true);
