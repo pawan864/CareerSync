@@ -255,17 +255,17 @@ const Login = () => {
 
     return (
         <div 
-        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-[#0B1B33] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop")' }}
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-center py-2 px-4 overflow-hidden bg-white md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
+        
     >
 
         {/* Interactive Dark Overlay */}
-        <div className="absolute inset-0 bg-[#0B1B33]/50 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 hidden md:block bg-[#0B1B33]/50 backdrop-blur-sm z-0"></div>
         
         {/* Return to Home Button */}
         <Link 
             to="/" 
-            className="absolute top-4 right-6 md:top-6 md:right-8 z-50 p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] group flex items-center justify-center"
+            className="absolute top-4 right-6 md:top-6 md:right-8 z-50 p-2.5 rounded-full bg-slate-100 md:bg-white/10 backdrop-blur-md border border-slate-200 md:border-white/20 text-slate-800 md:text-white hover:bg-slate-200 md:hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] group flex items-center justify-center"
             title="Return to Homepage"
         >
             <Home className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} />
@@ -274,7 +274,7 @@ const Login = () => {
 
             
             {/* Absolute Top-Left Rotating CareerSync Logo */}
-            <div className="absolute top-2 left-6 md:top-3 md:left-8 z-50 flex items-center gap-4">
+            <div className="absolute top-2 left-6 md:top-3 md:left-8 z-50 hidden md:flex items-center gap-4">
                 <motion.div 
                     animate={{ rotateY: 360 }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
