@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { GraduationCap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { GraduationCap, Menu, X, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
@@ -274,9 +274,37 @@ const Navbar = () => {
                                 </Link>
                             </>
                         )}
+                        {/* Mobile Hamburger Icon */}
+                        <button 
+                            className="lg:hidden ml-4 p-1.5 text-gray-700 hover:text-black rounded-md hover:bg-black/5 transition"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="lg:hidden border-t border-gray-200 bg-white overflow-hidden shadow-xl"
+                    >
+                        <div className="px-6 py-5 flex flex-col space-y-5">
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Home</Link>
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">About</Link>
+                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Students</Link>
+                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Institutions</Link>
+                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Companies</Link>
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg">Contact</Link>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };
