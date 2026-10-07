@@ -273,6 +273,39 @@ const Login = () => {
         </Link>
 
             
+            {/* Absolute Top-Left Rotating CareerSync Logo */}
+            <div className="absolute top-2 left-6 md:top-3 md:left-8 z-50 hidden md:flex items-center gap-4">
+                <motion.div 
+                    animate={{ rotateY: 360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                    style={{ transformStyle: "preserve-3d" }}
+                    className="relative w-16 h-16 md:w-20 md:h-20 shadow-2xl rounded-2xl"
+                >
+                    {/* Front Face */}
+                    <div 
+                        style={{ backfaceVisibility: "hidden" }}
+                        className={`absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center rounded-2xl border ${themeStyles[globalTheme].logoBorder}`}
+                    >
+                        <GraduationCap className={`w-10 h-10 md:w-12 md:h-12 ${themeStyles[globalTheme].iconColor}`} />
+                    </div>
+                    {/* Back Face */}
+                    <div 
+                        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                        className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black rounded-2xl flex items-center justify-center border border-gray-700"
+                    >
+                        <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                    </div>
+                </motion.div>
+                <div className="hidden md:flex flex-col drop-shadow-lg -mt-3">
+                    <span className="text-3xl lg:text-4xl font-black text-black tracking-tight leading-none drop-shadow-md">
+                        Career<span className="text-blue-800">Sync</span>
+                    </span>
+                    <span className="text-sm font-bold text-white/90 tracking-widest uppercase mt-1 drop-shadow-sm">
+                        Portal
+                    </span>
+                </div>
+            </div>
+
             <>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
