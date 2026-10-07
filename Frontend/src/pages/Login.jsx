@@ -326,9 +326,9 @@ const Login = () => {
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
             <motion.div 
-                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-6 shrink-0"
-                initial={{ opacity: 0, scale: 0.96, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-6 shrink-0 bg-white overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
                 <AnimatePresence initial={false}>
@@ -339,7 +339,7 @@ const Login = () => {
                           exit="out"
                           variants={pageVariants}
                           transition={pageTransition}
-                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white md:shadow-2xl'}`}
+                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-transparent'}`}
                       >
                         {showSupport ? (
                             <div className="w-full p-8 flex flex-col justify-center h-full relative">
