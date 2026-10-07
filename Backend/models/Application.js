@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/Application
+ * @description Mongoose schema for Application functionality in the MERN stack.
+ */
 const mongoose = require('mongoose');
 
 const ApplicationSchema = new mongoose.Schema({

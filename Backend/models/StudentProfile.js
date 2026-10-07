@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/StudentProfile
+ * @description Mongoose schema for StudentProfile functionality in the MERN stack.
+ */
 const mongoose = require('mongoose');
 
 const StudentProfileSchema = new mongoose.Schema({

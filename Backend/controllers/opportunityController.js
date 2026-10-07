@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Controllers/opportunityController
+ * @description Express controller for opportunityController functionality in the MERN stack.
+ */
 const Opportunity = require('../models/Opportunity');
 const CompanyProfile = require('../models/CompanyProfile');
 const Application = require('../models/Application');

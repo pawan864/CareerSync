@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Controllers/analyticsController
+ * @description Express controller for analyticsController functionality in the MERN stack.
+ */
 const StudentProfile = require('../models/StudentProfile');
 const Opportunity = require('../models/Opportunity');
 const Application = require('../models/Application');

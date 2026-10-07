@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Controllers/skillMappingController
+ * @description Express controller for skillMappingController functionality in the MERN stack.
+ */
 const StudentProfile = require('../models/StudentProfile');
 const IndustryRole = require('../models/IndustryRole');
 

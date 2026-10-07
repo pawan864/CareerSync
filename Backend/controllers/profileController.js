@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Controllers/profileController
+ * @description Express controller for profileController functionality in the MERN stack.
+ */
 const StudentProfile = require('../models/StudentProfile');
 
 // @desc    Get current user's profile

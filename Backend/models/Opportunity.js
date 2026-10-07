@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/Opportunity
+ * @description Mongoose schema for Opportunity functionality in the MERN stack.
+ */
 const mongoose = require('mongoose');
 
 const OpportunitySchema = new mongoose.Schema({

@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Controllers/adminController
+ * @description Express controller for adminController functionality in the MERN stack.
+ */
 const User = require('../models/User');
 
 // UC-29: Get pending user verifications

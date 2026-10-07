@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/AuditLog
+ * @description Mongoose schema for AuditLog functionality in the MERN stack.
+ */
 const mongoose = require('mongoose');
 
 const AuditLogSchema = new mongoose.Schema({

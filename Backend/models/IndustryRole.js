@@ -1,3 +1,9 @@
+/**
+ * CareerSync Capstone Project
+ * 
+ * @module Backend/Models/IndustryRole
+ * @description Mongoose schema for IndustryRole functionality in the MERN stack.
+ */
 const mongoose = require('mongoose');
 
 const IndustryRoleSchema = new mongoose.Schema({
