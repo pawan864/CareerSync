@@ -328,7 +328,7 @@ const Login = () => {
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
             <motion.div 
-                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto shrink-0"
+                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-12 shrink-0"
                 initial={{ opacity: 0, scale: 0.96, y: 30 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
