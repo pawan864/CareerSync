@@ -489,13 +489,13 @@ const Home = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-                        className={`fixed bottom-8 md:bottom-28 right-4 sm:right-8 md:right-12 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
+                        className={`fixed bottom-8 md:bottom-28 right-4 sm:right-8 md:right-12 z-[100] p-3.5 rounded-full bg-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:shadow-2xl focus:shadow-2xl border-2 border-transparent hover:border-gray-100 transition-all duration-300 hover:scale-110 flex items-center justify-center group`}
                         onClick={() => {
                             setIsChatOpen(true);
                             setIsPaused(true);
                         }}
                     >
-                        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-4 bg-gray-800 text-white text-[10px] font-semibold px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">CareerSync Assistant</span>
+                        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-4 bg-gray-800 text-white text-[10px] font-semibold px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">CareerSync Assistant</span>
                         <Bot className={`w-7 h-7 transition-colors duration-500 ${['text-[#020817]', 'text-[#431407]', 'text-blue-800'][currentSlide]}`} />
                     </motion.button>
                 )}
@@ -567,9 +567,9 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 1 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">AI-Driven Skill Mapping</h3>
@@ -579,9 +579,9 @@ const Home = () => {
                         </div>
                         
                         {/* Card 2 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <CheckCircle className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">TPOal Verification</h3>
@@ -591,9 +591,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 3 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <BarChart className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Smart Job Matching</h3>
@@ -603,9 +603,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 4 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <UserPlus className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Placement Analytics</h3>
@@ -627,9 +627,9 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {/* Card 5 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <FileText className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Resume Building</h3>
@@ -639,9 +639,9 @@ const Home = () => {
                         </div>
                         
                         {/* Card 6 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <Users className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Mock Interviews</h3>
@@ -651,9 +651,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 7 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <Briefcase className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">One-Click Apply</h3>
@@ -663,9 +663,9 @@ const Home = () => {
                         </div>
 
                         {/* Card 8 */}
-                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 hover:border-slate-900 hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600">
+                        <div tabIndex="0" className="group relative p-8 focus:outline-none rounded-[2rem] bg-white border-2 border-gray-100/50 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 focus:-translate-y-1.5 hover:border-slate-900 focus:border-slate-900 hover:shadow-2xl focus:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -mr-8 -mt-8 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-focus:scale-110 group-hover:rotate-3 group-focus:rotate-3 group-hover:from-blue-50 group-focus:from-blue-50 group-hover:to-indigo-50 group-focus:to-indigo-50 group-hover:border-blue-100 group-focus:border-blue-100 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group-focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] text-gray-600 group-hover:text-blue-600 group-focus:text-blue-600">
                                 <BookOpen className="h-6 w-6" />
                             </div>
                             <h3 className="text-sm font-bold tracking-widest text-black mb-4">Alumni Mentorship</h3>
@@ -905,7 +905,7 @@ const Home = () => {
             </section>
 
             {/* CTA Banner Styled like Hero */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} className={`group/cta mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl h-[450px]`}>
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "50px" }} transition={{ duration: 0.6 }} className={`group/cta mt-16 mx-4 sm:mx-8 lg:mx-16 rounded-3xl overflow-hidden shadow-xl mb-20 relative transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl focus:shadow-2xl h-[450px]`}>
                 
                 {/* 1. Full screen background image */}
                 <div 
@@ -956,7 +956,7 @@ const Home = () => {
                             CareerSync bridges the gap between ambition and opportunity. Empower your future with AI-driven insights and instant access to a verified talent pool.
                         </p>
                         
-                        <Link to="/register" className={`inline-flex items-center text-white font-semibold px-8 py-4 text-sm md:text-base rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-blue-900 hover:bg-blue-800 hover:shadow-2xl`}>
+                        <Link to="/register" className={`inline-flex items-center text-white font-semibold px-8 py-4 text-sm md:text-base rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-blue-900 hover:bg-blue-800 hover:shadow-2xl focus:shadow-2xl`}>
                             <span>Get Started Now</span>
                             <ArrowRight className="w-5 h-5 ml-2" />
                         </Link>
