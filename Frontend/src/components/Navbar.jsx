@@ -261,14 +261,14 @@ const Navbar = () => {
                             <>
                                 <Link
                                     to="/login"
-                                    className={`group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal bg-transparent border rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
+                                    className={`group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal bg-transparent border rounded-none md:rounded-md transition-all duration-500 hover:text-white ${dynamicStyles[currentTheme].loginBtn}`}
                                 >
                                     <span className={`absolute inset-0 w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 ${dynamicStyles[currentTheme].loginHoverBg}`}></span>
                                     <span className="relative z-10">Log in</span>
                                 </Link>
                                 <Link
                                     to="/register"
-                                    className={`ml-2 md:ml-3 group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal text-white border rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
+                                    className={`ml-2 md:ml-3 group relative overflow-hidden px-2.5 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-normal text-white border rounded-none md:rounded-md transition-all duration-500 ${dynamicStyles[currentTheme].signupBtn} ${dynamicStyles[currentTheme].signupTextHover}`}
                                 >
                                     <span className="absolute inset-0 w-full h-full bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0"></span>
                                     <span className="relative z-10">Sign up</span>
