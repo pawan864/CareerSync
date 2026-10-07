@@ -270,7 +270,7 @@ const Home = () => {
         >
             {/* Hero Section */}
                         {/* Hero Section Slideshow */}
-            <div id="tour-hero" className="relative w-full min-h-[calc(100vh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
+            <div id="tour-hero" className="relative w-full min-h-[calc(100dvh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
                 <AnimatePresence initial={false}>
                     <motion.div
                         key={currentSlide}
@@ -495,7 +495,7 @@ const Home = () => {
                 </AnimatePresence>
 
                 {/* Slideshow Indicators */}
-                <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 shadow-sm transition-all duration-500 cursor-pointer group ${heroSlides[currentSlide].pillGlow}`}>
+                <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-white/20 shadow-sm transition-all duration-500 cursor-pointer group ${heroSlides[currentSlide].pillGlow}`}>
                     
                     {/* Dots */}
                     <div className="flex space-x-1.5 border-l border-gray-400/30 pl-2">

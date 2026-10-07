@@ -31,7 +31,7 @@ const AppContent = () => {
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/support' || location.pathname === '/admin-login' || location.pathname === '/otp-verify' || location.pathname === '/student-dashboard' || location.pathname === '/admin-dashboard' || location.pathname === '/faculty-dashboard';
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-[100dvh] bg-gray-50 flex flex-col">
       {!isAuthPage && <Navbar />}
       {!isAuthPage && <NotificationTicker />}
       <main className="flex-grow flex flex-col">
