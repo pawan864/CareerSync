@@ -312,7 +312,7 @@ const Login = () => {
             </>
             
             {/* Brand Logo and Tagline */}
-            <div className="text-center z-20 mb-1 mt-3 drop-shadow-md">
+            <div className="text-center z-20 mb-4 mt-0 drop-shadow-md">
                 <div className={`flex items-center justify-center mb-1.5 ${themeStyles[globalTheme].accentText}`}>
                     
                     <span className="font-extrabold text-xl tracking-tight">
@@ -435,7 +435,7 @@ const Login = () => {
                                     </div>
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-0 left-8 z-50 flex items-center">
+                                    <div className="absolute top-2 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 shadow-lg">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -654,7 +654,7 @@ const Login = () => {
                                         </AnimatePresence>
                                     </div>
 
-                                    <div className="absolute top-0 left-8 z-50 flex items-center">
+                                    <div className="absolute top-2 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 shadow-lg">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -860,7 +860,7 @@ const Login = () => {
                                     <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=60&w=400&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-90" />
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-0 left-8 z-50 flex items-center">
+                                    <div className="absolute top-2 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -1154,7 +1154,7 @@ const Login = () => {
                                     <div className="absolute inset-0 bg-blue-600 mix-blend-multiply opacity-20 z-10"></div>
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-0 left-8 z-50 flex items-center">
+                                    <div className="absolute top-2 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -1389,7 +1389,7 @@ const Login = () => {
                                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
                                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-red-600/20 rounded-full blur-[100px] pointer-events-none z-10" />
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-0 left-8 z-50 flex items-center">
+                                    <div className="absolute top-2 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 border border-white/5 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
