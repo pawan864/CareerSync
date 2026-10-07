@@ -328,7 +328,7 @@ const Login = () => {
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
             <motion.div 
-                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-12 shrink-0"
+                className="w-full h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-6 shrink-0"
                 initial={{ opacity: 0, scale: 0.96, y: 30 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -437,7 +437,7 @@ const Login = () => {
                                     </div>
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-5 left-8 z-50 flex items-center">
+                                    <div className="absolute top-6 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 shadow-lg">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -656,7 +656,7 @@ const Login = () => {
                                         </AnimatePresence>
                                     </div>
 
-                                    <div className="absolute top-5 left-8 z-50 flex items-center">
+                                    <div className="absolute top-6 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 shadow-lg">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -862,7 +862,7 @@ const Login = () => {
                                     <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=60&w=400&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-90" />
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-5 left-8 z-50 flex items-center">
+                                    <div className="absolute top-6 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -1156,7 +1156,7 @@ const Login = () => {
                                     <div className="absolute inset-0 bg-blue-600 mix-blend-multiply opacity-20 z-10"></div>
                                     
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-5 left-8 z-50 flex items-center">
+                                    <div className="absolute top-6 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center mr-2">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
@@ -1391,7 +1391,7 @@ const Login = () => {
                                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
                                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-red-600/20 rounded-full blur-[100px] pointer-events-none z-10" />
                                     {/* CAREERSYNC BRAND TAG */}
-                                    <div className="absolute top-5 left-8 z-50 flex items-center">
+                                    <div className="absolute top-6 left-8 z-50 flex items-center">
                                         <div className="w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center mr-2 border border-white/5 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
                                             <span className="text-white font-bold text-lg">C</span>
                                         </div>
