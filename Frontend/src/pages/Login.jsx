@@ -312,7 +312,7 @@ const Login = () => {
             </>
             
             {/* Brand Logo and Tagline */}
-            <div className="text-center z-20 mb-1 mt-3 drop-shadow-md">
+            <div className="text-center z-20 mb-4 mt-0 drop-shadow-md">
                 <div className={`flex items-center justify-center mb-1.5 ${themeStyles[globalTheme].accentText}`}>
                     
                     <span className="font-extrabold text-xl tracking-tight">
