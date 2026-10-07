@@ -54,13 +54,13 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = async () => {
+        localStorage.removeItem('token');
+        setUser(null);
         try {
             await api.get('/auth/logout');
         } catch (error) {
             console.error(error);
         }
-        localStorage.removeItem('token');
-        setUser(null);
     };
 
     return (
