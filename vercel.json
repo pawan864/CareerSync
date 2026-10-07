@@ -2,9 +2,5 @@
   "buildCommand": "cd Frontend && npm install && npm run build",
   "outputDirectory": "Frontend/dist",
   "installCommand": "echo 'skipping root install'",
-  "framework": "vite",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "framework": "vite"
 }
