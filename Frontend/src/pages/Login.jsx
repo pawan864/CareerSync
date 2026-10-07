@@ -673,8 +673,8 @@ const Login = () => {
                                 </div>
 
                                 <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
-                                    <div className="flex justify-between items-center mb-6 mt-4 lg:mt-0">
-                                        <div className="flex p-1 bg-gray-100 rounded-lg w-fit">
+                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -940,8 +940,8 @@ const Login = () => {
                                 </div>
 
                                 <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
-                                    <div className="flex justify-between items-center mb-6 mt-4 lg:mt-0">
-                                        <div className="flex p-1 bg-gray-100 rounded-lg w-fit">
+                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -1152,7 +1152,7 @@ const Login = () => {
                         ) : portal === 'TPO' ? (
                             <>
                                 {/* TPO Layout */}
-                                <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-full">
+                                <div className="hidden lg:flex lg:w-1/2 relative min-h-[300px] lg:min-h-full">
                                     <div className="absolute inset-0 bg-blue-600 mix-blend-multiply opacity-20 z-10"></div>
                                     
                                     {/* CAREERSYNC BRAND TAG */}
@@ -1193,7 +1193,7 @@ const Login = () => {
                                     </Link>
 
                                     <div className="mt-8 lg:mt-6 mb-6">
-                                        <div className="flex p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -1419,8 +1419,8 @@ const Login = () => {
                                     </Link>
                                     <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-red-700/10 rounded-full blur-[120px] pointer-events-none" />
                                     
-                                    <div className="flex justify-between items-center mb-6 mt-4 lg:mt-0 relative z-20">
-                                        <div className="flex p-1 bg-[#121212] rounded-lg w-fit border border-gray-800">
+                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0 relative z-20">
+                                        <div className="flex flex-wrap justify-center p-1 bg-[#121212] rounded-lg w-fit border border-gray-800 mx-auto lg:mx-0">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
