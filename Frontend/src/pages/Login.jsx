@@ -36,13 +36,13 @@ import api from '../services/api';
 import { 
     ArrowLeft, Loader2, Home, MessageSquare, Send, CheckCircle2, ArrowRight, Mail, Eye, EyeOff, X, 
     Users, Search, BarChart2, Handshake, 
-    Building, Lock, ShieldCheck, UserPlus, GraduationCap, Moon
+    Building, Lock, ShieldCheck, UserPlus, GraduationCap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Login = () => {
     const location = useLocation();
-    const [globalTheme, setGlobalTheme] = useState(localStorage.getItem('globalTheme') || 'blue');
+    const [globalTheme] = useState(localStorage.getItem('globalTheme') || 'blue');
 
     const themeStyles = {
         blue: { bg: "from-white via-blue-200 to-blue-600", logoBg: "from-green-500/20 to-blue-600/20", logoBorder: "border-blue-200", logoText: "text-blue-800", cardBg: "bg-white", accentText: "text-blue-900", linkText: "text-blue-800", primaryBtn: "bg-blue-600 hover:bg-blue-700", iconColor: "text-blue-600", iconBg: "${themeStyles[globalTheme].iconBg}", labelColor: "text-blue-900", ringColor: "focus-within:ring-blue-600 focus:ring-blue-600" },

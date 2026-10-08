@@ -170,7 +170,6 @@ exports.login = async (req, res, next) => {
 // @route   POST /api/v1/auth/verify-otp
 // @access  Public
 exports.verifyOtp = async (req, res, next) => {
-    console.log("verifyOtp called with body:", req.body);
     try {
         const { userId, otp } = req.body;
         

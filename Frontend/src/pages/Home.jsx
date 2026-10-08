@@ -16,7 +16,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, Pause, Play, ArrowRight, Cookie, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Bot, BookOpen, GraduationCap, Briefcase, Users, CheckCircle, BarChart, UserPlus, FileText, ArrowRight, Cookie, X, ChevronDown } from 'lucide-react';
 
 
 const heroSlides = [
