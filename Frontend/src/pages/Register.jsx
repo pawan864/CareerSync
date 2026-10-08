@@ -220,7 +220,7 @@ const Register = () => {
                                 className="space-y-4"
                             >
                         {error && (
-                            <div className={`w-fit mx-auto px-4 py-2.5 rounded-lg text-xs text-center font-medium border ${isDarkMode ? 'bg-red-950/50 border-red-500/50 text-red-200' : 'bg-red-50 border-red-200 text-red-600'}`}>
+                            <div className={`w-fit mx-auto px-3 py-1.5 rounded-md text-[11px] text-center font-medium border ${isDarkMode ? 'bg-red-950/50 border-red-500/50 text-red-200' : 'bg-red-50 border-red-200 text-red-600'}`}>
                                 {error}
                             </div>
                         )}

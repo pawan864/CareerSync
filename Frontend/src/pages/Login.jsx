@@ -494,7 +494,7 @@ const Login = () => {
 
                                         <form onSubmit={handleSubmit} className="space-y-6">
                                             {error && (
-                                                <div className="bg-red-50 md:bg-red-900/50 border border-red-200 md:border-red-500 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                                <div className="w-fit mx-auto bg-red-50 md:bg-red-900/50 border border-red-200 md:border-red-500 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                     {error}
                                                 </div>
                                             )}
@@ -712,7 +712,7 @@ const Login = () => {
 
                                         <form onSubmit={handleSubmit} className="space-y-4">
                                             {error && (
-                                                <div className="bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                                <div className="w-fit mx-auto bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                     {error}
                                                 </div>
                                             )}
@@ -978,7 +978,7 @@ const Login = () => {
 
                                     <form onSubmit={handleSubmit} className="space-y-4 max-w-sm w-full mx-auto">
                                         {error && (
-                                            <div className="bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                            <div className="w-fit mx-auto bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                 {error}
                                             </div>
                                         )}
@@ -1225,7 +1225,7 @@ const Login = () => {
 
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         {error && (
-                                            <div className="bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                            <div className="w-fit mx-auto bg-red-50 border border-red-200 text-red-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                 {error}
                                             </div>
                                         )}
@@ -1451,7 +1451,7 @@ const Login = () => {
 
                                         <form onSubmit={handleSubmit} className="space-y-4">
                                             {error && (
-                                                <div className="bg-red-50 md:bg-red-950/50 border border-red-200 md:border-red-500/50 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                                <div className="w-fit mx-auto bg-red-50 md:bg-red-950/50 border border-red-200 md:border-red-500/50 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                     {error}
                                                 </div>
                                             )}
