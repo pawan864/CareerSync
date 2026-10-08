@@ -293,7 +293,7 @@ const Home = () => {
         >
             {/* Hero Section */}
                         {/* Hero Section Slideshow */}
-            <div id="tour-hero" className="relative mt-20 w-full min-h-[calc(100dvh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
+            <div id="tour-hero" className="relative mt-0 md:mt-20 w-full min-h-[calc(100dvh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
                 <AnimatePresence initial={false}>
                     <motion.div
                         key={currentSlide}
