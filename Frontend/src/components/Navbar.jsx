@@ -77,7 +77,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="h-16 w-full shrink-0"></div>
+            <div className="h-16 w-full shrink-0 md:hidden"></div>
             <motion.nav 
             initial={{ x: '-100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
