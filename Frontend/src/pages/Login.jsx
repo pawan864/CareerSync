@@ -571,7 +571,7 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                            <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
                                                 className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                     loginSuccess 
@@ -795,7 +795,7 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                            <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
                                                 className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                     loginSuccess 
@@ -1066,7 +1066,7 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                        <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                        <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
                                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                 loginSuccess 
@@ -1323,7 +1323,7 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                        <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                        <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
                                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                 loginSuccess 
@@ -1525,7 +1525,7 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                            <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
                                                   className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-6 text-xs shadow-[0_0_15px_rgba(220,38,38,0.2)] ${
                                                       loginSuccess 
