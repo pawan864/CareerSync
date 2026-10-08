@@ -76,11 +76,13 @@ const Navbar = () => {
         : "bg-slate-200 shadow-sm border-b border-gray-200";
 
     return (
-        <motion.nav 
+        <>
+            <div className="h-16 w-full shrink-0"></div>
+            <motion.nav 
             initial={{ x: '-100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className={`sticky top-0 z-50 transition-colors duration-500 ${activeNavClass}`}
+            className={`fixed w-full top-0 z-50 transition-colors duration-500 ${activeNavClass}`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
@@ -307,6 +309,7 @@ const Navbar = () => {
                 )}
             </AnimatePresence>
         </motion.nav>
+        </>
     );
 };
 
