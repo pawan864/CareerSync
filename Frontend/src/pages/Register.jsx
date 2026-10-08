@@ -9,6 +9,7 @@
  */
 import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
 
@@ -38,6 +39,7 @@ const Register = () => {
     const [showTermsModal, setShowTermsModal] = useState(false);
     const [modalType, setModalType] = useState('terms');
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [turnstileToken, setTurnstileToken] = useState('');
     const { register } = useContext(AuthContext);
     const navigate = useNavigate();
     const [globalTheme] = useState(localStorage.getItem('globalTheme') || 'blue');
@@ -81,6 +83,10 @@ const Register = () => {
         
         if (!termsAccepted) {
             return setError('You must accept the Terms and Conditions.');
+        }
+
+        if (!turnstileToken) {
+            return setError('Please complete the security check.');
         }
 
         try {
@@ -416,9 +422,8 @@ const Register = () => {
                             </label>
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={!termsAccepted}
+                        <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                                            <button type="submit" disabled={!termsAccepted}
                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 text-xs shadow-md ${termsAccepted ? `${themeStyles[globalTheme].primaryBtn} text-white shadow-blue-500/30 cursor-pointer` : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
                         >
                             Create Account

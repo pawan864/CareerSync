@@ -18,9 +18,29 @@ exports.register = async (req, res, next) => {
             studentId, college, course, branch, semester, phone,
             facultyId, department, designation, expertise,
             companyName, corporateEmail, website, industryType, companySize, location, registrationInfo,
-            tpoId, institutionCode
+            tpoId, institutionCode,
+            turnstileToken
         } = req.body;
 
+        // Turnstile Verification
+        if (!turnstileToken) {
+            return res.status(400).json({ success: false, error: 'Turnstile token missing. Please complete the security check.' });
+        }
+
+        const formData = new URLSearchParams();
+        formData.append('secret', '0x4AAAAAAFRwCTSCRIo9uqjIKmFn8DGR7LU');
+        formData.append('response', turnstileToken);
+
+        const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const turnstileOutcome = await turnstileResponse.json();
+        
+        if (!turnstileOutcome.success) {
+            return res.status(400).json({ success: false, error: 'Security check failed. Please try again.' });
+        }
 
         // Check for existing email or phone
         const existingEmail = await User.findOne({ email });
