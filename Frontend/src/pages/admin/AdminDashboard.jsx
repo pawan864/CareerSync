@@ -305,7 +305,7 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="h-screen overflow-hidden bg-[#050505] flex">
+        <div className="h-screen w-full max-w-[100vw] overflow-hidden bg-[#050505] flex">
             {/* Background elements */}
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-red-900/10 rounded-full blur-[120px]"></div>

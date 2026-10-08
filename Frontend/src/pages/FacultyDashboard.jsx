@@ -58,7 +58,7 @@ const FacultyDashboard = () => {
     };
 
     return (
-        <div className="h-screen overflow-hidden bg-gray-50 flex">
+        <div className="h-screen w-full max-w-[100vw] overflow-hidden bg-gray-50 flex">
             {/* Sidebar */}
             <motion.div 
                 initial={{ x: -280 }}

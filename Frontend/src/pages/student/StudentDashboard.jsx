@@ -80,7 +80,7 @@ const StudentDashboard = () => {
     ];
 
     return (
-        <div className="flex h-screen bg-gradient-to-r from-white via-blue-50 to-blue-100 font-sans overflow-hidden">
+        <div className="flex h-screen w-full max-w-[100vw] bg-gradient-to-r from-white via-blue-50 to-blue-100 font-sans overflow-hidden">
             
             {/* Sidebar */}
             <motion.div 
