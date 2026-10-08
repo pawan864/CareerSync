@@ -422,7 +422,7 @@ const Register = () => {
                             </label>
                         </div>
 
-                        <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
+                        <div className="mt-2 mb-1 flex justify-center w-full scale-[0.85] md:scale-90 origin-center"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
                                             <button type="submit" disabled={!termsAccepted}
                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 text-xs shadow-md ${termsAccepted ? `${themeStyles[globalTheme].primaryBtn} text-white shadow-blue-500/30 cursor-pointer` : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`}
                         >
