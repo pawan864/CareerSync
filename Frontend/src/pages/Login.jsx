@@ -670,7 +670,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-10 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
                                     <div className="flex justify-center items-center mb-6 mt-12 md:mt-4 lg:mt-0 w-full">
                                         <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
@@ -937,7 +937,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-10 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
                                     <div className="flex justify-center items-center mb-6 mt-12 md:mt-4 lg:mt-0 w-full">
                                         <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
@@ -1184,7 +1184,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-10 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
                                     
                                     <Link to="/" className="absolute top-4 right-6 text-gray-400 hover:text-gray-800 flex items-center text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-black/5 transition-colors">
                                         <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
@@ -1411,7 +1411,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 bg-white md:bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
+                                <div className="flex-1 w-full h-full lg:w-1/2 p-8 pb-10 md:pb-8 lg:p-12 bg-white md:bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
                                     <Link to="/" className="absolute top-4 right-6 text-gray-400 hover:text-white flex items-center text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors z-50">
                                         <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
                                     </Link>
