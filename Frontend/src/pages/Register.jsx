@@ -229,11 +229,11 @@ const Register = () => {
                             <>
                                 <div>
                                     <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Full Name</label>
-                                    <input type="text" name="name" placeholder="John Doe" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
+                                    <input type="text" name="name" placeholder="Enter your full name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
                                 </div>
                                 <div>
                                     <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Email Address</label>
-                                    <input type="email" name="email" placeholder="john@example.com" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
+                                    <input type="email" name="email" placeholder="Enter your email address" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
                                 </div>
                             </>
                         )}
@@ -253,7 +253,7 @@ const Register = () => {
                                 </div>
                                 <div>
                                     <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Institution</label>
-                                    <input type="text" name="college" placeholder="Name of your college/university" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.college} onChange={handleChange} />
+                                    <input type="text" name="college" placeholder="Enter college name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.college} onChange={handleChange} />
                                 </div>
                                 <div>
                                     <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Department</label>
@@ -269,7 +269,7 @@ const Register = () => {
                                 </div>
                                 <div>
                                     <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Phone Number</label>
-                                    <input type="text" name="phone" placeholder="10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
+                                    <input type="text" name="phone" placeholder="Enter 10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
                                 </div>
                             </div>
                         )}
@@ -281,7 +281,7 @@ const Register = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>TPO Name</label>
-                                            <input type="text" name="name" placeholder="John Doe" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
+                                            <input type="text" name="name" placeholder="Enter your full name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>TPO ID</label>
@@ -289,7 +289,7 @@ const Register = () => {
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Official Email</label>
-                                            <input type="email" name="email" placeholder="john@example.com" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
+                                            <input type="email" name="email" placeholder="Enter your email address" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Designation</label>
@@ -297,7 +297,7 @@ const Register = () => {
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Phone Number</label>
-                                            <input type="text" name="phone" placeholder="10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
+                                            <input type="text" name="phone" placeholder="Enter 10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
                                         </div>
                                     </div>
                                 </div>
@@ -306,7 +306,7 @@ const Register = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Institution Name</label>
-                                            <input type="text" name="college" placeholder="Name of your college/university" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.college} onChange={handleChange} />
+                                            <input type="text" name="college" placeholder="Enter college name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.college} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Institution Code</label>
@@ -324,15 +324,15 @@ const Register = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Company Name</label>
-                                            <input type="text" name="companyName" placeholder="Registered company name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.companyName} onChange={handleChange} />
+                                            <input type="text" name="companyName" placeholder="Enter company name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.companyName} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Corporate Email</label>
-                                            <input type="email" name="corporateEmail" placeholder="work@company.com" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.corporateEmail} onChange={handleChange} />
+                                            <input type="email" name="corporateEmail" placeholder="Enter corporate email" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.corporateEmail} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Website</label>
-                                            <input type="url" name="website" placeholder="www.company.com" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.website} onChange={handleChange} />
+                                            <input type="url" name="website" placeholder="Enter company website URL" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.website} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Industry Type</label>
@@ -357,7 +357,7 @@ const Register = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Recruiter Name</label>
-                                            <input type="text" name="name" placeholder="John Doe" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
+                                            <input type="text" name="name" placeholder="Enter your full name" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.name} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Designation</label>
@@ -365,11 +365,11 @@ const Register = () => {
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Corporate Email</label>
-                                            <input type="email" name="email" placeholder="john@example.com" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
+                                            <input type="email" name="email" placeholder="Enter your email address" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.email} onChange={handleChange} />
                                         </div>
                                         <div>
                                             <label className={`block text-xs font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>Phone Number</label>
-                                            <input type="text" name="phone" placeholder="10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
+                                            <input type="text" name="phone" placeholder="Enter 10-digit mobile number" required className={`w-full px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${themeStyles[globalTheme].ringColor} transition-colors text-sm placeholder-gray-400 ${isDarkMode ? 'bg-[#1e293b] text-gray-100 border-transparent focus:bg-[#0f172a] autofill-dark' : 'bg-white text-gray-900 border border-gray-300 focus:border-transparent focus:bg-white autofill-light'}`} value={formData.phone} onChange={handleChange} />
                                         </div>
                                     </div>
                                 </div>
