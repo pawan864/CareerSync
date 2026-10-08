@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     LayoutDashboard, Users, BookOpen, MessageSquare, TrendingUp, 
-    LogOut, Bell, Search, GraduationCap, CheckCircle, BarChart2, ClipboardList, FolderOpen, Calendar, Mail, Settings, HelpCircle
+    LogOut, Menu, X, Bell, Search, GraduationCap, CheckCircle, BarChart2, ClipboardList, FolderOpen, Calendar, Mail, Settings, HelpCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ const FacultyDashboard = () => {
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('Overview');
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleLogout = () => {
         logout();
@@ -62,7 +63,7 @@ const FacultyDashboard = () => {
             <motion.div 
                 initial={{ x: -280 }}
                 animate={{ x: 0 }}
-                className="w-64 bg-[#1e3a8a] flex flex-col relative z-20 shadow-2xl"
+                className={`fixed md:relative w-64 h-full bg-[#1e3a8a] flex flex-col z-30 shadow-2xl transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a]/90 via-[#1e3a8a]/80 to-[#172554] z-0"></div>
                 
@@ -107,13 +108,24 @@ const FacultyDashboard = () => {
                 </div>
             </motion.div>
 
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/50 z-20 md:hidden" 
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
+
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col relative z-10 overflow-hidden bg-gray-50">
                 {/* Top Header */}
-                <header className="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 z-20 shadow-sm">
-                    <div>
+                <header className="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8 z-20 shadow-sm">
+                    <div className="flex items-center">
+                        <button onClick={() => setMobileMenuOpen(true)} className="md:hidden p-2 -ml-2 mr-2 text-gray-400 hover:text-gray-800 rounded-lg hover:bg-gray-100"><Menu className="w-6 h-6" /></button>
+                        <div>
                         <h1 className="text-xl font-bold text-gray-800">{activeTab}</h1>
                         <p className="text-xs text-gray-500">Academic & Mentorship Dashboard</p>
+                        </div>
                     </div>
 
                     <div className="flex items-center space-x-6">
@@ -122,7 +134,7 @@ const FacultyDashboard = () => {
                             <input 
                                 type="text" 
                                 placeholder="Search students or courses..." 
-                                className="pl-9 pr-4 py-2 bg-gray-100 border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-800 transition-all w-64"
+                                className="pl-9 pr-4 py-2 bg-gray-100 border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-800 transition-all w-32 md:w-64"
                             />
                         </div>
                         <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">

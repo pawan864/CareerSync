@@ -216,7 +216,7 @@ const AdminLogin = () => {
                                 type="email"
                                 required
                                 disabled={otpSent}
-                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset', WebkitTextFillColor: '#f3f4f6' }}
+                                style={{ WebkitTextFillColor: '#f3f4f6' }}
                                 className={`w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="admin@careersync.com"
                                 value={email}
@@ -235,7 +235,7 @@ const AdminLogin = () => {
                                 type={showPassword ? "text" : "password"}
                                 required
                                 disabled={otpSent}
-                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset', WebkitTextFillColor: '#f3f4f6' }}
+                                style={{ WebkitTextFillColor: '#f3f4f6' }}
                                 className={`w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="••••••••••••"
                                 value={password}

@@ -417,7 +417,7 @@ const Login = () => {
                             <>
                                 {/* STUDENT LAYOUT */}
                                 <div className="hidden lg:flex lg:w-[55%] flex-col relative bg-[#9b72f0] p-14 overflow-hidden w-full items-center">
-                                    <div className="absolute inset-0 bg-gradient-to-b from-[#9b72f0]/90 via-[#9b72f0]/30 to-transparent z-10"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-b from-[#9b72f0]/60 via-[#9b72f0]/10 to-transparent z-10"></div>
                                     
                                     <div className="absolute inset-0 z-0 overflow-hidden">
                                         <AnimatePresence initial={false}>
@@ -429,7 +429,7 @@ const Login = () => {
                                                 animate={{ x: 0 }}
                                                 exit={{ x: '100%' }}
                                                 transition={{ type: "tween", ease: "easeInOut", duration: 1 }}
-                                                className="absolute inset-0 w-full h-full object-cover opacity-90"
+                                                className="absolute inset-0 w-full h-full object-cover opacity-100"
                                             />
                                         </AnimatePresence>
                                     </div>
@@ -452,8 +452,8 @@ const Login = () => {
                                 </div>
 
                                 <div className="w-full lg:w-[45%] p-8 lg:p-12 bg-white md:bg-[#1e1e24] flex flex-col relative overflow-y-auto slim-scrollbar">
-                                    <div className="flex justify-between items-center mb-10 mt-4 lg:mt-0">
-                                        <div className="flex p-1 bg-gray-100 md:bg-[#2a2a32] rounded-lg w-fit">
+                                    <div className="flex justify-center items-center mb-10 mt-4 lg:mt-0 w-full">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 md:bg-[#2a2a32] rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -486,12 +486,12 @@ const Login = () => {
 
                                         <form onSubmit={handleSubmit} className="space-y-6">
                                             {error && (
-                                                <div className="bg-red-900/50 border border-red-500 text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                                <div className="bg-red-50 md:bg-red-900/50 border border-red-200 md:border-red-500 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                     {error}
                                                 </div>
                                             )}
                                             {successMsg && (
-                                                <div className="bg-blue-900/50 border border-blue-500 text-blue-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
+                                                <div className="bg-blue-50 md:bg-blue-900/50 border border-blue-200 md:border-blue-500 text-blue-600 md:text-blue-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
                                                     {successMsg}
                                                 </div>
                                             )}
@@ -501,8 +501,8 @@ const Login = () => {
                                                     type="text"
                                                     required
                                                     placeholder="Username or Email"
-                                                    className="w-full bg-transparent text-gray-800 md:text-gray-200 focus:outline-none text-sm placeholder-gray-400 md:placeholder-gray-500"
-                                                    style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth < 768) ? '0 0 0px 1000px #ffffff inset' : '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: (typeof window !== 'undefined' && window.innerWidth < 768) ? '#1f2937' : '#e5e7eb' }}
+                                                    className="w-full bg-transparent text-gray-800 md:text-gray-200 focus:outline-none text-sm placeholder-gray-500 md:placeholder-gray-400 autofill-student"
+                                                    style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth >= 768) ? '0 0 0px 1000px #1e1e24 inset' : undefined }}
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
                                                 />
@@ -514,8 +514,8 @@ const Login = () => {
                                                         type={showPassword ? "text" : "password"}
                                                         required
                                                         placeholder="Password"
-                                                        className="w-full bg-transparent text-gray-200 focus:outline-none text-sm pr-10 placeholder-gray-500"
-                                                        style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth < 768) ? '0 0 0px 1000px #ffffff inset' : '0 0 0px 1000px #1e1e24 inset', WebkitTextFillColor: (typeof window !== 'undefined' && window.innerWidth < 768) ? '#1f2937' : '#e5e7eb' }}
+                                                        className="w-full bg-transparent text-gray-800 md:text-gray-200 focus:outline-none text-sm pr-10 placeholder-gray-500 md:placeholder-gray-400 autofill-student"
+                                                        style={{ WebkitBoxShadow: (typeof window !== 'undefined' && window.innerWidth >= 768) ? '0 0 0px 1000px #1e1e24 inset' : undefined }}
                                                         value={password}
                                                         onChange={(e) => setPassword(e.target.value)}
                                                     />
@@ -598,7 +598,7 @@ const Login = () => {
                                             </div>
 
                                             <div className="flex space-x-3 mb-8">
-                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
+                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:hover:bg-[#3f3f46] md:bg-[#2a2a32] text-gray-600 md:text-gray-300 py-2 rounded-md transition-colors autofill-light">
                                                     <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <defs>
                                                             <linearGradient id="mailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -611,7 +611,7 @@ const Login = () => {
                                                     </svg>
                                                     <span className="text-xs font-semibold">EMAIL</span>
                                                 </button>
-                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:bg-[#2a2a32] text-gray-300 py-2 rounded-md transition-colors autofill-light">
+                                                <button type="button" className="flex-1 flex items-center justify-center bg-transparent border border-gray-600 hover:bg-gray-100 md:hover:bg-[#3f3f46] md:bg-[#2a2a32] text-gray-600 md:text-gray-300 py-2 rounded-md transition-colors autofill-light">
                                                     <svg className="w-3.5 h-3.5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                                                     <span className="text-xs font-medium">GOOGLE</span>
                                                 </button>
@@ -637,7 +637,7 @@ const Login = () => {
                             <>
                                 {/* FACULTY LAYOUT */}
                                 <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-[#047857] overflow-hidden w-full items-center p-14">
-                                    <div className="absolute inset-0 bg-gradient-to-b from-[#047857]/90 via-[#047857]/30 to-[#047857]/50 z-10"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-b from-[#047857]/60 via-[#047857]/20 to-[#047857]/20 z-10"></div>
                                     
                                     <div className="absolute inset-0 z-0 overflow-hidden">
                                         <AnimatePresence initial={false}>
@@ -649,7 +649,7 @@ const Login = () => {
                                                 animate={{ x: 0 }}
                                                 exit={{ x: '100%' }}
                                                 transition={{ type: "tween", ease: "easeInOut", duration: 1 }}
-                                                className="absolute inset-0 w-full h-full object-cover opacity-90"
+                                                className="absolute inset-0 w-full h-full object-cover opacity-100"
                                             />
                                         </AnimatePresence>
                                     </div>
@@ -670,9 +670,9 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
-                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0">
-                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                    <div className="flex justify-center items-center mb-6 mt-12 md:mt-4 lg:mt-0 w-full">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -710,7 +710,7 @@ const Login = () => {
                                                 </div>
                                             )}
                                         {successMsg && (
-                                            <div className="${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
+                                            <div className={`\${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2`}>
                                                 {successMsg}
                                             </div>
                                         )}
@@ -856,8 +856,8 @@ const Login = () => {
                             <>
                                 {/* Recruiter Layout */}
                                 <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-[#1e40af] overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#1e40af] via-[#1e40af]/80 to-[#1e40af]/30 z-10"></div>
-                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=60&w=400&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-90" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-[#1e40af]/60 via-[#1e40af]/40 to-[#1e40af]/10 z-10"></div>
+                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=60&w=400&auto=format&fit=crop" alt="Corporate handshake" className="absolute inset-0 w-full h-full object-cover z-0 opacity-100" />
                                     
                                     {/* CAREERSYNC BRAND TAG */}
                                     <div className="absolute top-2 left-8 z-50 flex items-center">
@@ -871,7 +871,7 @@ const Login = () => {
                                     </div>
 
                                     {/* Slanted blue overlay at bottom */}
-                                    <div className={`absolute bottom-0 left-0 w-full h-48 ${themeStyles[globalTheme].primaryBtn} z-20`} style={{ clipPath: 'polygon(0 40%, 100% 0, 100% 100%, 0% 100%)' }}></div>
+                                    <div className="absolute bottom-0 left-0 w-full h-48 bg-[#1e3a8a] z-20" style={{ clipPath: 'polygon(0 40%, 100% 0, 100% 100%, 0% 100%)' }}></div>
 
                                     <div className="relative z-30 p-10 pt-24 text-white h-full flex flex-col">
                                         <div className="flex items-center mb-10">
@@ -937,9 +937,9 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
-                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0">
-                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                    <div className="flex justify-center items-center mb-6 mt-12 md:mt-4 lg:mt-0 w-full">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -977,7 +977,7 @@ const Login = () => {
                                             </div>
                                         )}
                                         {successMsg && (
-                                            <div className="${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
+                                            <div className={`\${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2`}>
                                                 {successMsg}
                                             </div>
                                         )}
@@ -1174,7 +1174,7 @@ const Login = () => {
                                             }`}
                                         />
                                     ))}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent z-20"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-blue-900/20 to-transparent z-20"></div>
                                     <div className="absolute bottom-0 left-0 p-10 text-white z-30">
                                         <h2 className="text-xl font-bold mb-3 leading-tight">Bridge the Gap Between<br/>Campus and Industry</h2>
                                         <p className="text-blue-100 text-sm max-w-md mb-6 leading-relaxed">
@@ -1184,14 +1184,14 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className={`w-full lg:w-1/2 p-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
+                                <div className={`flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 flex flex-col relative overflow-y-auto slim-scrollbar transition-colors duration-700 ${themeStyles[globalTheme].cardBg}`}>
                                     
                                     <Link to="/" className="absolute top-4 right-6 text-gray-400 hover:text-gray-800 flex items-center text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-black/5 transition-colors">
                                         <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
                                     </Link>
 
                                     <div className="mt-8 lg:mt-6 mb-6">
-                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto lg:mx-0">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -1225,7 +1225,7 @@ const Login = () => {
                                             </div>
                                         )}
                                         {successMsg && (
-                                            <div className="${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
+                                            <div className={`\${themeStyles[globalTheme].iconBg} border border-blue-200 text-blue-600 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2`}>
                                                 {successMsg}
                                             </div>
                                         )}
@@ -1385,8 +1385,8 @@ const Login = () => {
                             <>
                                 {/* ADMIN Layout */}
                                 <div className="hidden lg:flex lg:w-1/2 flex-col relative bg-white md:bg-[#050505] overflow-hidden items-center justify-center p-14">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-black/80 to-[#050505] z-10"></div>
-                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=60&w=400&auto=format&fit=crop" alt="Cyber Security" className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-overlay" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 via-black/40 to-[#050505]/60 z-10"></div>
+                                    
                                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-red-600/20 rounded-full blur-[100px] pointer-events-none z-10" />
                                     {/* CAREERSYNC BRAND TAG */}
                                     <div className="absolute top-2 left-8 z-50 flex items-center">
@@ -1411,14 +1411,14 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full lg:w-1/2 p-8 lg:p-12 bg-white md:bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
+                                <div className="flex-1 w-full h-full lg:w-1/2 p-8 pb-24 md:pb-8 lg:p-12 bg-white md:bg-[#050505] flex flex-col relative overflow-y-auto slim-scrollbar">
                                     <Link to="/" className="absolute top-4 right-6 text-gray-400 hover:text-white flex items-center text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors z-50">
                                         <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
                                     </Link>
                                     <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-red-700/10 rounded-full blur-[120px] pointer-events-none" />
                                     
-                                    <div className="flex justify-between items-center mb-6 mt-12 lg:mt-0 relative z-20">
-                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 md:bg-[#121212] rounded-lg w-fit border border-gray-200 md:border-gray-800 mx-auto lg:mx-0">
+                                    <div className="flex justify-center items-center mb-6 mt-12 md:mt-4 lg:mt-0 relative z-20 w-full">
+                                        <div className="flex flex-wrap justify-center p-1 bg-gray-100 md:bg-[#121212] rounded-lg w-fit border border-gray-200 md:border-gray-800 mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
                                                 <button 
                                                     key={p}
@@ -1447,12 +1447,12 @@ const Login = () => {
 
                                         <form onSubmit={handleSubmit} className="space-y-4">
                                             {error && (
-                                                <div className="bg-red-950/50 border border-red-500/50 text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
+                                                <div className="bg-red-50 md:bg-red-950/50 border border-red-200 md:border-red-500/50 text-red-600 md:text-red-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium">
                                                     {error}
                                                 </div>
                                             )}
                                             {successMsg && (
-                                                <div className="bg-blue-950/50 border border-blue-500/50 text-blue-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
+                                                <div className="bg-blue-50 md:bg-blue-950/50 border border-blue-200 md:border-blue-500/50 text-blue-600 md:text-blue-200 px-3 py-1.5 rounded-md text-[11px] text-center font-medium mt-2">
                                                     {successMsg}
                                                 </div>
                                             )}
@@ -1465,7 +1465,7 @@ const Login = () => {
                                                         type="email"
                                                         required
                                                         placeholder="admin@careersync.com"
-                                                        className="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-700 autofill-admin"
+                                                        className="w-full bg-transparent text-gray-900 md:text-white focus:outline-none text-sm placeholder-gray-500 md:placeholder-gray-400 autofill-admin"
                                                         value={email}
                                                         onChange={(e) => setEmail(e.target.value)}
                                                     />
@@ -1484,7 +1484,7 @@ const Login = () => {
                                                             type={showPassword ? "text" : "password"}
                                                             required
                                                             placeholder="Enter master password"
-                                                            className="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-700 autofill-admin"
+                                                            className="w-full bg-transparent text-gray-900 md:text-white focus:outline-none text-sm placeholder-gray-500 md:placeholder-gray-400 autofill-admin"
                                                             value={password}
                                                             onChange={(e) => setPassword(e.target.value)}
                                                         />

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { 
     GraduationCap, LogOut, User, BookOpen, Briefcase, FileText, BrainCircuit, MessageSquare, Calendar, Home, ChevronRight,
-    Award, Users, Building2, Network, LayoutTemplate, Map, Bookmark, MailOpen, Settings, HelpCircle
+    Award, Users, Building2, Network, LayoutTemplate, Map, Bookmark, MailOpen, Settings, HelpCircle, Menu, X
 } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -44,6 +44,7 @@ const StudentDashboard = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('home');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleLogout = () => {
         logout();
@@ -85,7 +86,7 @@ const StudentDashboard = () => {
             <motion.div 
                 initial={{ x: -300 }}
                 animate={{ x: 0 }}
-                className="w-72 bg-white/60 backdrop-blur-md border-r border-blue-200 flex flex-col z-20"
+                className={`fixed md:relative w-72 h-full bg-white/95 backdrop-blur-md border-r border-blue-200 flex flex-col z-30 transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
             >
                 
                 {/* Logo Area */}
@@ -109,7 +110,7 @@ const StudentDashboard = () => {
                         return (
                             <button
                                 key={item.id}
-                                onClick={() => setActiveTab(item.id)}
+                                onClick={() => { setActiveTab(item.id); setMobileMenuOpen(false); }}
                                 className={`w-full flex items-center py-2 px-3 text-xs rounded-md transition-all active:scale-95 ${
                                     isActive 
                                     ? 'bg-blue-600/10 text-blue-500 border border-blue-500/20' 
@@ -139,17 +140,33 @@ const StudentDashboard = () => {
                 </div>
             </motion.div>
 
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/50 z-20 md:hidden" 
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
+
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col relative z-10 overflow-hidden bg-transparent">
                 {/* Top Header */}
-                <header className="h-20 border-b border-gray-800 bg-gradient-to-r from-white via-blue-50 to-blue-100/80 backdrop-blur-md flex items-center justify-between px-8 z-20">
-                    <div>
+                <header className="h-20 border-b border-gray-800 bg-gradient-to-r from-white via-blue-50 to-blue-100/80 backdrop-blur-md flex items-center justify-between px-4 md:px-8 z-10">
+                    <div className="flex items-center">
+                        <button 
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="md:hidden p-2 -ml-2 mr-2 text-blue-900 rounded-lg hover:bg-blue-100"
+                        >
+                            <Menu className="w-6 h-6" />
+                        </button>
+                        <div>
                         <h2 className="text-2xl font-medium text-blue-900">
                             {navItems.find(i => i.id === activeTab)?.label}
                         </h2>
                         <p className="text-sm text-gray-600">
                             {navItems.find(i => i.id === activeTab)?.desc}
                         </p>
+                        </div>
                     </div>
                     <div className="flex items-center space-x-4 relative" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
                         <div className="flex flex-col text-right mr-2">

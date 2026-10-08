@@ -111,27 +111,41 @@ input:-webkit-autofill:active {
 .autofill-light:-webkit-autofill:hover, 
 .autofill-light:-webkit-autofill:focus, 
 .autofill-light:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-    -webkit-text-fill-color: #111827 !important;
-    caret-color: #111827 !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    -webkit-text-fill-color: currentColor !important;
+    caret-color: currentColor !important;
 }
 
 .autofill-dark:-webkit-autofill,
 .autofill-dark:-webkit-autofill:hover, 
 .autofill-dark:-webkit-autofill:focus, 
 .autofill-dark:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
-    -webkit-text-fill-color: #f3f4f6 !important;
-    caret-color: #f3f4f6 !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    -webkit-text-fill-color: currentColor !important;
+    caret-color: currentColor !important;
 }
 
 .autofill-admin:-webkit-autofill,
 .autofill-admin:-webkit-autofill:hover, 
 .autofill-admin:-webkit-autofill:focus, 
 .autofill-admin:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #0a0a0a inset !important;
-    -webkit-text-fill-color: #ffffff !important;
-    caret-color: #ffffff !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    -webkit-text-fill-color: currentColor !important;
+    caret-color: currentColor !important;
 }
 
 @media (min-width: 768px) { html, body { overscroll-behavior-y: none; } }
+
+
+/* Global Autofill Background Removal */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    transition: background-color 9999s ease-in-out 0s !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+
+.autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #e5e7eb !important; }
+@media (max-width: 767px) { .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #1f2937 !important; } }

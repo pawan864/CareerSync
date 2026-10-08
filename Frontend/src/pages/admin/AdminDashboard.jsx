@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     LayoutDashboard, Users, Building2, Activity, FileText, ShieldCheck, 
-    Settings, LogOut, Bell, Search, AlertCircle, Database,
+    Settings, LogOut, Menu, X, Bell, Search, AlertCircle, Database,
     UserCheck, ShieldAlert, BarChart2, Brain, MessageSquare, TrendingUp, CheckCircle, XCircle, Eye, Key, Link2, CreditCard
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -252,6 +252,7 @@ const AdminDashboard = () => {
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('Overview');
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleLogout = () => {
         logout();
@@ -315,7 +316,7 @@ const AdminDashboard = () => {
             <motion.div 
                 initial={{ x: -280 }}
                 animate={{ x: 0 }}
-                className="w-64 bg-[#0a0a0a] border-r border-gray-800/60 flex flex-col relative z-20 shadow-2xl"
+                className={`fixed md:relative w-64 h-full bg-[#0a0a0a] border-r border-gray-800/60 flex flex-col z-30 shadow-2xl transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
             >
                 {/* Brand */}
                 <div className="h-20 flex items-center px-6 border-b border-gray-800/60">
@@ -358,22 +359,38 @@ const AdminDashboard = () => {
                 </div>
             </motion.div>
 
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/50 z-20 md:hidden" 
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
+
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col relative z-10 overflow-hidden">
                 {/* Top Header */}
-                <header className="h-20 border-b border-gray-800/60 bg-[#0a0a0a]/80 backdrop-blur-xl flex items-center justify-between px-8 z-20">
-                    <div>
-                        <h1 className="text-xl font-bold text-white">{activeTab}</h1>
-                        <p className="text-xs text-gray-500">System overview and management</p>
+                <header className="h-20 border-b border-gray-800/60 bg-[#0a0a0a]/80 backdrop-blur-xl flex items-center justify-between px-4 md:px-8 z-20">
+                    <div className="flex items-center">
+                        <button 
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="md:hidden p-2 -ml-2 mr-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800"
+                        >
+                            <Menu className="w-6 h-6" />
+                        </button>
+                        <div>
+                            <h1 className="text-xl font-bold text-white">{activeTab}</h1>
+                            <p className="text-xs text-gray-500">System overview and management</p>
+                        </div>
                     </div>
 
-                    <div className="flex items-center space-x-6">
+                    <div className="flex items-center space-x-4 md:space-x-6">
                         <div className="relative">
                             <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                             <input 
                                 type="text" 
                                 placeholder="Search system logs..." 
-                                className="pl-9 pr-4 py-2 bg-[#121212] border border-gray-800 rounded-full text-sm focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 text-white placeholder-gray-600 transition-all w-64"
+                                className="pl-9 pr-4 py-2 bg-[#121212] border border-gray-800 rounded-full text-sm focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 text-white placeholder-gray-600 transition-all w-32 md:w-64"
                             />
                         </div>
                         <button className="relative p-2 text-gray-400 hover:text-white transition-colors">
