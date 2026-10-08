@@ -155,3 +155,11 @@ input:-webkit-autofill:active {
 @media (max-width: 767px) { html, body { overflow-x: hidden !important; max-width: 100vw !important; position: relative; overscroll-behavior-x: none; } }
 
 @media (max-width: 767px) { #root { overflow-x: hidden !important; width: 100% !important; max-width: 100vw !important; position: relative; } }
+
+/* Hide default browser password reveal eye icon */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
