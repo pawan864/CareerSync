@@ -180,9 +180,16 @@ const Login = () => {
         e.preventDefault();
         setError('');
         
+        const formData = new FormData(e.target);
+        const turnstileToken = formData.get('cf-turnstile-response');
+        if (!turnstileToken && (!otpSent || timeLeft === 0)) {
+            setError('Please complete the security check.');
+            return;
+        }
+        
         try {
             if (!otpSent || timeLeft === 0) {
-                const res = await login({ email, password, institutionCode, portal });
+                const res = await login({ email, password, institutionCode, portal, turnstileToken });
                 if (res.success && res.userId) {
                     setUserId(res.userId);
                     setOtpSent(true);
@@ -563,9 +570,8 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <button
-                                                type="submit"
-                                                disabled={isVerifying || loginSuccess}
+                                            <div className="cf-turnstile mt-4 flex justify-center w-full" data-sitekey="0x4AAAAAAFRwCYnHjksWpzIg"></div>
+<button type="submit" disabled={isVerifying || loginSuccess}
                                                 className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                     loginSuccess 
                                                     ? 'bg-green-500 text-white shadow-green-500/40 cursor-default' 
@@ -788,9 +794,8 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <button
-                                                type="submit"
-                                                disabled={isVerifying || loginSuccess}
+                                            <div className="cf-turnstile mt-4 flex justify-center w-full" data-sitekey="0x4AAAAAAFRwCYnHjksWpzIg"></div>
+<button type="submit" disabled={isVerifying || loginSuccess}
                                                 className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                     loginSuccess 
                                                     ? 'bg-green-500 text-white shadow-green-500/40 cursor-default' 
@@ -1060,9 +1065,8 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                        <button
-                                            type="submit"
-                                            disabled={isVerifying || loginSuccess}
+                                        <div className="cf-turnstile mt-4 flex justify-center w-full" data-sitekey="0x4AAAAAAFRwCYnHjksWpzIg"></div>
+<button type="submit" disabled={isVerifying || loginSuccess}
                                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                 loginSuccess 
                                                 ? 'bg-green-500 text-white shadow-green-500/40 cursor-default' 
@@ -1318,9 +1322,8 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                        <button
-                                            type="submit"
-                                            disabled={isVerifying || loginSuccess}
+                                        <div className="cf-turnstile mt-4 flex justify-center w-full" data-sitekey="0x4AAAAAAFRwCYnHjksWpzIg"></div>
+<button type="submit" disabled={isVerifying || loginSuccess}
                                             className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                 loginSuccess 
                                                 ? 'bg-green-500 text-white shadow-green-500/40 cursor-default' 
@@ -1521,9 +1524,8 @@ const Login = () => {
                                                 </div>
                                             )}
 
-                                            <button
-                                                  type="submit"
-                                                  disabled={isVerifying || loginSuccess}
+                                            <div className="cf-turnstile mt-4 flex justify-center w-full" data-sitekey="0x4AAAAAAFRwCYnHjksWpzIg"></div>
+<button type="submit" disabled={isVerifying || loginSuccess}
                                                   className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-6 text-xs shadow-[0_0_15px_rgba(220,38,38,0.2)] ${
                                                       loginSuccess 
                                                       ? 'bg-green-500 text-white cursor-default' 

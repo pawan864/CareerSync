@@ -55,7 +55,27 @@ exports.register = async (req, res, next) => {
 // @access  Public
 exports.login = async (req, res, next) => {
     try {
-        const { email, password, institutionCode, portal } = req.body;
+        const { email, password, institutionCode, portal, turnstileToken } = req.body;
+
+        // Turnstile Verification
+        if (!turnstileToken) {
+            return res.status(400).json({ success: false, error: 'Turnstile token missing. Please complete the security check.' });
+        }
+
+        const formData = new URLSearchParams();
+        formData.append('secret', '0x4AAAAAAFRwCTSCRIo9uqjIKmFn8DGR7LU');
+        formData.append('response', turnstileToken);
+
+        const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const turnstileOutcome = await turnstileResponse.json();
+        
+        if (!turnstileOutcome.success) {
+            return res.status(400).json({ success: false, error: 'Security check failed. Please try again.' });
+        }
 
 
         // ---------------------------------------------------
