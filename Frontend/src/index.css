@@ -149,3 +149,7 @@ input:-webkit-autofill:active {
 
 .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #e5e7eb !important; }
 @media (max-width: 767px) { .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #1f2937 !important; } }
+
+
+/* Block horizontal scrolling on mobile devices (Android/iOS) */
+@media (max-width: 767px) { html, body { overflow-x: hidden !important; max-width: 100vw !important; position: relative; overscroll-behavior-x: none; } }
