@@ -75,6 +75,14 @@ const Login = () => {
             setShowSupport(true);
         }
     }, [location.state]);
+    
+    useEffect(() => {
+        if (location.state?.error) {
+            setError(location.state.error);
+            window.history.replaceState({}, document.title);
+        }
+    }, [location]);
+    
     const [supportStatus, setSupportStatus] = useState('idle');
     const [supportData, setSupportData] = useState({ name: '', email: '', role: 'student', category: 'login', description: '' });
 

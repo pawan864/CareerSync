@@ -42,7 +42,7 @@ const GithubCallback = () => {
     
             } else {
                 setStatus('Authentication failed: ' + (res.error || 'Unknown error'));
-                setTimeout(() => navigate('/login'), 3000);
+                setTimeout(() => navigate('/login', { state: { error: res.error } }), 3000);
             }
         } catch (error) {
             setStatus('Authentication error occurred.');

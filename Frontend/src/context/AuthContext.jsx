@@ -43,8 +43,8 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
     };
 
-    const googleAuth = async (credential) => {
-        const res = await api.post('/auth/google', { credential });
+    const googleAuth = async (credential, role) => {
+        const res = await api.post('/auth/google', { credential, role });
         if (res.data.success) {
             localStorage.setItem('token', res.data.token);
             setUser(res.data.user);

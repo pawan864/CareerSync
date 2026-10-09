@@ -7,7 +7,7 @@
  * Protected routes utilize the authMiddleware.
  */
 const express = require('express');
-const { register, login, googleAuth, verifyOtp, getMe, logout, forgotPassword } = require('../controllers/authController');
+const { register, login, googleAuth, githubAuth, verifyOtp, getMe, logout, forgotPassword } = require('../controllers/authController');
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post('/register', register);
 router.post('/login', login);
 router.post('/google', googleAuth);
 router.post('/github', githubAuth);
-router.post('/microsoft', microsoftAuth);
+
 router.post('/verify-otp', verifyOtp);
 router.get('/logout', protect, logout);
 router.get('/me', protect, getMe);

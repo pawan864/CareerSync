@@ -323,7 +323,7 @@ exports.forgotPassword = async (req, res, next) => {
 
 exports.googleAuth = async (req, res, next) => {
     try {
-        const { credential } = req.body;
+        const { credential, role } = req.body;
         if (!credential) {
             return res.status(400).json({ success: false, error: 'No Google credential provided' });
         }
@@ -338,14 +338,21 @@ exports.googleAuth = async (req, res, next) => {
         const name = payload.name;
         const googleId = payload.sub;
 
-        let user = await User.findOne({ email });
+                let user = await User.findOne({ email });
 
-        if (!user) {
-            // Create a new student user by default if they don't exist
+        if (user) {
+            // Check if the requested portal role matches the user's actual registered role
+            if (role && user.role !== role) {
+                return res.status(403).json({ 
+                    success: false, 
+                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                });
+            }
+        } else {
             user = await User.create({
                 name,
                 email,
-                role: role || 'student', // Default role
+                role: role || 'student',
                 isEmailVerified: true
             });
         }
@@ -379,14 +386,21 @@ exports.microsoftAuth = async (req, res, next) => {
             return res.status(400).json({ success: false, error: 'Could not fetch email from Microsoft account' });
         }
 
-        let user = await User.findOne({ email });
+                let user = await User.findOne({ email });
 
-        if (!user) {
-            // Create a new student user by default if they don't exist
+        if (user) {
+            // Check if the requested portal role matches the user's actual registered role
+            if (role && user.role !== role) {
+                return res.status(403).json({ 
+                    success: false, 
+                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                });
+            }
+        } else {
             user = await User.create({
                 name,
                 email,
-                role: 'student',
+                role: role || 'student',
                 isEmailVerified: true
             });
         }
@@ -439,12 +453,21 @@ exports.githubAuth = async (req, res, next) => {
         const email = primaryEmailObj.email;
         const name = userRes.data.name || userRes.data.login;
 
-        let user = await User.findOne({ email });
-        if (!user) {
+                let user = await User.findOne({ email });
+
+        if (user) {
+            // Check if the requested portal role matches the user's actual registered role
+            if (role && user.role !== role) {
+                return res.status(403).json({ 
+                    success: false, 
+                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                });
+            }
+        } else {
             user = await User.create({
                 name,
                 email,
-                role: 'student',
+                role: role || 'student',
                 isEmailVerified: true
             });
         }
