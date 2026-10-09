@@ -371,7 +371,16 @@ exports.googleAuth = async (req, res, next) => {
             }
         }
 
-        sendTokenResponse(user, 200, res);
+        
+        // Record Audit Log
+        await AuditLog.create({
+            user: user._id,
+            email: user.email,
+            role: user.role,
+            action: 'LOGIN',
+            localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        });
+sendTokenResponse(user, 200, res);
 
     } catch (error) {
         console.error('Google Auth Error:', error.message);
@@ -493,7 +502,26 @@ exports.githubAuth = async (req, res, next) => {
             });
         }
 
-        sendTokenResponse(user, 200, res);
+        
+        // Record Audit Log
+        await AuditLog.create({
+            user: user._id,
+            email: user.email,
+            role: user.role,
+            action: 'LOGIN',
+            localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        });
+
+        
+        // Record Audit Log
+        await AuditLog.create({
+            user: user._id,
+            email: user.email,
+            role: user.role,
+            action: 'LOGIN',
+            localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        });
+sendTokenResponse(user, 200, res);
     } catch (error) {
         console.error('GitHub Auth Error:', error.response?.data || error.message);
         res.status(500).json({ success: false, error: 'GitHub authentication failed' });
