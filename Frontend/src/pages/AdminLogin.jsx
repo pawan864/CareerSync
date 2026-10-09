@@ -123,6 +123,21 @@ const AdminLogin = () => {
     return (
 
         <>
+            <style>{`
+                #admin-email-input:-webkit-autofill,
+                #admin-email-input:-webkit-autofill:hover, 
+                #admin-email-input:-webkit-autofill:focus, 
+                #admin-email-input:-webkit-autofill:active,
+                #admin-pwd-input:-webkit-autofill,
+                #admin-pwd-input:-webkit-autofill:hover, 
+                #admin-pwd-input:-webkit-autofill:focus, 
+                #admin-pwd-input:-webkit-autofill:active {
+                    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+                    -webkit-text-fill-color: black !important;
+                    transition: none !important;
+                    caret-color: black !important;
+                }
+            `}</style>
         <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -215,6 +230,7 @@ const AdminLogin = () => {
                                 <Mail className="h-4 w-4 text-gray-500 group-focus-within:text-red-500 transition-colors" />
                             </div>
                             <input
+                                id="admin-email-input"
                                 type="email"
                                 required
                                 disabled={otpSent}
@@ -234,6 +250,7 @@ const AdminLogin = () => {
                                 <Lock className="h-4 w-4 text-gray-500 group-focus-within:text-red-500 transition-colors" />
                             </div>
                             <input
+                                id="admin-pwd-input"
                                 type={showPassword ? "text" : "password"}
                                 required
                                 disabled={otpSent}
