@@ -121,6 +121,18 @@ const AdminLogin = () => {
     };
 
     return (
+
+        <>
+            <style>{`
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover, 
+                input:-webkit-autofill:focus, 
+                input:-webkit-autofill:active {
+                    -webkit-box-shadow: 0 0 0 30px white inset !important;
+                    -webkit-text-fill-color: black !important;
+                    border-radius: 0.75rem !important;
+                }
+            `}</style>
         <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
