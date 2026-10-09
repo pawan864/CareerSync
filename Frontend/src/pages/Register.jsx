@@ -55,18 +55,24 @@ const Register = () => {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
-                const res = await googleAuth(tokenResponse.access_token);
+                const res = await googleAuth(tokenResponse.access_token, formData.role);
                 if (res.success) {
-                    navigate('/profile');
+                    const r = res.user?.role || 'student';
+                    if (r === 'student') navigate('/student-dashboard');
+                    else if (r === 'recruiter') navigate('/employer');
+                    else if (r === 'faculty') navigate('/faculty-dashboard');
+                    else if (r === 'admin') navigate('/admin-dashboard');
+                    else if (r === 'tpo') navigate('/institution');
+                    else navigate('/profile');
                 } else {
                     setError(res.error || 'Google authentication failed');
                 }
             } catch (err) {
-                setError('Google registration failed. Please try again.');
+                setError('Google login failed. Please try again.');
             }
         },
         onError: () => {
-            setError('Google registration was cancelled or failed.');
+            setError('Google login was cancelled or failed.');
         }
     });
     const [globalTheme] = useState(localStorage.getItem('globalTheme') || 'blue');

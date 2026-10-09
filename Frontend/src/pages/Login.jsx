@@ -140,9 +140,15 @@ const Login = () => {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
-                const res = await googleAuth(tokenResponse.access_token);
+                const res = await googleAuth(tokenResponse.access_token, portal.toLowerCase());
                 if (res.success) {
-                    navigate('/profile');
+                    const r = res.user?.role || 'student';
+                    if (r === 'student') navigate('/student-dashboard');
+                    else if (r === 'recruiter') navigate('/employer');
+                    else if (r === 'faculty') navigate('/faculty-dashboard');
+                    else if (r === 'admin') navigate('/admin-dashboard');
+                    else if (r === 'tpo') navigate('/institution');
+                    else navigate('/profile');
                 } else {
                     setError(res.error || 'Google authentication failed');
                 }
