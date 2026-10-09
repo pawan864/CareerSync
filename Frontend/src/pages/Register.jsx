@@ -48,6 +48,7 @@ const Register = () => {
     
     const handleGithubLogin = (roleStr) => {
         localStorage.setItem('oauth_role', roleStr || 'student');
+        localStorage.setItem('oauth_is_register', 'true');
         const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID || 'placeholder';
         const redirectUri = window.location.origin + '/github/callback';
         window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user:email`;
@@ -56,7 +57,7 @@ const Register = () => {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
-                const res = await googleAuth(tokenResponse.access_token, formDataRef.current.role);
+                const res = await googleAuth(tokenResponse.access_token, formDataRef.current.role, true);
                 if (res.success) {
                     const r = res.user?.role || 'student';
                     if (r === 'student') navigate('/student-dashboard');

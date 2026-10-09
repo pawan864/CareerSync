@@ -25,7 +25,8 @@ const GithubCallback = () => {
         try {
             
             const role = localStorage.getItem('oauth_role') || 'student';
-            const res = await githubAuth(code, role);
+            const isRegister = localStorage.getItem('oauth_is_register') === 'true';
+            const res = await githubAuth(code, role, isRegister);
     
             if (res.success) {
                 setStatus('Successfully authenticated! Redirecting...');

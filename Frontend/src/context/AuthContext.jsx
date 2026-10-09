@@ -43,9 +43,9 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
     };
 
-        const googleAuth = async (credential, role) => {
+        const googleAuth = async (credential, role, isRegister = false) => {
         try {
-            const res = await api.post('/auth/google', { credential, role });
+            const res = await api.post('/auth/google', { credential, role, isRegister });
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token);
                 setUser(res.data.user);
@@ -78,9 +78,9 @@ export const AuthProvider = ({ children }) => {
     };
 
     
-    const githubAuth = async (code, role) => {
+    const githubAuth = async (code, role, isRegister = false) => {
         try {
-            const res = await api.post('/auth/github', { code, role });
+            const res = await api.post('/auth/github', { code, role, isRegister });
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token);
                 setUser(res.data.user);

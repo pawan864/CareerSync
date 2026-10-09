@@ -323,7 +323,7 @@ exports.forgotPassword = async (req, res, next) => {
 
 exports.googleAuth = async (req, res, next) => {
     try {
-        const { credential, role } = req.body;
+        const { credential, role, isRegister } = req.body;
         if (!credential) {
             return res.status(400).json({ success: false, error: 'No Google credential provided' });
         }
@@ -343,10 +343,17 @@ exports.googleAuth = async (req, res, next) => {
         if (user) {
             // Check if the requested portal role matches the user's actual registered role
             if (role && user.role !== role) {
-                return res.status(403).json({ 
-                    success: false, 
-                    error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
-                });
+                if (isRegister) {
+                    return res.status(403).json({ 
+                        success: false, 
+                        error: `Account Exists: This email is already registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. To create a ${role.charAt(0).toUpperCase() + role.slice(1)} account, please register with a different Google account.` 
+                    });
+                } else {
+                    return res.status(403).json({ 
+                        success: false, 
+                        error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
+                    });
+                }
             }
         } else {
             user = await User.create({
@@ -391,10 +398,17 @@ exports.microsoftAuth = async (req, res, next) => {
         if (user) {
             // Check if the requested portal role matches the user's actual registered role
             if (role && user.role !== role) {
-                return res.status(403).json({ 
-                    success: false, 
-                    error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
-                });
+                if (isRegister) {
+                    return res.status(403).json({ 
+                        success: false, 
+                        error: `Account Exists: This email is already registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. To create a ${role.charAt(0).toUpperCase() + role.slice(1)} account, please register with a different GitHub account.` 
+                    });
+                } else {
+                    return res.status(403).json({ 
+                        success: false, 
+                        error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
+                    });
+                }
             }
         } else {
             user = await User.create({
@@ -416,7 +430,7 @@ exports.microsoftAuth = async (req, res, next) => {
 
 exports.githubAuth = async (req, res, next) => {
     try {
-        const { code, role } = req.body;
+        const { code, role, isRegister } = req.body;
         if (!code) {
             return res.status(400).json({ success: false, error: 'No GitHub code provided' });
         }
