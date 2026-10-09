@@ -73,8 +73,23 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    
+    const githubAuth = async (code) => {
+        try {
+            const res = await api.post('/auth/github', { code });
+            if (res.data.success) {
+                localStorage.setItem('token', res.data.token);
+                setUser(res.data.user);
+                return { success: true, user: res.data.user };
+            }
+            return { success: false, error: res.data.error || 'GitHub auth failed' };
+        } catch (err) {
+            return { success: false, error: err.response?.data?.error || err.message || 'GitHub auth failed' };
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ user, loading, login, googleAuth, register, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, googleAuth, githubAuth, register, logout }}>
             {children}
         </AuthContext.Provider>
     );

@@ -357,3 +357,101 @@ exports.googleAuth = async (req, res, next) => {
         res.status(500).json({ success: false, error: 'Google authentication failed' });
     }
 };
+
+
+exports.microsoftAuth = async (req, res, next) => {
+    try {
+        const { accessToken } = req.body;
+        if (!accessToken) {
+            return res.status(400).json({ success: false, error: 'No Microsoft access token provided' });
+        }
+
+        // Fetch user details from Microsoft Graph
+        const msRes = await axios.get('https://graph.microsoft.com/v1.0/me', {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        
+        const payload = msRes.data;
+        const email = payload.mail || payload.userPrincipalName;
+        const name = payload.displayName;
+
+        if (!email) {
+            return res.status(400).json({ success: false, error: 'Could not fetch email from Microsoft account' });
+        }
+
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            // Create a new student user by default if they don't exist
+            user = await User.create({
+                name,
+                email,
+                role: 'student',
+                isEmailVerified: true
+            });
+        }
+
+        sendTokenResponse(user, 200, res);
+
+    } catch (error) {
+        console.error('Microsoft Auth Error:', error.response?.data || error.message);
+        res.status(500).json({ success: false, error: 'Microsoft authentication failed' });
+    }
+};
+
+
+exports.githubAuth = async (req, res, next) => {
+    try {
+        const { code } = req.body;
+        if (!code) {
+            return res.status(400).json({ success: false, error: 'No GitHub code provided' });
+        }
+
+        // 1. Exchange code for access token
+        const tokenRes = await axios.post('https://github.com/login/oauth/access_token', {
+            client_id: process.env.GITHUB_CLIENT_ID,
+            client_secret: process.env.GITHUB_CLIENT_SECRET,
+            code
+        }, {
+            headers: { Accept: 'application/json' }
+        });
+
+        const accessToken = tokenRes.data.access_token;
+        if (!accessToken) {
+            return res.status(400).json({ success: false, error: 'Failed to retrieve access token from GitHub' });
+        }
+
+        // 2. Fetch user profile
+        const userRes = await axios.get('https://api.github.com/user', {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+
+        // 3. Fetch user emails (GitHub sometimes hides primary email in profile)
+        const emailRes = await axios.get('https://api.github.com/user/emails', {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+
+        const primaryEmailObj = emailRes.data.find(e => e.primary) || emailRes.data[0];
+        if (!primaryEmailObj) {
+            return res.status(400).json({ success: false, error: 'No email found in GitHub account' });
+        }
+
+        const email = primaryEmailObj.email;
+        const name = userRes.data.name || userRes.data.login;
+
+        let user = await User.findOne({ email });
+        if (!user) {
+            user = await User.create({
+                name,
+                email,
+                role: 'student',
+                isEmailVerified: true
+            });
+        }
+
+        sendTokenResponse(user, 200, res);
+    } catch (error) {
+        console.error('GitHub Auth Error:', error.response?.data || error.message);
+        res.status(500).json({ success: false, error: 'GitHub authentication failed' });
+    }
+};

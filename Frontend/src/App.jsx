@@ -23,12 +23,13 @@ import StudentDashboard from './pages/student/StudentDashboard';
 
 import InstitutionDashboard from './pages/InstitutionDashboard';
 import ForgotPassword from './pages/ForgotPassword';
+import GithubCallback from './pages/GithubCallback';
 import { AuthProvider } from './context/AuthContext';
 import Footer from './components/Footer';
 
 const AppContent = () => {
   const location = useLocation();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/support' || location.pathname === '/admin-login' || location.pathname === '/otp-verify' || location.pathname === '/student-dashboard' || location.pathname === '/admin-dashboard' || location.pathname === '/faculty-dashboard';
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/github/callback' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/support' || location.pathname === '/admin-login' || location.pathname === '/otp-verify' || location.pathname === '/student-dashboard' || location.pathname === '/admin-dashboard' || location.pathname === '/faculty-dashboard';
 
   return (
     <div className="min-h-[100dvh] bg-gray-50 flex flex-col w-full max-w-[100vw] overflow-x-hidden md:overflow-x-clip">
@@ -38,6 +39,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/github/callback" element={<GithubCallback />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/register" element={<Register />} />

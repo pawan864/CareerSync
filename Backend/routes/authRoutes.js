@@ -16,6 +16,8 @@ const { protect } = require('../middleware/authMiddleware');
 router.post('/register', register);
 router.post('/login', login);
 router.post('/google', googleAuth);
+router.post('/github', githubAuth);
+router.post('/microsoft', microsoftAuth);
 router.post('/verify-otp', verifyOtp);
 router.get('/logout', protect, logout);
 router.get('/me', protect, getMe);
