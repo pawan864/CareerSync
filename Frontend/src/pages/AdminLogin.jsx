@@ -1,4 +1,4 @@
-﻿import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { ShieldCheck, Lock, Mail, ArrowLeft, Eye, EyeOff, X, AlertCircle, Loader2, Server, Activity } from 'lucide-react';
@@ -355,7 +355,7 @@ const AdminLogin = () => {
                 )}
             </AnimatePresence>
         </motion.div>
-
+        </>
     );
 };
 
