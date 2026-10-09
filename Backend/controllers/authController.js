@@ -357,9 +357,11 @@ exports.googleAuth = async (req, res, next) => {
             }
         } else {
             if (isRegister) {
+                const crypto = require('crypto');
                 user = await User.create({
                     name,
                     email,
+                    password: crypto.randomBytes(20).toString('hex'),
                     role: role || 'student',
                     isEmailVerified: true
                 });
@@ -427,12 +429,14 @@ exports.microsoftAuth = async (req, res, next) => {
                 }
             }
         } else {
-            user = await User.create({
-                name,
-                email,
-                role: role || 'student',
-                isEmailVerified: true
-            });
+            const crypto = require('crypto');
+                user = await User.create({
+                    name,
+                    email,
+                    password: crypto.randomBytes(20).toString('hex'),
+                    role: role || 'student',
+                    isEmailVerified: true
+                });
         }
 
         sendTokenResponse(user, 200, res);
@@ -494,12 +498,14 @@ exports.githubAuth = async (req, res, next) => {
                 });
             }
         } else {
-            user = await User.create({
-                name,
-                email,
-                role: role || 'student',
-                isEmailVerified: true
-            });
+            const crypto = require('crypto');
+                user = await User.create({
+                    name,
+                    email,
+                    password: crypto.randomBytes(20).toString('hex'),
+                    role: role || 'student',
+                    isEmailVerified: true
+                });
         }
 
         
