@@ -7,7 +7,7 @@
  * - Dynamic rendering based on role/portal selection
  * - Unified typography and interactive states
  */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -26,6 +26,7 @@ import { GraduationCap, ArrowLeft, User, Building, Briefcase, BookOpen, Sun, Moo
 
 const Register = () => {
     const location = useLocation();
+    const formDataRef = useRef(null);
     const [formData, setFormData] = useState({
         name: '', email: '', password: '', role: location.state?.role || 'student',
         studentId: '', college: '', course: '', branch: '', semester: '', phone: '',
@@ -55,7 +56,7 @@ const Register = () => {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
-                const res = await googleAuth(tokenResponse.access_token, formData.role);
+                const res = await googleAuth(tokenResponse.access_token, formDataRef.current.role);
                 if (res.success) {
                     const r = res.user?.role || 'student';
                     if (r === 'student') navigate('/student-dashboard');
@@ -68,7 +69,7 @@ const Register = () => {
                     setError(res.error || 'Google authentication failed');
                 }
             } catch (err) {
-                setError('Google login failed. Please try again.');
+                setError(err.message || 'Google login failed. Please try again.');
             }
         },
         onError: () => {
@@ -84,6 +85,7 @@ const Register = () => {
     };
 
 
+    useEffect(() => { formDataRef.current = formData; }, [formData]);
     const slides = [
         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=60&w=600&h=800&auto=format&fit=crop", // Diverse students collaborating
         "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=60&w=600&h=800&auto=format&fit=crop", // Professional Meeting / Placement

@@ -7,7 +7,7 @@
  * - Dynamic rendering based on role/portal selection
  * - Unified typography and interactive states
  */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 
 // Preload the heavy background image so it doesn't flash on initial render
 const preloadImage = new Image();
@@ -53,6 +53,8 @@ const Login = () => {
 
 
     const [portal, setPortal] = useState(location.state?.portal || 'Student');
+    const portalRef = useRef(portal);
+    useEffect(() => { portalRef.current = portal; }, [portal]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [institutionCode, setInstitutionCode] = useState('');
@@ -140,7 +142,7 @@ const Login = () => {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
-                const res = await googleAuth(tokenResponse.access_token, portal.toLowerCase());
+                const res = await googleAuth(tokenResponse.access_token, portalRef.current.toLowerCase());
                 if (res.success) {
                     const r = res.user?.role || 'student';
                     if (r === 'student') navigate('/student-dashboard');
@@ -153,7 +155,7 @@ const Login = () => {
                     setError(res.error || 'Google authentication failed');
                 }
             } catch (err) {
-                setError('Google login failed. Please try again.');
+                setError(err.message || 'Google login failed. Please try again.');
             }
         },
         onError: () => {
