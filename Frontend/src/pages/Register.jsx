@@ -45,7 +45,8 @@ const Register = () => {
     const navigate = useNavigate();
 
     
-    const handleGithubLogin = () => {
+    const handleGithubLogin = (roleStr) => {
+        localStorage.setItem('oauth_role', roleStr || 'student');
         const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID || 'placeholder';
         const redirectUri = window.location.origin + '/github/callback';
         window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user:email`;
@@ -469,7 +470,7 @@ const Register = () => {
                         <p className="text-gray-400 text-xs mb-3">Sign Up With</p>
                         
                         <div className="flex space-x-3">
-                            <button type="button" onClick={() => handleGithubLogin()} className={`flex-1 flex items-center justify-center border py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm cursor-pointer ${isDarkMode ? 'bg-transparent border-gray-800 hover:bg-[#2a2a32] text-gray-300' : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'}`}>
+                            <button type="button" onClick={() => handleGithubLogin(formData.role)} className={`flex-1 flex items-center justify-center border py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm cursor-pointer ${isDarkMode ? 'bg-transparent border-gray-800 hover:bg-[#2a2a32] text-gray-300' : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'}`}>
                                 <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.3 3.438 21.8 8.205 23.385C8.805 23.495 9.025 23.125 9.025 22.82C9.025 22.54 9.015 21.58 9.01 20.485C5.67 21.21 4.965 19.04 4.965 19.04C4.42 17.655 3.635 17.28 3.635 17.28C2.55 16.535 3.715 16.55 3.715 16.55C4.915 16.635 5.545 17.785 5.545 17.785C6.61 19.61 8.335 19.085 9.055 18.78C9.165 17.96 9.495 17.435 9.86 17.135C7.195 16.835 4.395 15.805 4.395 11.225C4.395 9.92 4.86 8.85 5.615 8.01C5.495 7.705 5.085 6.495 5.735 4.85C5.735 4.85 6.73 4.53 9.025 6.085C9.975 5.82 10.99 5.69 12 5.685C13.01 5.69 14.025 5.82 14.975 6.085C17.27 4.53 18.265 4.85 18.265 4.85C18.915 6.495 18.505 7.705 18.385 8.01C19.14 8.85 19.6 9.92 19.6 11.225C19.6 15.82 16.795 16.83 14.12 17.125C14.58 17.525 15 18.31 15 19.535C15 21.285 14.985 22.695 14.985 22.82C14.985 23.13 15.205 23.505 15.815 23.385C20.565 21.795 24 17.3 24 12C24 5.37 18.63 0 12 0Z"/></svg>
                                 <span className="text-xs font-semibold">GITHUB</span>
                             </button>

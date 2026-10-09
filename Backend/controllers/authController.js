@@ -345,7 +345,7 @@ exports.googleAuth = async (req, res, next) => {
             user = await User.create({
                 name,
                 email,
-                role: 'student', // Default role
+                role: role || 'student', // Default role
                 isEmailVerified: true
             });
         }
@@ -402,7 +402,7 @@ exports.microsoftAuth = async (req, res, next) => {
 
 exports.githubAuth = async (req, res, next) => {
     try {
-        const { code } = req.body;
+        const { code, role } = req.body;
         if (!code) {
             return res.status(400).json({ success: false, error: 'No GitHub code provided' });
         }

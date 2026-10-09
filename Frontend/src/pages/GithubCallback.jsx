@@ -23,10 +23,23 @@ const GithubCallback = () => {
 
     const handleAuth = async (code) => {
         try {
-            const res = await githubAuth(code);
+            
+            const role = localStorage.getItem('oauth_role') || 'student';
+            const res = await githubAuth(code, role);
+    
             if (res.success) {
                 setStatus('Successfully authenticated! Redirecting...');
-                setTimeout(() => navigate('/profile'), 1000);
+                
+                setTimeout(() => {
+                    const r = res.user?.role || 'student';
+                    if (r === 'student') navigate('/student-dashboard');
+                    else if (r === 'recruiter') navigate('/employer');
+                    else if (r === 'faculty') navigate('/faculty-dashboard');
+                    else if (r === 'admin') navigate('/admin-dashboard');
+                    else if (r === 'tpo') navigate('/institution');
+                    else navigate('/profile');
+                }, 1000);
+    
             } else {
                 setStatus('Authentication failed: ' + (res.error || 'Unknown error'));
                 setTimeout(() => navigate('/login'), 3000);

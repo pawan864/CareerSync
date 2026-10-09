@@ -74,9 +74,9 @@ export const AuthProvider = ({ children }) => {
     };
 
     
-    const githubAuth = async (code) => {
+    const githubAuth = async (code, role) => {
         try {
-            const res = await api.post('/auth/github', { code });
+            const res = await api.post('/auth/github', { code, role });
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token);
                 setUser(res.data.user);
