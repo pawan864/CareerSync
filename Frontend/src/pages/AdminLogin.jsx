@@ -257,6 +257,12 @@ const AdminLogin = () => {
                                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             </button>
                         </div>
+                        <div className="mt-3 flex items-center justify-between">
+                            <div className="flex items-center">
+                                <input id="remember-me-admin" type="checkbox" className="h-3.5 w-3.5 text-red-600 focus:ring-red-500 border-gray-800 bg-[#0f0f0f] rounded cursor-pointer" />
+                                <label htmlFor="remember-me-admin" className="ml-1.5 block text-xs text-gray-400 cursor-pointer hover:text-gray-300 transition-colors">Remember me</label>
+                            </div>
+                        </div>
                     </motion.div>
 
                     <AnimatePresence>
