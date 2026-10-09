@@ -109,13 +109,14 @@ export const AuthProvider = ({ children }) => {
         return false;
     };
 
-    const logout = async () => {
-        localStorage.removeItem('token');
-        setUser(null);
+        const logout = async () => {
         try {
             await api.get('/auth/logout');
         } catch (error) {
             console.error(error);
+        } finally {
+            localStorage.removeItem('token');
+            setUser(null);
         }
     };
 
