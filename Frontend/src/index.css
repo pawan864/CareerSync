@@ -150,8 +150,10 @@ input:-webkit-autofill:active {
 .admin-input:-webkit-autofill:hover, 
 .admin-input:-webkit-autofill:focus, 
 .admin-input:-webkit-autofill:active {
-    transition: background-color 9999s ease-in-out 0s !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: none !important;
+    caret-color: black !important;
 }
 
 
