@@ -43,14 +43,18 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
     };
 
-    const googleAuth = async (credential, role) => {
-        const res = await api.post('/auth/google', { credential, role });
-        if (res.data.success) {
-            localStorage.setItem('token', res.data.token);
-            setUser(res.data.user);
-            return { success: true, user: res.data.user };
+        const googleAuth = async (credential, role) => {
+        try {
+            const res = await api.post('/auth/google', { credential, role });
+            if (res.data.success) {
+                localStorage.setItem('token', res.data.token);
+                setUser(res.data.user);
+                return { success: true, user: res.data.user };
+            }
+            return { success: false, error: res.data.error };
+        } catch (err) {
+            return { success: false, error: err.response?.data?.error || err.message };
         }
-        return { success: false, error: res.data.error };
     };
 
     const register = async (userData) => {
