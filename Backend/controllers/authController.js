@@ -356,12 +356,19 @@ exports.googleAuth = async (req, res, next) => {
                 }
             }
         } else {
-            user = await User.create({
-                name,
-                email,
-                role: role || 'student',
-                isEmailVerified: true
-            });
+            if (isRegister) {
+                user = await User.create({
+                    name,
+                    email,
+                    role: role || 'student',
+                    isEmailVerified: true
+                });
+            } else {
+                return res.status(404).json({
+                    success: false,
+                    error: `Account Not Found: You are not registered with this Google account. Please go to the Registration page to create a new account first.`
+                });
+            }
         }
 
         sendTokenResponse(user, 200, res);
