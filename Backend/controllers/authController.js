@@ -6,6 +6,7 @@
  */
 const User = require('../models/User');
 const AuditLog = require('../models/AuditLog');
+const axios = require('axios');
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -320,3 +321,39 @@ exports.forgotPassword = async (req, res, next) => {
     }
 };
 
+exports.googleAuth = async (req, res, next) => {
+    try {
+        const { credential } = req.body;
+        if (!credential) {
+            return res.status(400).json({ success: false, error: 'No Google credential provided' });
+        }
+
+        // Fetch user details from Google
+        const googleRes = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+            headers: { Authorization: `Bearer ${credential}` }
+        });
+        
+        const payload = googleRes.data;
+        const email = payload.email;
+        const name = payload.name;
+        const googleId = payload.sub;
+
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            // Create a new student user by default if they don't exist
+            user = await User.create({
+                name,
+                email,
+                role: 'student', // Default role
+                isEmailVerified: true
+            });
+        }
+
+        sendTokenResponse(user, 200, res);
+
+    } catch (error) {
+        console.error('Google Auth Error:', error.message);
+        res.status(500).json({ success: false, error: 'Google authentication failed' });
+    }
+};

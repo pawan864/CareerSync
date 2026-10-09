@@ -12,6 +12,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
+import { useGoogleLogin } from '@react-oauth/google';
 
 // Preload slider images for instant rendering
 const preloadUrls = [
@@ -40,8 +41,26 @@ const Register = () => {
     const [modalType, setModalType] = useState('terms');
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [turnstileToken, setTurnstileToken] = useState('');
-    const { register } = useContext(AuthContext);
+    const { register, googleAuth } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const handleGoogleLogin = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            try {
+                const res = await googleAuth(tokenResponse.access_token);
+                if (res.success) {
+                    navigate('/profile');
+                } else {
+                    setError(res.error || 'Google authentication failed');
+                }
+            } catch (err) {
+                setError('Google registration failed. Please try again.');
+            }
+        },
+        onError: () => {
+            setError('Google registration was cancelled or failed.');
+        }
+    });
     const [globalTheme] = useState(localStorage.getItem('globalTheme') || 'blue');
 
     const themeStyles = {

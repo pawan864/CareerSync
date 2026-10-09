@@ -43,6 +43,16 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
     };
 
+    const googleAuth = async (credential) => {
+        const res = await api.post('/auth/google', { credential });
+        if (res.data.success) {
+            localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            return { success: true, user: res.data.user };
+        }
+        return { success: false, error: res.data.error };
+    };
+
     const register = async (userData) => {
         const res = await api.post('/auth/register', userData);
         if (res.data.success) {
@@ -64,7 +74,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, googleAuth, register, logout }}>
             {children}
         </AuthContext.Provider>
     );
