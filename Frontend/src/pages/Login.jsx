@@ -155,7 +155,7 @@ const Login = () => {
                     setError(res.error || 'Google authentication failed');
                 }
             } catch (err) {
-                setError(err.message || 'Google login failed. Please try again.');
+                setError(err.response?.data?.error || err.message || 'Google login failed. Please try again.');
             }
         },
         onError: () => {

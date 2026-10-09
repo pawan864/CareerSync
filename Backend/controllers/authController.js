@@ -345,7 +345,7 @@ exports.googleAuth = async (req, res, next) => {
             if (role && user.role !== role) {
                 return res.status(403).json({ 
                     success: false, 
-                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                    error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
                 });
             }
         } else {
@@ -393,7 +393,7 @@ exports.microsoftAuth = async (req, res, next) => {
             if (role && user.role !== role) {
                 return res.status(403).json({ 
                     success: false, 
-                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                    error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
                 });
             }
         } else {
@@ -460,7 +460,7 @@ exports.githubAuth = async (req, res, next) => {
             if (role && user.role !== role) {
                 return res.status(403).json({ 
                     success: false, 
-                    error: `You are registered as a ${user.role}. Please login from the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} portal.` 
+                    error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` 
                 });
             }
         } else {
