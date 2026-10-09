@@ -28,6 +28,48 @@ export const AuthProvider = ({ children }) => {
         fetchUser();
     }, []);
 
+    // Inactivity Timer (2 minutes)
+    useEffect(() => {
+        let timeoutId;
+        let throttleTimeout;
+
+        const handleTimeout = () => {
+            if (user) {
+                logout();
+                window.location.href = '/login';
+            }
+        };
+
+        const resetTimer = () => {
+            clearTimeout(timeoutId);
+            if (user) {
+                timeoutId = setTimeout(handleTimeout, 2 * 60 * 1000); // 2 minutes
+            }
+        };
+
+        const throttledResetTimer = () => {
+            if (!throttleTimeout) {
+                throttleTimeout = setTimeout(() => {
+                    resetTimer();
+                    throttleTimeout = null;
+                }, 1000);
+            }
+        };
+
+        if (user) {
+            resetTimer();
+            const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+            events.forEach(e => window.addEventListener(e, throttledResetTimer));
+
+            return () => {
+                clearTimeout(timeoutId);
+                clearTimeout(throttleTimeout);
+                events.forEach(e => window.removeEventListener(e, throttledResetTimer));
+            };
+        }
+    }, [user]);
+
+
     const login = async (credentials) => {
         const res = await api.post('/auth/login', credentials);
         if (res.data.success) {
