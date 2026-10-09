@@ -124,7 +124,7 @@ exports.login = async (req, res, next) => {
         
         if (portal && roleMap[portal]) {
             if (user.role !== roleMap[portal]) {
-                return res.status(401).json({ success: false, error: `You are registered as a ${user.role}, please use the correct portal to log in.` });
+                return res.status(401).json({ success: false, error: `Access Denied: You are registered as a ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}. Please switch to the ${user.role.charAt(0).toUpperCase() + user.role.slice(1)} tab to login.` });
             }
         }
         if (portal === 'TPO' && institutionCode && user.institutionCode !== institutionCode) {
