@@ -384,7 +384,7 @@ sendTokenResponse(user, 200, res);
 
     } catch (error) {
         console.error('Google Auth Error:', error.message);
-        res.status(500).json({ success: false, error: 'Google authentication failed' });
+        res.status(500).json({ success: false, error: 'Google Auth Error: ' + (error.response ? JSON.stringify(error.response.data) : error.message) + ' (Stack: ' + error.stack + ')' });
     }
 };
 
@@ -524,6 +524,6 @@ exports.githubAuth = async (req, res, next) => {
 sendTokenResponse(user, 200, res);
     } catch (error) {
         console.error('GitHub Auth Error:', error.response?.data || error.message);
-        res.status(500).json({ success: false, error: 'GitHub authentication failed' });
+        res.status(500).json({ success: false, error: 'GitHub Auth Error: ' + (error.response ? JSON.stringify(error.response.data) : error.message) + ' (Stack: ' + error.stack + ')' });
     }
 };
