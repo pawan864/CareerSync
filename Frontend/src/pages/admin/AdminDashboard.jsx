@@ -254,8 +254,8 @@ const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('Overview');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const handleLogout = () => {
-        logout();
+    const handleLogout = async () => {
+        await logout();
         navigate('/login', { state: { portal: 'Admin' } });
     };
 
