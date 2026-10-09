@@ -123,17 +123,6 @@ const AdminLogin = () => {
     return (
 
         <>
-            <style>{`
-                input:-webkit-autofill,
-                input:-webkit-autofill:hover, 
-                input:-webkit-autofill:focus, 
-                input:-webkit-autofill:active {
-                    transition: none !important;
-                    -webkit-box-shadow: 0 0 0 30px white inset !important;
-                    -webkit-text-fill-color: black !important;
-                    border-radius: 0.75rem !important;
-                }
-            `}</style>
         <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -230,7 +219,7 @@ const AdminLogin = () => {
                                 required
                                 disabled={otpSent}
                                 
-                                className={`w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
+                                className={`admin-input w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="admin@careersync.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
