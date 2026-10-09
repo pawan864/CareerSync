@@ -171,7 +171,7 @@ const AdminLogin = () => {
                     >
                         <ShieldCheck className="w-8 h-8 text-white" />
                     </motion.div>
-                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight flex items-center">
+                    <h2 className="text-2xl font-bold text-white tracking-tight flex items-center">
                         System Admin <Activity className="w-4 h-4 ml-2 text-red-500 animate-pulse" />
                     </h2>
                     <p className="text-gray-500 text-sm mt-1.5 flex items-center">
@@ -210,17 +210,19 @@ const AdminLogin = () => {
                     </AnimatePresence>
 
                     <motion.div variants={itemVariants}>
-                        <label className="block text-gray-700 text-[10px] font-bold mb-1.5 uppercase tracking-widest">Admin Email</label>
+                        <label className="block text-gray-400 text-[10px] font-bold mb-1.5 uppercase tracking-widest">Admin Email</label>
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                 <Mail className="h-4 w-4 text-gray-500 group-focus-within:text-red-500 transition-colors" />
                             </div>
                             <input
+                                id="admin-email-input"
                                 type="email"
                                 required
                                 disabled={otpSent}
                                 
-                                className={`w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all text-sm shadow-sm ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-400'}`}
+                                className={`autofill-student w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
+                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset' }}
                                 placeholder="admin@careersync.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -229,17 +231,19 @@ const AdminLogin = () => {
                     </motion.div>
 
                     <motion.div variants={itemVariants}>
-                        <label className="block text-gray-700 text-[10px] font-bold mb-1.5 uppercase tracking-widest">Master Password</label>
+                        <label className="block text-gray-400 text-[10px] font-bold mb-1.5 uppercase tracking-widest">Master Password</label>
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                                 <Lock className="h-4 w-4 text-gray-500 group-focus-within:text-red-500 transition-colors" />
                             </div>
                             <input
+                                id="admin-pwd-input"
                                 type={showPassword ? "text" : "password"}
                                 required
                                 disabled={otpSent}
                                 
-                                className={`w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all text-sm shadow-sm ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-400'}`}
+                                className={`autofill-student w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
+                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset' }}
                                 placeholder="••••••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -263,7 +267,7 @@ const AdminLogin = () => {
                                 exit={{ opacity: 0, height: 0, y: -10 }}
                                 className="pt-2"
                             >
-                                <label className="block text-gray-700 text-[10px] font-bold mb-3 uppercase tracking-widest text-center">Enter 6-Digit OTP</label>
+                                <label className="block text-gray-400 text-[10px] font-bold mb-3 uppercase tracking-widest text-center">Enter 6-Digit OTP</label>
                                 <div className="flex justify-between items-center gap-2 mb-2">
                                     {otp.map((data, index) => (
                                         <input
@@ -271,7 +275,7 @@ const AdminLogin = () => {
                                             type="text"
                                             name="otp"
                                             maxLength="1"
-                                            className="w-11 h-12 text-center text-xl font-mono font-bold text-gray-900 bg-gray-50 border border-gray-300 rounded-xl focus:bg-white focus:ring-1 focus:ring-red-600 focus:border-red-600 transition-all outline-none shadow-sm"
+                                            className="w-11 h-12 text-center text-xl font-mono font-bold text-white bg-[#0f0f0f] border border-gray-800 rounded-xl focus:bg-[#151515] focus:ring-1 focus:ring-red-500/70 focus:border-red-500/70 transition-all outline-none shadow-inner"
                                             value={data}
                                             onChange={e => handleOtpChange(e.target, index)}
                                             onKeyDown={e => handleOtpKeyDown(e, index)}
@@ -308,11 +312,11 @@ const AdminLogin = () => {
                     </motion.div>
                 </motion.form>
                 
-                <div className="mt-8 pt-5 border-t border-gray-200 text-center flex flex-col items-center">
+                <div className="mt-8 pt-5 border-t border-gray-800/50 text-center flex flex-col items-center">
                     <p className="text-gray-600 text-[10px] uppercase tracking-wider font-semibold">
                         Secure Network Connection Established
                     </p>
-                    <div className="w-12 h-1 bg-gray-200 mt-3 rounded-full overflow-hidden">
+                    <div className="w-12 h-1 bg-gray-800 mt-3 rounded-full overflow-hidden">
                         <div className="h-full bg-red-600/50 w-1/3 animate-[pulse_2s_ease-in-out_Infinity_alternate]"></div>
                     </div>
                 </div>
