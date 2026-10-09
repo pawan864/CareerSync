@@ -128,6 +128,7 @@ const AdminLogin = () => {
                 input:-webkit-autofill:hover, 
                 input:-webkit-autofill:focus, 
                 input:-webkit-autofill:active {
+                    transition: none !important;
                     -webkit-box-shadow: 0 0 0 30px white inset !important;
                     -webkit-text-fill-color: black !important;
                     border-radius: 0.75rem !important;
