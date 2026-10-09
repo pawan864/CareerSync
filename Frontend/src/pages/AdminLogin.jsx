@@ -238,7 +238,7 @@ const AdminLogin = () => {
                                 required
                                 disabled={otpSent}
                                 
-                                className={`w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
+                                className={`admin-input w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="••••••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
