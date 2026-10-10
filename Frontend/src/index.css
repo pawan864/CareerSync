@@ -192,7 +192,8 @@ input.autofill-admin:-webkit-autofill:active {
     input.autofill-admin:-webkit-autofill:hover,
     input.autofill-admin:-webkit-autofill:focus,
     input.autofill-admin:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;\n        -webkit-text-fill-color: #ffffff !important;
+        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+        -webkit-text-fill-color: #ffffff !important;
         transition: background-color 9999s ease-in-out 0s !important;
     }
 }
