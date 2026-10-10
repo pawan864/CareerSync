@@ -666,7 +666,7 @@ const Login = () => {
                                                 </Link>
                                             </div>
                                             {/* Technical Support Link */}
-                                            <div className="text-center mt-3 pt-3 border-t border-gray-100">
+                                            <div className="text-center mt-3 pt-3 border-t border-gray-100 md:hidden">
                                                 <p className="text-[11px] font-medium text-gray-500">
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
@@ -876,7 +876,7 @@ const Login = () => {
                                             </Link>
                                         </div>
                                             {/* Technical Support Link */}
-                                            <div className="text-center mt-3 pt-3 border-t border-gray-100">
+                                            <div className="text-center mt-3 pt-3 border-t border-gray-100 md:hidden">
                                                 <p className="text-[11px] font-medium text-gray-500">
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
@@ -1144,7 +1144,7 @@ const Login = () => {
                                             </div>
                                         </Link>
                                             {/* Technical Support Link */}
-                                            <div className="text-center mt-3 pt-3 border-t border-gray-100">
+                                            <div className="text-center mt-3 pt-3 border-t border-gray-100 md:hidden">
                                                 <p className="text-[11px] font-medium text-gray-500">
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
@@ -1386,7 +1386,7 @@ const Login = () => {
                                             </Link>
                                         </div>
                                             {/* Technical Support Link */}
-                                            <div className="text-center mt-3 pt-3 border-t border-gray-100">
+                                            <div className="text-center mt-3 pt-3 border-t border-gray-100 md:hidden">
                                                 <p className="text-[11px] font-medium text-gray-500">
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
