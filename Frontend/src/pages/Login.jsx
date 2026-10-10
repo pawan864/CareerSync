@@ -456,7 +456,8 @@ const Login = () => {
                                             <button type="submit" disabled={supportStatus === 'submitting'} className={`w-full flex items-center justify-center py-2.5 rounded-lg text-gray-900 md:text-white font-medium transition-colors text-sm ${themeStyles[globalTheme].primaryBtn} ${supportStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}>
                                                 {supportStatus === 'submitting' ? 'Submitting...' : <>Submit Ticket <Send className="w-4 h-4 ml-2" /></>}
                                             </button>
-                                        </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
                                     )}
                                     <div className="mt-4 text-center">
                                         <button onClick={() => setShowSupport(false)} className="inline-flex items-center text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors cursor-pointer">
@@ -639,7 +640,8 @@ const Login = () => {
                                                     'Send OTP'
                                                 )}
                                             </button>
-                                        </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
 
                                         <div className="mt-8 text-center">
                                             <div className="flex items-center mb-6">
@@ -850,7 +852,8 @@ const Login = () => {
                                                     <>Send OTP <ArrowRight className="w-4 h-4 ml-2" /></>
                                                 )}
                                             </button>
-                                        </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
 
                                         <div className="flex items-center my-4">
                                             <div className="flex-1 border-t border-gray-200"></div>
@@ -1112,7 +1115,8 @@ const Login = () => {
                                                 <>Send OTP <ArrowRight className="w-3.5 h-3.5 ml-1.5" /></>
                                             )}
                                         </button>
-                                    </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
 
                                     <div className="max-w-sm w-full mx-auto mt-4">
                                         <div className="flex items-center mb-4">
@@ -1360,7 +1364,8 @@ const Login = () => {
                                                 <>Send OTP <ArrowRight className="w-4 h-4 ml-2" /></>
                                             )}
                                         </button>
-                                    </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
 
                                     <div className="flex items-center my-4">
                                             <div className="flex-1 border-t border-gray-200"></div>
@@ -1553,7 +1558,8 @@ const Login = () => {
                                                       <>Authenticate <ArrowRight className="w-3.5 h-3.5 ml-1.5" /></>
                                                   )}
                                               </button>
-                                        </form>
+<div className="h-40 md:hidden w-full shrink-0 flex items-center justify-center text-[10px] text-gray-500/50 uppercase tracking-widest pt-4">⬇ Scroll up if needed ⬇</div>
+</form>
                                     </div>
                                 </div>
                             </>
