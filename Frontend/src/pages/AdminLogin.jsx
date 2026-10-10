@@ -222,7 +222,6 @@ const AdminLogin = () => {
                                 disabled={otpSent}
                                 
                                 className={`autofill-admin w-full bg-transparent border border-gray-800 text-white placeholder-gray-500 rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
-                                style={{ WebkitBoxShadow: (typeof window !== "undefined" && window.innerWidth >= 768) ? "0 0 0px 1000px #0a0a0a inset" : undefined }}
                                 placeholder="admin@careersync.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -243,7 +242,6 @@ const AdminLogin = () => {
                                 disabled={otpSent}
                                 
                                 className={`autofill-admin w-full bg-transparent border border-gray-800 text-white placeholder-gray-500 rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
-                                style={{ WebkitBoxShadow: (typeof window !== "undefined" && window.innerWidth >= 768) ? "0 0 0px 1000px #0a0a0a inset" : undefined }}
                                 placeholder="••••••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -340,6 +338,7 @@ const AdminLogin = () => {
                 .autofill-admin:-webkit-autofill:focus,
                 .autofill-admin:-webkit-autofill:active {
                     -webkit-text-fill-color: #ffffff !important;
+                    -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
                     caret-color: #ffffff;
                     transition: background-color 9999s ease-in-out 0s;
                 }
