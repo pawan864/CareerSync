@@ -503,7 +503,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full lg:w-[45%] p-8 pb-64 lg:p-12 bg-white md:bg-[#1e1e24] flex flex-col relative overflow-y-auto slim-scrollbar">
+                                <div className="w-full lg:w-[45%] p-8 pb-32 lg:p-12 bg-white md:bg-[#1e1e24] flex flex-col relative overflow-y-auto slim-scrollbar">
                                     <div className="flex justify-center items-center mb-10 mt-4 lg:mt-0 w-full">
                                         <div className="flex flex-wrap justify-center p-1 bg-gray-100 md:bg-[#2a2a32] rounded-lg w-fit mx-auto">
                                             {['Student', 'Faculty', 'TPO', 'Recruiter', 'Admin'].map((p) => (
@@ -881,6 +881,7 @@ const Login = () => {
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
                                             </div>
+                                            <div className="h-24 md:hidden w-full shrink-0"></div>
                                     </div>
                                 </div>
                             </>
@@ -1391,6 +1392,7 @@ const Login = () => {
                                                     Need assistance? <button type="button" onClick={() => setShowSupport(true)} className={`font-bold hover:underline transition-colors cursor-pointer ${themeStyles[globalTheme].iconColor}`}>Contact Technical Support</button>
                                                 </p>
                                             </div>
+                                            <div className="h-24 md:hidden w-full shrink-0"></div>
                                 </div>
                             </>
                         ) : (
