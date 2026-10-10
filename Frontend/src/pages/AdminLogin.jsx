@@ -128,7 +128,7 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="fixed inset-0 w-full h-full bg-[#050505] flex items-center justify-center overflow-hidden font-sans"
+            className="fixed inset-0 w-full h-full bg-[#050505] flex flex-col items-center justify-start md:justify-center overflow-y-auto overflow-x-hidden font-sans pt-20 pb-10 md:pt-0 md:pb-0"
         >
             {/* Animated Interactive Background Elements */}
             <motion.div 
@@ -221,8 +221,7 @@ const AdminLogin = () => {
                                 required
                                 disabled={otpSent}
                                 
-                                className={`autofill-student w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
-                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset' }}
+                                className={`autofill-admin w-full bg-transparent border border-gray-800 text-white rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="admin@careersync.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -242,8 +241,7 @@ const AdminLogin = () => {
                                 required
                                 disabled={otpSent}
                                 
-                                className={`autofill-student w-full bg-[#0f0f0f] border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
-                                style={{ WebkitBoxShadow: '0 0 0px 1000px #0f0f0f inset' }}
+                                className={`autofill-admin w-full bg-transparent border border-gray-800 text-white rounded-xl pl-11 pr-10 py-3 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/70 transition-all text-sm shadow-inner ${otpSent ? 'opacity-50 cursor-not-allowed' : 'hover:border-gray-700'}`}
                                 placeholder="••••••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -259,7 +257,7 @@ const AdminLogin = () => {
                         </div>
                         <div className="mt-3 flex items-center justify-between">
                             <div className="flex items-center">
-                                <input id="remember-me-admin" type="checkbox" className="h-3.5 w-3.5 text-red-600 focus:ring-red-500 border-gray-800 bg-[#0f0f0f] rounded cursor-pointer" />
+                                <input id="remember-me-admin" type="checkbox" className="h-3.5 w-3.5 text-red-600 focus:ring-red-500 border-gray-800 bg-transparent rounded cursor-pointer" />
                                 <label htmlFor="remember-me-admin" className="ml-1.5 block text-xs text-gray-400 cursor-pointer hover:text-gray-300 transition-colors">Remember me</label>
                             </div>
                         </div>
@@ -281,7 +279,7 @@ const AdminLogin = () => {
                                             type="text"
                                             name="otp"
                                             maxLength="1"
-                                            className="w-11 h-12 text-center text-xl font-mono font-bold text-white bg-[#0f0f0f] border border-gray-800 rounded-xl focus:bg-[#151515] focus:ring-1 focus:ring-red-500/70 focus:border-red-500/70 transition-all outline-none shadow-inner"
+                                            className="w-11 h-12 text-center text-xl font-mono font-bold text-white bg-transparent border border-gray-800 rounded-xl focus:bg-[#151515] focus:ring-1 focus:ring-red-500/70 focus:border-red-500/70 transition-all outline-none shadow-inner"
                                             value={data}
                                             onChange={e => handleOtpChange(e.target, index)}
                                             onKeyDown={e => handleOtpKeyDown(e, index)}

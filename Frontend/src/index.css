@@ -173,3 +173,13 @@ input[type="password"]::-webkit-contacts-auto-fill-button,
 input[type="password"]::-webkit-credentials-auto-fill-button {
   display: none !important;
 }
+
+/* User's Autofill Snippet for Admin */
+.autofill-admin:-webkit-autofill,
+.autofill-admin:-webkit-autofill:hover,
+.autofill-admin:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
