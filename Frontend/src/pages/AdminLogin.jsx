@@ -128,7 +128,7 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="fixed inset-0 w-full h-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 font-sans"
+            className="relative min-h-screen w-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 font-sans"
         >
             {/* Animated Interactive Background Elements */}
             <motion.div 
