@@ -158,7 +158,17 @@ input:-webkit-autofill:active {
 
 
 .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #e5e7eb !important; }
-@media (max-width: 767px) { .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #1f2937 !important; } }
+@media (max-width: 767px) {
+    input.autofill-admin:-webkit-autofill,
+    input.autofill-admin:-webkit-autofill:hover,
+    input.autofill-admin:-webkit-autofill:focus,
+    input.autofill-admin:-webkit-autofill:active {
+        -webkit-box-shadow: none !important;
+        -webkit-text-fill-color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;\n        -webkit-text-fill-color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+}
 
 
 /* Block horizontal scrolling on mobile devices (Android/iOS) */
@@ -196,5 +206,6 @@ input.autofill-admin:-webkit-autofill:active {
     input.autofill-admin:-webkit-autofill:focus,
     input.autofill-admin:-webkit-autofill:active {
         -webkit-box-shadow: none !important;
+        -webkit-text-fill-color: #000000 !important;
     }
 }
