@@ -158,31 +158,8 @@ input:-webkit-autofill:active {
 
 
 .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #e5e7eb !important; }
-@media (max-width: 767px) {
-    input.autofill-admin:-webkit-autofill,
-    input.autofill-admin:-webkit-autofill:hover,
-    input.autofill-admin:-webkit-autofill:focus,
-    input.autofill-admin:-webkit-autofill:active {
-        -webkit-box-shadow: none !important;
-        -webkit-text-fill-color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;\n        -webkit-text-fill-color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }
-}
+@media (max-width: 767px) { .autofill-student:-webkit-autofill, .autofill-student:-webkit-autofill:hover, .autofill-student:-webkit-autofill:focus, .autofill-student:-webkit-autofill:active { -webkit-text-fill-color: #1f2937 !important; } }
 
-
-/* Block horizontal scrolling on mobile devices (Android/iOS) */
-@media (max-width: 767px) { html, body { overflow-x: hidden !important; max-width: 100vw !important; position: relative; overscroll-behavior-x: none; } }
-
-@media (max-width: 767px) { #root { overflow-x: hidden !important; width: 100% !important; max-width: 100vw !important; position: relative; } }
-
-/* Hide default browser password reveal eye icon */
-input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear,
-input[type="password"]::-webkit-contacts-auto-fill-button,
-input[type="password"]::-webkit-credentials-auto-fill-button {
-  display: none !important;
-}
 
 
 
@@ -196,9 +173,6 @@ input.autofill-admin:-webkit-autofill:active {
     caret-color: #ffffff !important;
     transition: background-color 5000s ease-in-out 0s !important;
 }
-
-
-
 
 @media (max-width: 767px) {
     input.autofill-admin:-webkit-autofill,
