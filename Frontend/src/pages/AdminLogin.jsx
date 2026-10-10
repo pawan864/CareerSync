@@ -128,7 +128,7 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="min-h-[100dvh] w-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 font-sans"
+            className="min-h-[100dvh] w-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 pb-32 font-sans"
         >
             {/* Animated Interactive Background Elements */}
             <motion.div 
@@ -326,6 +326,7 @@ const AdminLogin = () => {
                     </div>
                 </div>
             </motion.div>
+              <div className="h-32 md:hidden w-full shrink-0"></div>
               <style dangerouslySetInnerHTML={{__html: `
                 @keyframes shimmer {
                     100% { transform: translateX(100%); }
