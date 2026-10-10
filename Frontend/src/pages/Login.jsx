@@ -307,7 +307,7 @@ const Login = () => {
 
     return (
         <div 
-        className="min-h-[100dvh] md:fixed md:inset-0 w-full md:h-full flex flex-col items-center justify-start md:justify-center md:px-4 overflow-y-auto overflow-x-hidden md:overflow-hidden bg-white md:bg-[#0B1B33] pb-32 md:pb-0 bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 w-full h-full flex flex-col items-center justify-start md:justify-center md:px-4 overflow-hidden bg-white md:bg-[#0B1B33] bg-none md:bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=60&w=1280&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat"
         
     >
 
@@ -378,7 +378,7 @@ const Login = () => {
 
             {/* Absolute positioning container wrapper so layout doesn't break during transition */}
             <motion.div 
-                className="w-full min-h-[100dvh] md:min-h-0 h-full md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-6 shrink-0 bg-transparent overflow-hidden pb-24 md:pb-0"
+                className="w-full h-full overflow-y-auto overflow-x-hidden md:overflow-hidden md:max-w-6xl md:rounded-3xl md:h-[min(700px,90vh)] md:shadow-2xl relative z-10 perspective-1000 mx-auto md:mb-6 shrink-0 bg-transparent pb-32 md:pb-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -391,7 +391,7 @@ const Login = () => {
                           exit="out"
                           variants={pageVariants}
                           transition={pageTransition}
-                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col lg:flex-row pb-24 md:pb-0 ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white'}`}
+                          className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white'}`}
                       >
                         {showSupport ? (
                             <div className="w-full p-8 flex flex-col justify-center h-full relative">
