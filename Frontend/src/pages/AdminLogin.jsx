@@ -316,6 +316,10 @@ const AdminLogin = () => {
                         </button>
                     </motion.div>
                 </motion.form>
+
+                <div className="md:hidden mt-6 pb-6 text-center text-gray-500/60 text-[10px] uppercase tracking-widest font-mono animate-pulse">
+                    ⬇ Scroll down for options ⬇
+                </div>
                 
                 <div className="mt-8 pt-5 border-t border-gray-800/50 text-center flex flex-col items-center">
                     <p className="text-gray-600 text-[10px] uppercase tracking-wider font-semibold">
