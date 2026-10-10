@@ -332,16 +332,6 @@ const AdminLogin = () => {
                 @keyframes shimmer {
                     100% { transform: translateX(100%); }
                 }
-
-                .autofill-admin:-webkit-autofill,
-                .autofill-admin:-webkit-autofill:hover,
-                .autofill-admin:-webkit-autofill:focus,
-                .autofill-admin:-webkit-autofill:active {
-                    -webkit-text-fill-color: #ffffff !important;
-                    -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
-                    caret-color: #ffffff;
-                    transition: background-color 9999s ease-in-out 0s;
-                }
             `}} />
 
 
