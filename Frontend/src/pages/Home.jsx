@@ -990,16 +990,16 @@ const Home = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="fixed bottom-0 md:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-full md:w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-none md:rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-6"
+                    className="fixed bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[94%] md:w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-sm md:rounded-2xl px-4 py-3 md:px-6 md:py-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6"
                 >
                     <button onClick={() => setShowCookieConsent(false)} className="absolute top-2 right-2 md:hidden text-gray-400 hover:text-gray-600 p-1"><X className="w-4 h-4" /></button>
                       <div className="flex items-center gap-4 flex-1">
-                        <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                            <Cookie className="w-5 h-5 text-gray-700" />
+                        <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                            <Cookie className="w-4 h-4 md:w-5 md:h-5 text-gray-700" />
                         </div>
                         <div>
-                            <h3 className="text-gray-900 font-bold text-sm tracking-tight m-0">We value your privacy</h3>
-                            <p className="text-gray-500 text-xs leading-relaxed m-0 mt-1 max-w-3xl pr-4">
+                            <h3 className="text-gray-900 font-bold text-xs md:text-sm tracking-tight m-0">We value your privacy</h3>
+                            <p className="text-gray-500 text-[10px] md:text-xs leading-snug md:leading-relaxed m-0 mt-0.5 md:mt-1 max-w-3xl pr-4">
                                 We use cookies and similar technologies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept all", you consent to our use of these technologies. You can learn more about how we protect your data in our <a href="#" onClick={(e) => { e.preventDefault(); setShowPolicyModal('privacy'); }} className="text-gray-900 underline font-medium hover:text-black">Privacy Policy</a> and <a href="#" onClick={(e) => { e.preventDefault(); setShowPolicyModal('terms'); }} className="text-gray-900 underline font-medium hover:text-black">Terms of Service</a>.
                             </p>
                         </div>
@@ -1007,13 +1007,13 @@ const Home = () => {
                     <div className="flex items-center gap-3 w-full md:w-auto">
                         <button 
                             onClick={() => handleCookieConsent('essential')}
-                            className="flex-1 md:flex-none px-6 py-2.5 bg-white hover:bg-gray-100 hover:text-black hover:border-gray-400 hover:shadow-md text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                            className="flex-1 md:flex-none px-4 py-2 md:px-6 md:py-2.5 bg-white hover:bg-gray-100 hover:text-black hover:border-gray-400 hover:shadow-md text-gray-700 border border-gray-300 text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
                         >
                             Reject all
                         </button>
                         <button 
                             onClick={() => handleCookieConsent('all')}
-                            className="flex-1 md:flex-none px-6 py-2.5 bg-gray-900 hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5 text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
+                            className="flex-1 md:flex-none px-4 py-2 md:px-6 md:py-2.5 bg-gray-900 hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5 text-white text-xs font-semibold rounded-lg transition-all shadow-sm active:scale-95"
                         >
                             Accept all
                         </button>
