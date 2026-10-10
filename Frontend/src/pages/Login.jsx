@@ -394,11 +394,11 @@ const Login = () => {
                           className={`absolute inset-0 w-full h-full rounded-none md:rounded-3xl overflow-y-auto overflow-x-hidden md:overflow-hidden flex flex-col lg:flex-row ${portal === 'Admin' && !showSupport ? 'bg-white md:bg-[#050505] ring-2 ring-inset ring-red-500 shadow-[0_0_40px_rgba(220,38,38,0.3)]' : showSupport ? `${themeStyles[globalTheme].cardBg} shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)]` : 'bg-white'}`}
                       >
                         {showSupport ? (
-                            <div className="w-full p-8 flex flex-col justify-center h-full relative">
+                            <div className="w-full p-4 md:p-6 flex flex-col justify-center h-full relative">
                                 <Link to="/" className="absolute top-4 right-6 p-2 rounded-full hover:bg-black/5 text-gray-400 hover:text-gray-700 transition-colors cursor-pointer" title="Back to Home">
                                     <Home className="w-5 h-5" />
                                 </Link>
-                                <div className="flex flex-col items-center text-center mb-6">
+                                <div className="flex flex-col items-center text-center mb-3">
                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 ${themeStyles[globalTheme].iconBg}`}>
                                         <MessageSquare className={`w-6 h-6 ${themeStyles[globalTheme].iconColor}`} />
                                     </div>
@@ -417,21 +417,21 @@ const Login = () => {
                                             </button>
                                         </div>
                                     ) : (
-                                        <form onSubmit={handleSupportSubmit} className="space-y-4 max-w-lg mx-auto w-full">
+                                        <form onSubmit={handleSupportSubmit} className="space-y-2.5 max-w-lg mx-auto w-full">
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <div>
                                                     <label className="block text-gray-700 text-xs font-medium mb-1">Full Name</label>
-                                                    <input type="text" name="name" required className={`w-full px-3 py-2 bg-white/70 border border-white/40 autofill-light rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.name} onChange={handleSupportChange} placeholder="John Doe" />
+                                                    <input type="text" name="name" required className={`w-full px-3 py-1.5 bg-white/70 border border-white/40 autofill-light rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.name} onChange={handleSupportChange} placeholder="John Doe" />
                                                 </div>
                                                 <div>
                                                     <label className="block text-gray-700 text-xs font-medium mb-1">Email Address</label>
-                                                    <input type="email" name="email" required className={`w-full px-3 py-2 bg-white/70 border border-white/40 autofill-light rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.email} onChange={handleSupportChange} placeholder="john@example.com" />
+                                                    <input type="email" name="email" required className={`w-full px-3 py-1.5 bg-white/70 border border-white/40 autofill-light rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.email} onChange={handleSupportChange} placeholder="john@example.com" />
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <div>
                                                     <label className="block text-gray-700 text-xs font-medium mb-1">Your Role</label>
-                                                    <select name="role" className={`w-full px-3 py-2 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.role} onChange={handleSupportChange}>
+                                                    <select name="role" className={`w-full px-3 py-1.5 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.role} onChange={handleSupportChange}>
                                                         <option value="student">Student</option>
                                                         <option value="faculty">Faculty</option>
                                                         <option value="tpo">TPO / Institution</option>
@@ -441,7 +441,7 @@ const Login = () => {
                                                 </div>
                                                 <div>
                                                     <label className="block text-gray-700 text-xs font-medium mb-1">Issue Category</label>
-                                                    <select name="category" className={`w-full px-3 py-2 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.category} onChange={handleSupportChange}>
+                                                    <select name="category" className={`w-full px-3 py-1.5 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm`} value={supportData.category} onChange={handleSupportChange}>
                                                         <option value="login">Login / Authentication</option>
                                                         <option value="registration">Registration Process</option>
                                                         <option value="technical">Technical Glitch / Bug</option>
@@ -451,9 +451,9 @@ const Login = () => {
                                             </div>
                                             <div>
                                                 <label className="block text-gray-700 text-xs font-medium mb-1">Describe the Issue</label>
-                                                <textarea name="description" required rows="3" className={`w-full px-3 py-2 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm resize-none`} value={supportData.description} onChange={handleSupportChange} placeholder="Please provide specific details..."></textarea>
+                                                <textarea name="description" required rows="2" className={`w-full px-3 py-1.5 bg-white/70 border border-white/40 rounded-xl focus:bg-white focus:ring-2 ${themeStyles[globalTheme].ringColor}/20  outline-none transition-all text-sm shadow-sm resize-none`} value={supportData.description} onChange={handleSupportChange} placeholder="Please provide specific details..."></textarea>
                                             </div>
-                                            <button type="submit" disabled={supportStatus === 'submitting'} className={`w-full flex items-center justify-center py-2.5 rounded-lg text-gray-900 md:text-white font-medium transition-colors text-sm ${themeStyles[globalTheme].primaryBtn} ${supportStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                            <button type="submit" disabled={supportStatus === 'submitting'} className={`w-full flex items-center justify-center py-1.5 rounded-lg text-gray-900 md:text-white font-medium transition-colors text-sm ${themeStyles[globalTheme].primaryBtn} ${supportStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}>
                                                 {supportStatus === 'submitting' ? 'Submitting...' : <>Submit Ticket <Send className="w-4 h-4 ml-2" /></>}
                                             </button>
 </form>
