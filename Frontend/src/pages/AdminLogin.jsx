@@ -128,7 +128,7 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative min-h-screen w-full bg-[#050505] flex flex-col items-center justify-start md:justify-center overflow-x-hidden font-sans pt-20 pb-10 md:pt-0 md:pb-0"
+            className="fixed inset-0 w-full h-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 font-sans"
         >
             {/* Animated Interactive Background Elements */}
             <motion.div 
@@ -161,7 +161,7 @@ const AdminLogin = () => {
                 initial={{ y: 30, scale: 0.9, opacity: 0 }}
                 animate={{ y: 0, scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="w-full max-w-md bg-[#0a0a0a]/80 backdrop-blur-xl border border-gray-800/60 p-8 rounded-2xl shadow-2xl relative z-10 before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/5 before:pointer-events-none"
+                className="m-auto w-full max-w-md bg-[#0a0a0a]/80 backdrop-blur-xl border border-gray-800/60 p-6 sm:p-8 rounded-2xl shadow-2xl relative z-10 before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/5 before:pointer-events-none"
             >
                 <div className="flex flex-col items-center mb-8">
                     <motion.div 
@@ -327,11 +327,22 @@ const AdminLogin = () => {
                 </div>
             </motion.div>
 
+            
             <style dangerouslySetInnerHTML={{__html: `
                 @keyframes shimmer {
                     100% { transform: translateX(100%); }
                 }
+
+                .autofill-admin:-webkit-autofill,
+                .autofill-admin:-webkit-autofill:hover,
+                .autofill-admin:-webkit-autofill:focus,
+                .autofill-admin:-webkit-autofill:active {
+                    -webkit-text-fill-color: #ffffff !important;
+                    caret-color: #ffffff;
+                    transition: background-color 9999s ease-in-out 0s;
+                }
             `}} />
+
 
             {/* Custom Interactive Dev OTP Toast */}
             <AnimatePresence>
