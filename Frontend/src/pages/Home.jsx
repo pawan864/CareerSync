@@ -990,9 +990,10 @@ const Home = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-6"
+                    className="fixed bottom-0 md:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-full md:w-[calc(100%-48px)] max-w-4xl bg-white border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)] rounded-none md:rounded-2xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-6"
                 >
-                    <div className="flex items-center gap-4 flex-1">
+                    <button onClick={() => setShowCookieConsent(false)} className="absolute top-2 right-2 md:hidden text-gray-400 hover:text-gray-600 p-1"><X className="w-4 h-4" /></button>
+                      <div className="flex items-center gap-4 flex-1">
                         <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
                             <Cookie className="w-5 h-5 text-gray-700" />
                         </div>
