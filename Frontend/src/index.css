@@ -188,3 +188,13 @@ input.autofill-admin:-webkit-autofill:active {
 }
 
 
+
+
+@media (max-width: 767px) {
+    input.autofill-admin:-webkit-autofill,
+    input.autofill-admin:-webkit-autofill:hover,
+    input.autofill-admin:-webkit-autofill:focus,
+    input.autofill-admin:-webkit-autofill:active {
+        -webkit-box-shadow: none !important;
+    }
+}
