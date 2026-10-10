@@ -321,6 +321,11 @@ exports.forgotPassword = async (req, res, next) => {
     }
 };
 
+/**
+ * @desc    Google Authentication
+ * @route   POST /api/auth/google
+ * @access  Public
+ */
 exports.googleAuth = async (req, res, next) => {
     try {
         const { credential, role, isRegister } = req.body;
@@ -391,9 +396,14 @@ sendTokenResponse(user, 200, res);
 };
 
 
+/**
+ * @desc    Microsoft Authentication
+ * @route   POST /api/auth/microsoft
+ * @access  Public
+ */
 exports.microsoftAuth = async (req, res, next) => {
     try {
-        const { accessToken } = req.body;
+        const { accessToken, role, isRegister } = req.body;
         if (!accessToken) {
             return res.status(400).json({ success: false, error: 'No Microsoft access token provided' });
         }
@@ -448,6 +458,11 @@ exports.microsoftAuth = async (req, res, next) => {
 };
 
 
+/**
+ * @desc    GitHub Authentication
+ * @route   POST /api/auth/github
+ * @access  Public
+ */
 exports.githubAuth = async (req, res, next) => {
     try {
         const { code, role, isRegister } = req.body;
@@ -507,16 +522,6 @@ exports.githubAuth = async (req, res, next) => {
                     isEmailVerified: true
                 });
         }
-
-        
-        // Record Audit Log
-        await AuditLog.create({
-            user: user._id,
-            email: user.email,
-            role: user.role,
-            action: 'LOGIN',
-            localTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-        });
 
         
         // Record Audit Log
