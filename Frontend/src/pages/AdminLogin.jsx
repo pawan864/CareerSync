@@ -128,7 +128,7 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="fixed inset-0 w-full h-full bg-[#050505] flex flex-col items-center justify-start md:justify-center overflow-y-auto overflow-x-hidden font-sans pt-20 pb-10 md:pt-0 md:pb-0"
+            className="relative min-h-screen w-full bg-[#050505] flex flex-col items-center justify-start md:justify-center overflow-x-hidden font-sans pt-20 pb-10 md:pt-0 md:pb-0"
         >
             {/* Animated Interactive Background Elements */}
             <motion.div 
@@ -183,7 +183,7 @@ const AdminLogin = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    onSubmit={handleSubmit} 
+                    onSubmit={(e) => { e.preventDefault(); }} 
                     className="space-y-5"
                 >
                     <AnimatePresence>
@@ -298,7 +298,8 @@ const AdminLogin = () => {
 
                     <motion.div variants={itemVariants} className="pt-4">
                         <button
-                            type="submit"
+                            type="button"
+                            onClick={handleSubmit}
                             disabled={isSubmitting}
                             className={`relative w-full overflow-hidden bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.2)] hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] active:scale-[0.98] text-sm tracking-widest uppercase ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
                         >
