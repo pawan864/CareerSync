@@ -1342,7 +1342,7 @@ const Login = () => {
 
                                         <div className="mt-4 flex justify-center w-full"><Turnstile siteKey="0x4AAAAAAFRwCYnHjksWpzIg" onSuccess={(token) => setTurnstileToken(token)} /></div>
 <button type="submit" disabled={isVerifying || loginSuccess}
-                                            className={`w-full flex items-center justify-center font-semibold py-2.5 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
+                                            className={`w-full md:w-[85%] mx-auto flex items-center justify-center font-semibold py-2.5 md:py-2 rounded-lg transition-all duration-300 mt-4 text-xs shadow-md ${
                                                 loginSuccess 
                                                 ? 'bg-green-500 text-white shadow-green-500/40 cursor-default' 
                                                 : isVerifying
