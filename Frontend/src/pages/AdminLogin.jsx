@@ -128,10 +128,9 @@ const AdminLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="min-h-screen w-full bg-[#050505] flex flex-col font-sans overflow-y-auto"
+            className="min-h-[100dvh] w-full bg-[#050505] flex overflow-y-auto overflow-x-hidden p-4 font-sans"
         >
-            <div className="flex-grow"></div>
-              {/* Animated Interactive Background Elements */}
+            {/* Animated Interactive Background Elements */}
             <motion.div 
                 animate={{ 
                     x: [0, 50, 0, -50, 0],
@@ -162,7 +161,7 @@ const AdminLogin = () => {
                 initial={{ y: 30, scale: 0.9, opacity: 0 }}
                 animate={{ y: 0, scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="mx-auto w-full max-w-md bg-[#0a0a0a]/80 backdrop-blur-xl border border-gray-800/60 p-6 sm:p-8 rounded-2xl shadow-2xl relative z-10 shrink-0 my-8 before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/5 before:pointer-events-none"
+                className="m-auto w-full max-w-md bg-[#0a0a0a]/80 backdrop-blur-xl border border-gray-800/60 p-6 sm:p-8 pb-24 sm:pb-8 rounded-2xl shadow-2xl relative z-10 shrink-0 before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/5 before:pointer-events-none"
             >
                 <div className="flex flex-col items-center mb-8">
                     <motion.div 
@@ -327,8 +326,6 @@ const AdminLogin = () => {
                     </div>
                 </div>
             </motion.div>
-              <div className="flex-grow"></div>
-
               <style dangerouslySetInnerHTML={{__html: `
                 @keyframes shimmer {
                     100% { transform: translateX(100%); }
