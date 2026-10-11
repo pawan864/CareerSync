@@ -132,7 +132,7 @@ const Register = () => {
         }
 
         try {
-            const success = await register(formData);
+            const success = await register({ ...formData, turnstileToken });
             if (success) {
                 if (formData.role === 'student') navigate('/student-dashboard');
                 else if (formData.role === 'faculty') navigate('/faculty-dashboard');
