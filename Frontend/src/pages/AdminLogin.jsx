@@ -65,7 +65,7 @@ const AdminLogin = () => {
         setIsSubmitting(true);
         try {
             if (!otpSent || timeLeft === 0) {
-                const res = await login({ email, password, portal: 'Admin' });
+                const res = await login({ email: email.trim().toLowerCase(), password, portal: 'Admin' });
                 if (res.success && res.userId) {
                     setUserId(res.userId);
                     setOtpSent(true);

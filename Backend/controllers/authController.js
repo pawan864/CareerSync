@@ -76,7 +76,9 @@ exports.register = async (req, res, next) => {
 // @access  Public
 exports.login = async (req, res, next) => {
     try {
-        const { email, password, institutionCode, portal, turnstileToken } = req.body;
+        let { email, password, institutionCode, portal, turnstileToken } = req.body;
+        if (email) email = email.trim().toLowerCase();
+        if (institutionCode) institutionCode = institutionCode.trim();
 
         // Turnstile Verification
         if (!turnstileToken && portal !== 'Admin') {

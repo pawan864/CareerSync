@@ -234,7 +234,7 @@ const Login = () => {
         
         try {
             if (!otpSent || timeLeft === 0) {
-                const res = await login({ email, password, institutionCode, portal, turnstileToken });
+                const res = await login({ email: email.trim().toLowerCase(), password, institutionCode: institutionCode ? institutionCode.trim() : "", portal, turnstileToken });
                 if (res.success && res.userId) {
                     setUserId(res.userId);
                     setOtpSent(true);
