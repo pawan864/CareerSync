@@ -1,117 +1,171 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LogOut, ArrowLeft, X, ShieldAlert } from 'lucide-react';
+import { LogOut, ArrowLeft, ShieldAlert, ChevronRight } from 'lucide-react';
 
 /**
  * AndroidExitGesture
- * Detects edge swipe (pull from left edge) on Android & mobile touch devices
- * and presents an exit confirmation dialog with "Exit App" and "Back" options.
+ * Handles Android edge pull / back swipe gesture reliably:
+ * 1. Touch & Pointer drag from left side (0-100px from edge).
+ * 2. Android OS native edge swipe back gesture (intercepts popstate).
+ * 3. Left-edge interactive pull handle on mobile screens.
  */
 const AndroidExitGesture = () => {
   const [showExitModal, setShowExitModal] = useState(false);
-  const [pullProgress, setPullProgress] = useState(0); // 0 to 1 for edge indicator
+  const [pullProgress, setPullProgress] = useState(0);
   const [hasExited, setHasExited] = useState(false);
 
-  const touchStartRef = useRef({ x: 0, y: 0, isEdgeSwipe: false, active: false });
+  const dragStartRef = useRef({ x: 0, y: 0, active: false });
 
+  // 1. Android OS Native Edge-Swipe (Back Gesture) Interceptor
   useEffect(() => {
-    // Only bind gestures on touch-capable devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (!isTouchDevice) return;
+    // Push guard state on mount so Android native back gesture triggers popstate
+    try {
+      window.history.pushState({ careersync_guard: true }, '');
+    } catch {
+      // Ignore if history API is restricted
+    }
 
-    const handleTouchStart = (e) => {
-      if (e.touches.length !== 1) return;
-      const touch = e.touches[0];
-
-      // Left edge zone: within 35px from left edge of screen
-      if (touch.clientX <= 35) {
-        // Avoid intercepting if an interactive modal or drawer is currently active
-        const isDrawerOpen = document.body.style.overflow === 'hidden';
-        if (isDrawerOpen) return;
-
-        touchStartRef.current = {
-          x: touch.clientX,
-          y: touch.clientY,
-          isEdgeSwipe: true,
-          active: true
-        };
-      } else {
-        touchStartRef.current.isEdgeSwipe = false;
-        touchStartRef.current.active = false;
+    const handlePopState = () => {
+      // When user pulls from left edge on Android (system back gesture), trigger modal
+      setShowExitModal(true);
+      // Re-push guard state to stay on page if user chooses "Back"
+      try {
+        window.history.pushState({ careersync_guard: true }, '');
+      } catch {
+        // Ignore
       }
     };
 
-    const handleTouchMove = (e) => {
-      if (!touchStartRef.current.isEdgeSwipe || !touchStartRef.current.active) return;
-      const touch = e.touches[0];
-      const deltaX = touch.clientX - touchStartRef.current.x;
-      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
-      // If user is predominantly scrolling vertically, cancel the edge swipe
-      if (deltaY > 50 && deltaX < 40) {
-        touchStartRef.current.isEdgeSwipe = false;
-        touchStartRef.current.active = false;
+  // 2. Direct Touch & Pointer Drag from Left Side
+  useEffect(() => {
+    const handleStart = (clientX, clientY) => {
+      // Left zone: anywhere within the first 90px of screen
+      if (clientX <= 90) {
+        dragStartRef.current = {
+          x: clientX,
+          y: clientY,
+          active: true
+        };
+      } else {
+        dragStartRef.current.active = false;
+      }
+    };
+
+    const handleMove = (clientX, clientY) => {
+      if (!dragStartRef.current.active) return;
+      const deltaX = clientX - dragStartRef.current.x;
+      const deltaY = Math.abs(clientY - dragStartRef.current.y);
+
+      // If user is scrolling vertically, cancel horizontal edge pull
+      if (deltaY > 60 && deltaX < 35) {
+        dragStartRef.current.active = false;
         setPullProgress(0);
         return;
       }
 
       if (deltaX > 0) {
-        // Progress between 0 and 1 up to 80px pull
-        const progress = Math.min(deltaX / 80, 1);
+        const progress = Math.min(deltaX / 60, 1);
         setPullProgress(progress);
       }
     };
 
-    const handleTouchEnd = (e) => {
-      if (!touchStartRef.current.isEdgeSwipe || !touchStartRef.current.active) {
+    const handleEnd = (clientX, clientY) => {
+      if (!dragStartRef.current.active) {
         setPullProgress(0);
         return;
       }
 
-      const touch = e.changedTouches[0];
-      const deltaX = touch.clientX - touchStartRef.current.x;
-      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
+      const deltaX = clientX - dragStartRef.current.x;
+      const deltaY = Math.abs(clientY - dragStartRef.current.y);
 
-      // Threshold: pulled at least 65px horizontally with low vertical deflection
-      if (deltaX >= 65 && deltaY < 90) {
+      // Trigger if pulled at least 45px rightward
+      if (deltaX >= 45 && deltaY < 100) {
         setShowExitModal(true);
       }
 
-      touchStartRef.current.isEdgeSwipe = false;
-      touchStartRef.current.active = false;
+      dragStartRef.current.active = false;
       setPullProgress(0);
     };
 
-    const handleTouchCancel = () => {
-      touchStartRef.current.isEdgeSwipe = false;
-      touchStartRef.current.active = false;
-      setPullProgress(0);
+    // Touch listeners
+    const onTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        handleStart(e.touches[0].clientX, e.touches[0].clientY);
+      }
     };
 
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    window.addEventListener('touchcancel', handleTouchCancel, { passive: true });
+    const onTouchMove = (e) => {
+      if (e.touches.length === 1) {
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const onTouchEnd = (e) => {
+      if (e.changedTouches.length > 0) {
+        handleEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+      }
+    };
+
+    // Pointer listeners (works on Android Chrome, desktop DevTools emulation, and touchpads)
+    const onPointerDown = (e) => {
+      if (e.isPrimary) {
+        handleStart(e.clientX, e.clientY);
+      }
+    };
+
+    const onPointerMove = (e) => {
+      if (e.isPrimary) {
+        handleMove(e.clientX, e.clientY);
+      }
+    };
+
+    const onPointerUp = (e) => {
+      if (e.isPrimary) {
+        handleEnd(e.clientX, e.clientY);
+      }
+    };
+
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    window.addEventListener('pointerdown', onPointerDown, { passive: true });
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('pointerup', onPointerUp, { passive: true });
 
     return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-      window.removeEventListener('touchcancel', handleTouchCancel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
     };
   }, []);
 
   const handleExitApp = () => {
-    // Attempt standard browser window close
     try {
       window.open('', '_self', '');
       window.close();
     } catch {
-      // Ignored if blocked by browser policy
+      // Ignored
     }
 
-    // Modern mobile browsers may restrict script-initiated window.close()
-    // If not closed, provide graceful exit feedback
+    setTimeout(() => {
+      try {
+        window.history.go(-2);
+      } catch {
+        window.location.href = 'about:blank';
+      }
+    }, 150);
+
     setHasExited(true);
   };
 
@@ -122,16 +176,25 @@ const AndroidExitGesture = () => {
 
   return (
     <>
-      {/* Android Native-Style Left Edge Pull Indicator */}
+      {/* 3. Interactive Left-Edge Pull Handle on Mobile */}
+      <div
+        onClick={() => setShowExitModal(true)}
+        className="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[45] w-3 h-20 bg-slate-400/20 hover:bg-blue-500/40 active:bg-blue-600/60 rounded-r-md cursor-pointer flex items-center justify-center transition-all touch-none select-none"
+        title="Pull or tap to exit"
+      >
+        <ChevronRight className="w-2.5 h-2.5 text-slate-500/50" />
+      </div>
+
+      {/* Dynamic Pull Indicator when dragging */}
       {pullProgress > 0 && !showExitModal && (
         <div
           className="fixed left-0 top-1/2 -translate-y-1/2 z-[998] pointer-events-none transition-transform duration-75"
           style={{
-            transform: `translateY(-50%) translateX(${pullProgress * 22}px)`,
+            transform: `translateY(-50%) translateX(${pullProgress * 28}px)`,
             opacity: pullProgress
           }}
         >
-          <div className="w-10 h-10 rounded-r-full bg-slate-900/80 backdrop-blur-md text-white flex items-center justify-center shadow-lg border border-white/20">
+          <div className="w-11 h-11 rounded-r-full bg-slate-900/90 backdrop-blur-md text-white flex items-center justify-center shadow-2xl border border-white/20">
             <ArrowLeft className="w-5 h-5 -ml-1 text-white animate-pulse" />
           </div>
         </div>
@@ -147,7 +210,7 @@ const AndroidExitGesture = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleBack}
-              className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"
+              className="absolute inset-0 bg-slate-950/65 backdrop-blur-xs"
             />
 
             {/* Modal Card / Bottom Sheet */}
