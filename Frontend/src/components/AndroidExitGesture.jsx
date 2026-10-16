@@ -130,17 +130,33 @@ const AndroidExitGesture = () => {
     };
   }, [isAndroidDevice]);
 
-  // Action 1: Exit App
+  // Action 1: Exit App (Redirect to Android Device Home Screen)
   const handleExitApp = () => {
     setShowExitModal(false);
 
-    // Try native App exit if Capacitor / Cordova environment
+    // 1. Native App exit (Capacitor / Cordova / WebView)
     if (window.navigator?.app?.exitApp) {
       window.navigator.app.exitApp();
       return;
     }
 
-    // Standard window close
+    // 2. Trigger Android Home Screen Intent via trusted user-gesture anchor click
+    try {
+      const intentLink = document.createElement('a');
+      intentLink.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.HOME;end';
+      intentLink.rel = 'noreferrer';
+      document.body.appendChild(intentLink);
+      intentLink.click();
+      document.body.removeChild(intentLink);
+    } catch {
+      try {
+        window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.HOME;end';
+      } catch {
+        // Ignore
+      }
+    }
+
+    // 3. Also attempt standard window.close()
     try {
       window.open('', '_self', '');
       window.close();
@@ -148,14 +164,14 @@ const AndroidExitGesture = () => {
       // Ignore
     }
 
-    // Immediate exit navigation fallback for mobile browsers
+    // 4. Browser fallback if intent is completely sandboxed
     setTimeout(() => {
       try {
         window.location.replace('about:blank');
       } catch {
-        window.location.href = 'about:blank';
+        // Ignore
       }
-    }, 100);
+    }, 250);
   };
 
   // Action 2: Back (navigates back in browser history)
