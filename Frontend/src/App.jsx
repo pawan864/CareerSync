@@ -26,6 +26,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import GithubCallback from './pages/GithubCallback';
 import { AuthProvider } from './context/AuthContext';
 import Footer from './components/Footer';
+import AndroidExitGesture from './components/AndroidExitGesture';
 
 const AppContent = () => {
   const location = useLocation();
@@ -56,6 +57,7 @@ const AppContent = () => {
         </Routes>
       </main>
       {!isAuthPage && <Footer />}
+      <AndroidExitGesture />
     </div>
   );
 };
