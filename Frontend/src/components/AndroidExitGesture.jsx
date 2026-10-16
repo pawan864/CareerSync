@@ -1,24 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LogOut, ArrowLeft, ShieldAlert, ChevronRight } from 'lucide-react';
 
 /**
  * AndroidExitGesture
  * Handles Android edge pull / back swipe gesture reliably:
- * 1. Touch & Pointer drag from left side (0-100px from edge).
- * 2. Android OS native edge swipe back gesture (intercepts popstate).
- * 3. Left-edge interactive pull handle on mobile screens.
+ * 1. ONLY active on Home Page ('/').
+ * 2. On other pages, system works according to standard Android back navigation.
+ * 3. Shows "Exit App" and "Back" confirmation sheet when pulled on Home Page.
  */
 const AndroidExitGesture = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const [showExitModal, setShowExitModal] = useState(false);
   const [pullProgress, setPullProgress] = useState(0);
   const [hasExited, setHasExited] = useState(false);
 
   const dragStartRef = useRef({ x: 0, y: 0, active: false });
 
-  // 1. Android OS Native Edge-Swipe (Back Gesture) Interceptor
+  // 1. Android OS Native Edge-Swipe (Back Gesture) Interceptor ONLY on Home Page
   useEffect(() => {
-    // Push guard state on mount so Android native back gesture triggers popstate
+    if (!isHomePage) {
+      setShowExitModal(false);
+      return;
+    }
+
+    // Push guard state on mount of home page
     try {
       window.history.pushState({ careersync_guard: true }, '');
     } catch {
@@ -26,7 +35,7 @@ const AndroidExitGesture = () => {
     }
 
     const handlePopState = () => {
-      // When user pulls from left edge on Android (system back gesture), trigger modal
+      // When user pulls from left edge on Android (system back gesture) while on Home Page, trigger modal
       setShowExitModal(true);
       // Re-push guard state to stay on page if user chooses "Back"
       try {
@@ -40,10 +49,12 @@ const AndroidExitGesture = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, []);
+  }, [isHomePage]);
 
-  // 2. Direct Touch & Pointer Drag from Left Side
+  // 2. Direct Touch & Pointer Drag from Left Side (ONLY on Home Page)
   useEffect(() => {
+    if (!isHomePage) return;
+
     const handleStart = (clientX, clientY) => {
       // Left zone: anywhere within the first 90px of screen
       if (clientX <= 90) {
@@ -148,7 +159,7 @@ const AndroidExitGesture = () => {
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
     };
-  }, []);
+  }, [isHomePage]);
 
   const handleExitApp = () => {
     try {
@@ -173,6 +184,12 @@ const AndroidExitGesture = () => {
     setShowExitModal(false);
     setHasExited(false);
   };
+
+  // If not on Home Page, do not render gesture indicator, pull handle, or modal
+  // Android system handles normal back navigation on all other pages
+  if (!isHomePage) {
+    return null;
+  }
 
   return (
     <>
