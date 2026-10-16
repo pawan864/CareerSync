@@ -353,7 +353,7 @@ const NotificationTicker = () => {
 
       {/* Top Banner Ticker */}
       <div 
-        className="flex items-center overflow-hidden h-9 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500 select-none" 
+        className="flex items-center overflow-hidden h-8 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500 select-none" 
         style={{ backgroundColor: currentTheme.bg, borderColor: currentTheme.border }}
       >
         {/* Left Notification Badge / Trigger Button */}
@@ -361,7 +361,7 @@ const NotificationTicker = () => {
           <button 
             type="button"
             onClick={() => setIsDrawerOpen(true)}
-            className="group flex items-center text-xs sm:text-[13px] font-black tracking-wide px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-md sm:rounded-lg shadow-xs cursor-pointer transition-all hover:shadow-md active:scale-95" 
+            className="group flex items-center text-xs font-bold px-2.5 py-0.5 sm:py-1 rounded shadow-xs cursor-pointer transition-all hover:shadow-md active:scale-95" 
             style={{ 
               backgroundColor: currentTheme.btn, 
               color: tickerTheme === 'orange' ? '#ffffff' : '#0f172a' 
@@ -369,13 +369,13 @@ const NotificationTicker = () => {
             title="Open Notification Center"
           >
             <div className="relative flex items-center mr-1.5">
-              <Bell className="w-4 h-4" />
+              <Bell className="w-3.5 h-3.5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-600 ring-1 ring-white animate-pulse" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-600 ring-1 ring-white animate-pulse" />
               )}
             </div>
-            <span className="tracking-wide uppercase text-xs sm:text-[13px] font-black">NOTIFICATIONS</span> 
-            <span className="ml-1 text-xs opacity-75 group-hover:translate-x-0.5 transition-transform font-bold">»</span>
+            <span className="tracking-wide uppercase text-[11px] sm:text-xs font-black">NOTIFICATIONS</span> 
+            <span className="ml-1 text-[10px] opacity-70 group-hover:translate-x-0.5 transition-transform">»</span>
           </button>
         </div>
         
@@ -424,8 +424,8 @@ const NotificationTicker = () => {
               <div className="px-4 sm:px-5 pt-4 pb-3.5 border-b border-slate-200 bg-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2.5">
-                    <div className="w-9 h-9 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-xs shrink-0">
-                      <Bell className="w-4.5 h-4.5" />
+                    <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-xs">
+                      <Bell className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
