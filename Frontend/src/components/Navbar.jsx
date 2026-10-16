@@ -10,8 +10,15 @@ const Navbar = () => {
 
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [mobileExpandedItem, setMobileExpandedItem] = useState(null);
     const [navTheme, setNavTheme] = useState('indigo');
     const [isSliderPaused, setIsSliderPaused] = useState(false);
+
+    useEffect(() => {
+        if (!isMobileMenuOpen) {
+            setMobileExpandedItem(null);
+        }
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleSlideChange = (e) => {
@@ -75,6 +82,99 @@ const Navbar = () => {
         ? `${themeClasses[currentTheme]} backdrop-blur-md shadow-md border-b`
         : "bg-slate-200 shadow-sm border-b border-gray-200";
 
+    const navItems = [
+        {
+            name: 'Home', href: '/',
+            details: [
+                { title: 'Overview', desc: 'Back to the main dashboard', link: '/' },
+                { title: 'Platform Features', desc: 'See what CareerSync offers', link: '/' },
+                { title: 'Success Stories', desc: 'Read about our alumni', link: '/' },
+                { title: 'Testimonials', desc: 'What partners say about us', link: '/' }
+            ]
+        },
+        {
+            name: 'About', href: '/',
+            details: [
+                { title: 'Our Mission', desc: 'Learn about CareerSync', link: '/' },
+                { title: 'Our Team', desc: 'Meet the creators behind the platform', link: '/' },
+                { title: 'Careers', desc: 'Join our growing team', link: '/jobs' },
+                { title: 'Contact Us', desc: 'Get in touch with headquarters', link: '/support' }
+            ]
+        },
+        {
+            name: 'Students', href: '/register',
+            details: [
+                { title: 'Skill Analysis', desc: 'Find your skill gaps with AI', link: '/skill-gap' },
+                { title: 'Build Profile', desc: 'Showcase your portfolio to employers', link: '/profile' },
+                { title: 'Career Paths', desc: 'Explore tech and non-tech roles', link: '/jobs' },
+                { title: 'Mock Interviews', desc: 'Practice with AI interviewers', link: '/register' }
+            ]
+        },
+        {
+            name: 'Institutions', href: '/institution',
+            details: [
+                { title: 'TPO Dashboard', desc: 'Track comprehensive placement metrics', link: '/institution' },
+                { title: 'Student Roster', desc: 'Manage your batches and departments', link: '/institution' },
+                { title: 'Placement Reports', desc: 'Generate real-time analytics', link: '/institution' },
+                { title: 'Alumni Network', desc: 'Connect with past graduates', link: '/institution' }
+            ]
+        },
+        {
+            name: 'Employers', href: '/employer',
+            details: [
+                { title: 'Post Opportunities', desc: 'Hire top campus talent quickly', link: '/employer' },
+                { title: 'Talent Search', desc: 'Filter through verified students', link: '/employer' },
+                { title: 'Company Profile', desc: 'Manage your employer brand', link: '/employer' },
+                { title: 'Hiring Analytics', desc: 'Track your hiring pipeline', link: '/employer' }
+            ]
+        },
+        {
+            name: 'Jobs', href: '/jobs',
+            details: [
+                { title: 'Job Board', desc: 'Browse all active full-time jobs', link: '/jobs' },
+                { title: 'Internships', desc: 'Start your career with summer roles', link: '/jobs' },
+                { title: 'Saved Jobs', desc: 'View roles you bookmarked', link: '/jobs' },
+                { title: 'Application History', desc: 'Track your submitted applications', link: '/jobs' }
+            ]
+        },
+        {
+            name: 'Mentorship', href: '/register',
+            details: [
+                { title: 'Find a Mentor', desc: 'Connect with industry experts', link: '/register' },
+                { title: 'Become a Mentor', desc: 'Guide the next generation of talent', link: '/register' },
+                { title: 'Mentorship Programs', desc: 'Join structured 6-week cohorts', link: '/register' },
+                { title: 'Success Stories', desc: 'Read about successful mentor pairs', link: '/register' }
+            ]
+        },
+        {
+            name: 'Events', href: '/jobs',
+            details: [
+                { title: 'Career Fairs', desc: 'Upcoming campus hiring drives', link: '/' },
+                { title: 'Workshops', desc: 'Skill-building technical sessions', link: '/' },
+                { title: 'Webinars', desc: 'Learn from industry thought leaders', link: '/' },
+                { title: 'Hackathons', desc: 'Compete and showcase your coding skills', link: '/' }
+            ]
+        },
+        {
+            name: 'Careers', href: '/jobs',
+            details: [
+                { title: 'Job Board', desc: 'Browse full-time & tech opportunities', link: '/jobs' },
+                { title: 'Campus Drives', desc: 'Upcoming recruitment drives and notices', link: '/jobs' },
+                { title: 'Internship Hub', desc: 'Paid summer & winter industrial roles', link: '/jobs' },
+                { title: 'Skill Roadmap', desc: 'AI-guided benchmark & skill analysis', link: '/skill-gap' }
+            ]
+        },
+        {
+            name: 'Contact', href: '/support',
+            details: [
+                { title: 'Support Helpdesk', desc: 'Get help with your account issues', link: '/support' },
+                { title: 'Partnerships', desc: 'Collaborate and partner with us', link: '/support' },
+                { title: 'Sales Inquiries', desc: 'Talk to our enterprise sales team', link: '/support' },
+                { title: 'FAQ', desc: 'Frequently asked questions', link: '/support' }
+            ]
+        }
+    ];
+
     return (
         <>
             <div className="h-16 w-full shrink-0 md:hidden"></div>
@@ -117,99 +217,17 @@ const Navbar = () => {
                         
                         {/* Public Navigation Links with Hover Dropdown Cards */}
                         <div className="hidden lg:flex space-x-1 border-l pl-6 border-gray-200">
-                            {[
-                                {
-                                    name: 'Home', href: '/',
-                                    details: [
-                                        { title: 'Overview', desc: 'Back to the main dashboard', link: '/' },
-                                        { title: 'Platform Features', desc: 'See what CareerSync offers', link: '/' },
-                                        { title: 'Success Stories', desc: 'Read about our alumni', link: '/' },
-                                        { title: 'Testimonials', desc: 'What partners say about us', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'About', href: '/',
-                                    details: [
-                                        { title: 'Our Mission', desc: 'Learn about CareerSync', link: '/' },
-                                        { title: 'Our Team', desc: 'Meet the creators behind the platform', link: '/' },
-                                        { title: 'Careers', desc: 'Join our growing team', link: '/' },
-                                        { title: 'Contact Us', desc: 'Get in touch with headquarters', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Students', href: '/register',
-                                    details: [
-                                        { title: 'Skill Analysis', desc: 'Find your skill gaps with AI', link: '/skill-gap' },
-                                        { title: 'Build Profile', desc: 'Showcase your portfolio to employers', link: '/profile' },
-                                        { title: 'Career Paths', desc: 'Explore tech and non-tech roles', link: '/' },
-                                        { title: 'Mock Interviews', desc: 'Practice with AI interviewers', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Institutions', href: '/',
-                                    details: [
-                                        { title: 'TPO Dashboard', desc: 'Track comprehensive placement metrics', link: '/institution' },
-                                        { title: 'Student Roster', desc: 'Manage your batches and departments', link: '/' },
-                                        { title: 'Placement Reports', desc: 'Generate real-time analytics', link: '/' },
-                                        { title: 'Alumni Network', desc: 'Connect with past graduates', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Employers', href: '/',
-                                    details: [
-                                        { title: 'Post Opportunities', desc: 'Hire top campus talent quickly', link: '/employer' },
-                                        { title: 'Talent Search', desc: 'Filter through verified students', link: '/' },
-                                        { title: 'Company Profile', desc: 'Manage your employer brand', link: '/' },
-                                        { title: 'Hiring Analytics', desc: 'Track your hiring pipeline', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Jobs', href: '/jobs',
-                                    details: [
-                                        { title: 'Job Board', desc: 'Browse all active full-time jobs', link: '/jobs' },
-                                        { title: 'Internships', desc: 'Start your career with summer roles', link: '/jobs' },
-                                        { title: 'Saved Jobs', desc: 'View roles you bookmarked', link: '/' },
-                                        { title: 'Application History', desc: 'Track your submitted applications', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Mentorship', href: '/',
-                                    details: [
-                                        { title: 'Find a Mentor', desc: 'Connect with industry experts', link: '/' },
-                                        { title: 'Become a Mentor', desc: 'Guide the next generation of talent', link: '/' },
-                                        { title: 'Mentorship Programs', desc: 'Join structured 6-week cohorts', link: '/' },
-                                        { title: 'Success Stories', desc: 'Read about successful mentor pairs', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Events', href: '/',
-                                    details: [
-                                        { title: 'Career Fairs', desc: 'Upcoming campus hiring drives', link: '/' },
-                                        { title: 'Workshops', desc: 'Skill-building technical sessions', link: '/' },
-                                        { title: 'Webinars', desc: 'Learn from industry thought leaders', link: '/' },
-                                        { title: 'Hackathons', desc: 'Compete and showcase your coding skills', link: '/' }
-                                    ]
-                                },
-                                {
-                                    name: 'Contact', href: '/',
-                                    details: [
-                                        { title: 'Support Helpdesk', desc: 'Get help with your account issues', link: '/' },
-                                        { title: 'Partnerships', desc: 'Collaborate and partner with us', link: '/' },
-                                        { title: 'Sales Inquiries', desc: 'Talk to our enterprise sales team', link: '/' },
-                                        { title: 'FAQ', desc: 'Frequently asked questions', link: '/' }
-                                    ]
-                                }
-                            ].map((item) => (
+                            {navItems.map((item) => (
                                 <div key={item.name} className="group relative">
                                     <Link 
                                         to={item.href} 
-                                        className={`text-gray-600 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full`}
+                                        className={`text-gray-600 ${dynamicStyles[currentTheme].linkHover} transition-all duration-300 px-1.5 xl:px-2.5 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors inline-flex items-center h-full whitespace-nowrap`}
                                     >
                                         {item.name}
                                     </Link>
                                     
                                     {/* Floating Dropdown Card */}
-                                    <div className="absolute left-0 mt-0 w-64 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:translate-y-1 group-hover:visible transition-all duration-200 z-50">
+                                    <div className={`absolute ${item.name === 'Contact' ? 'right-0' : 'left-0'} mt-0 w-64 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:translate-y-1 group-hover:visible transition-all duration-200 z-50`}>
                                         <div className={`bg-gradient-to-r ${dynamicStyles[currentTheme].bg} rounded-xl shadow-xl border border-gray-100 p-3 overflow-hidden transition-colors duration-500`}>
                                             {item.details.map((detail, idx) => (
                                                 <Link 
@@ -288,22 +306,107 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Dropdown Menu */}
+            {/* Mobile Dropdown Menu for Android & Touch Devices */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="lg:hidden border-t border-gray-200 bg-white overflow-hidden shadow-xl"
+                        transition={{ duration: 0.25 }}
+                        className="lg:hidden border-t border-gray-200 bg-white shadow-2xl overflow-y-auto max-h-[calc(100dvh-4rem)] overscroll-contain"
                     >
-                        <div className="px-6 py-5 flex flex-col space-y-5">
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Home</Link>
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">About</Link>
-                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Students</Link>
-                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Institutions</Link>
-                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg border-b border-gray-100 pb-2">Companies</Link>
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-800 font-semibold text-lg">Contact</Link>
+                        <div className="px-4 py-3 divide-y divide-gray-100">
+                            {navItems.map((item) => {
+                                const isExpanded = mobileExpandedItem === item.name;
+                                return (
+                                    <div key={item.name} className="py-1">
+                                        <button
+                                            type="button"
+                                            onClick={() => setMobileExpandedItem(prev => prev === item.name ? null : item.name)}
+                                            className="w-full py-2.5 px-2 flex items-center justify-between text-left rounded-lg active:bg-slate-100 transition-colors"
+                                        >
+                                            <span className={`text-[15px] font-semibold transition-colors ${isExpanded ? 'text-blue-600' : 'text-slate-800'}`}>
+                                                {item.name}
+                                            </span>
+                                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                                        </button>
+
+                                        <AnimatePresence>
+                                            {isExpanded && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    className="overflow-hidden pt-1 pb-2 space-y-1.5 pl-1 pr-1"
+                                                >
+                                                    {item.details.map((detail, idx) => (
+                                                        <Link
+                                                            key={idx}
+                                                            to={detail.link}
+                                                            onClick={() => {
+                                                                setIsMobileMenuOpen(false);
+                                                                setMobileExpandedItem(null);
+                                                            }}
+                                                            className="block p-2.5 rounded-lg bg-slate-50/90 active:bg-blue-50/80 border border-slate-200/70 transition-all active:scale-[0.99]"
+                                                        >
+                                                            <div className="flex items-center justify-between">
+                                                                <span className="font-semibold text-slate-900 text-xs">
+                                                                    {detail.title}
+                                                                </span>
+                                                                <span className="text-[11px] font-bold text-blue-600">→</span>
+                                                            </div>
+                                                            <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                                                                {detail.desc}
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Mobile Auth Bottom Bar */}
+                        <div className="p-4 bg-slate-50 border-t border-slate-200/80 mb-6">
+                            {user ? (
+                                <div className="flex items-center justify-between">
+                                    <div className="text-xs">
+                                        <div className="font-bold text-slate-800">{user.name}</div>
+                                        <div className="text-slate-500 capitalize">{user.role}</div>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={async () => {
+                                            setIsMobileMenuOpen(false);
+                                            await handleLogout();
+                                        }}
+                                        className="px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-md active:bg-red-100"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-2 gap-2">
+                                    <Link
+                                        to="/login"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="py-2 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 rounded-md shadow-xs active:bg-slate-100"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        to="/register"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="py-2 text-center text-xs font-semibold text-white bg-blue-600 rounded-md shadow-xs active:bg-blue-700"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 )}
