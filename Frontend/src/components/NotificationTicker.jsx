@@ -207,7 +207,13 @@ const NotificationTicker = () => {
     return true;
   };
 
+  const isVisibleOnHome = (item) => {
+    if (!item?.visibleTo || !Array.isArray(item.visibleTo) || item.visibleTo.length === 0) return true;
+    return item.visibleTo.includes('home');
+  };
+
   const filteredNotifications = notifications.filter(item => {
+    if (!isVisibleOnHome(item)) return false;
     if (activeTab === 'history') {
       return matchesHistoryDate(item.createdAt) && matchesHistorySubject(item);
     }
@@ -235,7 +241,7 @@ const NotificationTicker = () => {
 
   // Ticker items configured by Admin (isTicker: true) - Memoized for Android 60fps performance
   const tickerItems = useMemo(() => {
-    return notifications.filter(n => n.isTicker !== false && n.isActive !== false);
+    return notifications.filter(n => n.isTicker !== false && n.isActive !== false && isVisibleOnHome(n));
   }, [notifications]);
 
   const formatRelativeTime = (dateStr) => {

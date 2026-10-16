@@ -1,5 +1,27 @@
 const Notification = require('../models/Notification');
 
+const VALID_AUDIENCES = ['faculty', 'student', 'recruiter', 'tpo', 'home'];
+
+const normalizeAudience = (visibleTo) => {
+    if (!visibleTo) return [...VALID_AUDIENCES];
+    if (Array.isArray(visibleTo)) {
+        if (visibleTo.includes('all')) return [...VALID_AUDIENCES];
+        const filtered = visibleTo
+            .map(v => String(v).toLowerCase().trim())
+            .filter(v => VALID_AUDIENCES.includes(v));
+        return filtered.length > 0 ? filtered : [...VALID_AUDIENCES];
+    }
+    if (typeof visibleTo === 'string') {
+        if (visibleTo === 'all') return [...VALID_AUDIENCES];
+        const parts = visibleTo
+            .split(',')
+            .map(v => v.toLowerCase().trim())
+            .filter(v => VALID_AUDIENCES.includes(v));
+        return parts.length > 0 ? parts : [...VALID_AUDIENCES];
+    }
+    return [...VALID_AUDIENCES];
+};
+
 // Default initial circulars to seed if DB is empty
 const defaultSeedNotices = [
     {
@@ -12,7 +34,8 @@ const defaultSeedNotices = [
         actionText: 'View Eligibility',
         actionUrl: '/login',
         isActive: true,
-        isTicker: true
+        isTicker: true,
+        visibleTo: ['student', 'tpo', 'home']
     },
     {
         category: 'events',
@@ -24,7 +47,8 @@ const defaultSeedNotices = [
         actionText: 'Reserve Slot',
         actionUrl: '/register',
         isActive: true,
-        isTicker: true
+        isTicker: true,
+        visibleTo: ['faculty', 'student', 'recruiter', 'tpo', 'home']
     },
     {
         category: 'notices',
@@ -36,7 +60,8 @@ const defaultSeedNotices = [
         actionText: 'Open Assessment',
         actionUrl: '/skill-gap',
         isActive: true,
-        isTicker: true
+        isTicker: true,
+        visibleTo: ['faculty', 'student', 'home']
     },
     {
         category: 'drives',
@@ -48,7 +73,8 @@ const defaultSeedNotices = [
         actionText: 'Review Profile',
         actionUrl: '/login',
         isActive: true,
-        isTicker: false
+        isTicker: false,
+        visibleTo: ['student', 'tpo']
     },
     {
         category: 'academic',
@@ -61,7 +87,8 @@ const defaultSeedNotices = [
         isManual: true,
         actionUrl: '',
         isActive: true,
-        isTicker: false
+        isTicker: false,
+        visibleTo: ['faculty', 'student', 'recruiter', 'tpo', 'home']
     }
 ];
 
@@ -76,12 +103,34 @@ exports.getNotifications = async (req, res) => {
         }
 
         const filter = req.query.all === 'true' ? {} : { isActive: true };
+
+        // Support optional audience filtering (e.g. ?audience=student)
+        if (req.query.audience) {
+            const aud = String(req.query.audience).toLowerCase().trim();
+            if (aud !== 'all' && VALID_AUDIENCES.includes(aud)) {
+                filter.$or = [
+                    { visibleTo: aud },
+                    { visibleTo: { $exists: false } },
+                    { visibleTo: { $size: 0 } }
+                ];
+            }
+        }
+
         const notifications = await Notification.find(filter).sort({ createdAt: -1 });
+
+        // Ensure visibleTo array is populated with defaults for older records
+        const sanitized = notifications.map(doc => {
+            const obj = doc.toObject();
+            if (!obj.visibleTo || !Array.isArray(obj.visibleTo) || obj.visibleTo.length === 0) {
+                obj.visibleTo = [...VALID_AUDIENCES];
+            }
+            return obj;
+        });
 
         res.status(200).json({
             success: true,
-            count: notifications.length,
-            data: notifications
+            count: sanitized.length,
+            data: sanitized
         });
     } catch (error) {
         console.error('Error fetching notifications:', error);
@@ -106,6 +155,7 @@ exports.createNotification = async (req, res) => {
             isManual,
             isActive,
             isTicker,
+            visibleTo,
             createdAt
         } = req.body;
 
@@ -124,7 +174,8 @@ exports.createNotification = async (req, res) => {
             actionUrl: actionUrl !== undefined ? actionUrl : '',
             isManual: Boolean(isManual),
             isActive: isActive !== undefined ? isActive : true,
-            isTicker: isTicker !== undefined ? isTicker : true
+            isTicker: isTicker !== undefined ? isTicker : true,
+            visibleTo: normalizeAudience(visibleTo)
         };
 
         if (createdAt) {
@@ -151,6 +202,10 @@ exports.updateNotification = async (req, res) => {
         const updateData = { ...req.body };
         delete updateData._id;
         delete updateData.__v;
+
+        if (req.body.visibleTo !== undefined) {
+            updateData.visibleTo = normalizeAudience(req.body.visibleTo);
+        }
 
         // Allow message time update from Admin Dashboard
         if (req.body.createdAt) {

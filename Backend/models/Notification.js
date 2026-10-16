@@ -54,6 +54,10 @@ const NotificationSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    visibleTo: {
+        type: [String],
+        default: ['faculty', 'student', 'recruiter', 'tpo', 'home']
+    },
     createdAt: {
         type: Date,
         default: Date.now

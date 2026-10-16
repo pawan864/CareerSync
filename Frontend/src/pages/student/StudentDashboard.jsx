@@ -1,5 +1,6 @@
-﻿import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import api from '../../services/api';
 
 import { 
     GraduationCap, LogOut, User, BookOpen, Briefcase, FileText, BrainCircuit, MessageSquare, Calendar, Home, ChevronRight,
@@ -26,33 +27,35 @@ import AlumniNetwork from './AlumniNetwork';
 import DashboardSettings from './Settings';
 import DashboardSupport from './DashboardSupport';
 
-
-
-
-
-
-
-
-// Placeholder components - we will build these next
-
-
-
-
-
 const StudentDashboard = () => {
     const { logout, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('home');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [visibleItemIds, setVisibleItemIds] = useState(null);
+
+    useEffect(() => {
+        const fetchNav = async () => {
+            try {
+                const res = await api.get('/admin/access-control/public/student');
+                if (res.data?.success && res.data.data?.sidebarItems) {
+                    const ids = new Set(res.data.data.sidebarItems.map(i => i.id));
+                    setVisibleItemIds(ids);
+                }
+            } catch (e) {
+                // Keep default nav items if fetch fails
+            }
+        };
+        fetchNav();
+    }, []);
 
     const handleLogout = async () => {
         await logout();
         navigate('/');
     };
 
-    
-    const navItems = [
+    const defaultNavItems = [
         { id: 'home', label: 'Home Page', icon: Home, desc: 'Return to main site' },
         
         { id: 'profile', label: 'My Profile', icon: User, desc: 'Digital Resume & Details' },
@@ -78,6 +81,11 @@ const StudentDashboard = () => {
         { id: 'settings', label: 'Settings', icon: Settings, desc: 'Account configuration' },
         { id: 'support', label: 'Help & Support', icon: HelpCircle, desc: 'Contact technical support' }
     ];
+
+    const navItems = defaultNavItems.filter(item => {
+        if (!visibleItemIds) return true;
+        return visibleItemIds.has(item.id);
+    });
 
     return (
         <div className="flex h-screen w-full max-w-[100vw] bg-gradient-to-r from-white via-blue-50 to-blue-100 font-sans overflow-hidden">

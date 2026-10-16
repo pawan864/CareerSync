@@ -61,6 +61,17 @@ const UserSchema = new mongoose.Schema({
         enum: ['pending', 'approved', 'rejected'],
         default: 'pending'
     },
+    rejectionReason: {
+        type: String,
+        default: ''
+    },
+    verifiedAt: {
+        type: Date
+    },
+    verifiedBy: {
+        type: String,
+        default: 'Administrator'
+    },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     loginOtp: String,

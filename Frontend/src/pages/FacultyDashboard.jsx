@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,19 +7,36 @@ import {
     LogOut, Menu, X, Bell, Search, GraduationCap, CheckCircle, BarChart2, ClipboardList, FolderOpen, Calendar, Mail, Settings, HelpCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 const FacultyDashboard = () => {
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('Overview');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [visibleItemIds, setVisibleItemIds] = useState(null);
+
+    useEffect(() => {
+        const fetchNav = async () => {
+            try {
+                const res = await api.get('/admin/access-control/public/faculty');
+                if (res.data?.success && res.data.data?.sidebarItems) {
+                    const ids = new Set(res.data.data.sidebarItems.map(i => i.id));
+                    setVisibleItemIds(ids);
+                }
+            } catch (e) {
+                // fallback
+            }
+        };
+        fetchNav();
+    }, []);
 
     const handleLogout = async () => {
         await logout();
         navigate('/');
     };
 
-    const sidebarItems = [
+    const defaultSidebarItems = [
         { name: 'Overview', icon: LayoutDashboard },
         { name: 'Student Management', icon: Users },
         { name: 'Curriculum & Mapping', icon: BookOpen },
@@ -33,6 +50,11 @@ const FacultyDashboard = () => {
         { name: 'Settings', icon: Settings },
         { name: 'Help & Support', icon: HelpCircle },
     ];
+
+    const sidebarItems = defaultSidebarItems.filter(item => {
+        if (!visibleItemIds) return true;
+        return visibleItemIds.has(item.name);
+    });
 
     const renderContent = () => {
         switch (activeTab) {

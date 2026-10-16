@@ -46,6 +46,27 @@ const OpportunitySchema = new mongoose.Schema({
         type: String,
         enum: ['Open', 'Closed'],
         default: 'Open'
+    },
+    moderationStatus: {
+        type: String,
+        enum: ['approved', 'pending', 'flagged', 'rejected'],
+        default: 'approved'
+    },
+    moderationReason: {
+        type: String,
+        default: ''
+    },
+    flaggedCount: {
+        type: Number,
+        default: 0
+    },
+    moderatedBy: {
+        type: String,
+        default: 'Administrator'
+    },
+    moderatedAt: {
+        type: Date,
+        default: Date.now
     }
 }, { timestamps: true });
 
