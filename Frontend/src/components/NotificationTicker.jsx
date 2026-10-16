@@ -511,7 +511,7 @@ const NotificationTicker = () => {
               </div>
 
               {/* Notification Feed (Scrollable, mobile-optimized padding) */}
-              <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-3 divide-y divide-slate-100 slim-scrollbar">
+              <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-3 space-y-2.5 slim-scrollbar">
                 {activeTab === 'history' && (
                   <div className="mb-3 p-3 rounded-xl bg-slate-50 border border-slate-200/90 shadow-xs space-y-2.5">
                     {/* Header line of filter */}
@@ -661,17 +661,17 @@ const NotificationTicker = () => {
                             toggleExpand(item._id);
                           }
                         }}
-                        className={`py-3.5 px-3 rounded-xl transition-all duration-200 cursor-pointer ${
+                        className={`group p-3.5 rounded-xl transition-all duration-200 cursor-pointer ${
                           isExpanded
-                            ? 'border-2 border-blue-500 bg-blue-50/30 shadow-md ring-2 ring-blue-500/20'
+                            ? 'border-2 border-blue-500 bg-blue-50/40 shadow-md ring-2 ring-blue-500/20 hover:shadow-lg hover:border-blue-600'
                             : isUnread 
-                              ? 'bg-blue-50/40 hover:bg-blue-50/70 border-l-2 border-blue-600 border border-transparent' 
-                              : 'hover:bg-slate-50 border border-transparent'
+                              ? 'bg-blue-50/40 hover:bg-blue-50/80 border border-blue-200/90 hover:border-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5' 
+                              : 'bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-blue-300 shadow-xs hover:shadow-md hover:-translate-y-0.5'
                         }`}
                       >
                         {/* Top metadata line */}
                         <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[11px] mb-1">
-                          <span className="font-semibold text-slate-700 flex items-center gap-1.5 min-w-0 max-w-[200px] sm:max-w-none">
+                          <span className="font-semibold text-slate-700 group-hover:text-slate-900 transition-colors flex items-center gap-1.5 min-w-0 max-w-[200px] sm:max-w-none">
                             {getDrawerIcon(item, idx)}
                             <span className="truncate">{item.sender || 'Training & Placement Office'}</span>
                           </span>
@@ -689,7 +689,7 @@ const NotificationTicker = () => {
                         </div>
 
                         {/* Title */}
-                        <h4 className="text-xs sm:text-[13px] font-bold text-slate-900 leading-snug mt-1 break-words">
+                        <h4 className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-1 break-words">
                           {item.title}
                         </h4>
 
