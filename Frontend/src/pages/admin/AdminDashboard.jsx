@@ -1,3 +1,4 @@
+import api from '../../services/api';
 import React, { useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
@@ -5,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
     LayoutDashboard, Users, Building2, Activity, FileText, ShieldCheck, 
     Settings, LogOut, Menu, X, Bell, Search, AlertCircle, Database,
-    UserCheck, ShieldAlert, BarChart2, Brain, MessageSquare, TrendingUp, CheckCircle, XCircle, Eye, Key, Link2, CreditCard
+    UserCheck, ShieldAlert, BarChart2, Brain, MessageSquare, TrendingUp, CheckCircle, XCircle, Eye, Key, Link2, CreditCard, Plus, Edit3, Trash2, Power, Radio, RefreshCw, Send, Megaphone, Clock, Check
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -248,6 +249,687 @@ const FeedbackModule = () => (
     </div>
 );
 
+
+const NotificationsModule = () => {
+    const [notifications, setNotifications] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [editingItem, setEditingItem] = React.useState(null);
+    const [filterCategory, setFilterCategory] = React.useState('all');
+    const [feedback, setFeedback] = React.useState('');
+    const [isSaving, setIsSaving] = React.useState(false);
+
+    const getLocalIsoDateTime = (d = new Date()) => {
+        const pad = (n) => String(n).padStart(2, '0');
+        return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    };
+
+    const [form, setForm] = React.useState({
+        title: '',
+        description: '',
+        category: 'drives',
+        sender: 'Training & Placement Office',
+        senderRole: 'Official Circular',
+        priority: 'high',
+        actionText: 'View Details',
+        actionUrl: '/login',
+        isTicker: true,
+        isActive: true,
+        createdAt: getLocalIsoDateTime()
+    });
+
+    const fetchNotices = async (isBackground = false) => {
+        if (!isBackground) setLoading(true);
+        try {
+            const res = await api.get('/notifications?all=true');
+            if (res.data && res.data.success) {
+                setNotifications(res.data.data || []);
+            }
+        } catch (err) {
+            console.error('Error fetching admin notifications:', err);
+        } finally {
+            if (!isBackground) setLoading(false);
+        }
+    };
+
+    const formatAdminDateTime = (dateStr) => {
+        if (!dateStr) return 'Just now';
+        try {
+            const d = new Date(dateStr);
+            if (isNaN(d.getTime())) return 'Just now';
+            return d.toLocaleString('en-IN', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        } catch {
+            return 'Just now';
+        }
+    };
+
+    React.useEffect(() => {
+        fetchNotices();
+    }, []);
+
+    const showToast = (msg) => {
+        setFeedback(msg);
+        setTimeout(() => setFeedback(''), 3500);
+    };
+
+    const categoryDefaults = {
+        drives: { actionText: 'View Eligibility', actionUrl: '/login', senderRole: 'Official Circular' },
+        events: { actionText: 'Register Slot', actionUrl: '/register', senderRole: 'Campus Event' },
+        notices: { actionText: 'Read Notice', actionUrl: '/jobs', senderRole: 'Administrative Notice' },
+        academic: { actionText: 'Take Assessment', actionUrl: '/skill-gap', senderRole: 'Academic Assessment' }
+    };
+
+    const handleCategoryChange = (newCat) => {
+        const defaults = categoryDefaults[newCat] || categoryDefaults.drives;
+        setForm(prev => ({
+            ...prev,
+            category: newCat,
+            senderRole: (!prev.senderRole || Object.values(categoryDefaults).some(d => d.senderRole === prev.senderRole)) ? defaults.senderRole : prev.senderRole,
+            actionText: prev.noUrl ? '' : ((!prev.actionText || Object.values(categoryDefaults).some(d => d.actionText === prev.actionText)) ? defaults.actionText : prev.actionText),
+            actionUrl: prev.noUrl ? '' : ((!prev.actionUrl || Object.values(categoryDefaults).some(d => d.actionUrl === prev.actionUrl)) ? defaults.actionUrl : prev.actionUrl)
+        }));
+    };
+
+    const handleOpenCreate = () => {
+        setEditingItem(null);
+        setForm({
+            title: '',
+            description: '',
+            category: 'drives',
+            sender: 'Training & Placement Office',
+            senderRole: categoryDefaults.drives.senderRole,
+            priority: 'high',
+            actionText: categoryDefaults.drives.actionText,
+            actionUrl: categoryDefaults.drives.actionUrl,
+            noUrl: false,
+            isTicker: true,
+            isActive: true,
+            createdAt: getLocalIsoDateTime(new Date())
+        });
+        setIsModalOpen(true);
+    };
+
+    const handleOpenEdit = (item) => {
+        setEditingItem(item);
+        const itemDate = item.createdAt ? new Date(item.createdAt) : new Date();
+        const hasNoUrl = !item.actionUrl || item.actionUrl.trim() === '' || item.actionUrl === 'none';
+        setForm({
+            title: item.title || '',
+            description: item.description || '',
+            category: item.category || 'drives',
+            sender: item.sender || 'Training & Placement Office',
+            senderRole: item.senderRole || 'Official Circular',
+            priority: item.priority || 'normal',
+            actionText: hasNoUrl ? '' : (item.actionText || 'View Details'),
+            actionUrl: hasNoUrl ? '' : (item.actionUrl || '/login'),
+            noUrl: hasNoUrl,
+            isTicker: item.isTicker !== false,
+            isActive: item.isActive !== false,
+            createdAt: getLocalIsoDateTime(itemDate)
+        });
+        setIsModalOpen(true);
+    };
+
+    const handleSave = async (e) => {
+        e.preventDefault();
+        if (!form.title.trim() || !form.description.trim()) {
+            return alert('Title and description are required.');
+        }
+
+        setIsSaving(true);
+        try {
+            const def = categoryDefaults[form.category] || categoryDefaults.drives;
+            const hasNoUrl = form.noUrl || form.actionUrl === '' || form.actionUrl === 'none';
+            const payload = {
+                ...form,
+                actionText: hasNoUrl ? '' : (form.actionText?.trim() || def.actionText),
+                actionUrl: hasNoUrl ? '' : (form.actionUrl?.trim() || def.actionUrl),
+                senderRole: form.senderRole?.trim() || def.senderRole,
+                sender: form.sender?.trim() || 'Training & Placement Office',
+                createdAt: form.createdAt ? new Date(form.createdAt).toISOString() : new Date().toISOString()
+            };
+            let res;
+            if (editingItem && editingItem._id) {
+                res = await api.put(`/notifications/${editingItem._id}`, payload);
+            } else {
+                res = await api.post('/notifications', payload);
+            }
+
+            if (res.data && res.data.success) {
+                const savedItem = res.data.data;
+                if (editingItem) {
+                    setNotifications(prev => prev.map(n => n._id === editingItem._id ? savedItem : n));
+                } else {
+                    setNotifications(prev => [savedItem, ...prev]);
+                }
+
+                showToast(editingItem ? 'Notification updated successfully!' : 'New notification published live!');
+                setIsModalOpen(false);
+                setEditingItem(null);
+
+                // Broadcast real-time update
+                window.dispatchEvent(new CustomEvent('careersync_notifications_updated', { detail: savedItem }));
+                localStorage.setItem('careersync_notice_sync_time', Date.now().toString());
+
+                // Background re-fetch to ensure sync with DB
+                fetchNotices(true);
+            } else {
+                alert(res.data?.error || 'Failed to save notification');
+            }
+        } catch (err) {
+            console.error('Error saving notification:', err);
+            alert(err.response?.data?.error || 'Failed to update notification. Please check server.');
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    const handleToggleActive = async (item) => {
+        try {
+            const nextActive = !item.isActive;
+            setNotifications(prev => prev.map(n => n._id === item._id ? { ...n, isActive: nextActive } : n));
+            const res = await api.put(`/notifications/${item._id}`, { isActive: nextActive });
+            if (res.data && res.data.success) {
+                showToast(`${item.title.substring(0, 24)}... is now ${nextActive ? 'Active' : 'Inactive'}`);
+                window.dispatchEvent(new CustomEvent('careersync_notifications_updated'));
+                localStorage.setItem('careersync_notice_sync_time', Date.now().toString());
+            }
+        } catch (err) {
+            console.error(err);
+            fetchNotices();
+        }
+    };
+
+    const handleDelete = async (id, title) => {
+        if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return;
+        try {
+            setNotifications(prev => prev.filter(n => n._id !== id));
+            const res = await api.delete(`/notifications/${id}`);
+            if (res.data && res.data.success) {
+                showToast('Notification deleted from database.');
+                window.dispatchEvent(new CustomEvent('careersync_notifications_updated'));
+                localStorage.setItem('careersync_notice_sync_time', Date.now().toString());
+            }
+        } catch (err) {
+            console.error(err);
+            fetchNotices();
+        }
+    };
+
+    const filtered = notifications.filter(n => {
+        if (filterCategory === 'all') return true;
+        if (filterCategory === 'active') return n.isActive;
+        if (filterCategory === 'inactive') return !n.isActive;
+        return n.category === filterCategory;
+    });
+
+    const activeCount = notifications.filter(n => n.isActive).length;
+    const tickerCount = notifications.filter(n => n.isActive && n.isTicker !== false).length;
+
+    return (
+        <div className="space-y-6">
+            {/* Header & Stats Banner */}
+            <div className="bg-[#121212]/90 backdrop-blur-md border border-gray-800/80 rounded-2xl p-6 relative overflow-hidden">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                    <div>
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className="p-1.5 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400">
+                                <Megaphone className="w-4 h-4" />
+                            </span>
+                            <h3 className="text-xl font-bold text-white tracking-tight">Broadcast & Notification Hub</h3>
+                        </div>
+                        <p className="text-gray-400 text-xs max-w-xl">
+                            All updates posted here are instantly synchronized with the public homepage Marquee Ticker and Side Notification Center.
+                        </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <button
+                            type="button"
+                            onClick={fetchNotices}
+                            className="p-2.5 rounded-xl bg-white/5 border border-gray-800 text-gray-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                            title="Refresh Notifications"
+                        >
+                            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-red-400' : ''}`} />
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleOpenCreate}
+                            className="flex items-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold rounded-xl text-xs shadow-lg shadow-red-600/20 transition-all cursor-pointer"
+                        >
+                            <Plus className="w-4 h-4" />
+                            <span>New Announcement</span>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Quick Stats Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-gray-800/60">
+                    <div className="bg-[#0a0a0a] border border-gray-800/80 rounded-xl p-3.5">
+                        <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider">Total Bulletins</p>
+                        <p className="text-xl font-bold text-white mt-1">{notifications.length}</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] border border-gray-800/80 rounded-xl p-3.5">
+                        <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider">Live Active</p>
+                        <p className="text-xl font-bold text-emerald-400 mt-1">{activeCount}</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] border border-gray-800/80 rounded-xl p-3.5">
+                        <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider">On Top Ticker</p>
+                        <p className="text-xl font-bold text-amber-400 mt-1">{tickerCount}</p>
+                    </div>
+                    <div className="bg-[#0a0a0a] border border-gray-800/80 rounded-xl p-3.5">
+                        <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider">Sync Status</p>
+                        <p className="text-xs font-bold text-blue-400 mt-2 flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Live to Public
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Notification List Section */}
+            <div className="bg-[#121212]/90 backdrop-blur-md border border-gray-800/80 rounded-2xl p-6">
+                {feedback && (
+                    <div className="mb-4 p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 text-xs font-semibold flex items-center justify-between animate-fade-in">
+                        <span>{feedback}</span>
+                        <Check className="w-4 h-4 text-emerald-400" />
+                    </div>
+                )}
+
+                {/* Filter Tabs */}
+                <div className="flex flex-wrap items-center gap-1.5 mb-5 pb-3 border-b border-gray-800">
+                    {[
+                        { key: 'all', label: 'All Announcements' },
+                        { key: 'drives', label: 'Recruitment Drives' },
+                        { key: 'notices', label: 'Official Circulars' },
+                        { key: 'events', label: 'Events' },
+                        { key: 'active', label: 'Live Active' },
+                        { key: 'inactive', label: 'Paused / Inactive' }
+                    ].map(tab => (
+                        <button
+                            key={tab.key}
+                            type="button"
+                            onClick={() => setFilterCategory(tab.key)}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                                filterCategory === tab.key
+                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                    : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border border-transparent'
+                            }`}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Items */}
+                {loading ? (
+                    <div className="py-16 text-center text-gray-500 text-xs">
+                        <RefreshCw className="w-6 h-6 animate-spin mx-auto text-red-500 mb-2" />
+                        Fetching live announcements from database...
+                    </div>
+                ) : filtered.length === 0 ? (
+                    <div className="py-16 text-center text-gray-500">
+                        <Bell className="w-8 h-8 mx-auto text-gray-700 mb-2 opacity-50" />
+                        <p className="text-sm font-semibold text-gray-400">No announcements found in this view.</p>
+                        <p className="text-xs text-gray-600 mt-1">Click "New Announcement" above to publish one.</p>
+                    </div>
+                ) : (
+                    <div className="space-y-3">
+                        {filtered.map((item) => (
+                            <div 
+                                key={item._id}
+                                className={`p-3.5 sm:p-4 rounded-xl border transition-all duration-200 bg-[#0a0a0a] flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 ${
+                                    item.isActive 
+                                        ? 'border-gray-800 hover:border-gray-700' 
+                                        : 'border-gray-900 opacity-60 bg-[#070707]'
+                                }`}
+                            >
+                                <div className="flex-1 space-y-1.5 min-w-0">
+                                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider border shrink-0 ${
+                                            item.category === 'drives' 
+                                                ? 'bg-blue-950/60 text-blue-400 border-blue-800' 
+                                                : item.category === 'events'
+                                                ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
+                                                : 'bg-purple-950/60 text-purple-400 border-purple-800'
+                                        }`}>
+                                            {item.category}
+                                        </span>
+
+                                        <span className="text-gray-400 text-xs font-semibold truncate max-w-[140px] sm:max-w-none">
+                                            {item.sender}
+                                        </span>
+                                        <span className="text-gray-600 text-xs">&bull;</span>
+                                        <span className="text-gray-500 text-xs font-medium truncate max-w-[140px] sm:max-w-none">
+                                            {item.senderRole}
+                                        </span>
+
+                                        {item.isTicker && item.isActive && (
+                                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800 flex items-center gap-1 shrink-0">
+                                                <Radio className="w-2.5 h-2.5 animate-pulse text-amber-400" /> Ticker Live
+                                            </span>
+                                        )}
+
+                                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border shrink-0 ${
+                                            item.isActive 
+                                                ? 'bg-emerald-950/50 text-emerald-400 border-emerald-800' 
+                                                : 'bg-gray-800 text-gray-400 border-gray-700'
+                                        }`}>
+                                            {item.isActive ? 'Active' : 'Paused'}
+                                        </span>
+                                    </div>
+
+                                    <h4 className="text-sm font-bold text-white leading-snug break-words">
+                                        {item.title}
+                                    </h4>
+
+                                    <p className="text-xs text-gray-400 leading-relaxed max-w-3xl break-words">
+                                        {item.description}
+                                    </p>
+
+                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-[11px] text-gray-500">
+                                        <span className="break-all sm:break-normal">Action: {item.actionUrl && item.actionUrl.trim() !== '' && item.actionUrl !== 'none' ? (
+                                            <><span className="text-gray-300 font-medium">{item.actionText}</span> &rarr; <code className="text-red-400">{item.actionUrl}</code></>
+                                        ) : (
+                                            <span className="text-amber-400 font-medium bg-amber-950/40 px-1.5 py-0.5 rounded border border-amber-800/50">No URL (Info only)</span>
+                                        )}</span>
+                                        <span className="hidden sm:inline">&bull;</span>
+                                        <span className="flex items-center gap-1 text-gray-400 shrink-0">
+                                            <Clock className="w-3 h-3 text-red-400 shrink-0" />
+                                            <span>Message Time: {formatAdminDateTime(item.createdAt)}</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex items-center gap-2 self-stretch sm:self-end md:self-center justify-end shrink-0 pt-2.5 md:pt-0 border-t border-gray-900 md:border-0">
+                                    <button
+                                        type="button"
+                                        onClick={() => handleToggleActive(item)}
+                                        className={`flex-1 sm:flex-none justify-center px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1 ${
+                                            item.isActive 
+                                                ? 'bg-emerald-950/30 text-emerald-400 border-emerald-800 hover:bg-emerald-900/40' 
+                                                : 'bg-gray-900 text-gray-400 border-gray-800 hover:text-white'
+                                        }`}
+                                        title={item.isActive ? 'Pause this notice' : 'Activate notice'}
+                                    >
+                                        <Power className="w-3.5 h-3.5" />
+                                        <span>{item.isActive ? 'Active' : 'Enable'}</span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => handleOpenEdit(item)}
+                                        className="p-2 rounded-lg bg-white/5 border border-gray-800 text-gray-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                                        title="Edit notification"
+                                    >
+                                        <Edit3 className="w-4 h-4 text-blue-400" />
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => handleDelete(item._id, item.title)}
+                                        className="p-2 rounded-lg bg-red-950/20 border border-red-900/40 text-red-400 hover:bg-red-900/40 transition-colors cursor-pointer"
+                                        title="Delete notification"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Create / Edit Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+                    <div className="bg-[#121212] border border-gray-800 rounded-2xl p-4 sm:p-6 w-full max-w-xl max-h-[90dvh] overflow-y-auto my-auto relative shadow-2xl">
+                        <div className="flex items-center justify-between pb-4 border-b border-gray-800">
+                            <div className="flex items-center gap-2">
+                                <span className="p-1.5 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400">
+                                    <Bell className="w-4 h-4" />
+                                </span>
+                                <h3 className="text-lg font-bold text-white">
+                                    {editingItem ? 'Edit Announcement' : 'Publish New Announcement'}
+                                </h3>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setIsModalOpen(false)}
+                                className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-white/5"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSave} className="space-y-4 mt-4">
+                            <div>
+                                <label className="block text-xs font-semibold text-gray-300 mb-1">
+                                    Title *
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={form.title}
+                                    onChange={(e) => setForm({ ...form, title: e.target.value })}
+                                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60 focus:ring-1 focus:ring-red-500/60"
+                                />
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-300 mb-1">Category</label>
+                                    <select
+                                        value={form.category}
+                                        onChange={(e) => handleCategoryChange(e.target.value)}
+                                        className="w-full px-3 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                    >
+                                        <option value="drives">Recruitment Drives</option>
+                                        <option value="notices">Official Circulars</option>
+                                        <option value="events">Campus Events / Fairs</option>
+                                        <option value="academic">Academic / Skill Assessment</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-300 mb-1">Priority</label>
+                                    <select
+                                        value={form.priority}
+                                        onChange={(e) => setForm({ ...form, priority: e.target.value })}
+                                        className="w-full px-3 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                    >
+                                        <option value="high">High (Urgent Announcement)</option>
+                                        <option value="normal">Normal</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-300 mb-1">Issuing Authority / Sender</label>
+                                    <input
+                                        type="text"
+                                        value={form.sender}
+                                        onChange={(e) => setForm({ ...form, sender: e.target.value })}
+                                        className="w-full px-3 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-300 mb-1">Circular Badge / Role</label>
+                                    <input
+                                        type="text"
+                                        value={form.senderRole}
+                                        onChange={(e) => setForm({ ...form, senderRole: e.target.value })}
+                                        className="w-full px-3 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-semibold text-gray-300 mb-1">Description *</label>
+                                <textarea
+                                    required
+                                    rows="3"
+                                    value={form.description}
+                                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0a0a] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60 resize-none"
+                                />
+                            </div>
+
+                            {/* Action Button & Redirect URL Configuration */}
+                            <div className="p-3 bg-[#0a0a0a] border border-gray-800 rounded-xl space-y-2.5">
+                                <div className="flex flex-wrap items-center justify-between gap-2">
+                                    <label className="text-xs font-semibold text-gray-300 flex items-center gap-1.5">
+                                        <Link2 className="w-3.5 h-3.5 text-red-400" />
+                                        <span>Action &amp; Redirect URL</span>
+                                    </label>
+                                    <label className="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer select-none">
+                                        <input
+                                            type="checkbox"
+                                            checked={Boolean(form.noUrl)}
+                                            onChange={(e) => {
+                                                const checked = e.target.checked;
+                                                const def = categoryDefaults[form.category] || categoryDefaults.drives;
+                                                setForm({
+                                                    ...form,
+                                                    noUrl: checked,
+                                                    actionUrl: checked ? '' : def.actionUrl,
+                                                    actionText: checked ? '' : def.actionText
+                                                });
+                                            }}
+                                            className="rounded border-gray-700 bg-gray-900 text-red-600 focus:ring-0 w-3.5 h-3.5 cursor-pointer"
+                                        />
+                                        <span className={form.noUrl ? "text-amber-400 font-bold" : "text-gray-400 hover:text-gray-200"}>
+                                            No URL (Informational bulletin only)
+                                        </span>
+                                    </label>
+                                </div>
+
+                                {form.noUrl ? (
+                                    <div className="p-2.5 rounded-lg bg-amber-950/25 border border-amber-800/40 text-[11px] text-amber-300 flex items-center gap-2">
+                                        <AlertCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                                        <span>"No URL" selected. This announcement will display as a pure notice without any redirect action button.</span>
+                                    </div>
+                                ) : (
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                                        <div>
+                                            <label className="block text-xs font-semibold text-gray-300 mb-1">Action Button Text</label>
+                                            <input
+                                                type="text"
+                                                value={form.actionText}
+                                                onChange={(e) => setForm({ ...form, actionText: e.target.value })}
+                                                className="w-full px-3 py-2 rounded-xl bg-[#121212] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-xs font-semibold text-gray-300 mb-1">Redirect URL</label>
+                                            <input
+                                                type="text"
+                                                value={form.actionUrl}
+                                                onChange={(e) => setForm({ ...form, actionUrl: e.target.value })}
+                                                className="w-full px-3 py-2 rounded-xl bg-[#121212] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                            />
+                                            <p className="text-[10px] text-gray-500 mt-1">
+                                                Supports internal routes (e.g. <code className="text-red-400">/login</code>) or external URLs (e.g. <code className="text-red-400">https://careers.google.com</code>).
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Message Broadcast Time & Date */}
+                            <div className="p-3 bg-[#0a0a0a] border border-gray-800 rounded-xl space-y-2">
+                                <div className="flex flex-wrap items-center justify-between gap-2">
+                                    <label className="text-xs font-semibold text-gray-300 flex items-center gap-1.5">
+                                        <Clock className="w-3.5 h-3.5 text-red-400" />
+                                        <span>Message Broadcast Time &amp; Date</span>
+                                    </label>
+                                    <button
+                                        type="button"
+                                        onClick={() => setForm({ ...form, createdAt: getLocalIsoDateTime(new Date()) })}
+                                        className="text-[10px] font-semibold text-red-400 hover:text-red-300 bg-red-950/40 hover:bg-red-900/40 px-2 py-0.5 rounded border border-red-800/40 cursor-pointer transition-colors"
+                                    >
+                                        Set Current Time
+                                    </button>
+                                </div>
+                                <input
+                                    type="datetime-local"
+                                    value={form.createdAt || ''}
+                                    onChange={(e) => setForm({ ...form, createdAt: e.target.value })}
+                                    className="w-full px-3 py-2 rounded-lg bg-[#121212] border border-gray-800 text-white text-xs focus:outline-none focus:border-red-500/60"
+                                />
+                                <p className="text-[11px] text-gray-500">
+                                    Configures exact message time. Determines relative time badge (<code className="text-red-400">Just now</code>, <code className="text-red-400">5m ago</code>) and chronological order in the public Notification Center &amp; History.
+                                </p>
+                            </div>
+
+                            {/* Toggles */}
+                            <div className="p-3 bg-[#0a0a0a] border border-gray-800 rounded-xl space-y-2">
+                                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={form.isTicker}
+                                        onChange={(e) => setForm({ ...form, isTicker: e.target.checked })}
+                                        className="rounded border-gray-700 bg-gray-900 text-red-600 focus:ring-0"
+                                    />
+                                    <span>Broadcast in top marquee scrolling ticker on Homepage</span>
+                                </label>
+
+                                <label className="flex items-center gap-2.5 text-xs text-gray-300 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={form.isActive}
+                                        onChange={(e) => setForm({ ...form, isActive: e.target.checked })}
+                                        className="rounded border-gray-700 bg-gray-900 text-red-600 focus:ring-0"
+                                    />
+                                    <span>Active (Immediately visible to students & visitors)</span>
+                                </label>
+                            </div>
+
+                            <div className="flex items-center justify-end gap-2 pt-3 border-t border-gray-800">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsModalOpen(false)}
+                                    className="px-4 py-2 rounded-xl border border-gray-800 hover:bg-white/5 text-gray-400 text-xs font-semibold cursor-pointer"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    className="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-red-600/30 cursor-pointer disabled:opacity-50"
+                                >
+                                    {isSaving ? (
+                                        <>
+                                            <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                                            <span>Saving...</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send className="w-3.5 h-3.5" />
+                                            <span>{editingItem ? 'Update Announcement' : 'Publish Announcement'}</span>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
 const AdminDashboard = () => {
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -262,6 +944,7 @@ const AdminDashboard = () => {
     const sidebarItems = [
         { name: 'Overview', icon: LayoutDashboard },
         { name: 'User Verification', icon: UserCheck },
+        { name: 'Notifications', icon: Bell },
         { name: 'Content Moderation', icon: ShieldAlert },
         { name: 'Database Management', icon: Database },
         { name: 'Analytics & Reports', icon: BarChart2 },
@@ -281,6 +964,8 @@ const AdminDashboard = () => {
                 return <OverviewModule />;
             case 'User Verification':
                 return <VerificationModule />;
+            case 'Notifications':
+                return <NotificationsModule />;
             case 'Content Moderation':
                 return <ModerationModule />;
             case 'Analytics & Reports':
