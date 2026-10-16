@@ -1,59 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LogOut, ArrowLeft, X, ChevronRight } from 'lucide-react';
 
 /**
  * AndroidExitGesture
- * Handles Android edge pull and back gesture on Home Page ('/'):
- * - Left edge pull gesture (> 40px) or Android back swipe triggers the modal.
- * - "Exit App" closes/exits the application immediately.
+ * Active across the COMPLETE WEBSITE on Android / Mobile Touch devices ONLY.
+ * - Desktop is 100% excluded (no listeners, no handles, no modals).
+ * - On Android: pulling from the left edge on ANY page shows "Exit App" and "Back" options.
+ * - "Exit App" exits the application.
  * - "Back" navigates back in browser history.
- * - Backdrop or (X) cancels and stays on Home Page.
- * - On all other pages, native Android navigation works normally.
+ * - (X) or backdrop cancels and stays on current page.
  */
 const AndroidExitGesture = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const [isAndroidDevice, setIsAndroidDevice] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const ua = navigator.userAgent || '';
+    const isAndroidUA = /Android/i.test(ua);
+    const isMobileTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth < 1024;
+    return isAndroidUA || isMobileTouch;
+  });
 
   const [showExitModal, setShowExitModal] = useState(false);
   const [pullProgress, setPullProgress] = useState(0);
 
   const dragStartRef = useRef({ x: 0, y: 0, active: false });
-  const isGuardedRef = useRef(false);
 
-  // 1. Android Back Gesture Guard ONLY on Home Page
+  // Keep Android detection updated on viewport resize/orientation change
   useEffect(() => {
-    if (!isHomePage) {
-      setShowExitModal(false);
-      isGuardedRef.current = false;
-      return;
-    }
-
-    // Set guard state once on home page
-    if (!isGuardedRef.current) {
-      try {
-        window.history.pushState({ careersync_exit_guard: true }, '');
-        isGuardedRef.current = true;
-      } catch {
-        // Ignore
-      }
-    }
-
-    const handlePopState = () => {
-      // Show exit confirmation modal when back is triggered on Home Page
-      setShowExitModal(true);
+    const handleDeviceCheck = () => {
+      const ua = navigator.userAgent || '';
+      const isAndroidUA = /Android/i.test(ua);
+      const isMobileTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth < 1024;
+      setIsAndroidDevice(isAndroidUA || isMobileTouch);
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [isHomePage]);
+    window.addEventListener('resize', handleDeviceCheck);
+    return () => window.removeEventListener('resize', handleDeviceCheck);
+  }, []);
 
-  // 2. Touch & Pointer Drag from Left Edge ONLY on Home Page
+  // Touch & Pointer Drag from Left Edge (Active across ALL pages on Android)
   useEffect(() => {
-    if (!isHomePage) return;
+    if (!isAndroidDevice) return;
 
     const handleStart = (clientX, clientY) => {
       // Left edge zone: within first 90px of screen
@@ -73,7 +60,7 @@ const AndroidExitGesture = () => {
       const deltaX = clientX - dragStartRef.current.x;
       const deltaY = Math.abs(clientY - dragStartRef.current.y);
 
-      // Cancel if scrolling vertically
+      // Cancel horizontal pull if scrolling vertically
       if (deltaY > 60 && deltaX < 35) {
         dragStartRef.current.active = false;
         setPullProgress(0);
@@ -95,7 +82,7 @@ const AndroidExitGesture = () => {
       const deltaX = clientX - dragStartRef.current.x;
       const deltaY = Math.abs(clientY - dragStartRef.current.y);
 
-      // Trigger if pulled at least 40px rightward
+      // Trigger modal if pulled at least 40px rightward from left edge
       if (deltaX >= 40 && deltaY < 100) {
         setShowExitModal(true);
       }
@@ -141,7 +128,7 @@ const AndroidExitGesture = () => {
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
     };
-  }, [isHomePage]);
+  }, [isAndroidDevice]);
 
   // Action 1: Exit App
   const handleExitApp = () => {
@@ -171,40 +158,32 @@ const AndroidExitGesture = () => {
     }, 100);
   };
 
-  // Action 2: Back (actually navigates back in browser history)
+  // Action 2: Back (navigates back in browser history)
   const handleBack = () => {
     setShowExitModal(false);
-    // Execute browser back navigation
     if (window.history.length > 1) {
       window.history.back();
     } else {
-      // If history is empty, exit gracefully
       handleExitApp();
     }
   };
 
-  // Action 3: Cancel / Stay on Home Page
+  // Action 3: Cancel / Stay on current page
   const handleCancel = () => {
     setShowExitModal(false);
-    // Restore guard so future swipe works
-    try {
-      window.history.pushState({ careersync_exit_guard: true }, '');
-    } catch {
-      // Ignore
-    }
   };
 
-  // Only active on Home Page
-  if (!isHomePage) {
+  // Strictly disabled on desktop devices
+  if (!isAndroidDevice) {
     return null;
   }
 
   return (
     <>
-      {/* Interactive Left-Edge Pull Handle on Mobile */}
+      {/* Interactive Left-Edge Pull Handle on Android / Mobile */}
       <div
         onClick={() => setShowExitModal(true)}
-        className="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[45] w-3 h-20 bg-slate-400/20 hover:bg-blue-500/40 active:bg-blue-600/60 rounded-r-md cursor-pointer flex items-center justify-center transition-all touch-none select-none"
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-[45] w-3 h-20 bg-slate-400/20 hover:bg-blue-500/40 active:bg-blue-600/60 rounded-r-md cursor-pointer flex items-center justify-center transition-all touch-none select-none"
         title="Pull or tap to exit"
       >
         <ChevronRight className="w-2.5 h-2.5 text-slate-500/50" />
@@ -229,7 +208,7 @@ const AndroidExitGesture = () => {
       <AnimatePresence>
         {showExitModal && (
           <div className="fixed inset-0 z-[999] flex items-end sm:items-center justify-center p-0 sm:p-4">
-            {/* Backdrop: Clicking closes modal and stays on page */}
+            {/* Backdrop: Clicking closes modal and stays on current page */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
