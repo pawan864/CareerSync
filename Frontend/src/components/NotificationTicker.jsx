@@ -301,27 +301,67 @@ const NotificationTicker = () => {
     return <Megaphone className="w-3.5 h-3.5 text-slate-500 shrink-0" />;
   };
 
+  // Distinct color scheme for bracketed ticker tags ([Circular], [Event], [Assessment], etc.)
+  const getTickerTagColor = (item, idx = 0) => {
+    const role = (item?.senderRole || '').toLowerCase();
+    const cat = (item?.category || '').toLowerCase();
+
+    // 1. Keyword / category-based vibrant colors
+    if (role.includes('event') || cat === 'events') {
+      return 'text-emerald-700'; // Forest / Emerald Green for Events
+    }
+    if (role.includes('eval') || role.includes('assessment') || role.includes('academic') || cat === 'academic') {
+      return 'text-purple-700'; // Royal Purple for Assessment / Evaluation
+    }
+    if (role.includes('drive') || role.includes('placement') || role.includes('job') || cat === 'drives') {
+      return 'text-blue-700'; // Deep Blue for Drives & Placements
+    }
+    if (role.includes('circular')) {
+      return 'text-indigo-700'; // Indigo for Official Circulars
+    }
+    if (role.includes('notice') || role.includes('admin') || cat === 'notices') {
+      return 'text-amber-800'; // Amber-Bronze for Notices & Admin
+    }
+    if (role.includes('registry') || role.includes('document') || role.includes('student')) {
+      return 'text-teal-700'; // Teal for Registry & Documentation
+    }
+
+    // 2. Fallback rotation across distinct colors if custom or unmapped
+    const colorPalette = [
+      'text-blue-700',
+      'text-emerald-700',
+      'text-purple-700',
+      'text-indigo-700',
+      'text-amber-800',
+      'text-teal-700',
+      'text-rose-700'
+    ];
+    return colorPalette[idx % colorPalette.length];
+  };
+
   // Memoized ticker content for 60fps/120fps hardware acceleration on Android mobile
   const renderedTickerItems = useMemo(() => {
     if (tickerItems.length === 0) {
       return (
-        <div className="flex items-center px-4 shrink-0 text-slate-700">
+        <div className="flex items-center px-2 shrink-0 text-slate-700">
           <Bell className="w-3.5 h-3.5 mr-1.5 animate-ring text-amber-600 fill-amber-500/20" />
-          <span className="font-semibold text-amber-900 mr-1.5">[Official Portal]</span>
+          <span className="font-bold text-indigo-700 mr-1.5">[Official Portal]</span>
           <span>CareerSync Campus Recruitment &amp; Placement Network Active</span>
-          <span className="mx-6 text-gray-400 font-bold shrink-0">|</span>
+          <span className="mx-2.5 sm:mx-3 text-gray-400 font-bold shrink-0">|</span>
         </div>
       );
     }
 
     return (
-      <div className="flex items-center px-4 shrink-0">
+      <div className="flex items-center px-1 shrink-0">
         {tickerItems.map((item, idx) => (
           <React.Fragment key={item._id || idx}>
             {getTickerIcon(item, idx)}
-            <span className="font-semibold text-amber-900 mr-1.5 shrink-0">[{item.senderRole || 'Circular'}]</span>
+            <span className={`font-bold mr-1.5 shrink-0 ${getTickerTagColor(item, idx)}`}>
+              [{item.senderRole || 'Circular'}]
+            </span>
             <span className="text-gray-900 shrink-0">{item.title}</span>
-            <span className="mx-6 text-gray-400 font-bold shrink-0">|</span>
+            <span className="mx-2.5 sm:mx-3 text-gray-400 font-bold shrink-0">|</span>
           </React.Fragment>
         ))}
       </div>
