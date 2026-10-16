@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 import { 
     GraduationCap, LogOut, User, BookOpen, Briefcase, FileText, BrainCircuit, MessageSquare, Calendar, Home, ChevronRight,
-    Award, Users, Building2, Network, LayoutTemplate, Map, Bookmark, MailOpen, Settings, HelpCircle, Menu, X
+    Award, Users, Building2, Network, LayoutTemplate, Map, Bookmark, MailOpen, Settings, HelpCircle, Menu, X, ShieldAlert, AlertTriangle, RefreshCw, Power
 } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -34,21 +34,38 @@ const StudentDashboard = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [visibleItemIds, setVisibleItemIds] = useState(null);
+    const [maintenanceInfo, setMaintenanceInfo] = useState({ isMaintenance: false, message: '' });
 
-    useEffect(() => {
-        const fetchNav = async () => {
-            try {
-                const res = await api.get('/admin/access-control/public/student');
-                if (res.data?.success && res.data.data?.sidebarItems) {
+    const fetchNav = async () => {
+        try {
+            const res = await api.get('/admin/access-control/public/student');
+            if (res.data?.success && res.data.data) {
+                setMaintenanceInfo({
+                    isMaintenance: Boolean(res.data.data.isMaintenance),
+                    message: res.data.data.maintenanceMessage || 'Student portal is currently undergoing scheduled maintenance. Please check back shortly.'
+                });
+                if (res.data.data.sidebarItems) {
                     const ids = new Set(res.data.data.sidebarItems.map(i => i.id));
                     setVisibleItemIds(ids);
                 }
-            } catch (e) {
-                // Keep default nav items if fetch fails
             }
-        };
+        } catch (e) {
+            // Keep default nav items if fetch fails
+        }
+    };
+
+    useEffect(() => {
         fetchNav();
     }, []);
+
+    const handleDisableMaintenance = async () => {
+        try {
+            await api.put('/admin/access-control/role/student', { isMaintenance: false });
+            setMaintenanceInfo(prev => ({ ...prev, isMaintenance: false }));
+        } catch (err) {
+            console.error('Error disabling maintenance mode:', err);
+        }
+    };
 
     const handleLogout = async () => {
         await logout();
@@ -87,8 +104,62 @@ const StudentDashboard = () => {
         return visibleItemIds.has(item.id);
     });
 
+    if (maintenanceInfo.isMaintenance && user?.role !== 'admin') {
+        return (
+            <div className="min-h-screen w-full bg-[#0a0a0a] flex flex-col items-center justify-center p-6 text-center text-white relative overflow-hidden font-sans">
+                <div className="fixed inset-0 pointer-events-none">
+                    <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]"></div>
+                </div>
+                <div className="max-w-md w-full bg-[#121212]/95 border border-amber-500/30 p-8 rounded-3xl shadow-2xl relative z-10 space-y-5 backdrop-blur-xl">
+                    <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto text-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+                        <ShieldAlert className="w-8 h-8 animate-bounce" />
+                    </div>
+                    <div>
+                        <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-amber-500/15 text-amber-400 border border-amber-500/30 inline-block mb-3">
+                            Scheduled Maintenance
+                        </span>
+                        <h2 className="text-2xl font-bold text-white tracking-tight">Student Portal Offline</h2>
+                        <p className="text-xs text-gray-300 mt-3 leading-relaxed bg-black/40 p-3.5 rounded-xl border border-gray-800">
+                            {maintenanceInfo.message}
+                        </p>
+                    </div>
+                    <div className="pt-2 flex flex-col gap-2.5">
+                        <button
+                            onClick={fetchNav}
+                            className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs transition-all shadow-lg shadow-amber-500/20 active:scale-95 cursor-pointer flex items-center justify-center space-x-2"
+                        >
+                            <RefreshCw className="w-3.5 h-3.5" />
+                            <span>Check Status Again</span>
+                        </button>
+                        <button
+                            onClick={handleLogout}
+                            className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 font-semibold text-xs border border-gray-800 transition-all cursor-pointer"
+                        >
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="flex h-screen w-full max-w-[100vw] bg-gradient-to-r from-white via-blue-50 to-blue-100 font-sans overflow-hidden">
+        <div className="flex flex-col h-screen w-full max-w-[100vw] bg-gradient-to-r from-white via-blue-50 to-blue-100 font-sans overflow-hidden">
+            {maintenanceInfo.isMaintenance && (
+                <div className="bg-amber-500 text-black font-semibold text-xs px-4 py-2 flex items-center justify-between z-50 shadow-md">
+                    <div className="flex items-center space-x-2">
+                        <ShieldAlert className="w-4 h-4 shrink-0" />
+                        <span>MAINTENANCE MODE ACTIVE: Students are currently blocked from this dashboard. (Admin bypass active)</span>
+                    </div>
+                    <button
+                        onClick={handleDisableMaintenance}
+                        className="px-3 py-1 bg-black text-white hover:bg-gray-800 rounded-lg text-xs font-bold transition-all cursor-pointer"
+                    >
+                        Disable Maintenance Now
+                    </button>
+                </div>
+            )}
+            <div className="flex flex-1 overflow-hidden">
             
             {/* Sidebar */}
             <motion.div 
@@ -266,6 +337,7 @@ const StudentDashboard = () => {
                         </motion.div>
                     </AnimatePresence>
                 </div>
+            </div>
             </div>
         </div>
     );

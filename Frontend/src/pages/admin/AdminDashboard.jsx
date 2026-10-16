@@ -5209,20 +5209,32 @@ const AccessControlModule = () => {
     };
 
     // Toggle Role Maintenance Mode
-    const handleToggleMaintenance = async (roleKey, currentMaintenance) => {
+    const handleToggleMaintenance = async (roleKey, currentMaintenance, customMessage = null) => {
         const nextState = !currentMaintenance;
         try {
-            const res = await api.put(`/admin/access-control/role/${roleKey}`, {
-                isMaintenance: nextState
-            });
+            const payload = { isMaintenance: nextState };
+            if (customMessage !== null) {
+                payload.maintenanceMessage = customMessage;
+            } else if (policyForm.maintenanceMessage && roleKey === currentRole?.role) {
+                payload.maintenanceMessage = policyForm.maintenanceMessage;
+            }
+
+            const res = await api.put(`/admin/access-control/role/${roleKey}`, payload);
 
             if (res.data?.success) {
                 notify('success', `${res.data.data?.displayName || roleKey} is now ${nextState ? 'in Maintenance Mode' : 'Active and Operational'}`);
-                setRoles(prev => prev.map(r => r.role === roleKey ? { ...r, isMaintenance: nextState } : r));
+                setRoles(prev => prev.map(r => r.role === roleKey ? { 
+                    ...r, 
+                    isMaintenance: nextState, 
+                    maintenanceMessage: payload.maintenanceMessage !== undefined ? payload.maintenanceMessage : r.maintenanceMessage 
+                } : r));
+                if (roleKey === currentRole?.role) {
+                    setPolicyForm(prev => ({ ...prev, isMaintenance: nextState }));
+                }
                 setStats(prev => ({
                     ...prev,
-                    activeRoles: prev.activeRoles + (nextState ? -1 : 1),
-                    maintenanceRoles: prev.maintenanceRoles + (nextState ? 1 : -1)
+                    activeRoles: Math.max(0, prev.activeRoles + (nextState ? -1 : 1)),
+                    maintenanceRoles: Math.max(0, prev.maintenanceRoles + (nextState ? 1 : -1))
                 }));
             }
         } catch (err) {
@@ -5274,6 +5286,7 @@ const AccessControlModule = () => {
             if (res.data?.success) {
                 notify('success', `Security & operational policies updated for ${currentRole.displayName}`);
                 setRoles(prev => prev.map(r => r.role === currentRole.role ? res.data.data : r));
+                await fetchAccessControlData(true);
             }
         } catch (err) {
             console.error('Error saving security policy:', err);
@@ -5608,17 +5621,27 @@ const AccessControlModule = () => {
                                             <IconComponent className="w-5 h-5" />
                                         </div>
                                         <div className="flex items-center space-x-1.5">
-                                            {r.isMaintenance ? (
-                                                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center gap-1">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                                    Maintenance
-                                                </span>
-                                            ) : (
-                                                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                                    Live
-                                                </span>
-                                            )}
+                                            <button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleToggleMaintenance(r.role, r.isMaintenance);
+                                                }}
+                                                className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                                                title={`Click to ${r.isMaintenance ? 'disable maintenance (Make Live)' : 'enable maintenance mode'}`}
+                                            >
+                                                {r.isMaintenance ? (
+                                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center gap-1 hover:bg-amber-500/20">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                                        Maintenance
+                                                    </span>
+                                                ) : (
+                                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1 hover:bg-emerald-500/20">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                                        Live
+                                                    </span>
+                                                )}
+                                            </button>
                                         </div>
                                     </div>
 
@@ -6169,15 +6192,29 @@ const AccessControlModule = () => {
                                 {/* Portal Maintenance Toggle */}
                                 <div className="bg-[#121212] border border-gray-800 p-4 rounded-2xl flex items-center justify-between">
                                     <div>
-                                        <h5 className="text-xs font-semibold text-white">Role Maintenance Mode</h5>
-                                        <p className="text-[11px] text-gray-500">Temporarily suspend portal traffic for maintenance</p>
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h5 className="text-xs font-semibold text-white">Role Maintenance Mode</h5>
+                                            {policyForm.isMaintenance ? (
+                                                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center gap-1">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                                    MAINTENANCE ACTIVE
+                                                </span>
+                                            ) : (
+                                                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                                    LIVE & OPERATIONAL
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="text-[11px] text-gray-500">Temporarily suspend portal traffic for maintenance (locks out non-admin users)</p>
                                     </div>
                                     <button
                                         type="button"
-                                        onClick={() => setPolicyForm({ ...policyForm, isMaintenance: !policyForm.isMaintenance })}
+                                        onClick={() => handleToggleMaintenance(currentRole.role, policyForm.isMaintenance, policyForm.maintenanceMessage)}
                                         className={`w-12 h-6 rounded-full p-1 transition-all flex items-center cursor-pointer ${
                                             policyForm.isMaintenance ? 'bg-amber-600 justify-end' : 'bg-gray-800 justify-start'
                                         }`}
+                                        title={policyForm.isMaintenance ? "Click to disable maintenance (Make Live)" : "Click to activate maintenance mode"}
                                     >
                                         <div className="w-4 h-4 rounded-full bg-white shadow-md"></div>
                                     </button>
