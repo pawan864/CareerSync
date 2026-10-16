@@ -293,7 +293,7 @@ const Home = () => {
         >
             {/* Hero Section */}
                         {/* Hero Section Slideshow */}
-            <div id="tour-hero" className="relative mt-0 md:mt-20 w-full min-h-[calc(100dvh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white">
+            <div id="tour-hero" className="relative mt-0 md:mt-20 w-full min-h-[calc(100dvh-4rem)] flex items-center border-b border-gray-200 overflow-hidden bg-white [contain:paint]">
                 <AnimatePresence initial={false}>
                     <motion.div
                         key={currentSlide}
@@ -301,7 +301,7 @@ const Home = () => {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: 0, opacity: 0 }}
                         transition={{ duration: 0.7, ease: "easeInOut" }}
-                        className={`absolute inset-0 flex items-center`}
+                        className={`absolute inset-0 flex items-center will-change-transform [transform:translateZ(0)]`}
                     >
                         {/* Full screen background image */}
                         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" style={{ backgroundImage: `url(${heroSlides[currentSlide].bgImage})` }}></div>

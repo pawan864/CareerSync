@@ -1,5 +1,5 @@
 import api from '../services/api';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Bell, 
@@ -9,17 +9,18 @@ import {
   GraduationCap, 
   Sparkles, 
   BookOpen, 
-  CheckCheck,
-  Clock,
-  Radio,
-  Calendar,
-  Megaphone,
-  Briefcase,
-  History,
-  Search,
-  Filter,
-  RotateCcw,
-  ExternalLink
+  CheckCheck, 
+  Clock, 
+  Radio, 
+  Calendar, 
+  Megaphone, 
+  Briefcase, 
+  History, 
+  Search, 
+  Filter, 
+  RotateCcw, 
+  ExternalLink, 
+  MousePointerClick 
 } from 'lucide-react';
 
 const NotificationTicker = () => {
@@ -43,9 +44,10 @@ const NotificationTicker = () => {
   const [historyCustomDate, setHistoryCustomDate] = useState('');
   const [expandedIds, setExpandedIds] = useState([]);
 
+  // Accordion expansion: Opening a new card automatically closes any previously expanded card
   const toggleExpand = (id) => {
     setExpandedIds(prev => 
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+      prev.includes(id) ? [] : [id]
     );
   };
 
@@ -231,8 +233,10 @@ const NotificationTicker = () => {
     }
   };
 
-  // Ticker items configured by Admin (isTicker: true)
-  const tickerItems = notifications.filter(n => n.isTicker !== false && n.isActive !== false);
+  // Ticker items configured by Admin (isTicker: true) - Memoized for Android 60fps performance
+  const tickerItems = useMemo(() => {
+    return notifications.filter(n => n.isTicker !== false && n.isActive !== false);
+  }, [notifications]);
 
   const formatRelativeTime = (dateStr) => {
     if (!dateStr) return 'Recent';
@@ -297,7 +301,8 @@ const NotificationTicker = () => {
     return <Megaphone className="w-3.5 h-3.5 text-slate-500 shrink-0" />;
   };
 
-  const renderTickerItems = () => {
+  // Memoized ticker content for 60fps/120fps hardware acceleration on Android mobile
+  const renderedTickerItems = useMemo(() => {
     if (tickerItems.length === 0) {
       return (
         <div className="flex items-center px-4 shrink-0 text-slate-700">
@@ -321,7 +326,10 @@ const NotificationTicker = () => {
         ))}
       </div>
     );
-  };
+  }, [tickerItems]);
+
+  // Backward compatibility alias to prevent any ReferenceError during hot-reload
+  const renderTickerItems = () => renderedTickerItems;
 
   return (
     <>
@@ -337,45 +345,91 @@ const NotificationTicker = () => {
         .animate-ring { animation: ring 2s ease-in-out infinite; transform-origin: top center; }
         
         @keyframes tickerMarquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-ticker-marquee {
           animation: tickerMarquee 15s linear infinite;
           display: flex;
           width: max-content;
+          will-change: transform;
+          transform: translate3d(0, 0, 0);
+          -webkit-transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .ticker-scroller {
+          contain: layout paint;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         }
         .ticker-scroller:hover .animate-ticker-marquee,
         .animate-ticker-marquee:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes tickerBtnFlip {
+          0%, 42% {
+            transform: rotateX(0deg);
+          }
+          50%, 92% {
+            transform: rotateX(180deg);
+          }
+          100% {
+            transform: rotateX(360deg);
+          }
+        }
+        .animate-ticker-btn-flip {
+          animation: tickerBtnFlip 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .ticker-btn-card:hover .animate-ticker-btn-flip {
           animation-play-state: paused;
         }
       `}</style>
 
       {/* Top Banner Ticker */}
       <div 
-        className="flex items-center overflow-hidden h-8 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500 select-none" 
+        className="flex items-center overflow-hidden h-8 w-full fixed top-16 left-0 z-40 border-t-[3px] transition-colors duration-500 select-none [transform:translateZ(0)] [contain:paint]" 
         style={{ backgroundColor: currentTheme.bg, borderColor: currentTheme.border }}
       >
-        {/* Left Notification Badge / Trigger Button */}
-        <div className="z-20 h-full flex items-center justify-center pl-2 sm:pl-3 pr-2.5 bg-transparent shrink-0">
+        {/* Left Notification Badge / 3D Flipping Trigger Button */}
+        <div className="z-20 h-full flex items-center justify-center pl-2 sm:pl-3 pr-2.5 bg-transparent shrink-0 ticker-btn-card [perspective:800px]">
           <button 
             type="button"
             onClick={() => setIsDrawerOpen(true)}
-            className="group flex items-center text-xs font-bold px-2.5 py-0.5 sm:py-1 rounded shadow-xs cursor-pointer transition-all hover:shadow-md active:scale-95" 
-            style={{ 
-              backgroundColor: currentTheme.btn, 
-              color: tickerTheme === 'orange' ? '#ffffff' : '#0f172a' 
-            }}
+            className="group relative w-[122px] sm:w-[132px] h-[24px] sm:h-[26px] [transform-style:preserve-3d] cursor-pointer active:scale-95 transition-transform animate-ticker-btn-flip"
             title="Open Notification Center"
           >
-            <div className="relative flex items-center mr-1.5">
-              <Bell className="w-3.5 h-3.5" />
-              {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-600 ring-1 ring-white animate-pulse" />
-              )}
+            {/* Front Face: Notifications */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center rounded shadow-xs [backface-visibility:hidden] -webkit-backface-visibility-hidden"
+              style={{ 
+                backgroundColor: currentTheme.btn, 
+                color: tickerTheme === 'orange' ? '#ffffff' : '#0f172a' 
+              }}
+            >
+              <div className="relative flex items-center mr-1.5">
+                <Bell className="w-3.5 h-3.5" />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-600 ring-1 ring-white animate-pulse" />
+                )}
+              </div>
+              <span className="text-[11px] sm:text-xs font-bold">Notifications</span> 
+              <span className="ml-1 text-[10px] opacity-70 group-hover:translate-x-0.5 transition-transform">»</span>
             </div>
-            <span className="tracking-wide uppercase text-[11px] sm:text-xs font-black">NOTIFICATIONS</span> 
-            <span className="ml-1 text-[10px] opacity-70 group-hover:translate-x-0.5 transition-transform">»</span>
+
+            {/* Back Face: Click Here */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center rounded shadow-xs [backface-visibility:hidden] -webkit-backface-visibility-hidden [transform:rotateX(180deg)]"
+              style={{ 
+                backgroundColor: tickerTheme === 'orange' ? '#0f172a' : '#1e3a8a', 
+                color: '#ffffff' 
+              }}
+            >
+              <MousePointerClick className="w-3.5 h-3.5 mr-1 text-amber-300 animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-bold text-white">Click Here</span> 
+              <span className="ml-1 text-[10px] text-amber-300 font-bold group-hover:translate-x-0.5 transition-transform">»</span>
+            </div>
           </button>
         </div>
         
@@ -387,12 +441,12 @@ const NotificationTicker = () => {
         >
           <div className="animate-ticker-marquee whitespace-nowrap text-xs sm:text-[13px] font-medium flex items-center h-full text-gray-800 select-none">
             <div className="flex items-center shrink-0">
-              {renderTickerItems()}
-              {renderTickerItems()}
+              {renderedTickerItems}
+              {renderedTickerItems}
             </div>
             <div className="flex items-center shrink-0">
-              {renderTickerItems()}
-              {renderTickerItems()}
+              {renderedTickerItems}
+              {renderedTickerItems}
             </div>
           </div>
         </div>
